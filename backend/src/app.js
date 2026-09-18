@@ -5,6 +5,7 @@ const errorHandler = require('./middleware/errorHandler');
 
 const problemRoutes = require('./routes/problemRoutes');
 const progressRoutes = require('./routes/progressRoutes');
+const userRoutes = require('./routes/userRoutes');
 
 const app = express();
 
@@ -31,6 +32,7 @@ app.get('/api/health', async (req, res) => {
 // API Routes
 app.use('/api/problems', problemRoutes);
 app.use('/api/progress', progressRoutes);
+app.use('/api/users', userRoutes);
 
 // Root route
 app.get('/', (req, res) => {

@@ -1,0 +1,62 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Fira+Code:wght@400;500;600&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --color-slate-void: #090C10;
+  --color-slate-base: #0D1117;
+  --color-slate-elevated: #161B22;
+  --color-slate-border: #21262D;
+  --color-slate-border-muted: #30363D;
+  --color-text-main: #F0F6FC;
+  --color-text-muted: #8B949E;
+  --color-text-gutter: #484F58;
+  --color-orange-accent: #FF7A00;
+  --color-orange-muted: #F59E0B;
+  --color-green-easy: #3FB950;
+  --color-yellow-med: #D29922;
+  --color-red-hard: #F85149;
+}
+
+:root {
+  --slate-void: #090C10;
+  --slate-base: #0D1117;
+  --slate-elevated: #161B22;
+  --slate-border: #21262D;
+  --slate-border-muted: #30363D;
+  --text-main: #F0F6FC;
+  --text-muted: #8B949E;
+  --text-gutter: #484F58;
+  --orange-accent: #FF7A00;
+  --orange-muted: #F59E0B;
+  --orange-glow: rgba(255, 122, 0, 0.15);
+  --green-easy: #3FB950;
+  --yellow-med: #D29922;
+  --red-hard: #F85149;
+  font-family: 'JetBrains Mono', 'Fira Code', ui-monospace, SFMono-Regular, monospace;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--slate-void);
+  color: var(--text-main);
+  min-height: 100vh;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Custom Cockpit Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--slate-void);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--slate-border-muted);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--orange-muted);
+}

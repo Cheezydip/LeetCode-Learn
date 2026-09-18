@@ -1,0 +1,15 @@
+/* Cockpit custom keyframes and utility rules */
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.typewriter-cursor {
+  display: inline-block;
+  width: 2px;
+  height: 14px;
+  background-color: #FF7A00;
+  animation: blink 1s infinite;
+  vertical-align: middle;
+  margin-left: 2px;
+}
