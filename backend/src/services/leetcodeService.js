@@ -248,6 +248,106 @@ async function fetchRecentAcSubmissions(username, limit = 10, region = 'global')
 }
 
 /**
+ * Query 5: Fetch Full Lifetime Solved Problems List using Disposable Session Cookie
+ * Uses authenticated query problemsetQuestionList with status: "AC"
+ */
+async function fetchSolvedProblemsWithCookie(sessionCookie, region = 'global', limit = 3000) {
+  if (!sessionCookie || typeof sessionCookie !== 'string') {
+    throw new Error('Valid LEETCODE_SESSION cookie is required');
+  }
+
+  let cleanCookie = sessionCookie.trim();
+  if (cleanCookie.startsWith('LEETCODE_SESSION=')) {
+    cleanCookie = cleanCookie.replace('LEETCODE_SESSION=', '').split(';')[0];
+  }
+
+  const query = `
+    query problemsetQuestionList($categorySlug: String, $limit: Int, $skip: Int, $filters: QuestionListFilterInput) {
+      problemsetQuestionList: questionList(
+        categorySlug: $categorySlug
+        limit: $limit
+        skip: $skip
+        filters: $filters
+      ) {
+        total: totalNum
+        questions: data {
+          questionFrontendId
+          title
+          titleSlug
+          difficulty
+          acRate
+          topicTags {
+            name
+            slug
+          }
+          status
+        }
+      }
+    }
+  `;
+
+  const url = ENDPOINTS[region] || ENDPOINTS.global;
+  const headers = {
+    ...BROWSER_HEADERS,
+    Cookie: `LEETCODE_SESSION=${cleanCookie};`,
+    Referer: region === 'china' ? 'https://leetcode.cn' : 'https://leetcode.com',
+    Origin: region === 'china' ? 'https://leetcode.cn' : 'https://leetcode.com',
+  };
+
+  const controller = new AbortController();
+  const timeoutId = setTimeout(() => controller.abort(), 12000);
+
+  try {
+    const response = await fetch(url, {
+      method: 'POST',
+      headers,
+      body: JSON.stringify({
+        query,
+        variables: {
+          categorySlug: '',
+          skip: 0,
+          limit,
+          filters: { status: 'AC' }
+        }
+      }),
+      signal: controller.signal
+    });
+
+    clearTimeout(timeoutId);
+
+    if (!response.ok) {
+      if (response.status === 403) {
+        throw new Error('LeetCode rejected the session cookie (403 Forbidden). The cookie may be expired or invalid.');
+      }
+      throw new Error(`LeetCode HTTP error: status ${response.status}`);
+    }
+
+    const result = await response.json();
+    if (result.errors && result.errors.length > 0) {
+      throw new Error(result.errors[0].message || 'Failed to query solved problems with cookie.');
+    }
+
+    const questions = result.data?.problemsetQuestionList?.questions || [];
+    return questions.map(q => ({
+      frontendId: q.questionFrontendId,
+      title: q.title,
+      titleSlug: q.titleSlug,
+      difficulty: q.difficulty,
+      acRate: q.acRate,
+      topicTags: (q.topicTags || []).map(t => ({ name: t.name, slug: t.slug })),
+      topicSlugs: (q.topicTags || []).map(t => t.slug),
+      solvedAt: new Date().toISOString()
+    }));
+  } catch (err) {
+    clearTimeout(timeoutId);
+    if (err.name === 'AbortError') {
+      throw new Error('Request to LeetCode timed out while querying solved problems.');
+    }
+    throw err;
+  }
+}
+
+/**
  * Bio Token Ownership Verification
  * Queries user bio and verifies the temporary code exists
  */
@@ -291,6 +391,7 @@ module.exports = {
   fetchContestRanking,
   fetchTopicSkillCounts,
   fetchRecentAcSubmissions,
+  fetchSolvedProblemsWithCookie,
   verifyBioToken,
   importFullUserStats,
 };

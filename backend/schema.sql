@@ -39,12 +39,31 @@ CREATE TABLE IF NOT EXISTS public.users (
     hard_solved INT DEFAULT 0,
     topic_metrics JSONB DEFAULT '{}'::jsonb,
     recent_submissions JSONB DEFAULT '[]'::jsonb,
+    solved_slugs TEXT[] DEFAULT ARRAY[]::TEXT[],
+    solved_problems JSONB DEFAULT '[]'::jsonb,
     last_synced_at TIMESTAMPTZ,
     created_at TIMESTAMPTZ DEFAULT now(),
     updated_at TIMESTAMPTZ DEFAULT now()
 );
 
--- 3. Create user_progress table
+-- 3. Create user_solved_problems table (Tracks verified past & active solved problems)
+CREATE TABLE IF NOT EXISTS public.user_solved_problems (
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    leetcode_handle TEXT NOT NULL,
+    title_slug TEXT NOT NULL,
+    title TEXT NOT NULL,
+    difficulty TEXT CHECK (difficulty IN ('Easy', 'Medium', 'Hard')),
+    topic_slugs TEXT[] DEFAULT ARRAY[]::TEXT[],
+    source TEXT DEFAULT 'import' CHECK (source IN ('import', 'cookie', 'recent_sync', 'manual')),
+    solved_at TIMESTAMPTZ DEFAULT now(),
+    created_at TIMESTAMPTZ DEFAULT now(),
+    UNIQUE(leetcode_handle, title_slug)
+);
+
+CREATE INDEX IF NOT EXISTS idx_user_solved_problems_handle ON public.user_solved_problems(leetcode_handle);
+CREATE INDEX IF NOT EXISTS idx_user_solved_problems_slug ON public.user_solved_problems(title_slug);
+
+-- 4. Create user_progress table
 CREATE TABLE IF NOT EXISTS public.user_progress (
     id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
     problem_id UUID NOT NULL REFERENCES public.problems(id) ON DELETE CASCADE UNIQUE,
@@ -58,7 +77,7 @@ CREATE TABLE IF NOT EXISTS public.user_progress (
     updated_at TIMESTAMPTZ DEFAULT now()
 );
 
--- 4. Create in-cockpit problem attempt tracker (Struggle & Kryptonite detector)
+-- 5. Create in-cockpit problem attempt tracker (Struggle & Kryptonite detector)
 CREATE TABLE IF NOT EXISTS public.user_problem_attempts (
     id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
     user_id UUID REFERENCES public.users(id) ON DELETE CASCADE,
@@ -73,13 +92,14 @@ CREATE TABLE IF NOT EXISTS public.user_problem_attempts (
     created_at TIMESTAMPTZ DEFAULT now()
 );
 
--- 5. Enable Row Level Security (RLS)
+-- 6. Enable Row Level Security (RLS)
 ALTER TABLE public.problems ENABLE ROW LEVEL SECURITY;
 ALTER TABLE public.users ENABLE ROW LEVEL SECURITY;
+ALTER TABLE public.user_solved_problems ENABLE ROW LEVEL SECURITY;
 ALTER TABLE public.user_progress ENABLE ROW LEVEL SECURITY;
 ALTER TABLE public.user_problem_attempts ENABLE ROW LEVEL SECURITY;
 
--- 6. Policies for public / authenticated access
+-- 7. Policies for public / authenticated access
 CREATE POLICY "Allow public read access on problems"
     ON public.problems FOR SELECT USING (true);
 CREATE POLICY "Allow public insert/update on problems"
@@ -89,6 +109,11 @@ CREATE POLICY "Allow public read access on users"
     ON public.users FOR SELECT USING (true);
 CREATE POLICY "Allow public insert/update on users"
     ON public.users FOR ALL USING (true) WITH CHECK (true);
+
+CREATE POLICY "Allow public read access on user_solved_problems"
+    ON public.user_solved_problems FOR SELECT USING (true);
+CREATE POLICY "Allow public insert/update on user_solved_problems"
+    ON public.user_solved_problems FOR ALL USING (true) WITH CHECK (true);
 
 CREATE POLICY "Allow public read access on user_progress"
     ON public.user_progress FOR SELECT USING (true);
@@ -100,7 +125,7 @@ CREATE POLICY "Allow public read access on user_problem_attempts"
 CREATE POLICY "Allow public insert on user_problem_attempts"
     ON public.user_problem_attempts FOR INSERT WITH CHECK (true);
 
--- 7. Seed sample problems
+-- 8. Seed sample problems
 INSERT INTO public.problems (title, difficulty, category, leetcode_url, description)
 VALUES 
     ('Two Sum', 'Easy', 'Arrays & Hashing', 'https://leetcode.com/problems/two-sum/', 'Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target.'),

@@ -227,12 +227,31 @@ async function getCatalog() {
   return await enrichAll();
 }
 
+const TOPIC_ALIASES = {
+  'trees': 'tree',
+  'graphs': 'graph',
+  'heaps': 'heap-priority-queue',
+  'heap': 'heap-priority-queue',
+  'window': 'sliding-window',
+  'monostack': 'monotonic-stack',
+  'dp': 'dynamic-programming',
+  'binsearch': 'binary-search',
+};
+
 /**
  * Get problems for a single topic, optionally filtered by difficulty
  */
 async function getTopicProblems(topicKey, difficulty = null) {
   const catalog = await getCatalog();
-  const topic = catalog.topics.find((t) => t.key === topicKey);
+  const cleanKey = (topicKey || '').toLowerCase();
+  const targetKey = TOPIC_ALIASES[cleanKey] || cleanKey;
+
+  const topic = catalog.topics.find((t) => 
+    t.key === cleanKey || 
+    t.key === targetKey || 
+    t.tagSlug === cleanKey || 
+    t.tagSlug === targetKey
+  );
   if (!topic) return null;
 
   if (difficulty) {
@@ -259,6 +278,61 @@ async function getTopicSummaries() {
     totalProblems: t.totalProblems,
     difficultyCounts: t.difficultyCounts,
   }));
+}
+
+/**
+ * In-memory inverted index of problemSlug -> problem info with all associated topics
+ */
+let problemIndexCache = null;
+
+async function getProblemIndex() {
+  if (problemIndexCache) return problemIndexCache;
+  const catalog = await getCatalog();
+  const index = new Map();
+
+  for (const topic of catalog.topics) {
+    for (const prob of topic.problems) {
+      if (!index.has(prob.titleSlug)) {
+        index.set(prob.titleSlug, {
+          frontendQuestionId: prob.frontendQuestionId,
+          title: prob.title,
+          titleSlug: prob.titleSlug,
+          difficulty: prob.difficulty,
+          acRate: prob.acRate,
+          topicSlugs: [topic.key],
+          topics: [{ key: topic.key, name: topic.name }],
+        });
+      } else {
+        const existing = index.get(prob.titleSlug);
+        if (!existing.topicSlugs.includes(topic.key)) {
+          existing.topicSlugs.push(topic.key);
+          existing.topics.push({ key: topic.key, name: topic.name });
+        }
+      }
+    }
+  }
+
+  problemIndexCache = index;
+  return index;
+}
+
+/**
+ * Lookup problem metadata by an array of slugs
+ */
+async function lookupProblems(slugs) {
+  const index = await getProblemIndex();
+  return slugs.map(slug => {
+    if (index.has(slug)) {
+      return index.get(slug);
+    }
+    return {
+      titleSlug: slug,
+      title: slug.split('-').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' '),
+      difficulty: 'Medium',
+      topicSlugs: [],
+      topics: [],
+    };
+  });
 }
 
 /**
@@ -292,6 +366,8 @@ module.exports = {
   getCatalog,
   getTopicProblems,
   getTopicSummaries,
+  getProblemIndex,
+  lookupProblems,
   initEnrichment,
   loadCachedCatalog,
 };

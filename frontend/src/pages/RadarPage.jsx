@@ -1,13 +1,24 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useProfileStore } from '../store/useProfileStore';
-import { Activity, AlertTriangle, ArrowRight, CheckCircle2, ChevronRight, Search, Flame, Target } from 'lucide-react';
+import { Activity, AlertTriangle, ArrowRight, CheckCircle2, ChevronRight, Search, Flame, Target, Sparkles } from 'lucide-react';
 
 const CATEGORIES = ['All', 'Techniques', 'Data Structures', 'Algorithms', 'Graphs', 'Math'];
 
 export const RadarPage = () => {
   const navigate = useNavigate();
-  const { topicMetrics, setSelectedTopic, contestElo, recentSubmissions, handle, region, syncLeetCode } = useProfileStore();
+  const { 
+    topicMetrics, 
+    setSelectedTopic, 
+    contestElo, 
+    recentSubmissions, 
+    handle, 
+    region, 
+    syncLeetCode,
+    solvedSlugs,
+    solvedByTopic,
+    setSyncModalOpen
+  } = useProfileStore();
 
   // Auto-sync if profile has stale 8-topic cache
   useEffect(() => {
@@ -159,7 +170,15 @@ export const RadarPage = () => {
           </p>
         </div>
 
-        <div className="flex items-center gap-2">
+        <div className="flex flex-wrap items-center gap-2">
+          <button
+            type="button"
+            onClick={() => setSyncModalOpen(true, 'past')}
+            className="px-2.5 py-1 rounded bg-[#161B22] hover:bg-[#21262D] text-[#FF7A00] hover:text-[#FFA040] text-xs font-bold border border-[#FF7A00]/30 font-mono flex items-center gap-1.5 cursor-pointer transition-colors"
+          >
+            <Sparkles className="size-3.5" />
+            <span>Import Past Solved ({solvedSlugs.length})</span>
+          </button>
           <span className="px-2.5 py-1 rounded bg-[#FF7A00]/10 text-[#FF7A00] text-xs font-bold border border-[#FF7A00]/30 font-mono flex items-center gap-1.5">
             <Target className="size-3.5" />
             <span>{allTopics.length} TOPICS TRACKED</span>

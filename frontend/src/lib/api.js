@@ -66,3 +66,77 @@ export async function fetchTopicSummaries() {
   }
   return data;
 }
+
+/**
+ * Option 1: Import solved problems list from Browser Console snippet
+ * @param {string} handle 
+ * @param {Array<string|object>} solvedList 
+ */
+export async function importSolvedProblems(handle, solvedList) {
+  const cleanHandle = handle.trim().replace(/^@/, '');
+  const res = await fetch(`${API_BASE}/api/users/${encodeURIComponent(cleanHandle)}/import-solved`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ solvedSlugs: solvedList, source: 'snippet' }),
+  });
+  const data = await res.json();
+  if (!res.ok) {
+    throw new Error(data.error || `HTTP error ${res.status}`);
+  }
+  return data;
+}
+
+/**
+ * Option 2: Import solved problems via 1-time disposable session cookie
+ * @param {string} handle 
+ * @param {string} sessionCookie 
+ * @param {string} region 
+ */
+export async function importCookieSolved(handle, sessionCookie, region = 'global') {
+  const cleanHandle = handle.trim().replace(/^@/, '');
+  const res = await fetch(`${API_BASE}/api/users/${encodeURIComponent(cleanHandle)}/import-cookie-solved`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ sessionCookie, region }),
+  });
+  const data = await res.json();
+  if (!res.ok) {
+    throw new Error(data.error || `HTTP error ${res.status}`);
+  }
+  return data;
+}
+
+/**
+ * Fetch all solved problems and topic groupings for a user
+ * @param {string} handle 
+ */
+export async function fetchUserSolved(handle) {
+  const cleanHandle = handle.trim().replace(/^@/, '');
+  const res = await fetch(`${API_BASE}/api/users/${encodeURIComponent(cleanHandle)}/solved`);
+  const data = await res.json();
+  if (!res.ok) {
+    throw new Error(data.error || `HTTP error ${res.status}`);
+  }
+  return data;
+}
+
+/**
+ * Toggle a single problem solved / unsolved
+ * @param {string} handle 
+ * @param {string} titleSlug 
+ * @param {boolean} isSolved 
+ */
+export async function toggleProblemSolved(handle, titleSlug, isSolved = true) {
+  const cleanHandle = handle.trim().replace(/^@/, '');
+  const res = await fetch(`${API_BASE}/api/users/${encodeURIComponent(cleanHandle)}/toggle-solved`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ titleSlug, isSolved }),
+  });
+  const data = await res.json();
+  if (!res.ok) {
+    throw new Error(data.error || `HTTP error ${res.status}`);
+  }
+  return data;
+}
+

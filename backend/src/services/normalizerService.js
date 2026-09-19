@@ -88,9 +88,16 @@ const CATEGORY_MAP = {
 const TAG_ALIASES = {
   'heap': 'heap-priority-queue',
   'priority-queue': 'heap-priority-queue',
+  'heaps': 'heap-priority-queue',
   'sweep-line': 'line-sweep',
   'line-sweep': 'line-sweep',
   'bipartite': 'graph',
+  'trees': 'tree',
+  'graphs': 'graph',
+  'dp': 'dynamic-programming',
+  'binsearch': 'binary-search',
+  'window': 'sliding-window',
+  'monostack': 'monotonic-stack',
 };
 
 /**

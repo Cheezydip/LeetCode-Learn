@@ -11,4 +11,16 @@ router.post('/:handle/generate-token', userSyncController.generateVerificationTo
 // Verify bio token on LeetCode profile
 router.post('/:handle/verify-token', userSyncController.verifyUserToken);
 
+// Option 1: Import solved problems via Browser Console Snippet
+router.post('/:handle/import-solved', userSyncController.importSolvedProblems);
+
+// Option 2: Import solved problems via 1-Time Session Cookie
+router.post('/:handle/import-cookie-solved', userSyncController.importCookieSolved);
+
+// Get user solved problems list & topic breakdown
+router.get('/:handle/solved', userSyncController.getUserSolvedProblems);
+
+// Toggle a single problem solved / unsolved
+router.post('/:handle/toggle-solved', userSyncController.toggleProblemSolved);
+
 module.exports = router;

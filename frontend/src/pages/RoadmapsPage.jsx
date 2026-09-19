@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useProfileStore } from '../store/useProfileStore';
+import { Sparkles, CheckCircle2 } from 'lucide-react';
 
 const TOPIC_CATALOG = {
   dp: {
@@ -654,12 +655,23 @@ TOPIC_CATALOG['dynamic-programming'] = TOPIC_CATALOG.dp;
 TOPIC_CATALOG['binary-search'] = TOPIC_CATALOG.binsearch;
 TOPIC_CATALOG['heap-priority-queue'] = TOPIC_CATALOG.heaps;
 TOPIC_CATALOG['graph'] = TOPIC_CATALOG.graphs;
-TOPIC_CATALOG['tree'] = TOPIC_CATALOG.trees;
+TOPIC_CATALOG['tree'] = TOPIC_CATALOG.graphs;
+TOPIC_CATALOG['trees'] = TOPIC_CATALOG.graphs;
 
 export const RoadmapsPage = () => {
   const { topicId } = useParams();
   const navigate = useNavigate();
-  const { selectedTopic, setSelectedTopic, handle, region, syncLeetCode, topicMetrics } = useProfileStore();
+  const { 
+    selectedTopic, 
+    setSelectedTopic, 
+    handle, 
+    region, 
+    syncLeetCode, 
+    topicMetrics,
+    solvedSlugs,
+    isProblemSolved,
+    setSyncModalOpen
+  } = useProfileStore();
 
   // Auto-sync if profile has stale 8-topic cache
   useEffect(() => {
@@ -694,6 +706,11 @@ export const RoadmapsPage = () => {
     { key: 'heaps', label: 'Heaps & Hashes' },
   ];
 
+  const solvedStepsCount = data.steps.filter(s => {
+    const slug = s.name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+    return isProblemSolved(slug);
+  }).length;
+
   return (
     <div className="space-y-8 animate-in fade-in duration-200">
       
@@ -711,7 +728,15 @@ export const RoadmapsPage = () => {
           </p>
         </div>
 
-        <div className="flex items-center gap-2">
+        <div className="flex flex-wrap items-center gap-2">
+          <button
+            type="button"
+            onClick={() => setSyncModalOpen(true, 'past')}
+            className="px-2.5 py-1 rounded bg-[#161B22] hover:bg-[#21262D] text-[#FF7A00] hover:text-[#FFA040] text-xs font-bold border border-[#FF7A00]/30 font-mono flex items-center gap-1.5 cursor-pointer transition-colors"
+          >
+            <Sparkles className="size-3.5" />
+            <span>Import Past Solved ({solvedSlugs.length})</span>
+          </button>
           <span className="px-2.5 py-1 rounded bg-[#FF7A00]/10 text-[#FF7A00] text-xs font-bold border border-[#FF7A00]/30 font-mono">
             {topicsList.length} TRACKS READY
           </span>
@@ -728,13 +753,13 @@ export const RoadmapsPage = () => {
             className={`px-3 py-2 rounded-lg text-xs font-mono font-bold transition-all flex items-center gap-2 cursor-pointer ${
               activeTopic === t.key
                 ? 'bg-[#FF7A00] text-black shadow-md shadow-[#FF7A00]/20'
-                : 'text-[#8B949E] hover:text-[#F0F6FC] hover:bg-[#161B22]'
+                : 'bg-[#161B22] text-[#8B949E] hover:text-white border border-[#21262D]'
             }`}
           >
             <span>{t.label}</span>
             {t.isDeficit && (
               <span
-                className={`text-[9px] px-1 py-0.2 rounded font-bold ${
+                className={`text-[9px] px-1.5 py-0.2 rounded font-bold uppercase tracking-wider ${
                   activeTopic === t.key
                     ? 'bg-black text-[#FF7A00]'
                     : 'bg-[#FF7A00]/20 text-[#FF7A00]'
@@ -772,57 +797,75 @@ export const RoadmapsPage = () => {
             <span className="text-[#8B949E] text-[9px] uppercase block tracking-wider font-semibold">
               Track Progress
             </span>
-            <span className="font-bold text-[#FF7A00]">{data.progress}</span>
+            <span className="font-bold text-emerald-400">
+              {solvedStepsCount} / {data.steps.length} Solved
+            </span>
           </div>
         </div>
       </div>
 
       {/* Progressive 4-Step Staircase Cards */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 items-stretch">
-        {data.steps.map((step) => (
-          <div
-            key={step.lc}
-            className={`p-5 rounded-xl bg-[#0D1117] border ${step.borderClass} shadow-2xl flex flex-col justify-between transition-all hover:border-[#FF7A00]/50 hover:-translate-y-0.5`}
-          >
-            {/* Step Header */}
-            <div>
-              <div className="flex items-center justify-between mb-3 text-[11px] font-mono">
-                <div className="flex items-center gap-1.5">
-                  <span className={`size-2 rounded-full ${step.dotColor}`} />
-                  <span className={`font-semibold ${step.badgeColor}`}>{step.level}</span>
+        {data.steps.map((step) => {
+          const stepSlug = step.name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+          const isSolved = isProblemSolved(stepSlug);
+
+          return (
+            <div
+              key={step.lc}
+              className={`p-5 rounded-xl bg-[#0D1117] border ${
+                isSolved ? 'border-emerald-500/50 bg-emerald-950/10' : step.borderClass
+              } shadow-2xl flex flex-col justify-between transition-all hover:border-[#FF7A00]/50 hover:-translate-y-0.5`}
+            >
+              {/* Step Header */}
+              <div>
+                <div className="flex items-center justify-between mb-3 text-[11px] font-mono">
+                  <div className="flex items-center gap-1.5">
+                    <span className={`size-2 rounded-full ${isSolved ? 'bg-emerald-400' : step.dotColor}`} />
+                    <span className={`font-semibold ${isSolved ? 'text-emerald-400' : step.badgeColor}`}>
+                      {step.level}
+                    </span>
+                  </div>
+                  <span className={`px-1.5 py-0.5 rounded text-[10px] font-bold font-mono ${step.diffClass}`}>
+                    {step.diff}
+                  </span>
                 </div>
-                <span className={`px-1.5 py-0.5 rounded text-[10px] font-bold font-mono ${step.diffClass}`}>
-                  {step.diff}
-                </span>
+
+                {/* Problem Name & LeetCode ID */}
+                <div className="flex items-baseline justify-between mb-2">
+                  <h3 className="font-bold text-sm text-[#F0F6FC] font-mono">{step.name}</h3>
+                  <span className="text-[10px] text-[#8B949E] font-mono">{step.lc}</span>
+                </div>
+
+                {/* Core Intuition Invariant */}
+                <p className="text-xs text-[#8B949E] font-mono leading-relaxed mt-2">
+                  {step.intuition}
+                </p>
               </div>
 
-              {/* Problem Name & LeetCode ID */}
-              <div className="flex items-baseline justify-between mb-2">
-                <h3 className="font-bold text-sm text-[#F0F6FC] font-mono">{step.name}</h3>
-                <span className="text-[10px] text-[#8B949E] font-mono">{step.lc}</span>
+              {/* Step Footer & Action Link */}
+              <div className="mt-5 pt-3 border-t border-[#21262D] flex items-center justify-between text-xs font-mono">
+                {isSolved ? (
+                  <span className="text-[11px] text-emerald-400 font-bold flex items-center gap-1">
+                    <CheckCircle2 className="size-3 text-emerald-400" />
+                    <span>Solved ✓</span>
+                  </span>
+                ) : (
+                  <span className={`text-[11px] ${step.statusColor}`}>{step.status}</span>
+                )}
+                <a
+                  href={`https://leetcode.com/problems/${stepSlug}/`}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="text-[#FF7A00] hover:text-[#FFA040] font-semibold flex items-center gap-1 transition-colors"
+                >
+                  <span>{isSolved ? 'Review LC ->' : step.actionText}</span>
+                </a>
               </div>
 
-              {/* Core Intuition Invariant */}
-              <p className="text-xs text-[#8B949E] font-mono leading-relaxed mt-2">
-                {step.intuition}
-              </p>
             </div>
-
-            {/* Step Footer & Action Link */}
-            <div className="mt-5 pt-3 border-t border-[#21262D] flex items-center justify-between text-xs font-mono">
-              <span className={`text-[11px] ${step.statusColor}`}>{step.status}</span>
-              <a
-                href={`https://leetcode.com/problems/${step.name.toLowerCase().replace(/[^a-z0-9]+/g, '-')}/`}
-                target="_blank"
-                rel="noreferrer"
-                className="text-[#FF7A00] hover:text-[#FFA040] font-semibold flex items-center gap-1 transition-colors"
-              >
-                <span>{step.actionText}</span>
-              </a>
-            </div>
-
-          </div>
-        ))}
+          );
+        })}
       </div>
 
     </div>
