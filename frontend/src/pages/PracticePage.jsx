@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo } from 'react';
+import React, { useState, useEffect, useMemo, useRef } from 'react';
 import { useProfileStore } from '../store/useProfileStore.js';
 import { fetchTopicProblems } from '../lib/api.js';
 import { 
@@ -14,8 +14,45 @@ import {
   Sparkles,
   Check,
   Circle,
-  Layers
+  Layers,
+  ArrowUpDown,
+  Hash,
+  Percent
 } from 'lucide-react';
+
+const SORT_OPTIONS = [
+  { value: 'id-asc', label: 'Serial # (Low → High)', short: 'ID Low', icon: Hash },
+  { value: 'id-desc', label: 'Serial # (High → Low)', short: 'ID High', icon: Hash },
+  { value: 'ac-desc', label: 'Acceptance (High → Low)', short: 'AC High', icon: Percent },
+  { value: 'ac-asc', label: 'Acceptance (Low → High)', short: 'AC Low', icon: Percent },
+];
+
+/**
+ * Helper to sort problem lists based on acceptance rate or serial number (question ID)
+ */
+function sortProblemList(list, sortBy) {
+  if (!list || list.length === 0) return [];
+  const copy = [...list];
+  if (sortBy === 'ac-desc') {
+    return copy.sort((a, b) => (parseFloat(b.acRate) || 0) - (parseFloat(a.acRate) || 0));
+  }
+  if (sortBy === 'ac-asc') {
+    return copy.sort((a, b) => (parseFloat(a.acRate) || 0) - (parseFloat(b.acRate) || 0));
+  }
+  if (sortBy === 'id-desc') {
+    return copy.sort((a, b) => {
+      const idA = parseInt(a.questionId || a.frontendQuestionId || 0, 10);
+      const idB = parseInt(b.questionId || b.frontendQuestionId || 0, 10);
+      return idB - idA;
+    });
+  }
+  // Default to serial number ascending (id-asc)
+  return copy.sort((a, b) => {
+    const idA = parseInt(a.questionId || a.frontendQuestionId || 0, 10);
+    const idB = parseInt(b.questionId || b.frontendQuestionId || 0, 10);
+    return idA - idB;
+  });
+}
 
 /**
  * Split problems into a 3-tier intuition ladder:
@@ -138,16 +175,40 @@ export const PracticePage = () => {
   const [problemError, setProblemError] = useState(null);
   const [activeDifficultyTab, setActiveDifficultyTab] = useState('All'); // 'All' | 'Easy' | 'Medium' | 'Hard'
   const [statusFilter, setStatusFilter] = useState('all'); // 'all' | 'unsolved' | 'solved'
+  const [sortBy, setSortBy] = useState('id-asc'); // 'id-asc' | 'id-desc' | 'ac-desc' | 'ac-asc'
+  const [isSortMenuOpen, setIsSortMenuOpen] = useState(false);
+  const sortDropdownRef = useRef(null);
+
+  // Close custom sort dropdown when clicking outside or pressing Escape
+  useEffect(() => {
+    const handleOutsideClick = (e) => {
+      if (sortDropdownRef.current && !sortDropdownRef.current.contains(e.target)) {
+        setIsSortMenuOpen(false);
+      }
+    };
+    const handleKeyDown = (e) => {
+      if (e.key === 'Escape') setIsSortMenuOpen(false);
+    };
+    if (isSortMenuOpen) {
+      document.addEventListener('mousedown', handleOutsideClick);
+      document.addEventListener('keydown', handleKeyDown);
+    }
+    return () => {
+      document.removeEventListener('mousedown', handleOutsideClick);
+      document.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [isSortMenuOpen]);
+
   const [tierPages, setTierPages] = useState({
     foundation: 0,
     application: 0,
     frontier: 0,
   });
 
-  // Reset pagination when selected topic, status filter, or active difficulty changes
+  // Reset pagination when selected topic, status filter, active difficulty, or sort order changes
   useEffect(() => {
     setTierPages({ foundation: 0, application: 0, frontier: 0 });
-  }, [selectedTopicKey, statusFilter, activeDifficultyTab]);
+  }, [selectedTopicKey, statusFilter, activeDifficultyTab, sortBy]);
 
   // All topics list from metrics
   const allTopics = useMemo(() => {
@@ -211,8 +272,10 @@ export const PracticePage = () => {
   }, [selectedTopicKey]);
 
   const selectedMeta = topicMetrics && selectedTopicKey
-    ? Object.values(topicMetrics).find((t) => t.catalogKey === selectedTopicKey)
+    ? Object.values(topicMetrics).find((t) => (t.catalogKey || t.key) === selectedTopicKey || t.tagSlug === selectedTopicKey)
     : null;
+
+  const topicDisplayName = selectedMeta?.label || selectedMeta?.name || (selectedTopicKey ? selectedTopicKey.split('-').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ') : 'Topic Practice');
 
   // Filter problems by status filter (All, Unsolved Only, Already Solved)
   const filteredProblems = useMemo(() => {
@@ -225,6 +288,13 @@ export const PracticePage = () => {
   }, [problems, statusFilter, isProblemSolved]);
 
   const tiered = useMemo(() => tierProblems(filteredProblems), [filteredProblems]);
+  const sortedTiered = useMemo(() => {
+    return {
+      foundation: sortProblemList(tiered.foundation, sortBy),
+      application: sortProblemList(tiered.application, sortBy),
+      frontier: sortProblemList(tiered.frontier, sortBy),
+    };
+  }, [tiered, sortBy]);
   const allTiered = useMemo(() => tierProblems(problems), [problems]);
 
   // Compute solved counts for the active topic and each difficulty
@@ -459,159 +529,192 @@ export const PracticePage = () => {
         {/* PROBLEM PROGRESSION LADDER (8 Cols) */}
         <div className="lg:col-span-8 space-y-5">
 
-          {/* Selected topic banner */}
+          {/* Single-Line Topic Dashboard Bar */}
           {selectedMeta && (
-            <div className="p-4 rounded-xl bg-[#0D1117] border border-[#21262D] shadow-xl font-mono space-y-3.5">
-              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-                <div className="flex items-center gap-3">
-                  <span className={`size-2.5 rounded-full shrink-0 ${
-                    selectedMeta.isDeficit ? 'bg-[#F85149] animate-pulse' : 'bg-[#3FB950]'
-                  }`} />
-                  <div>
-                    <div className="flex items-center gap-2 flex-wrap">
-                      <h2 className="text-[#F0F6FC] font-bold text-sm">{selectedMeta.label} — Practice Ladder</h2>
-                      {selectedMeta.category && (
-                        <span className="px-1.5 py-0.2 rounded bg-[#161B22] border border-[#21262D] text-[10px] text-[#8B949E]">
-                          {selectedMeta.category}
-                        </span>
-                      )}
-                    </div>
-                    <p className="text-[11px] text-[#8B949E] mt-0.5">
-                      {liveSelectedSolves} official solves • z-score: {selectedMeta.zScore} • Topic Elo: {selectedMeta.competencyElo} ({selectedMeta.deficitDelta > 0 ? '+' : ''}{selectedMeta.deficitDelta} vs baseline)
-                    </p>
-                  </div>
+            <div className="p-2.5 px-4 rounded-xl bg-[#0D1117] border border-[#21262D] shadow-lg font-mono flex flex-wrap items-center justify-between gap-3">
+              
+              {/* Left: Topic Identity & Solved Count */}
+              <div className="flex items-center gap-2.5 min-w-0">
+                <span className={`size-2 rounded-full shrink-0 ${
+                  selectedMeta.isDeficit ? 'bg-[#F85149] shadow-sm shadow-red-500/50 animate-pulse' : 'bg-[#3FB950] shadow-sm shadow-emerald-500/50'
+                }`} />
+
+                <h2 className="text-sm font-bold text-[#F0F6FC] truncate">
+                  {topicDisplayName}
+                </h2>
+
+                {selectedMeta.category && (
+                  <span className="hidden sm:inline-block px-1.5 py-0.5 rounded bg-[#161B22] border border-[#21262D] text-[10px] text-[#8B949E] shrink-0">
+                    {selectedMeta.category}
+                  </span>
+                )}
+
+                <span className="text-[11px] text-[#8B949E] shrink-0">
+                  <strong className="text-emerald-400">{topicSolvedCount}</strong>/{topicTotal} Solved
+                </span>
+              </div>
+
+              {/* Right: Difficulty Tabs + Solved/Unsolved Status + Sort Icon */}
+              <div className="flex items-center gap-2 shrink-0">
+                
+                {/* Difficulty Tabs */}
+                <div className="flex items-center p-0.5 bg-[#161B22] rounded-lg border border-[#21262D] text-[11px]">
+                  <button
+                    type="button"
+                    onClick={() => setActiveDifficultyTab('All')}
+                    className={`px-2 py-1 rounded transition-all cursor-pointer ${
+                      activeDifficultyTab === 'All'
+                        ? 'bg-[#FF7A00] text-black font-bold shadow-sm'
+                        : 'text-[#8B949E] hover:text-white'
+                    }`}
+                  >
+                    All
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setActiveDifficultyTab('Easy')}
+                    className={`px-2 py-1 rounded transition-all cursor-pointer flex items-center gap-1 ${
+                      activeDifficultyTab === 'Easy'
+                        ? 'bg-emerald-500 text-black font-bold shadow-sm'
+                        : 'text-[#8B949E] hover:text-emerald-400'
+                    }`}
+                  >
+                    <span className="size-1.5 rounded-full bg-[#3FB950] shrink-0" />
+                    <span>Easy</span>
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setActiveDifficultyTab('Medium')}
+                    className={`px-2 py-1 rounded transition-all cursor-pointer flex items-center gap-1 ${
+                      activeDifficultyTab === 'Medium'
+                        ? 'bg-[#FF7A00] text-black font-bold shadow-sm'
+                        : 'text-[#8B949E] hover:text-[#FFA040]'
+                    }`}
+                  >
+                    <span className="size-1.5 rounded-full bg-[#FF7A00] shrink-0" />
+                    <span>Med</span>
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setActiveDifficultyTab('Hard')}
+                    className={`px-2 py-1 rounded transition-all cursor-pointer flex items-center gap-1 ${
+                      activeDifficultyTab === 'Hard'
+                        ? 'bg-red-500 text-white font-bold shadow-sm'
+                        : 'text-[#8B949E] hover:text-red-400'
+                    }`}
+                  >
+                    <span className="size-1.5 rounded-full bg-red-400 shrink-0" />
+                    <span>Hard</span>
+                  </button>
                 </div>
 
-                {/* Status Filter Buttons */}
-                <div className="flex items-center rounded-lg bg-[#161B22] border border-[#21262D] p-0.5 text-[11px] shrink-0 self-start sm:self-auto">
+                {/* Status Tabs (All / Unsolved / Solved) */}
+                <div className="flex items-center p-0.5 bg-[#161B22] rounded-lg border border-[#21262D] text-[11px]">
                   <button
                     type="button"
                     onClick={() => setStatusFilter('all')}
-                    className={`px-2.5 py-1 rounded transition-colors cursor-pointer ${
+                    className={`px-2 py-1 rounded transition-all cursor-pointer ${
                       statusFilter === 'all'
-                        ? 'bg-[#FF7A00] text-black font-bold'
+                        ? 'bg-[#21262D] text-white font-bold shadow-sm'
                         : 'text-[#8B949E] hover:text-white'
                     }`}
                   >
-                    All ({topicTotal})
+                    All
                   </button>
-
                   <button
                     type="button"
                     onClick={() => setStatusFilter('unsolved')}
-                    className={`px-2.5 py-1 rounded transition-colors cursor-pointer ${
+                    className={`px-2 py-1 rounded transition-all cursor-pointer ${
                       statusFilter === 'unsolved'
-                        ? 'bg-[#FF7A00] text-black font-bold'
+                        ? 'bg-[#FF7A00]/20 text-[#FF7A00] font-bold border border-[#FF7A00]/40'
                         : 'text-[#8B949E] hover:text-white'
                     }`}
                   >
-                    Unsolved ({topicUnsolvedCount})
+                    Unsolved
                   </button>
-
                   <button
                     type="button"
                     onClick={() => setStatusFilter('solved')}
-                    className={`px-2.5 py-1 rounded transition-colors cursor-pointer flex items-center gap-1 ${
+                    className={`px-2 py-1 rounded transition-all cursor-pointer flex items-center gap-1 ${
                       statusFilter === 'solved'
-                        ? 'bg-emerald-500 text-black font-bold'
+                        ? 'bg-emerald-500/20 text-emerald-400 font-bold border border-emerald-500/40'
                         : 'text-[#8B949E] hover:text-emerald-400'
                     }`}
                   >
                     <Check className="size-3" />
-                    <span>Solved ({topicSolvedCount})</span>
+                    <span>Solved</span>
                   </button>
                 </div>
-              </div>
 
-              {/* Solved Progress Bar */}
-              <div className="pt-2 border-t border-[#21262D] flex items-center justify-between gap-3">
-                <div className="flex items-center gap-2.5 flex-1">
-                  <div className="flex-1 h-2 rounded-full bg-[#161B22] border border-[#21262D] overflow-hidden">
+                {/* Custom Theme-Styled Sort Dropdown */}
+                <div 
+                  ref={sortDropdownRef}
+                  className="relative shrink-0"
+                >
+                  <button
+                    type="button"
+                    onClick={() => setIsSortMenuOpen((prev) => !prev)}
+                    className={`w-7 h-7 rounded-lg transition-all flex items-center justify-center cursor-pointer ${
+                      isSortMenuOpen || sortBy !== 'id-asc' 
+                        ? 'bg-[#FF7A00]/15 border border-[#FF7A00]/60 text-[#FF7A00] shadow-sm shadow-[#FF7A00]/20' 
+                        : 'bg-[#161B22] border border-[#21262D] text-[#8B949E] hover:text-white hover:border-[#FF7A00]/40'
+                    }`}
+                    title="Sort problems"
+                    aria-haspopup="true"
+                    aria-expanded={isSortMenuOpen}
+                  >
+                    <ArrowUpDown className="size-3.5" />
+                  </button>
+
+                  {/* Dropdown Menu Styled to Cockpit Theme */}
+                  {isSortMenuOpen && (
                     <div 
-                      className="h-full bg-emerald-500 transition-all duration-300 rounded-full"
-                      style={{ width: `${topicSolvedPct}%` }}
-                    />
-                  </div>
-                  <span className="text-[11px] text-[#8B949E] whitespace-nowrap">
-                    <strong className="text-emerald-400">{topicSolvedCount}</strong> / {topicTotal} Solved ({topicSolvedPct}%)
-                  </span>
+                      className="absolute right-0 top-full mt-2 w-64 rounded-xl bg-[#0D1117] border border-[#30363D] shadow-2xl shadow-black/80 py-1.5 z-50 animate-in fade-in zoom-in-95 duration-150 font-mono"
+                      role="menu"
+                    >
+                      <div className="px-3 py-1.5 text-[10px] font-bold uppercase tracking-wider text-[#8B949E] border-b border-[#21262D] flex items-center justify-between">
+                        <span>Sort Problems</span>
+                        <span className="text-[9px] px-1.5 py-0.2 rounded bg-[#161B22] border border-[#21262D] text-[#FF7A00]">
+                          {SORT_OPTIONS.find(o => o.value === sortBy)?.short || 'ID Low'}
+                        </span>
+                      </div>
+                      
+                      <div className="p-1 space-y-0.5">
+                        {SORT_OPTIONS.map((opt) => {
+                          const isSelected = sortBy === opt.value;
+                          const Icon = opt.icon;
+                          return (
+                            <button
+                              key={opt.value}
+                              type="button"
+                              onClick={() => {
+                                setSortBy(opt.value);
+                                setIsSortMenuOpen(false);
+                              }}
+                              className={`w-full px-2.5 py-2 rounded-lg text-xs text-left transition-all flex items-center justify-between cursor-pointer group ${
+                                isSelected
+                                  ? 'bg-[#FF7A00]/15 text-[#FF7A00] font-bold border border-[#FF7A00]/30'
+                                  : 'text-[#C9D1D9] hover:bg-[#161B22] hover:text-white border border-transparent'
+                              }`}
+                              role="menuitem"
+                            >
+                              <div className="flex items-center gap-2">
+                                <Icon className={`size-3.5 shrink-0 ${isSelected ? 'text-[#FF7A00]' : 'text-[#8B949E] group-hover:text-[#FF7A00]'}`} />
+                                <span>{opt.label}</span>
+                              </div>
+                              {isSelected && (
+                                <Check className="size-3.5 text-[#FF7A00] shrink-0" />
+                              )}
+                            </button>
+                          );
+                        })}
+                      </div>
+                    </div>
+                  )}
                 </div>
+
               </div>
 
-              {/* Horizontal Difficulty Tab Switch (Strictly non-scrollable, fits 100% viewport) */}
-              <div className="pt-1 grid grid-cols-2 sm:grid-cols-4 gap-1.5 p-1 bg-[#161B22] rounded-xl border border-[#21262D] w-full">
-                <button
-                  type="button"
-                  onClick={() => setActiveDifficultyTab('All')}
-                  className={`w-full px-2.5 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer flex items-center justify-center gap-1.5 ${
-                    activeDifficultyTab === 'All'
-                      ? 'bg-[#FF7A00] text-black shadow-sm font-extrabold'
-                      : 'text-[#8B949E] hover:text-white hover:bg-[#21262D]'
-                  }`}
-                >
-                  <Layers className="size-3.5 shrink-0" />
-                  <span>All</span>
-                  <span className={`px-1.5 py-0.2 rounded-full text-[9px] font-mono shrink-0 ${
-                    activeDifficultyTab === 'All' ? 'bg-black/20 text-black font-extrabold' : 'bg-white/10 text-[#8B949E]'
-                  }`}>
-                    {topicSolvedCount}/{topicTotal}
-                  </span>
-                </button>
-
-                <button
-                  type="button"
-                  onClick={() => setActiveDifficultyTab('Easy')}
-                  className={`w-full px-2.5 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer flex items-center justify-center gap-1.5 ${
-                    activeDifficultyTab === 'Easy'
-                      ? 'bg-emerald-500 text-black shadow-sm font-extrabold'
-                      : 'text-[#8B949E] hover:text-emerald-400 hover:bg-[#21262D]'
-                  }`}
-                >
-                  <span className="size-1.5 rounded-full bg-[#3FB950] shrink-0" />
-                  <span>Easy</span>
-                  <span className={`px-1.5 py-0.2 rounded-full text-[9px] font-mono shrink-0 ${
-                    activeDifficultyTab === 'Easy' ? 'bg-black/20 text-black font-extrabold' : 'bg-white/10 text-[#8B949E]'
-                  }`}>
-                    {easySolvedCount}/{easyTotal}
-                  </span>
-                </button>
-
-                <button
-                  type="button"
-                  onClick={() => setActiveDifficultyTab('Medium')}
-                  className={`w-full px-2.5 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer flex items-center justify-center gap-1.5 ${
-                    activeDifficultyTab === 'Medium'
-                      ? 'bg-[#FF7A00] text-black shadow-sm font-extrabold'
-                      : 'text-[#8B949E] hover:text-[#FFA040] hover:bg-[#21262D]'
-                  }`}
-                >
-                  <span className="size-1.5 rounded-full bg-[#FF7A00] shrink-0" />
-                  <span>Medium</span>
-                  <span className={`px-1.5 py-0.2 rounded-full text-[9px] font-mono shrink-0 ${
-                    activeDifficultyTab === 'Medium' ? 'bg-black/20 text-black font-extrabold' : 'bg-white/10 text-[#8B949E]'
-                  }`}>
-                    {mediumSolvedCount}/{mediumTotal}
-                  </span>
-                </button>
-
-                <button
-                  type="button"
-                  onClick={() => setActiveDifficultyTab('Hard')}
-                  className={`w-full px-2.5 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer flex items-center justify-center gap-1.5 ${
-                    activeDifficultyTab === 'Hard'
-                      ? 'bg-red-500 text-white shadow-sm font-extrabold'
-                      : 'text-[#8B949E] hover:text-red-400 hover:bg-[#21262D]'
-                  }`}
-                >
-                  <span className="size-1.5 rounded-full bg-red-400 shrink-0" />
-                  <span>Hard</span>
-                  <span className={`px-1.5 py-0.2 rounded-full text-[9px] font-mono shrink-0 ${
-                    activeDifficultyTab === 'Hard' ? 'bg-black/20 text-white font-extrabold' : 'bg-white/10 text-[#8B949E]'
-                  }`}>
-                    {hardSolvedCount}/{hardTotal}
-                  </span>
-                </button>
-              </div>
             </div>
           )}
 
@@ -634,7 +737,7 @@ export const PracticePage = () => {
             <div className="space-y-6 font-mono">
               {tiersToRender.map((tierKey) => {
                 const config = TIER_CONFIG[tierKey];
-                const tierProblemsList = tiered[tierKey] || [];
+                const tierProblemsList = sortedTiered[tierKey] || [];
                 if (tierProblemsList.length === 0 && activeDifficultyTab === 'All') return null;
 
                 const ITEMS_PER_PAGE = 6;

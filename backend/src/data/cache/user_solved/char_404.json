@@ -182,8 +182,9 @@
     "longest-palindromic-substring",
     "longest-substring-without-repeating-characters",
     "two-sum",
-    "sliding-window-maximum"
+    "sliding-window-maximum",
+    "water-and-jug-problem"
   ],
-  "totalSolvedCount": 182,
-  "updatedAt": "2026-09-19T16:17:16.223Z"
+  "totalSolvedCount": 183,
+  "updatedAt": "2026-09-20T15:20:37.803Z"
 }
