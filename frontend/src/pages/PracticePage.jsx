@@ -156,7 +156,9 @@ export const PracticePage = () => {
     solvedByTopic,
     toggleProblemSolvedAction,
     isProblemSolved,
-    setSyncModalOpen
+    setSyncModalOpen,
+    selectedTopic,
+    setSelectedTopic
   } = useProfileStore();
 
   // Auto-sync if profile has stale 8-topic cache
@@ -169,7 +171,28 @@ export const PracticePage = () => {
   const [viewMode, setViewMode] = useState('weakSpots'); // 'weakSpots' | 'all'
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('All');
-  const [selectedTopicKey, setSelectedTopicKey] = useState(null);
+  const [selectedTopicKey, setSelectedTopicKey] = useState(selectedTopic || null);
+
+  // Consume and clear the global selectedTopic so it doesn't persist across visits
+  useEffect(() => {
+    if (selectedTopic) {
+      setSelectedTopicKey(selectedTopic);
+      if (topicMetrics) {
+        const meta = Object.values(topicMetrics).find(
+          (t) => (t.catalogKey || t.key) === selectedTopic || t.tagSlug === selectedTopic
+        );
+        if (meta) {
+          if (!meta.isDeficit) {
+            setViewMode('all');
+          }
+          if (selectedCategory !== 'All' && selectedCategory !== meta.category) {
+            setSelectedCategory('All');
+          }
+        }
+      }
+      setSelectedTopic(null);
+    }
+  }, [selectedTopic, setSelectedTopic, topicMetrics, selectedCategory]);
   const [problems, setProblems] = useState([]);
   const [loadingProblems, setLoadingProblems] = useState(false);
   const [problemError, setProblemError] = useState(null);

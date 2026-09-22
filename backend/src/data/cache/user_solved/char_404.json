@@ -183,8 +183,10 @@
     "longest-substring-without-repeating-characters",
     "two-sum",
     "sliding-window-maximum",
-    "water-and-jug-problem"
+    "water-and-jug-problem",
+    "unique-email-addresses",
+    "first-bad-version"
   ],
-  "totalSolvedCount": 183,
-  "updatedAt": "2026-09-20T15:20:37.803Z"
+  "totalSolvedCount": 185,
+  "updatedAt": "2026-09-21T16:01:56.128Z"
 }
