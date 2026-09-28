@@ -5,7 +5,7 @@
  * to fetch the enriched problem catalog.
  */
 
-const API_BASE = 'http://localhost:5000/api/problems';
+const API_BASE = '/api/problems';
 
 /**
  * Fetch all topic summaries (lightweight — no individual problems)

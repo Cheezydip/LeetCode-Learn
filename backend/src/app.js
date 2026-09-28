@@ -1,6 +1,8 @@
 const express = require('express');
 const cors = require('cors');
 const helmet = require('helmet');
+const path = require('path');
+const fs = require('fs');
 const { checkSupabaseConnection } = require('./config/supabase');
 const errorHandler = require('./middleware/errorHandler');
 
@@ -55,8 +57,8 @@ app.use('/api/problems', problemRoutes);
 app.use('/api/progress', progressRoutes);
 app.use('/api/users', userRoutes);
 
-// Root route
-app.get('/', (req, res) => {
+// API Documentation route
+app.get('/api', (req, res) => {
   res.json({
     name: 'LeetCode-Learn API',
     version: '1.0.0',
@@ -64,9 +66,38 @@ app.get('/', (req, res) => {
       health: 'GET /api/health',
       problems: 'GET, POST, PUT, DELETE /api/problems',
       progress: 'GET, POST, DELETE /api/progress',
+      users: 'GET, POST /api/users',
     },
   });
 });
+
+// Serve frontend static files if built
+const frontendDist = path.join(__dirname, '../../frontend/dist');
+if (fs.existsSync(frontendDist)) {
+  app.use(express.static(frontendDist));
+
+  // SPA fallback for all GET routes except /api
+  app.use((req, res, next) => {
+    if (req.method === 'GET' && !req.path.startsWith('/api')) {
+      return res.sendFile(path.join(frontendDist, 'index.html'));
+    }
+    next();
+  });
+} else {
+  // Fallback root route if frontend is not built
+  app.get('/', (req, res) => {
+    res.json({
+      name: 'LeetCode-Learn API',
+      version: '1.0.0',
+      documentation: {
+        health: 'GET /api/health',
+        problems: 'GET, POST, PUT, DELETE /api/problems',
+        progress: 'GET, POST, DELETE /api/progress',
+        users: 'GET, POST /api/users',
+      },
+    });
+  });
+}
 
 // 404 Route Handler
 app.use((req, res) => {
