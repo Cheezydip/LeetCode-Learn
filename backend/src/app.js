@@ -1,5 +1,6 @@
 const express = require('express');
 const cors = require('cors');
+const helmet = require('helmet');
 const { checkSupabaseConnection } = require('./config/supabase');
 const errorHandler = require('./middleware/errorHandler');
 
@@ -9,20 +10,28 @@ const userRoutes = require('./routes/userRoutes');
 
 const app = express();
 
-// Standard middleware & Private Network Access (PNA) for browser console scripts
-app.use((req, res, next) => {
-  res.header('Access-Control-Allow-Origin', req.headers.origin || '*');
-  res.header('Access-Control-Allow-Credentials', 'true');
-  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization, Access-Control-Request-Private-Network');
-  res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
-  res.header('Access-Control-Allow-Private-Network', 'true');
-  if (req.method === 'OPTIONS') {
-    return res.sendStatus(200);
-  }
-  next();
-});
+// Security headers (CSP, X-Frame-Options, X-Content-Type-Options, HSTS, etc.)
+app.use(helmet());
 
-app.use(cors());
+// CORS configuration - restrict to trusted origins
+const allowedOrigins = [
+  'https://leetcode-learn.antideploy.app',
+  'http://localhost:5173',
+  'http://localhost:3000',
+  'http://localhost:5000',
+  ...(process.env.ALLOWED_ORIGINS ? process.env.ALLOWED_ORIGINS.split(',').map((o) => o.trim()).filter(Boolean) : []),
+];
+
+if (process.env.FRONTEND_URL && !allowedOrigins.includes(process.env.FRONTEND_URL.trim())) {
+  allowedOrigins.push(process.env.FRONTEND_URL.trim());
+}
+
+app.use(
+  cors({
+    origin: allowedOrigins,
+    credentials: true,
+  })
+);
 app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ extended: true, limit: '10mb' }));
 
