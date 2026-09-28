@@ -15,7 +15,7 @@ export const AppHeader = () => {
   ];
 
   return (
-    <header className="sticky top-3 z-40 max-w-7xl mx-auto px-4 mb-6 font-mono">
+    <header className="sticky top-3 z-40 max-w-7xl mx-auto px-4 mb-6">
       <div className="h-14 rounded-xl bg-[#0D1117]/95 backdrop-blur-md border border-[#21262D] px-3 sm:px-4 flex items-center justify-between shadow-2xl shadow-black/50">
         
         {/* Brand & Status */}

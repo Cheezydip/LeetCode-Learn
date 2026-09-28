@@ -54,7 +54,7 @@ export const GrowthPage = () => {
   };
 
   return (
-    <div className="space-y-8 animate-in fade-in duration-200">
+    <div className="space-y-8 animate-fade-slide-up">
       
       {/* Title & Context */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-[#21262D] pb-5">
@@ -64,7 +64,7 @@ export const GrowthPage = () => {
             <span>//</span>
             <span>PREDICTIVE GROWTH SIMULATOR</span>
           </div>
-          <h1 className="text-xl sm:text-2xl font-bold font-mono text-[#F0F6FC]">
+          <h1 className="text-xl sm:text-2xl font-extrabold text-[#F0F6FC] animate-heading-reveal">
             Algorithmic Trajectory & Rank Forecasting
           </h1>
           <p className="text-xs text-[#8B949E] font-mono mt-1">

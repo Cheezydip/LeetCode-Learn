@@ -313,18 +313,18 @@ export const RadarPage = () => {
   // ── Unsynced State ────────────────────────────────────────────────────────────
   if (!topicMetrics) {
     return (
-      <div className="space-y-8 animate-in fade-in duration-200">
+      <div className="space-y-8 animate-fade-slide-up">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-[#21262D] pb-5">
           <div>
             <div className="inline-flex items-center gap-2 px-2.5 py-0.5 rounded bg-[#161B22] border border-[#21262D] text-[#FF7A00] text-[11px] font-mono mb-2 font-semibold">
               <span>Topic Analysis & Competency Matrix</span>
             </div>
-            <h1 className="text-xl sm:text-2xl font-bold font-mono text-[#F0F6FC]">
+            <h1 className="text-xl sm:text-2xl font-extrabold text-[#F0F6FC] animate-heading-reveal">
               Topic Competency Overview
             </h1>
           </div>
         </div>
-        <div className="p-8 rounded-xl bg-[#0D1117] border border-[#21262D] text-center space-y-3 font-mono">
+        <div className="p-8 rounded-xl bg-[#0D1117] border border-[#21262D] text-center space-y-3">
           <AlertTriangle className="size-8 text-[#FF7A00] mx-auto" />
           <p className="text-sm text-[#8B949E]">
             Sync your LeetCode profile to view competency ratings across all topics.
@@ -345,7 +345,7 @@ export const RadarPage = () => {
 
   // ── Render ────────────────────────────────────────────────────────────────────
   return (
-    <div className="space-y-8 animate-in fade-in duration-200">
+    <div className="space-y-8 animate-fade-slide-up">
 
       {/* Title & Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-[#21262D] pb-5">
@@ -353,7 +353,7 @@ export const RadarPage = () => {
           <div className="inline-flex items-center gap-2 px-2.5 py-0.5 rounded bg-[#161B22] border border-[#21262D] text-[#FF7A00] text-[11px] font-mono mb-2 font-semibold">
             <span>5-Axis Category Analysis</span>
           </div>
-          <h1 className="text-xl sm:text-2xl font-bold font-mono text-[#F0F6FC]">
+          <h1 className="text-xl sm:text-2xl font-extrabold text-[#F0F6FC] animate-heading-reveal">
             Topic Competency Overview
           </h1>
           <p className="text-xs text-[#8B949E] font-mono mt-1">

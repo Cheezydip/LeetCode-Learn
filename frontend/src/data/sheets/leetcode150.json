@@ -1,0 +1,2282 @@
+{
+  "key": "leetcode150",
+  "name": "LeetCode Top Interview 150",
+  "description": "Comprehensive 150 interview questions covering all core data structures, algorithms, and common variations.",
+  "badge": "Interview Ready",
+  "totalProblems": 150,
+  "difficulties": {
+    "Easy": 40,
+    "Medium": 92,
+    "Hard": 18
+  },
+  "sections": [
+    {
+      "title": "Array/String",
+      "problemCount": 24,
+      "problems": [
+        {
+          "id": 4001,
+          "title": "Merge Sorted Array",
+          "slug": "merge-sorted-array",
+          "url": "https://leetcode.com/problems/merge-sorted-array/",
+          "difficulty": "Easy",
+          "platform": "LeetCode",
+          "solution": null,
+          "solutions": [],
+          "youtube": [],
+          "important": false
+        },
+        {
+          "id": 4002,
+          "title": "Remove Element",
+          "slug": "remove-element",
+          "url": "https://leetcode.com/problems/remove-element/",
+          "difficulty": "Easy",
+          "platform": "LeetCode",
+          "solution": null,
+          "solutions": [],
+          "youtube": [],
+          "important": false
+        },
+        {
+          "id": 4003,
+          "title": "Remove Duplicates from Sorted Array",
+          "slug": "remove-duplicates-from-sorted-array",
+          "url": "https://leetcode.com/problems/remove-duplicates-from-sorted-array/",
+          "difficulty": "Easy",
+          "platform": "LeetCode",
+          "solution": "https://github.com/chandanagrawal23/DSA-Sheet/blob/main/TwoPointer/RemoveDuplicatesFromSortedArray.cpp",
+          "solutions": [
+            {
+              "title": "Solution",
+              "url": "https://github.com/chandanagrawal23/DSA-Sheet/blob/main/TwoPointer/RemoveDuplicatesFromSortedArray.cpp"
+            }
+          ],
+          "youtube": [],
+          "important": false
+        },
+        {
+          "id": 4004,
+          "title": "Roman to Integer",
+          "slug": "roman-to-integer",
+          "url": "https://leetcode.com/problems/roman-to-integer/",
+          "difficulty": "Easy",
+          "platform": "LeetCode",
+          "solution": "https://github.com/chandanagrawal23/DSA-Sheet/blob/main/Strings/RomanToInteger.cpp",
+          "solutions": [
+            {
+              "title": "Solution",
+              "url": "https://github.com/chandanagrawal23/DSA-Sheet/blob/main/Strings/RomanToInteger.cpp"
+            }
+          ],
+          "youtube": [],
+          "important": false
+        },
+        {
+          "id": 4005,
+          "title": "Length of Last Word",
+          "slug": "length-of-last-word",
+          "url": "https://leetcode.com/problems/length-of-last-word/",
+          "difficulty": "Easy",
+          "platform": "LeetCode",
+          "solution": null,
+          "solutions": [],
+          "youtube": [],
+          "important": false
+        },
+        {
+          "id": 4006,
+          "title": "Majority Element",
+          "slug": "majority-element",
+          "url": "https://leetcode.com/problems/majority-element/",
+          "difficulty": "Easy",
+          "platform": "LeetCode",
+          "solution": null,
+          "solutions": [],
+          "youtube": [],
+          "important": false
+        },
+        {
+          "id": 4007,
+          "title": "Longest Common Prefix",
+          "slug": "longest-common-prefix",
+          "url": "https://leetcode.com/problems/longest-common-prefix/",
+          "difficulty": "Easy",
+          "platform": "LeetCode",
+          "solution": null,
+          "solutions": [],
+          "youtube": [],
+          "important": false
+        },
+        {
+          "id": 4008,
+          "title": "Best Time to Buy and Sell Stock",
+          "slug": "best-time-to-buy-and-sell-stock",
+          "url": "https://leetcode.com/problems/best-time-to-buy-and-sell-stock/",
+          "difficulty": "Easy",
+          "platform": "LeetCode",
+          "solution": "https://github.com/chandanagrawal23/DSA-Sheet/blob/main/BestTimeToBuyAndSellStock.cpp",
+          "solutions": [
+            {
+              "title": "Solution",
+              "url": "https://github.com/chandanagrawal23/DSA-Sheet/blob/main/BestTimeToBuyAndSellStock.cpp"
+            }
+          ],
+          "youtube": [],
+          "important": false
+        },
+        {
+          "id": 4009,
+          "title": "Find the Index of the First Occurrence in a String",
+          "slug": "find-the-index-of-the-first-occurrence-in-a-string",
+          "url": "https://leetcode.com/problems/find-the-index-of-the-first-occurrence-in-a-string/",
+          "difficulty": "Easy",
+          "platform": "LeetCode",
+          "solution": null,
+          "solutions": [],
+          "youtube": [],
+          "important": false
+        },
+        {
+          "id": 4010,
+          "title": "Rotate Array",
+          "slug": "rotate-array",
+          "url": "https://leetcode.com/problems/rotate-array/",
+          "difficulty": "Medium",
+          "platform": "LeetCode",
+          "solution": null,
+          "solutions": [],
+          "youtube": [],
+          "important": false
+        },
+        {
+          "id": 4011,
+          "title": "Remove Duplicates from Sorted Array II",
+          "slug": "remove-duplicates-from-sorted-array-ii",
+          "url": "https://leetcode.com/problems/remove-duplicates-from-sorted-array-ii/",
+          "difficulty": "Medium",
+          "platform": "LeetCode",
+          "solution": "https://github.com/chandanagrawal23/DSA-Sheet/blob/main/TwoPointer/RemoveDuplicatesFromSortedArray_II.cpp",
+          "solutions": [
+            {
+              "title": "Solution",
+              "url": "https://github.com/chandanagrawal23/DSA-Sheet/blob/main/TwoPointer/RemoveDuplicatesFromSortedArray_II.cpp"
+            }
+          ],
+          "youtube": [],
+          "important": false
+        },
+        {
+          "id": 4012,
+          "title": "Best Time to Buy and Sell Stock II",
+          "slug": "best-time-to-buy-and-sell-stock-ii",
+          "url": "https://leetcode.com/problems/best-time-to-buy-and-sell-stock-ii/",
+          "difficulty": "Medium",
+          "platform": "LeetCode",
+          "solution": null,
+          "solutions": [],
+          "youtube": [],
+          "important": false
+        },
+        {
+          "id": 4013,
+          "title": "Jump Game",
+          "slug": "jump-game",
+          "url": "https://leetcode.com/problems/jump-game/",
+          "difficulty": "Medium",
+          "platform": "LeetCode",
+          "solution": null,
+          "solutions": [],
+          "youtube": [],
+          "important": false
+        },
+        {
+          "id": 4014,
+          "title": "Jump Game II",
+          "slug": "jump-game-ii",
+          "url": "https://leetcode.com/problems/jump-game-ii/",
+          "difficulty": "Medium",
+          "platform": "LeetCode",
+          "solution": null,
+          "solutions": [],
+          "youtube": [],
+          "important": false
+        },
+        {
+          "id": 4015,
+          "title": "H-Index",
+          "slug": "h-index",
+          "url": "https://leetcode.com/problems/h-index/",
+          "difficulty": "Medium",
+          "platform": "LeetCode",
+          "solution": null,
+          "solutions": [],
+          "youtube": [],
+          "important": false
+        },
+        {
+          "id": 4016,
+          "title": "Insert Delete GetRandom O(1)",
+          "slug": "insert-delete-getrandom-o1",
+          "url": "https://leetcode.com/problems/insert-delete-getrandom-o1/",
+          "difficulty": "Medium",
+          "platform": "LeetCode",
+          "solution": null,
+          "solutions": [],
+          "youtube": [],
+          "important": false
+        },
+        {
+          "id": 4017,
+          "title": "Product of Array Except Self",
+          "slug": "product-of-array-except-self",
+          "url": "https://leetcode.com/problems/product-of-array-except-self/",
+          "difficulty": "Medium",
+          "platform": "LeetCode",
+          "solution": "https://github.com/chandanagrawal23/DSA-Sheet/blob/main/ProductOfArrayExceptSelf.cpp",
+          "solutions": [
+            {
+              "title": "Solution",
+              "url": "https://github.com/chandanagrawal23/DSA-Sheet/blob/main/ProductOfArrayExceptSelf.cpp"
+            }
+          ],
+          "youtube": [],
+          "important": false
+        },
+        {
+          "id": 4018,
+          "title": "Gas Station",
+          "slug": "gas-station",
+          "url": "https://leetcode.com/problems/gas-station/",
+          "difficulty": "Medium",
+          "platform": "LeetCode",
+          "solution": null,
+          "solutions": [],
+          "youtube": [],
+          "important": false
+        },
+        {
+          "id": 4019,
+          "title": "Integer to Roman",
+          "slug": "integer-to-roman",
+          "url": "https://leetcode.com/problems/integer-to-roman/",
+          "difficulty": "Medium",
+          "platform": "LeetCode",
+          "solution": "https://github.com/chandanagrawal23/DSA-Sheet/blob/main/Strings/IntToRoman.cpp",
+          "solutions": [
+            {
+              "title": "Solution",
+              "url": "https://github.com/chandanagrawal23/DSA-Sheet/blob/main/Strings/IntToRoman.cpp"
+            }
+          ],
+          "youtube": [],
+          "important": false
+        },
+        {
+          "id": 4020,
+          "title": "Reverse Words in a String",
+          "slug": "reverse-words-in-a-string",
+          "url": "https://leetcode.com/problems/reverse-words-in-a-string/",
+          "difficulty": "Medium",
+          "platform": "LeetCode",
+          "solution": null,
+          "solutions": [],
+          "youtube": [],
+          "important": false
+        },
+        {
+          "id": 4021,
+          "title": "Zigzag Conversion",
+          "slug": "zigzag-conversion",
+          "url": "https://leetcode.com/problems/zigzag-conversion/",
+          "difficulty": "Medium",
+          "platform": "LeetCode",
+          "solution": null,
+          "solutions": [],
+          "youtube": [],
+          "important": false
+        },
+        {
+          "id": 4022,
+          "title": "Candy",
+          "slug": "candy",
+          "url": "https://leetcode.com/problems/candy/",
+          "difficulty": "Hard",
+          "platform": "LeetCode",
+          "solution": null,
+          "solutions": [],
+          "youtube": [],
+          "important": false
+        },
+        {
+          "id": 4023,
+          "title": "Trapping Rain Water",
+          "slug": "trapping-rain-water",
+          "url": "https://leetcode.com/problems/trapping-rain-water/",
+          "difficulty": "Hard",
+          "platform": "LeetCode",
+          "solution": "https://github.com/chandanagrawal23/DSA-Sheet/blob/main/TwoPointer/TrappingRainWater.cpp",
+          "solutions": [
+            {
+              "title": "Solution",
+              "url": "https://github.com/chandanagrawal23/DSA-Sheet/blob/main/TwoPointer/TrappingRainWater.cpp"
+            }
+          ],
+          "youtube": [],
+          "important": false
+        },
+        {
+          "id": 4024,
+          "title": "Text Justification",
+          "slug": "text-justification",
+          "url": "https://leetcode.com/problems/text-justification/",
+          "difficulty": "Hard",
+          "platform": "LeetCode",
+          "solution": null,
+          "solutions": [],
+          "youtube": [],
+          "important": false
+        }
+      ]
+    },
+    {
+      "title": "Two Pointers",
+      "problemCount": 5,
+      "problems": [
+        {
+          "id": 4025,
+          "title": "Valid Palindrome",
+          "slug": "valid-palindrome",
+          "url": "https://leetcode.com/problems/valid-palindrome/",
+          "difficulty": "Easy",
+          "platform": "LeetCode",
+          "solution": null,
+          "solutions": [],
+          "youtube": [],
+          "important": false
+        },
+        {
+          "id": 4026,
+          "title": "Is Subsequence",
+          "slug": "is-subsequence",
+          "url": "https://leetcode.com/problems/is-subsequence/",
+          "difficulty": "Easy",
+          "platform": "LeetCode",
+          "solution": null,
+          "solutions": [],
+          "youtube": [],
+          "important": false
+        },
+        {
+          "id": 4027,
+          "title": "Two Sum II - Input Array Is Sorted",
+          "slug": "two-sum-ii-input-array-is-sorted",
+          "url": "https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/",
+          "difficulty": "Medium",
+          "platform": "LeetCode",
+          "solution": "https://github.com/chandanagrawal23/DSA-Sheet/blob/main/TwoPointer/TwoSumII-InputArrayIsSorted.cpp",
+          "solutions": [
+            {
+              "title": "Solution",
+              "url": "https://github.com/chandanagrawal23/DSA-Sheet/blob/main/TwoPointer/TwoSumII-InputArrayIsSorted.cpp"
+            }
+          ],
+          "youtube": [],
+          "important": false
+        },
+        {
+          "id": 4028,
+          "title": "Container With Most Water",
+          "slug": "container-with-most-water",
+          "url": "https://leetcode.com/problems/container-with-most-water/",
+          "difficulty": "Medium",
+          "platform": "LeetCode",
+          "solution": null,
+          "solutions": [],
+          "youtube": [],
+          "important": false
+        },
+        {
+          "id": 4029,
+          "title": "3Sum",
+          "slug": "3sum",
+          "url": "https://leetcode.com/problems/3sum/",
+          "difficulty": "Medium",
+          "platform": "LeetCode",
+          "solution": "https://github.com/chandanagrawal23/DSA-Sheet/blob/main/TwoPointer/3Sum.cpp",
+          "solutions": [
+            {
+              "title": "Solution",
+              "url": "https://github.com/chandanagrawal23/DSA-Sheet/blob/main/TwoPointer/3Sum.cpp"
+            }
+          ],
+          "youtube": [],
+          "important": false
+        }
+      ]
+    },
+    {
+      "title": "Sliding Window",
+      "problemCount": 4,
+      "problems": [
+        {
+          "id": 4030,
+          "title": "Minimum Size Subarray Sum",
+          "slug": "minimum-size-subarray-sum",
+          "url": "https://leetcode.com/problems/minimum-size-subarray-sum/",
+          "difficulty": "Medium",
+          "platform": "LeetCode",
+          "solution": "https://github.com/chandanagrawal23/DSA-Sheet/blob/main/minSubArrayLen.cpp",
+          "solutions": [
+            {
+              "title": "Solution",
+              "url": "https://github.com/chandanagrawal23/DSA-Sheet/blob/main/minSubArrayLen.cpp"
+            }
+          ],
+          "youtube": [],
+          "important": false
+        },
+        {
+          "id": 4031,
+          "title": "Longest Substring Without Repeating Characters",
+          "slug": "longest-substring-without-repeating-characters",
+          "url": "https://leetcode.com/problems/longest-substring-without-repeating-characters/",
+          "difficulty": "Medium",
+          "platform": "LeetCode",
+          "solution": null,
+          "solutions": [],
+          "youtube": [],
+          "important": false
+        },
+        {
+          "id": 4032,
+          "title": "Substring with Concatenation of All Words",
+          "slug": "substring-with-concatenation-of-all-words",
+          "url": "https://leetcode.com/problems/substring-with-concatenation-of-all-words/",
+          "difficulty": "Hard",
+          "platform": "LeetCode",
+          "solution": null,
+          "solutions": [],
+          "youtube": [],
+          "important": false
+        },
+        {
+          "id": 4033,
+          "title": "Minimum Window Substring",
+          "slug": "minimum-window-substring",
+          "url": "https://leetcode.com/problems/minimum-window-substring/",
+          "difficulty": "Hard",
+          "platform": "LeetCode",
+          "solution": "https://github.com/chandanagrawal23/DSA-Sheet/blob/main/minWindowDynamicSlidingWindow.cpp",
+          "solutions": [
+            {
+              "title": "Solution",
+              "url": "https://github.com/chandanagrawal23/DSA-Sheet/blob/main/minWindowDynamicSlidingWindow.cpp"
+            }
+          ],
+          "youtube": [],
+          "important": false
+        }
+      ]
+    },
+    {
+      "title": "Matrix",
+      "problemCount": 5,
+      "problems": [
+        {
+          "id": 4034,
+          "title": "Valid Sudoku",
+          "slug": "valid-sudoku",
+          "url": "https://leetcode.com/problems/valid-sudoku/",
+          "difficulty": "Medium",
+          "platform": "LeetCode",
+          "solution": null,
+          "solutions": [],
+          "youtube": [],
+          "important": false
+        },
+        {
+          "id": 4035,
+          "title": "Spiral Matrix",
+          "slug": "spiral-matrix",
+          "url": "https://leetcode.com/problems/spiral-matrix/",
+          "difficulty": "Medium",
+          "platform": "LeetCode",
+          "solution": "https://github.com/chandanagrawal23/DSA-Sheet/blob/main/spiralMatrix-I.cpp",
+          "solutions": [
+            {
+              "title": "Solution",
+              "url": "https://github.com/chandanagrawal23/DSA-Sheet/blob/main/spiralMatrix-I.cpp"
+            }
+          ],
+          "youtube": [],
+          "important": false
+        },
+        {
+          "id": 4036,
+          "title": "Rotate Image",
+          "slug": "rotate-image",
+          "url": "https://leetcode.com/problems/rotate-image/",
+          "difficulty": "Medium",
+          "platform": "LeetCode",
+          "solution": null,
+          "solutions": [],
+          "youtube": [],
+          "important": false
+        },
+        {
+          "id": 4037,
+          "title": "Set Matrix Zeroes",
+          "slug": "set-matrix-zeroes",
+          "url": "https://leetcode.com/problems/set-matrix-zeroes/",
+          "difficulty": "Medium",
+          "platform": "LeetCode",
+          "solution": null,
+          "solutions": [],
+          "youtube": [],
+          "important": false
+        },
+        {
+          "id": 4038,
+          "title": "Game of Life",
+          "slug": "game-of-life",
+          "url": "https://leetcode.com/problems/game-of-life/",
+          "difficulty": "Medium",
+          "platform": "LeetCode",
+          "solution": null,
+          "solutions": [],
+          "youtube": [],
+          "important": false
+        }
+      ]
+    },
+    {
+      "title": "HashMap",
+      "problemCount": 9,
+      "problems": [
+        {
+          "id": 4039,
+          "title": "Ransom Note",
+          "slug": "ransom-note",
+          "url": "https://leetcode.com/problems/ransom-note/",
+          "difficulty": "Easy",
+          "platform": "LeetCode",
+          "solution": null,
+          "solutions": [],
+          "youtube": [],
+          "important": false
+        },
+        {
+          "id": 4040,
+          "title": "Isomorphic Strings",
+          "slug": "isomorphic-strings",
+          "url": "https://leetcode.com/problems/isomorphic-strings/",
+          "difficulty": "Easy",
+          "platform": "LeetCode",
+          "solution": null,
+          "solutions": [],
+          "youtube": [],
+          "important": false
+        },
+        {
+          "id": 4041,
+          "title": "Word Pattern",
+          "slug": "word-pattern",
+          "url": "https://leetcode.com/problems/word-pattern/",
+          "difficulty": "Easy",
+          "platform": "LeetCode",
+          "solution": null,
+          "solutions": [],
+          "youtube": [],
+          "important": false
+        },
+        {
+          "id": 4042,
+          "title": "Valid Anagram",
+          "slug": "valid-anagram",
+          "url": "https://leetcode.com/problems/valid-anagram/",
+          "difficulty": "Easy",
+          "platform": "LeetCode",
+          "solution": "https://github.com/chandanagrawal23/DSA-Sheet/blob/main/Strings/ValidAnagram.cpp",
+          "solutions": [
+            {
+              "title": "Solution",
+              "url": "https://github.com/chandanagrawal23/DSA-Sheet/blob/main/Strings/ValidAnagram.cpp"
+            }
+          ],
+          "youtube": [],
+          "important": false
+        },
+        {
+          "id": 4043,
+          "title": "Two Sum",
+          "slug": "two-sum",
+          "url": "https://leetcode.com/problems/two-sum/",
+          "difficulty": "Easy",
+          "platform": "LeetCode",
+          "solution": null,
+          "solutions": [],
+          "youtube": [],
+          "important": false
+        },
+        {
+          "id": 4044,
+          "title": "Happy Number",
+          "slug": "happy-number",
+          "url": "https://leetcode.com/problems/happy-number/",
+          "difficulty": "Easy",
+          "platform": "LeetCode",
+          "solution": null,
+          "solutions": [],
+          "youtube": [],
+          "important": false
+        },
+        {
+          "id": 4045,
+          "title": "Contains Duplicate II",
+          "slug": "contains-duplicate-ii",
+          "url": "https://leetcode.com/problems/contains-duplicate-ii/",
+          "difficulty": "Easy",
+          "platform": "LeetCode",
+          "solution": null,
+          "solutions": [],
+          "youtube": [],
+          "important": false
+        },
+        {
+          "id": 4046,
+          "title": "Longest Consecutive Sequence",
+          "slug": "longest-consecutive-sequence",
+          "url": "https://leetcode.com/problems/longest-consecutive-sequence/",
+          "difficulty": "Medium",
+          "platform": "LeetCode",
+          "solution": null,
+          "solutions": [],
+          "youtube": [],
+          "important": false
+        },
+        {
+          "id": 4047,
+          "title": "Group Anagrams",
+          "slug": "group-anagrams",
+          "url": "https://leetcode.com/problems/group-anagrams/",
+          "difficulty": "Medium",
+          "platform": "LeetCode",
+          "solution": "https://github.com/chandanagrawal23/DSA-Sheet/blob/main/GroupAnagram.cpp",
+          "solutions": [
+            {
+              "title": "Solution",
+              "url": "https://github.com/chandanagrawal23/DSA-Sheet/blob/main/GroupAnagram.cpp"
+            }
+          ],
+          "youtube": [],
+          "important": false
+        }
+      ]
+    },
+    {
+      "title": "Interval",
+      "problemCount": 4,
+      "problems": [
+        {
+          "id": 4048,
+          "title": "Summary Ranges",
+          "slug": "summary-ranges",
+          "url": "https://leetcode.com/problems/summary-ranges/",
+          "difficulty": "Easy",
+          "platform": "LeetCode",
+          "solution": null,
+          "solutions": [],
+          "youtube": [],
+          "important": false
+        },
+        {
+          "id": 4049,
+          "title": "Merge Intervals",
+          "slug": "merge-intervals",
+          "url": "https://leetcode.com/problems/merge-intervals/",
+          "difficulty": "Medium",
+          "platform": "LeetCode",
+          "solution": "https://github.com/chandanagrawal23/DSA-Sheet/blob/main/Sorting/MergeIntervals_sorting.cpp",
+          "solutions": [
+            {
+              "title": "Solution",
+              "url": "https://github.com/chandanagrawal23/DSA-Sheet/blob/main/Sorting/MergeIntervals_sorting.cpp"
+            }
+          ],
+          "youtube": [],
+          "important": false
+        },
+        {
+          "id": 4050,
+          "title": "Insert Interval",
+          "slug": "insert-interval",
+          "url": "https://leetcode.com/problems/insert-interval/",
+          "difficulty": "Medium",
+          "platform": "LeetCode",
+          "solution": "https://github.com/chandanagrawal23/DSA-Sheet/blob/main/Sorting/InsertInterval_sorting.cpp",
+          "solutions": [
+            {
+              "title": "Solution",
+              "url": "https://github.com/chandanagrawal23/DSA-Sheet/blob/main/Sorting/InsertInterval_sorting.cpp"
+            }
+          ],
+          "youtube": [],
+          "important": false
+        },
+        {
+          "id": 4051,
+          "title": "Minimum Number of Arrows to Burst Balloons",
+          "slug": "minimum-number-of-arrows-to-burst-balloons",
+          "url": "https://leetcode.com/problems/minimum-number-of-arrows-to-burst-balloons/",
+          "difficulty": "Medium",
+          "platform": "LeetCode",
+          "solution": null,
+          "solutions": [],
+          "youtube": [],
+          "important": false
+        }
+      ]
+    },
+    {
+      "title": "Stack",
+      "problemCount": 5,
+      "problems": [
+        {
+          "id": 4052,
+          "title": "Valid Parentheses",
+          "slug": "valid-parentheses",
+          "url": "https://leetcode.com/problems/valid-parentheses/",
+          "difficulty": "Easy",
+          "platform": "LeetCode",
+          "solution": "https://github.com/chandanagrawal23/DSA-Sheet/blob/main/Valid_Parentheses.cpp",
+          "solutions": [
+            {
+              "title": "Solution",
+              "url": "https://github.com/chandanagrawal23/DSA-Sheet/blob/main/Valid_Parentheses.cpp"
+            }
+          ],
+          "youtube": [],
+          "important": false
+        },
+        {
+          "id": 4053,
+          "title": "Simplify Path",
+          "slug": "simplify-path",
+          "url": "https://leetcode.com/problems/simplify-path/",
+          "difficulty": "Medium",
+          "platform": "LeetCode",
+          "solution": "https://github.com/chandanagrawal23/DSA-Sheet/blob/main/SimplifyPath.cpp",
+          "solutions": [
+            {
+              "title": "Solution",
+              "url": "https://github.com/chandanagrawal23/DSA-Sheet/blob/main/SimplifyPath.cpp"
+            }
+          ],
+          "youtube": [],
+          "important": false
+        },
+        {
+          "id": 4054,
+          "title": "Min Stack",
+          "slug": "min-stack",
+          "url": "https://leetcode.com/problems/min-stack/",
+          "difficulty": "Medium",
+          "platform": "LeetCode",
+          "solution": "https://github.com/chandanagrawal23/DSA-Sheet/blob/main/MinStack.cpp",
+          "solutions": [
+            {
+              "title": "Solution",
+              "url": "https://github.com/chandanagrawal23/DSA-Sheet/blob/main/MinStack.cpp"
+            }
+          ],
+          "youtube": [],
+          "important": false
+        },
+        {
+          "id": 4055,
+          "title": "Evaluate Reverse Polish Notation",
+          "slug": "evaluate-reverse-polish-notation",
+          "url": "https://leetcode.com/problems/evaluate-reverse-polish-notation/",
+          "difficulty": "Medium",
+          "platform": "LeetCode",
+          "solution": null,
+          "solutions": [],
+          "youtube": [],
+          "important": false
+        },
+        {
+          "id": 4056,
+          "title": "Basic Calculator",
+          "slug": "basic-calculator",
+          "url": "https://leetcode.com/problems/basic-calculator/",
+          "difficulty": "Hard",
+          "platform": "LeetCode",
+          "solution": null,
+          "solutions": [],
+          "youtube": [],
+          "important": false
+        }
+      ]
+    },
+    {
+      "title": "Linked List",
+      "problemCount": 11,
+      "problems": [
+        {
+          "id": 4057,
+          "title": "Linked List Cycle",
+          "slug": "linked-list-cycle",
+          "url": "https://leetcode.com/problems/linked-list-cycle/",
+          "difficulty": "Easy",
+          "platform": "LeetCode",
+          "solution": "https://github.com/chandanagrawal23/DSA-Sheet/blob/main/hasCycle.cpp",
+          "solutions": [
+            {
+              "title": "Solution",
+              "url": "https://github.com/chandanagrawal23/DSA-Sheet/blob/main/hasCycle.cpp"
+            }
+          ],
+          "youtube": [],
+          "important": false
+        },
+        {
+          "id": 4058,
+          "title": "Merge Two Sorted Lists",
+          "slug": "merge-two-sorted-lists",
+          "url": "https://leetcode.com/problems/merge-two-sorted-lists/",
+          "difficulty": "Easy",
+          "platform": "LeetCode",
+          "solution": "https://github.com/chandanagrawal23/DSA-Sheet/blob/main/mergeTwoLists.cpp",
+          "solutions": [
+            {
+              "title": "Solution",
+              "url": "https://github.com/chandanagrawal23/DSA-Sheet/blob/main/mergeTwoLists.cpp"
+            }
+          ],
+          "youtube": [],
+          "important": false
+        },
+        {
+          "id": 4059,
+          "title": "Add Two Numbers",
+          "slug": "add-two-numbers",
+          "url": "https://leetcode.com/problems/add-two-numbers/",
+          "difficulty": "Medium",
+          "platform": "LeetCode",
+          "solution": "https://github.com/chandanagrawal23/DSA-Sheet/blob/main/addTwoNumbers1.cpp",
+          "solutions": [
+            {
+              "title": "Solution",
+              "url": "https://github.com/chandanagrawal23/DSA-Sheet/blob/main/addTwoNumbers1.cpp"
+            }
+          ],
+          "youtube": [],
+          "important": false
+        },
+        {
+          "id": 4060,
+          "title": "Copy List with Random Pointer",
+          "slug": "copy-list-with-random-pointer",
+          "url": "https://leetcode.com/problems/copy-list-with-random-pointer/",
+          "difficulty": "Medium",
+          "platform": "LeetCode",
+          "solution": null,
+          "solutions": [],
+          "youtube": [],
+          "important": false
+        },
+        {
+          "id": 4061,
+          "title": "Reverse Linked List II",
+          "slug": "reverse-linked-list-ii",
+          "url": "https://leetcode.com/problems/reverse-linked-list-ii/",
+          "difficulty": "Medium",
+          "platform": "LeetCode",
+          "solution": "https://github.com/chandanagrawal23/DSA-Sheet/blob/main/reverseBetween.cpp",
+          "solutions": [
+            {
+              "title": "Solution",
+              "url": "https://github.com/chandanagrawal23/DSA-Sheet/blob/main/reverseBetween.cpp"
+            }
+          ],
+          "youtube": [],
+          "important": false
+        },
+        {
+          "id": 4062,
+          "title": "Remove Nth Node From End of List",
+          "slug": "remove-nth-node-from-end-of-list",
+          "url": "https://leetcode.com/problems/remove-nth-node-from-end-of-list/",
+          "difficulty": "Medium",
+          "platform": "LeetCode",
+          "solution": "https://github.com/chandanagrawal23/DSA-Sheet/blob/main/removeNthFromEnd.cpp",
+          "solutions": [
+            {
+              "title": "Solution",
+              "url": "https://github.com/chandanagrawal23/DSA-Sheet/blob/main/removeNthFromEnd.cpp"
+            }
+          ],
+          "youtube": [],
+          "important": false
+        },
+        {
+          "id": 4063,
+          "title": "Remove Duplicates from Sorted List II",
+          "slug": "remove-duplicates-from-sorted-list-ii",
+          "url": "https://leetcode.com/problems/remove-duplicates-from-sorted-list-ii/",
+          "difficulty": "Medium",
+          "platform": "LeetCode",
+          "solution": null,
+          "solutions": [],
+          "youtube": [],
+          "important": false
+        },
+        {
+          "id": 4064,
+          "title": "Rotate List",
+          "slug": "rotate-list",
+          "url": "https://leetcode.com/problems/rotate-list/",
+          "difficulty": "Medium",
+          "platform": "LeetCode",
+          "solution": "https://github.com/chandanagrawal23/DSA-Sheet/blob/main/rotateRight.cpp",
+          "solutions": [
+            {
+              "title": "Solution",
+              "url": "https://github.com/chandanagrawal23/DSA-Sheet/blob/main/rotateRight.cpp"
+            }
+          ],
+          "youtube": [],
+          "important": false
+        },
+        {
+          "id": 4065,
+          "title": "Partition List",
+          "slug": "partition-list",
+          "url": "https://leetcode.com/problems/partition-list/",
+          "difficulty": "Medium",
+          "platform": "LeetCode",
+          "solution": null,
+          "solutions": [],
+          "youtube": [],
+          "important": false
+        },
+        {
+          "id": 4066,
+          "title": "LRU Cache",
+          "slug": "lru-cache",
+          "url": "https://leetcode.com/problems/lru-cache/",
+          "difficulty": "Medium",
+          "platform": "LeetCode",
+          "solution": null,
+          "solutions": [],
+          "youtube": [],
+          "important": false
+        },
+        {
+          "id": 4067,
+          "title": "Reverse Nodes in k-Group",
+          "slug": "reverse-nodes-in-k-group",
+          "url": "https://leetcode.com/problems/reverse-nodes-in-k-group/",
+          "difficulty": "Hard",
+          "platform": "LeetCode",
+          "solution": "https://github.com/chandanagrawal23/DSA-Sheet/blob/main/reverseKGroup.cpp",
+          "solutions": [
+            {
+              "title": "Solution",
+              "url": "https://github.com/chandanagrawal23/DSA-Sheet/blob/main/reverseKGroup.cpp"
+            }
+          ],
+          "youtube": [],
+          "important": false
+        }
+      ]
+    },
+    {
+      "title": "Binary Tree General",
+      "problemCount": 14,
+      "problems": [
+        {
+          "id": 4068,
+          "title": "Maximum Depth of Binary Tree",
+          "slug": "maximum-depth-of-binary-tree",
+          "url": "https://leetcode.com/problems/maximum-depth-of-binary-tree/",
+          "difficulty": "Easy",
+          "platform": "LeetCode",
+          "solution": "https://github.com/chandanagrawal23/DSA-Sheet/blob/main/MaximumDepthofBinaryTree.cpp",
+          "solutions": [
+            {
+              "title": "Solution",
+              "url": "https://github.com/chandanagrawal23/DSA-Sheet/blob/main/MaximumDepthofBinaryTree.cpp"
+            }
+          ],
+          "youtube": [],
+          "important": false
+        },
+        {
+          "id": 4069,
+          "title": "Same Tree",
+          "slug": "same-tree",
+          "url": "https://leetcode.com/problems/same-tree/",
+          "difficulty": "Easy",
+          "platform": "LeetCode",
+          "solution": "https://github.com/chandanagrawal23/DSA-Sheet/blob/main/SameTree.cpp",
+          "solutions": [
+            {
+              "title": "Solution",
+              "url": "https://github.com/chandanagrawal23/DSA-Sheet/blob/main/SameTree.cpp"
+            }
+          ],
+          "youtube": [],
+          "important": false
+        },
+        {
+          "id": 4070,
+          "title": "Invert Binary Tree",
+          "slug": "invert-binary-tree",
+          "url": "https://leetcode.com/problems/invert-binary-tree/",
+          "difficulty": "Easy",
+          "platform": "LeetCode",
+          "solution": "https://github.com/chandanagrawal23/DSA-Sheet/blob/main/InvertBinaryTree.cpp",
+          "solutions": [
+            {
+              "title": "Solution",
+              "url": "https://github.com/chandanagrawal23/DSA-Sheet/blob/main/InvertBinaryTree.cpp"
+            }
+          ],
+          "youtube": [],
+          "important": false
+        },
+        {
+          "id": 4071,
+          "title": "Symmetric Tree",
+          "slug": "symmetric-tree",
+          "url": "https://leetcode.com/problems/symmetric-tree/",
+          "difficulty": "Easy",
+          "platform": "LeetCode",
+          "solution": "https://github.com/chandanagrawal23/DSA-Sheet/blob/main/SymmetricTree.cpp",
+          "solutions": [
+            {
+              "title": "Solution",
+              "url": "https://github.com/chandanagrawal23/DSA-Sheet/blob/main/SymmetricTree.cpp"
+            }
+          ],
+          "youtube": [],
+          "important": false
+        },
+        {
+          "id": 4072,
+          "title": "Path Sum",
+          "slug": "path-sum",
+          "url": "https://leetcode.com/problems/path-sum/",
+          "difficulty": "Easy",
+          "platform": "LeetCode",
+          "solution": "https://github.com/chandanagrawal23/DSA-Sheet/blob/main/PathSum.cpp",
+          "solutions": [
+            {
+              "title": "Solution",
+              "url": "https://github.com/chandanagrawal23/DSA-Sheet/blob/main/PathSum.cpp"
+            }
+          ],
+          "youtube": [],
+          "important": false
+        },
+        {
+          "id": 4073,
+          "title": "Count Complete Tree Nodes",
+          "slug": "count-complete-tree-nodes",
+          "url": "https://leetcode.com/problems/count-complete-tree-nodes/",
+          "difficulty": "Easy",
+          "platform": "LeetCode",
+          "solution": "https://github.com/chandanagrawal23/DSA-Sheet/blob/main/CountCompleteTreeNodes.cpp",
+          "solutions": [
+            {
+              "title": "Solution",
+              "url": "https://github.com/chandanagrawal23/DSA-Sheet/blob/main/CountCompleteTreeNodes.cpp"
+            }
+          ],
+          "youtube": [],
+          "important": false
+        },
+        {
+          "id": 4074,
+          "title": "Construct Binary Tree from Preorder and Inorder Traversal",
+          "slug": "construct-binary-tree-from-preorder-and-inorder-traversal",
+          "url": "https://leetcode.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal/",
+          "difficulty": "Medium",
+          "platform": "LeetCode",
+          "solution": "https://github.com/chandanagrawal23/DSA-Sheet/blob/main/ConstructBinaryTreefromPreorderandInorderTraversal.cpp",
+          "solutions": [
+            {
+              "title": "Solution",
+              "url": "https://github.com/chandanagrawal23/DSA-Sheet/blob/main/ConstructBinaryTreefromPreorderandInorderTraversal.cpp"
+            }
+          ],
+          "youtube": [],
+          "important": false
+        },
+        {
+          "id": 4075,
+          "title": "Construct Binary Tree from Inorder and Postorder Traversal",
+          "slug": "construct-binary-tree-from-inorder-and-postorder-traversal",
+          "url": "https://leetcode.com/problems/construct-binary-tree-from-inorder-and-postorder-traversal/",
+          "difficulty": "Medium",
+          "platform": "LeetCode",
+          "solution": null,
+          "solutions": [],
+          "youtube": [],
+          "important": false
+        },
+        {
+          "id": 4076,
+          "title": "Populating Next Right Pointers in Each Node II",
+          "slug": "populating-next-right-pointers-in-each-node-ii",
+          "url": "https://leetcode.com/problems/populating-next-right-pointers-in-each-node-ii/",
+          "difficulty": "Medium",
+          "platform": "LeetCode",
+          "solution": null,
+          "solutions": [],
+          "youtube": [],
+          "important": false
+        },
+        {
+          "id": 4077,
+          "title": "Flatten Binary Tree to Linked List",
+          "slug": "flatten-binary-tree-to-linked-list",
+          "url": "https://leetcode.com/problems/flatten-binary-tree-to-linked-list/",
+          "difficulty": "Medium",
+          "platform": "LeetCode",
+          "solution": "https://github.com/chandanagrawal23/DSA-Sheet/blob/main/flattenTreeToLinkedList.cpp",
+          "solutions": [
+            {
+              "title": "Solution",
+              "url": "https://github.com/chandanagrawal23/DSA-Sheet/blob/main/flattenTreeToLinkedList.cpp"
+            }
+          ],
+          "youtube": [],
+          "important": false
+        },
+        {
+          "id": 4078,
+          "title": "Sum Root to Leaf Numbers",
+          "slug": "sum-root-to-leaf-numbers",
+          "url": "https://leetcode.com/problems/sum-root-to-leaf-numbers/",
+          "difficulty": "Medium",
+          "platform": "LeetCode",
+          "solution": "https://github.com/chandanagrawal23/DSA-Sheet/blob/main/SumRootToLeafNumbers.cpp",
+          "solutions": [
+            {
+              "title": "Solution",
+              "url": "https://github.com/chandanagrawal23/DSA-Sheet/blob/main/SumRootToLeafNumbers.cpp"
+            }
+          ],
+          "youtube": [],
+          "important": false
+        },
+        {
+          "id": 4079,
+          "title": "Binary Search Tree Iterator",
+          "slug": "binary-search-tree-iterator",
+          "url": "https://leetcode.com/problems/binary-search-tree-iterator/",
+          "difficulty": "Medium",
+          "platform": "LeetCode",
+          "solution": null,
+          "solutions": [],
+          "youtube": [],
+          "important": false
+        },
+        {
+          "id": 4080,
+          "title": "Lowest Common Ancestor of a Binary Tree",
+          "slug": "lowest-common-ancestor-of-a-binary-tree",
+          "url": "https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-tree/",
+          "difficulty": "Medium",
+          "platform": "LeetCode",
+          "solution": null,
+          "solutions": [],
+          "youtube": [],
+          "important": false
+        },
+        {
+          "id": 4081,
+          "title": "Binary Tree Maximum Path Sum",
+          "slug": "binary-tree-maximum-path-sum",
+          "url": "https://leetcode.com/problems/binary-tree-maximum-path-sum/",
+          "difficulty": "Hard",
+          "platform": "LeetCode",
+          "solution": "https://github.com/chandanagrawal23/DSA-Sheet/blob/main/BinaryTreeMaximumPathSum.cpp",
+          "solutions": [
+            {
+              "title": "Solution",
+              "url": "https://github.com/chandanagrawal23/DSA-Sheet/blob/main/BinaryTreeMaximumPathSum.cpp"
+            }
+          ],
+          "youtube": [],
+          "important": false
+        }
+      ]
+    },
+    {
+      "title": "Binary Tree BFS",
+      "problemCount": 4,
+      "problems": [
+        {
+          "id": 4082,
+          "title": "Average of Levels in Binary Tree",
+          "slug": "average-of-levels-in-binary-tree",
+          "url": "https://leetcode.com/problems/average-of-levels-in-binary-tree/",
+          "difficulty": "Easy",
+          "platform": "LeetCode",
+          "solution": "https://github.com/chandanagrawal23/DSA-Sheet/blob/main/AverageOfLevelsInBinaryTree.cpp",
+          "solutions": [
+            {
+              "title": "Solution",
+              "url": "https://github.com/chandanagrawal23/DSA-Sheet/blob/main/AverageOfLevelsInBinaryTree.cpp"
+            }
+          ],
+          "youtube": [],
+          "important": false
+        },
+        {
+          "id": 4083,
+          "title": "Binary Tree Right Side View",
+          "slug": "binary-tree-right-side-view",
+          "url": "https://leetcode.com/problems/binary-tree-right-side-view/",
+          "difficulty": "Medium",
+          "platform": "LeetCode",
+          "solution": "https://github.com/chandanagrawal23/DSA-Sheet/blob/main/RightViewOfBinaryTree.cpp",
+          "solutions": [
+            {
+              "title": "Solution",
+              "url": "https://github.com/chandanagrawal23/DSA-Sheet/blob/main/RightViewOfBinaryTree.cpp"
+            }
+          ],
+          "youtube": [],
+          "important": false
+        },
+        {
+          "id": 4084,
+          "title": "Binary Tree Level Order Traversal",
+          "slug": "binary-tree-level-order-traversal",
+          "url": "https://leetcode.com/problems/binary-tree-level-order-traversal/",
+          "difficulty": "Medium",
+          "platform": "LeetCode",
+          "solution": "https://github.com/chandanagrawal23/DSA-Sheet/blob/main/BinaryTreeLevelOrderTraversal.cpp",
+          "solutions": [
+            {
+              "title": "Solution",
+              "url": "https://github.com/chandanagrawal23/DSA-Sheet/blob/main/BinaryTreeLevelOrderTraversal.cpp"
+            }
+          ],
+          "youtube": [],
+          "important": false
+        },
+        {
+          "id": 4085,
+          "title": "Binary Tree Zigzag Level Order Traversal",
+          "slug": "binary-tree-zigzag-level-order-traversal",
+          "url": "https://leetcode.com/problems/binary-tree-zigzag-level-order-traversal/",
+          "difficulty": "Medium",
+          "platform": "LeetCode",
+          "solution": "https://github.com/chandanagrawal23/DSA-Sheet/blob/main/BinaryTreeZigzagLevelOrderTraversal.cpp",
+          "solutions": [
+            {
+              "title": "Solution",
+              "url": "https://github.com/chandanagrawal23/DSA-Sheet/blob/main/BinaryTreeZigzagLevelOrderTraversal.cpp"
+            }
+          ],
+          "youtube": [],
+          "important": false
+        }
+      ]
+    },
+    {
+      "title": "Binary Search Tree",
+      "problemCount": 3,
+      "problems": [
+        {
+          "id": 4086,
+          "title": "Minimum Absolute Difference in BST",
+          "slug": "minimum-absolute-difference-in-bst",
+          "url": "https://leetcode.com/problems/minimum-absolute-difference-in-bst/",
+          "difficulty": "Easy",
+          "platform": "LeetCode",
+          "solution": null,
+          "solutions": [],
+          "youtube": [],
+          "important": false
+        },
+        {
+          "id": 4087,
+          "title": "Kth Smallest Element in a BST",
+          "slug": "kth-smallest-element-in-a-bst",
+          "url": "https://leetcode.com/problems/kth-smallest-element-in-a-bst/",
+          "difficulty": "Medium",
+          "platform": "LeetCode",
+          "solution": null,
+          "solutions": [],
+          "youtube": [],
+          "important": false
+        },
+        {
+          "id": 4088,
+          "title": "Validate Binary Search Tree",
+          "slug": "validate-binary-search-tree",
+          "url": "https://leetcode.com/problems/validate-binary-search-tree/",
+          "difficulty": "Medium",
+          "platform": "LeetCode",
+          "solution": null,
+          "solutions": [],
+          "youtube": [],
+          "important": false
+        }
+      ]
+    },
+    {
+      "title": "Graph General",
+      "problemCount": 6,
+      "problems": [
+        {
+          "id": 4089,
+          "title": "Number of Islands",
+          "slug": "number-of-islands",
+          "url": "https://leetcode.com/problems/number-of-islands/",
+          "difficulty": "Medium",
+          "platform": "LeetCode",
+          "solution": "https://github.com/chandanagrawal23/DSA-Sheet/blob/main/NumberofIslands.cpp",
+          "solutions": [
+            {
+              "title": "Solution",
+              "url": "https://github.com/chandanagrawal23/DSA-Sheet/blob/main/NumberofIslands.cpp"
+            }
+          ],
+          "youtube": [],
+          "important": false
+        },
+        {
+          "id": 4090,
+          "title": "Surrounded Regions",
+          "slug": "surrounded-regions",
+          "url": "https://leetcode.com/problems/surrounded-regions/",
+          "difficulty": "Medium",
+          "platform": "LeetCode",
+          "solution": "https://github.com/chandanagrawal23/DSA-Sheet/blob/main/SurroundedRegions.cpp",
+          "solutions": [
+            {
+              "title": "Solution",
+              "url": "https://github.com/chandanagrawal23/DSA-Sheet/blob/main/SurroundedRegions.cpp"
+            }
+          ],
+          "youtube": [],
+          "important": false
+        },
+        {
+          "id": 4091,
+          "title": "Clone Graph",
+          "slug": "clone-graph",
+          "url": "https://leetcode.com/problems/clone-graph/",
+          "difficulty": "Medium",
+          "platform": "LeetCode",
+          "solution": null,
+          "solutions": [],
+          "youtube": [],
+          "important": false
+        },
+        {
+          "id": 4092,
+          "title": "Evaluate Division",
+          "slug": "evaluate-division",
+          "url": "https://leetcode.com/problems/evaluate-division/",
+          "difficulty": "Medium",
+          "platform": "LeetCode",
+          "solution": null,
+          "solutions": [],
+          "youtube": [],
+          "important": false
+        },
+        {
+          "id": 4093,
+          "title": "Course Schedule",
+          "slug": "course-schedule",
+          "url": "https://leetcode.com/problems/course-schedule/",
+          "difficulty": "Medium",
+          "platform": "LeetCode",
+          "solution": "https://github.com/chandanagrawal23/DSA-Sheet/blob/main/Graph/CourseSchedule_I.cpp",
+          "solutions": [
+            {
+              "title": "Solution",
+              "url": "https://github.com/chandanagrawal23/DSA-Sheet/blob/main/Graph/CourseSchedule_I.cpp"
+            }
+          ],
+          "youtube": [],
+          "important": false
+        },
+        {
+          "id": 4094,
+          "title": "Course Schedule II",
+          "slug": "course-schedule-ii",
+          "url": "https://leetcode.com/problems/course-schedule-ii/",
+          "difficulty": "Medium",
+          "platform": "LeetCode",
+          "solution": "https://github.com/chandanagrawal23/DSA-Sheet/blob/main/Graph/CourseSchedule_II.cpp",
+          "solutions": [
+            {
+              "title": "Solution",
+              "url": "https://github.com/chandanagrawal23/DSA-Sheet/blob/main/Graph/CourseSchedule_II.cpp"
+            }
+          ],
+          "youtube": [],
+          "important": false
+        }
+      ]
+    },
+    {
+      "title": "Graph BFS",
+      "problemCount": 3,
+      "problems": [
+        {
+          "id": 4095,
+          "title": "Snakes and Ladders",
+          "slug": "snakes-and-ladders",
+          "url": "https://leetcode.com/problems/snakes-and-ladders/",
+          "difficulty": "Medium",
+          "platform": "LeetCode",
+          "solution": null,
+          "solutions": [],
+          "youtube": [],
+          "important": false
+        },
+        {
+          "id": 4096,
+          "title": "Minimum Genetic Mutation",
+          "slug": "minimum-genetic-mutation",
+          "url": "https://leetcode.com/problems/minimum-genetic-mutation/",
+          "difficulty": "Medium",
+          "platform": "LeetCode",
+          "solution": null,
+          "solutions": [],
+          "youtube": [],
+          "important": false
+        },
+        {
+          "id": 4097,
+          "title": "Word Ladder",
+          "slug": "word-ladder",
+          "url": "https://leetcode.com/problems/word-ladder/",
+          "difficulty": "Hard",
+          "platform": "LeetCode",
+          "solution": "https://github.com/chandanagrawal23/DSA-Sheet/blob/main/Graph/WordLadder_I.cpp",
+          "solutions": [
+            {
+              "title": "Solution",
+              "url": "https://github.com/chandanagrawal23/DSA-Sheet/blob/main/Graph/WordLadder_I.cpp"
+            }
+          ],
+          "youtube": [],
+          "important": false
+        }
+      ]
+    },
+    {
+      "title": "Trie",
+      "problemCount": 3,
+      "problems": [
+        {
+          "id": 4098,
+          "title": "Implement Trie (Prefix Tree)",
+          "slug": "implement-trie-prefix-tree",
+          "url": "https://leetcode.com/problems/implement-trie-prefix-tree/",
+          "difficulty": "Medium",
+          "platform": "LeetCode",
+          "solution": "https://github.com/chandanagrawal23/DSA-Sheet/blob/main/TRIE/ImplementTriePrefixTree.cpp",
+          "solutions": [
+            {
+              "title": "Solution",
+              "url": "https://github.com/chandanagrawal23/DSA-Sheet/blob/main/TRIE/ImplementTriePrefixTree.cpp"
+            }
+          ],
+          "youtube": [],
+          "important": false
+        },
+        {
+          "id": 4099,
+          "title": "Design Add and Search Words Data Structure",
+          "slug": "design-add-and-search-words-data-structure",
+          "url": "https://leetcode.com/problems/design-add-and-search-words-data-structure/",
+          "difficulty": "Medium",
+          "platform": "LeetCode",
+          "solution": null,
+          "solutions": [],
+          "youtube": [],
+          "important": false
+        },
+        {
+          "id": 4100,
+          "title": "Word Search II",
+          "slug": "word-search-ii",
+          "url": "https://leetcode.com/problems/word-search-ii/",
+          "difficulty": "Hard",
+          "platform": "LeetCode",
+          "solution": null,
+          "solutions": [],
+          "youtube": [],
+          "important": false
+        }
+      ]
+    },
+    {
+      "title": "Backtracking",
+      "problemCount": 7,
+      "problems": [
+        {
+          "id": 4101,
+          "title": "Letter Combinations of a Phone Number",
+          "slug": "letter-combinations-of-a-phone-number",
+          "url": "https://leetcode.com/problems/letter-combinations-of-a-phone-number/",
+          "difficulty": "Medium",
+          "platform": "LeetCode",
+          "solution": null,
+          "solutions": [],
+          "youtube": [],
+          "important": false
+        },
+        {
+          "id": 4102,
+          "title": "Combinations",
+          "slug": "combinations",
+          "url": "https://leetcode.com/problems/combinations/",
+          "difficulty": "Medium",
+          "platform": "LeetCode",
+          "solution": null,
+          "solutions": [],
+          "youtube": [],
+          "important": false
+        },
+        {
+          "id": 4103,
+          "title": "Permutations",
+          "slug": "permutations",
+          "url": "https://leetcode.com/problems/permutations/",
+          "difficulty": "Medium",
+          "platform": "LeetCode",
+          "solution": "https://github.com/chandanagrawal23/DSA-Sheet/blob/main/Permutations.cpp",
+          "solutions": [
+            {
+              "title": "Solution",
+              "url": "https://github.com/chandanagrawal23/DSA-Sheet/blob/main/Permutations.cpp"
+            }
+          ],
+          "youtube": [],
+          "important": false
+        },
+        {
+          "id": 4104,
+          "title": "Combination Sum",
+          "slug": "combination-sum",
+          "url": "https://leetcode.com/problems/combination-sum/",
+          "difficulty": "Medium",
+          "platform": "LeetCode",
+          "solution": "https://github.com/chandanagrawal23/DSA-Sheet/blob/main/CombinationSum.cpp",
+          "solutions": [
+            {
+              "title": "Solution",
+              "url": "https://github.com/chandanagrawal23/DSA-Sheet/blob/main/CombinationSum.cpp"
+            }
+          ],
+          "youtube": [],
+          "important": false
+        },
+        {
+          "id": 4105,
+          "title": "Generate Parentheses",
+          "slug": "generate-parentheses",
+          "url": "https://leetcode.com/problems/generate-parentheses/",
+          "difficulty": "Medium",
+          "platform": "LeetCode",
+          "solution": null,
+          "solutions": [],
+          "youtube": [],
+          "important": false
+        },
+        {
+          "id": 4106,
+          "title": "Word Search",
+          "slug": "word-search",
+          "url": "https://leetcode.com/problems/word-search/",
+          "difficulty": "Medium",
+          "platform": "LeetCode",
+          "solution": "https://github.com/chandanagrawal23/DSA-Sheet/blob/main/WordSearch.cpp",
+          "solutions": [
+            {
+              "title": "Solution",
+              "url": "https://github.com/chandanagrawal23/DSA-Sheet/blob/main/WordSearch.cpp"
+            }
+          ],
+          "youtube": [],
+          "important": false
+        },
+        {
+          "id": 4107,
+          "title": "N-Queens II",
+          "slug": "n-queens-ii",
+          "url": "https://leetcode.com/problems/n-queens-ii/",
+          "difficulty": "Hard",
+          "platform": "LeetCode",
+          "solution": null,
+          "solutions": [],
+          "youtube": [],
+          "important": false
+        }
+      ]
+    },
+    {
+      "title": "Divide and Conquer",
+      "problemCount": 4,
+      "problems": [
+        {
+          "id": 4108,
+          "title": "Convert Sorted Array to Binary Search Tree",
+          "slug": "convert-sorted-array-to-binary-search-tree",
+          "url": "https://leetcode.com/problems/convert-sorted-array-to-binary-search-tree/",
+          "difficulty": "Easy",
+          "platform": "LeetCode",
+          "solution": "https://github.com/chandanagrawal23/DSA-Sheet/blob/main/ConvertSortedArraytoBinarySearchTree.cpp",
+          "solutions": [
+            {
+              "title": "Solution",
+              "url": "https://github.com/chandanagrawal23/DSA-Sheet/blob/main/ConvertSortedArraytoBinarySearchTree.cpp"
+            }
+          ],
+          "youtube": [],
+          "important": false
+        },
+        {
+          "id": 4109,
+          "title": "Sort List",
+          "slug": "sort-list",
+          "url": "https://leetcode.com/problems/sort-list/",
+          "difficulty": "Medium",
+          "platform": "LeetCode",
+          "solution": "https://github.com/chandanagrawal23/DSA-Sheet/blob/main/sortList.cpp",
+          "solutions": [
+            {
+              "title": "Solution",
+              "url": "https://github.com/chandanagrawal23/DSA-Sheet/blob/main/sortList.cpp"
+            }
+          ],
+          "youtube": [],
+          "important": false
+        },
+        {
+          "id": 4110,
+          "title": "Construct Quad Tree",
+          "slug": "construct-quad-tree",
+          "url": "https://leetcode.com/problems/construct-quad-tree/",
+          "difficulty": "Medium",
+          "platform": "LeetCode",
+          "solution": null,
+          "solutions": [],
+          "youtube": [],
+          "important": false
+        },
+        {
+          "id": 4111,
+          "title": "Merge k Sorted Lists",
+          "slug": "merge-k-sorted-lists",
+          "url": "https://leetcode.com/problems/merge-k-sorted-lists/",
+          "difficulty": "Hard",
+          "platform": "LeetCode",
+          "solution": "https://github.com/chandanagrawal23/DSA-Sheet/blob/main/mergeKLists.cpp",
+          "solutions": [
+            {
+              "title": "Solution",
+              "url": "https://github.com/chandanagrawal23/DSA-Sheet/blob/main/mergeKLists.cpp"
+            }
+          ],
+          "youtube": [],
+          "important": false
+        }
+      ]
+    },
+    {
+      "title": "Kadane's Algorothim",
+      "problemCount": 2,
+      "problems": [
+        {
+          "id": 4112,
+          "title": "Maximum Subarray",
+          "slug": "maximum-subarray",
+          "url": "https://leetcode.com/problems/maximum-subarray/",
+          "difficulty": "Medium",
+          "platform": "LeetCode",
+          "solution": null,
+          "solutions": [],
+          "youtube": [],
+          "important": false
+        },
+        {
+          "id": 4113,
+          "title": "Maximum Sum Circular Subarray",
+          "slug": "maximum-sum-circular-subarray",
+          "url": "https://leetcode.com/problems/maximum-sum-circular-subarray/",
+          "difficulty": "Medium",
+          "platform": "LeetCode",
+          "solution": "https://github.com/chandanagrawal23/DSA-Sheet/blob/main/MaximumSumCircularSubarray.cpp",
+          "solutions": [
+            {
+              "title": "Solution",
+              "url": "https://github.com/chandanagrawal23/DSA-Sheet/blob/main/MaximumSumCircularSubarray.cpp"
+            }
+          ],
+          "youtube": [],
+          "important": false
+        }
+      ]
+    },
+    {
+      "title": "Binary Search",
+      "problemCount": 7,
+      "problems": [
+        {
+          "id": 4114,
+          "title": "Search Insert Position",
+          "slug": "search-insert-position",
+          "url": "https://leetcode.com/problems/search-insert-position/",
+          "difficulty": "Easy",
+          "platform": "LeetCode",
+          "solution": null,
+          "solutions": [],
+          "youtube": [],
+          "important": false
+        },
+        {
+          "id": 4115,
+          "title": "Search a 2D Matrix",
+          "slug": "search-a-2d-matrix",
+          "url": "https://leetcode.com/problems/search-a-2d-matrix/",
+          "difficulty": "Medium",
+          "platform": "LeetCode",
+          "solution": "https://github.com/chandanagrawal23/DSA-Sheet/blob/main/Search_a_2DMatrix_I.cpp",
+          "solutions": [
+            {
+              "title": "Solution",
+              "url": "https://github.com/chandanagrawal23/DSA-Sheet/blob/main/Search_a_2DMatrix_I.cpp"
+            }
+          ],
+          "youtube": [],
+          "important": false
+        },
+        {
+          "id": 4116,
+          "title": "Find Peak Element",
+          "slug": "find-peak-element",
+          "url": "https://leetcode.com/problems/find-peak-element/",
+          "difficulty": "Medium",
+          "platform": "LeetCode",
+          "solution": null,
+          "solutions": [],
+          "youtube": [],
+          "important": false
+        },
+        {
+          "id": 4117,
+          "title": "Search in Rotated Sorted Array",
+          "slug": "search-in-rotated-sorted-array",
+          "url": "https://leetcode.com/problems/search-in-rotated-sorted-array/",
+          "difficulty": "Medium",
+          "platform": "LeetCode",
+          "solution": null,
+          "solutions": [],
+          "youtube": [],
+          "important": false
+        },
+        {
+          "id": 4118,
+          "title": "Find First and Last Position of Element in Sorted Array",
+          "slug": "find-first-and-last-position-of-element-in-sorted-array",
+          "url": "https://leetcode.com/problems/find-first-and-last-position-of-element-in-sorted-array/",
+          "difficulty": "Medium",
+          "platform": "LeetCode",
+          "solution": "https://github.com/chandanagrawal23/DSA-Sheet/blob/main/FindFirstandLastPositionofElementinSortedArray.cpp",
+          "solutions": [
+            {
+              "title": "Solution",
+              "url": "https://github.com/chandanagrawal23/DSA-Sheet/blob/main/FindFirstandLastPositionofElementinSortedArray.cpp"
+            }
+          ],
+          "youtube": [],
+          "important": false
+        },
+        {
+          "id": 4119,
+          "title": "Find Minimum in Rotated Sorted Array",
+          "slug": "find-minimum-in-rotated-sorted-array",
+          "url": "https://leetcode.com/problems/find-minimum-in-rotated-sorted-array/",
+          "difficulty": "Medium",
+          "platform": "LeetCode",
+          "solution": null,
+          "solutions": [],
+          "youtube": [],
+          "important": false
+        },
+        {
+          "id": 4120,
+          "title": "Median of Two Sorted Arrays",
+          "slug": "median-of-two-sorted-arrays",
+          "url": "https://leetcode.com/problems/median-of-two-sorted-arrays/",
+          "difficulty": "Hard",
+          "platform": "LeetCode",
+          "solution": null,
+          "solutions": [],
+          "youtube": [],
+          "important": false
+        }
+      ]
+    },
+    {
+      "title": "Heap",
+      "problemCount": 4,
+      "problems": [
+        {
+          "id": 4121,
+          "title": "Kth Largest Element in an Array",
+          "slug": "kth-largest-element-in-an-array",
+          "url": "https://leetcode.com/problems/kth-largest-element-in-an-array/",
+          "difficulty": "Medium",
+          "platform": "LeetCode",
+          "solution": "https://github.com/chandanagrawal23/DSA-Sheet/blob/main/Kth_largest_in_array_heap.cpp",
+          "solutions": [
+            {
+              "title": "Solution",
+              "url": "https://github.com/chandanagrawal23/DSA-Sheet/blob/main/Kth_largest_in_array_heap.cpp"
+            }
+          ],
+          "youtube": [],
+          "important": false
+        },
+        {
+          "id": 4122,
+          "title": "Find K Pairs with Smallest Sums",
+          "slug": "find-k-pairs-with-smallest-sums",
+          "url": "https://leetcode.com/problems/find-k-pairs-with-smallest-sums/",
+          "difficulty": "Medium",
+          "platform": "LeetCode",
+          "solution": null,
+          "solutions": [],
+          "youtube": [],
+          "important": false
+        },
+        {
+          "id": 4123,
+          "title": "IPO",
+          "slug": "ipo",
+          "url": "https://leetcode.com/problems/ipo/",
+          "difficulty": "Hard",
+          "platform": "LeetCode",
+          "solution": null,
+          "solutions": [],
+          "youtube": [],
+          "important": false
+        },
+        {
+          "id": 4124,
+          "title": "Find Median from Data Stream",
+          "slug": "find-median-from-data-stream",
+          "url": "https://leetcode.com/problems/find-median-from-data-stream/",
+          "difficulty": "Hard",
+          "platform": "LeetCode",
+          "solution": null,
+          "solutions": [],
+          "youtube": [],
+          "important": false
+        }
+      ]
+    },
+    {
+      "title": "Bit Manipulation",
+      "problemCount": 6,
+      "problems": [
+        {
+          "id": 4125,
+          "title": "Add Binary",
+          "slug": "add-binary",
+          "url": "https://leetcode.com/problems/add-binary/",
+          "difficulty": "Easy",
+          "platform": "LeetCode",
+          "solution": "https://github.com/chandanagrawal23/DSA-Sheet/blob/main/Strings/AddBinary.cpp",
+          "solutions": [
+            {
+              "title": "Solution",
+              "url": "https://github.com/chandanagrawal23/DSA-Sheet/blob/main/Strings/AddBinary.cpp"
+            }
+          ],
+          "youtube": [],
+          "important": false
+        },
+        {
+          "id": 4126,
+          "title": "Reverse Bits",
+          "slug": "reverse-bits",
+          "url": "https://leetcode.com/problems/reverse-bits/",
+          "difficulty": "Easy",
+          "platform": "LeetCode",
+          "solution": null,
+          "solutions": [],
+          "youtube": [],
+          "important": false
+        },
+        {
+          "id": 4127,
+          "title": "Number of 1 Bits",
+          "slug": "number-of-1-bits",
+          "url": "https://leetcode.com/problems/number-of-1-bits/",
+          "difficulty": "Easy",
+          "platform": "LeetCode",
+          "solution": "https://github.com/chandanagrawal23/DSA-Sheet/blob/main/BitManipulation/NumberOf1Bits.cpp",
+          "solutions": [
+            {
+              "title": "Solution",
+              "url": "https://github.com/chandanagrawal23/DSA-Sheet/blob/main/BitManipulation/NumberOf1Bits.cpp"
+            }
+          ],
+          "youtube": [],
+          "important": false
+        },
+        {
+          "id": 4128,
+          "title": "Single Number",
+          "slug": "single-number",
+          "url": "https://leetcode.com/problems/single-number/",
+          "difficulty": "Easy",
+          "platform": "LeetCode",
+          "solution": null,
+          "solutions": [],
+          "youtube": [],
+          "important": false
+        },
+        {
+          "id": 4129,
+          "title": "Single Number II",
+          "slug": "single-number-ii",
+          "url": "https://leetcode.com/problems/single-number-ii/",
+          "difficulty": "Medium",
+          "platform": "LeetCode",
+          "solution": "https://github.com/chandanagrawal23/DSA-Sheet/blob/main/BitManipulation/SingleNumber_II.cpp",
+          "solutions": [
+            {
+              "title": "Solution",
+              "url": "https://github.com/chandanagrawal23/DSA-Sheet/blob/main/BitManipulation/SingleNumber_II.cpp"
+            }
+          ],
+          "youtube": [],
+          "important": false
+        },
+        {
+          "id": 4130,
+          "title": "Bitwise AND of Numbers Range",
+          "slug": "bitwise-and-of-numbers-range",
+          "url": "https://leetcode.com/problems/bitwise-and-of-numbers-range/",
+          "difficulty": "Medium",
+          "platform": "LeetCode",
+          "solution": null,
+          "solutions": [],
+          "youtube": [],
+          "important": false
+        }
+      ]
+    },
+    {
+      "title": "Math",
+      "problemCount": 6,
+      "problems": [
+        {
+          "id": 4131,
+          "title": "Palindrome Number",
+          "slug": "palindrome-number",
+          "url": "https://leetcode.com/problems/palindrome-number/",
+          "difficulty": "Easy",
+          "platform": "LeetCode",
+          "solution": null,
+          "solutions": [],
+          "youtube": [],
+          "important": false
+        },
+        {
+          "id": 4132,
+          "title": "Plus One",
+          "slug": "plus-one",
+          "url": "https://leetcode.com/problems/plus-one/",
+          "difficulty": "Easy",
+          "platform": "LeetCode",
+          "solution": null,
+          "solutions": [],
+          "youtube": [],
+          "important": false
+        },
+        {
+          "id": 4133,
+          "title": "Sqrt(x)",
+          "slug": "sqrtx",
+          "url": "https://leetcode.com/problems/sqrtx/",
+          "difficulty": "Easy",
+          "platform": "LeetCode",
+          "solution": "https://github.com/chandanagrawal23/DSA-Sheet/blob/main/SQRT_BinarySearch.cpp",
+          "solutions": [
+            {
+              "title": "Solution",
+              "url": "https://github.com/chandanagrawal23/DSA-Sheet/blob/main/SQRT_BinarySearch.cpp"
+            }
+          ],
+          "youtube": [],
+          "important": false
+        },
+        {
+          "id": 4134,
+          "title": "Factorial Trailing Zeroes",
+          "slug": "factorial-trailing-zeroes",
+          "url": "https://leetcode.com/problems/factorial-trailing-zeroes/",
+          "difficulty": "Medium",
+          "platform": "LeetCode",
+          "solution": null,
+          "solutions": [],
+          "youtube": [],
+          "important": false
+        },
+        {
+          "id": 4135,
+          "title": "Pow(x, n)",
+          "slug": "powx-n",
+          "url": "https://leetcode.com/problems/powx-n/",
+          "difficulty": "Medium",
+          "platform": "LeetCode",
+          "solution": null,
+          "solutions": [],
+          "youtube": [],
+          "important": false
+        },
+        {
+          "id": 4136,
+          "title": "Max Points on a Line",
+          "slug": "max-points-on-a-line",
+          "url": "https://leetcode.com/problems/max-points-on-a-line/",
+          "difficulty": "Hard",
+          "platform": "LeetCode",
+          "solution": "https://github.com/chandanagrawal23/DSA-Sheet/blob/main/maxPointsOnLine.cpp",
+          "solutions": [
+            {
+              "title": "Solution",
+              "url": "https://github.com/chandanagrawal23/DSA-Sheet/blob/main/maxPointsOnLine.cpp"
+            }
+          ],
+          "youtube": [],
+          "important": false
+        }
+      ]
+    },
+    {
+      "title": "1D DP",
+      "problemCount": 5,
+      "problems": [
+        {
+          "id": 4137,
+          "title": "Climbing Stairs",
+          "slug": "climbing-stairs",
+          "url": "https://leetcode.com/problems/climbing-stairs/",
+          "difficulty": "Easy",
+          "platform": "LeetCode",
+          "solution": null,
+          "solutions": [],
+          "youtube": [],
+          "important": false
+        },
+        {
+          "id": 4138,
+          "title": "House Robber",
+          "slug": "house-robber",
+          "url": "https://leetcode.com/problems/house-robber/",
+          "difficulty": "Medium",
+          "platform": "LeetCode",
+          "solution": null,
+          "solutions": [],
+          "youtube": [],
+          "important": false
+        },
+        {
+          "id": 4139,
+          "title": "Word Break",
+          "slug": "word-break",
+          "url": "https://leetcode.com/problems/word-break/",
+          "difficulty": "Medium",
+          "platform": "LeetCode",
+          "solution": null,
+          "solutions": [],
+          "youtube": [],
+          "important": false
+        },
+        {
+          "id": 4140,
+          "title": "Coin Change",
+          "slug": "coin-change",
+          "url": "https://leetcode.com/problems/coin-change/",
+          "difficulty": "Medium",
+          "platform": "LeetCode",
+          "solution": "https://github.com/chandanagrawal23/DSA-Sheet/blob/main/DP/CoinChange.cpp",
+          "solutions": [
+            {
+              "title": "Solution",
+              "url": "https://github.com/chandanagrawal23/DSA-Sheet/blob/main/DP/CoinChange.cpp"
+            }
+          ],
+          "youtube": [],
+          "important": false
+        },
+        {
+          "id": 4141,
+          "title": "Longest Increasing Subsequence",
+          "slug": "longest-increasing-subsequence",
+          "url": "https://leetcode.com/problems/longest-increasing-subsequence/",
+          "difficulty": "Medium",
+          "platform": "LeetCode",
+          "solution": "https://github.com/chandanagrawal23/DSA-Sheet/blob/main/DP/LongestIncreasingSubsequence_usingDP.cpp",
+          "solutions": [
+            {
+              "title": "Solution",
+              "url": "https://github.com/chandanagrawal23/DSA-Sheet/blob/main/DP/LongestIncreasingSubsequence_usingDP.cpp"
+            }
+          ],
+          "youtube": [],
+          "important": false
+        }
+      ]
+    },
+    {
+      "title": "MultiDimensional DP",
+      "problemCount": 9,
+      "problems": [
+        {
+          "id": 4142,
+          "title": "Triangle",
+          "slug": "triangle",
+          "url": "https://leetcode.com/problems/triangle/",
+          "difficulty": "Medium",
+          "platform": "LeetCode",
+          "solution": null,
+          "solutions": [],
+          "youtube": [],
+          "important": false
+        },
+        {
+          "id": 4143,
+          "title": "Minimum Path Sum",
+          "slug": "minimum-path-sum",
+          "url": "https://leetcode.com/problems/minimum-path-sum/",
+          "difficulty": "Medium",
+          "platform": "LeetCode",
+          "solution": "https://github.com/chandanagrawal23/DSA-Sheet/blob/main/MinimumPathSum.cpp",
+          "solutions": [
+            {
+              "title": "Solution",
+              "url": "https://github.com/chandanagrawal23/DSA-Sheet/blob/main/MinimumPathSum.cpp"
+            }
+          ],
+          "youtube": [],
+          "important": false
+        },
+        {
+          "id": 4144,
+          "title": "Unique Paths II",
+          "slug": "unique-paths-ii",
+          "url": "https://leetcode.com/problems/unique-paths-ii/",
+          "difficulty": "Medium",
+          "platform": "LeetCode",
+          "solution": "https://github.com/chandanagrawal23/DSA-Sheet/blob/main/Unique_Path_II.cpp",
+          "solutions": [
+            {
+              "title": "Solution",
+              "url": "https://github.com/chandanagrawal23/DSA-Sheet/blob/main/Unique_Path_II.cpp"
+            }
+          ],
+          "youtube": [],
+          "important": false
+        },
+        {
+          "id": 4145,
+          "title": "Longest Palindromic Substring",
+          "slug": "longest-palindromic-substring",
+          "url": "https://leetcode.com/problems/longest-palindromic-substring/",
+          "difficulty": "Medium",
+          "platform": "LeetCode",
+          "solution": null,
+          "solutions": [],
+          "youtube": [],
+          "important": false
+        },
+        {
+          "id": 4146,
+          "title": "Interleaving String",
+          "slug": "interleaving-string",
+          "url": "https://leetcode.com/problems/interleaving-string/",
+          "difficulty": "Medium",
+          "platform": "LeetCode",
+          "solution": null,
+          "solutions": [],
+          "youtube": [],
+          "important": false
+        },
+        {
+          "id": 4147,
+          "title": "Edit Distance",
+          "slug": "edit-distance",
+          "url": "https://leetcode.com/problems/edit-distance/",
+          "difficulty": "Medium",
+          "platform": "LeetCode",
+          "solution": "https://github.com/chandanagrawal23/DSA-Sheet/blob/main/DP/EditDistance.cpp",
+          "solutions": [
+            {
+              "title": "Solution",
+              "url": "https://github.com/chandanagrawal23/DSA-Sheet/blob/main/DP/EditDistance.cpp"
+            }
+          ],
+          "youtube": [],
+          "important": false
+        },
+        {
+          "id": 4148,
+          "title": "Maximal Square",
+          "slug": "maximal-square",
+          "url": "https://leetcode.com/problems/maximal-square/",
+          "difficulty": "Medium",
+          "platform": "LeetCode",
+          "solution": null,
+          "solutions": [],
+          "youtube": [],
+          "important": false
+        },
+        {
+          "id": 4149,
+          "title": "Best Time to Buy and Sell Stock III",
+          "slug": "best-time-to-buy-and-sell-stock-iii",
+          "url": "https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iii/",
+          "difficulty": "Hard",
+          "platform": "LeetCode",
+          "solution": null,
+          "solutions": [],
+          "youtube": [],
+          "important": false
+        },
+        {
+          "id": 4150,
+          "title": "Best Time to Buy and Sell Stock IV",
+          "slug": "best-time-to-buy-and-sell-stock-iv",
+          "url": "https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iv/",
+          "difficulty": "Hard",
+          "platform": "LeetCode",
+          "solution": null,
+          "solutions": [],
+          "youtube": [],
+          "important": false
+        }
+      ]
+    }
+  ]
+}

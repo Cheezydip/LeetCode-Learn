@@ -185,8 +185,26 @@
     "sliding-window-maximum",
     "water-and-jug-problem",
     "unique-email-addresses",
-    "first-bad-version"
+    "first-bad-version",
+    "maximum-good-subarray-sum",
+    "minimum-window-substring",
+    "house-robber",
+    "happy-number",
+    "multiply-strings",
+    "count-primes",
+    "number-of-subarrays-with-lcm-equal-to-k",
+    "longest-harmonious-subsequence",
+    "sum-of-first-n-natural-numbers",
+    "write-a-program-to-reverse-digits-of-a-number",
+    "program-check-given-year-leap-year",
+    "factorial-large-number",
+    "program-for-armstrong-numbers",
+    "to-find-smallest-and-second-smallest-element-in-an-array",
+    "swap-two-numbers-without-using-temporary-variable",
+    "check-if-given-number-is-perfect-square-in-cpp",
+    "greatest-common-divisor-of-strings",
+    "c-program-to-check-prime-number"
   ],
-  "totalSolvedCount": 185,
-  "updatedAt": "2026-09-21T16:01:56.128Z"
+  "totalSolvedCount": 203,
+  "updatedAt": "2026-09-28T15:36:44.133Z"
 }

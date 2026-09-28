@@ -354,20 +354,20 @@ export const PracticePage = () => {
   // Unsynced state
   if (!topicMetrics) {
     return (
-      <div className="space-y-8 animate-in fade-in duration-200">
+      <div className="space-y-8 animate-fade-slide-up">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-[#21262D] pb-5">
           <div>
             <div className="inline-flex items-center gap-2 px-2.5 py-0.5 rounded bg-[#161B22] border border-[#21262D] text-[#FF7A00] text-[11px] font-mono mb-2 font-semibold">
               <span>Weak Spots & Practice Queue</span>
             </div>
-            <h1 className="text-xl sm:text-2xl font-bold font-mono text-[#F0F6FC]">
+            <h1 className="text-xl sm:text-2xl font-extrabold text-[#F0F6FC] animate-heading-reveal">
               Weak Spots & Practice Queue
             </h1>
           </div>
         </div>
         <div className="p-8 rounded-xl bg-[#0D1117] border border-[#21262D] text-center space-y-3">
           <AlertTriangle className="size-8 text-[#FF7A00] mx-auto" />
-          <p className="text-sm text-[#8B949E] font-mono">
+          <p className="text-sm text-[#8B949E]">
             Sync your LeetCode profile first to detect weak spots across all topics.
           </p>
           <p className="text-xs text-[#484F58] font-mono">
@@ -379,7 +379,7 @@ export const PracticePage = () => {
   }
 
   return (
-    <div className="space-y-8 animate-in fade-in duration-200">
+    <div className="space-y-8 animate-fade-slide-up">
       
       {/* Title & Context */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-[#21262D] pb-5">
@@ -387,7 +387,7 @@ export const PracticePage = () => {
           <div className="inline-flex items-center gap-2 px-2.5 py-0.5 rounded bg-[#161B22] border border-[#21262D] text-[#FF7A00] text-[11px] font-mono mb-2 font-semibold">
             <span>Weak Spots & Practice Queue</span>
           </div>
-          <h1 className="text-xl sm:text-2xl font-bold font-mono text-[#F0F6FC]">
+          <h1 className="text-xl sm:text-2xl font-extrabold text-[#F0F6FC] animate-heading-reveal">
             Weak Spots & Practice Queue
           </h1>
           <p className="text-xs text-[#8B949E] font-mono mt-1">

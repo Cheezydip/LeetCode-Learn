@@ -1,0 +1,1980 @@
+{
+  "key": "lld",
+  "name": "Low-Level Design & Machine Coding",
+  "description": "Object-Oriented Programming, SOLID principles, 22 Gang of Four design patterns, and 38+ real-world machine coding scenarios.",
+  "badge": "System Architecture",
+  "totalProblems": 78,
+  "difficulties": {
+    "Easy": 4,
+    "Medium": 49,
+    "Hard": 25
+  },
+  "sections": [
+    {
+      "title": "OOP Concepts",
+      "problemCount": 18,
+      "subsections": [
+        {
+          "title": "What is OOP?",
+          "problemCount": 3,
+          "problems": [
+            {
+              "id": 6001,
+              "title": "What is Object-Oriented Programming?",
+              "slug": "object-oriented-programming-oops-concept-in-java",
+              "url": "https://www.geeksforgeeks.org/object-oriented-programming-oops-concept-in-java/",
+              "difficulty": "Easy",
+              "platform": "GeeksforGeeks",
+              "solution": null,
+              "solutions": [
+                {
+                  "title": "GeeksforGeeks Tutorial",
+                  "url": "https://www.geeksforgeeks.org/object-oriented-programming-oops-concept-in-java/"
+                },
+                {
+                  "title": "TutorialsPoint Guide",
+                  "url": "https://www.tutorialspoint.com/java/java_object_classes.htm"
+                },
+                {
+                  "title": "JavaTpoint Explanation",
+                  "url": "https://www.javatpoint.com/java-oops-concepts"
+                },
+                {
+                  "title": "Oracle Documentation",
+                  "url": "https://docs.oracle.com/javase/tutorial/java/concepts/"
+                }
+              ],
+              "youtube": [
+                {
+                  "title": "OOP Concepts Explained",
+                  "url": "https://www.youtube.com/watch?v=pTB0EiLXUC8"
+                },
+                {
+                  "title": "Java OOP Tutorial",
+                  "url": "https://www.youtube.com/watch?v=6T_HgnjoYwM"
+                },
+                {
+                  "title": "Object Oriented Programming",
+                  "url": "https://www.youtube.com/watch?v=SiBw7os-_zI"
+                }
+              ],
+              "important": false
+            },
+            {
+              "id": 6002,
+              "title": "Difference between Class and Object",
+              "slug": "difference-between-class-and-object",
+              "url": "https://www.geeksforgeeks.org/difference-between-class-and-object/",
+              "difficulty": "Easy",
+              "platform": "GeeksforGeeks",
+              "solution": null,
+              "solutions": [
+                {
+                  "title": "GeeksforGeeks Explanation",
+                  "url": "https://www.geeksforgeeks.org/difference-between-class-and-object/"
+                },
+                {
+                  "title": "JavaTpoint Comparison",
+                  "url": "https://www.javatpoint.com/difference-between-object-and-class"
+                },
+                {
+                  "title": "TutorialsPoint Guide",
+                  "url": "https://www.tutorialspoint.com/java/java_object_classes.htm"
+                }
+              ],
+              "youtube": [
+                {
+                  "title": "Class vs Object Explained",
+                  "url": "https://www.youtube.com/watch?v=8yjkWGRlUmY"
+                },
+                {
+                  "title": "Java Classes and Objects",
+                  "url": "https://www.youtube.com/watch?v=IUqKuGNasdM"
+                }
+              ],
+              "important": false
+            },
+            {
+              "id": 6003,
+              "title": "Constructor and Destructor",
+              "slug": "constructors-c",
+              "url": "https://www.geeksforgeeks.org/constructors-c/",
+              "difficulty": "Easy",
+              "platform": "GeeksforGeeks",
+              "solution": null,
+              "solutions": [
+                {
+                  "title": "GeeksforGeeks C++ Constructors",
+                  "url": "https://www.geeksforgeeks.org/constructors-c/"
+                },
+                {
+                  "title": "TutorialsPoint C++ Guide",
+                  "url": "https://www.tutorialspoint.com/cplusplus/cpp_constructor_destructor.htm"
+                },
+                {
+                  "title": "Java Constructors",
+                  "url": "https://www.geeksforgeeks.org/constructors-in-java/"
+                }
+              ],
+              "youtube": [
+                {
+                  "title": "Constructor & Destructor Tutorial",
+                  "url": "https://www.youtube.com/watch?v=1LTw5cUC1-k"
+                },
+                {
+                  "title": "Java Constructor Explained",
+                  "url": "https://www.youtube.com/watch?v=fi_23zAaGwY"
+                }
+              ],
+              "important": false
+            }
+          ]
+        },
+        {
+          "title": "4 Pillars of OOP",
+          "problemCount": 4,
+          "problems": [
+            {
+              "id": 6004,
+              "title": "Abstraction - Concept and Implementation",
+              "slug": "abstraction-in-java-2",
+              "url": "https://www.geeksforgeeks.org/abstraction-in-java-2/",
+              "difficulty": "Medium",
+              "platform": "GeeksforGeeks",
+              "solution": null,
+              "solutions": [
+                {
+                  "title": "GeeksforGeeks Abstraction",
+                  "url": "https://www.geeksforgeeks.org/abstraction-in-java-2/"
+                },
+                {
+                  "title": "JavaTpoint Abstract Classes",
+                  "url": "https://www.javatpoint.com/abstract-class-in-java"
+                },
+                {
+                  "title": "TutorialsPoint Guide",
+                  "url": "https://www.tutorialspoint.com/java/java_abstraction.htm"
+                },
+                {
+                  "title": "Baeldung Tutorial",
+                  "url": "https://www.baeldung.com/java-abstract-class"
+                }
+              ],
+              "youtube": [
+                {
+                  "title": "Abstraction in Java",
+                  "url": "https://www.youtube.com/watch?v=L1-zCdrx8Lk"
+                },
+                {
+                  "title": "Abstract Classes Explained",
+                  "url": "https://www.youtube.com/watch?v=HvPlEJ3LHgE"
+                },
+                {
+                  "title": "Data Abstraction Tutorial",
+                  "url": "https://www.youtube.com/watch?v=6T_HgnjoYwM"
+                }
+              ],
+              "important": false
+            },
+            {
+              "id": 6005,
+              "title": "Encapsulation - Data Hiding",
+              "slug": "encapsulation-in-java",
+              "url": "https://www.geeksforgeeks.org/encapsulation-in-java/",
+              "difficulty": "Medium",
+              "platform": "GeeksforGeeks",
+              "solution": null,
+              "solutions": [
+                {
+                  "title": "GeeksforGeeks Encapsulation",
+                  "url": "https://www.geeksforgeeks.org/encapsulation-in-java/"
+                },
+                {
+                  "title": "TutorialsPoint Guide",
+                  "url": "https://www.tutorialspoint.com/java/java_encapsulation.htm"
+                },
+                {
+                  "title": "JavaTpoint Tutorial",
+                  "url": "https://www.javatpoint.com/encapsulation"
+                },
+                {
+                  "title": "Oracle Documentation",
+                  "url": "https://docs.oracle.com/javase/tutorial/java/javaOO/accesscontrol.html"
+                }
+              ],
+              "youtube": [
+                {
+                  "title": "Encapsulation in Java",
+                  "url": "https://www.youtube.com/watch?v=cU94So54cr8"
+                },
+                {
+                  "title": "Data Hiding Explained",
+                  "url": "https://www.youtube.com/watch?v=NYVKqXR7OQE"
+                },
+                {
+                  "title": "Getters and Setters",
+                  "url": "https://www.youtube.com/watch?v=Ryj-K2zNa5k"
+                }
+              ],
+              "important": false
+            },
+            {
+              "id": 6006,
+              "title": "Inheritance - Types and Implementation",
+              "slug": "inheritance-in-java",
+              "url": "https://www.geeksforgeeks.org/inheritance-in-java/",
+              "difficulty": "Medium",
+              "platform": "GeeksforGeeks",
+              "solution": "https://www.javatpoint.com/inheritance-in-java",
+              "solutions": [
+                {
+                  "title": "Solution",
+                  "url": "https://www.javatpoint.com/inheritance-in-java"
+                }
+              ],
+              "youtube": [
+                {
+                  "title": "Video Solution",
+                  "url": "https://www.youtube.com/watch?v=9JpNY-XAseg"
+                }
+              ],
+              "important": false
+            },
+            {
+              "id": 6007,
+              "title": "Polymorphism - Runtime and Compile Time",
+              "slug": "polymorphism-in-java",
+              "url": "https://www.geeksforgeeks.org/polymorphism-in-java/",
+              "difficulty": "Medium",
+              "platform": "GeeksforGeeks",
+              "solution": "https://www.tutorialspoint.com/java/java_polymorphism.htm",
+              "solutions": [
+                {
+                  "title": "Solution",
+                  "url": "https://www.tutorialspoint.com/java/java_polymorphism.htm"
+                }
+              ],
+              "youtube": [
+                {
+                  "title": "Video Solution",
+                  "url": "https://www.youtube.com/watch?v=jhDUxynEQRI"
+                }
+              ],
+              "important": false
+            }
+          ]
+        },
+        {
+          "title": "SOLID Principles",
+          "problemCount": 5,
+          "problems": [
+            {
+              "id": 6008,
+              "title": "S – Single Responsibility Principle",
+              "slug": "single-responsibility-principle-in-java-with-examples",
+              "url": "https://www.geeksforgeeks.org/single-responsibility-principle-in-java-with-examples/",
+              "difficulty": "Medium",
+              "platform": "GeeksforGeeks",
+              "solution": null,
+              "solutions": [
+                {
+                  "title": "GeeksforGeeks SRP Guide",
+                  "url": "https://www.geeksforgeeks.org/single-responsibility-principle-in-java-with-examples/"
+                },
+                {
+                  "title": "Baeldung SRP Tutorial",
+                  "url": "https://www.baeldung.com/java-single-responsibility-principle"
+                },
+                {
+                  "title": "Refactoring Guru",
+                  "url": "https://refactoring.guru/didp/solid/srp"
+                },
+                {
+                  "title": "Clean Code Examples",
+                  "url": "https://blog.cleancoder.com/uncle-bob/2014/05/08/SingleReponsibilityPrinciple.html"
+                }
+              ],
+              "youtube": [
+                {
+                  "title": "SRP Explained Simply",
+                  "url": "https://www.youtube.com/watch?v=UQqY3_6Epbg"
+                },
+                {
+                  "title": "SOLID Principles Part 1",
+                  "url": "https://www.youtube.com/watch?v=pTB0EiLXUC8"
+                },
+                {
+                  "title": "Clean Code SRP",
+                  "url": "https://www.youtube.com/watch?v=Gt0M_OHKhQE"
+                }
+              ],
+              "important": false
+            },
+            {
+              "id": 6009,
+              "title": "O – Open/Closed Principle",
+              "slug": "open-closed-principle-in-java-with-examples",
+              "url": "https://www.geeksforgeeks.org/open-closed-principle-in-java-with-examples/",
+              "difficulty": "Medium",
+              "platform": "GeeksforGeeks",
+              "solution": null,
+              "solutions": [
+                {
+                  "title": "GeeksforGeeks OCP Guide",
+                  "url": "https://www.geeksforgeeks.org/open-closed-principle-in-java-with-examples/"
+                },
+                {
+                  "title": "Baeldung OCP Tutorial",
+                  "url": "https://www.baeldung.com/java-open-closed-principle"
+                },
+                {
+                  "title": "Refactoring Guru OCP",
+                  "url": "https://refactoring.guru/didp/solid/ocp"
+                }
+              ],
+              "youtube": [
+                {
+                  "title": "Open/Closed Principle",
+                  "url": "https://www.youtube.com/watch?v=VFlk43QGEgc"
+                },
+                {
+                  "title": "SOLID Principles Part 2",
+                  "url": "https://www.youtube.com/watch?v=6T_HgnjoYwM"
+                }
+              ],
+              "important": false
+            },
+            {
+              "id": 6010,
+              "title": "L – Liskov Substitution Principle",
+              "slug": "liskov-substitution-principle",
+              "url": "https://www.geeksforgeeks.org/liskov-substitution-principle/",
+              "difficulty": "Medium",
+              "platform": "GeeksforGeeks",
+              "solution": "https://www.baeldung.com/java-liskov-substitution-principle",
+              "solutions": [
+                {
+                  "title": "Solution",
+                  "url": "https://www.baeldung.com/java-liskov-substitution-principle"
+                }
+              ],
+              "youtube": [
+                {
+                  "title": "Video Solution",
+                  "url": "https://www.youtube.com/watch?v=-Z-17h3jG0A"
+                }
+              ],
+              "important": false
+            },
+            {
+              "id": 6011,
+              "title": "I – Interface Segregation Principle",
+              "slug": "interface-segregation-principle-in-java-with-examples",
+              "url": "https://www.geeksforgeeks.org/interface-segregation-principle-in-java-with-examples/",
+              "difficulty": "Medium",
+              "platform": "GeeksforGeeks",
+              "solution": "https://www.baeldung.com/java-interface-segregation",
+              "solutions": [
+                {
+                  "title": "Solution",
+                  "url": "https://www.baeldung.com/java-interface-segregation"
+                }
+              ],
+              "youtube": [
+                {
+                  "title": "Video Solution",
+                  "url": "https://www.youtube.com/watch?v=y1JiMGP51NE"
+                }
+              ],
+              "important": false
+            },
+            {
+              "id": 6012,
+              "title": "D – Dependency Inversion Principle",
+              "slug": "dependecy-inversion-principle-in-java-with-examples",
+              "url": "https://www.geeksforgeeks.org/dependecy-inversion-principle-in-java-with-examples/",
+              "difficulty": "Medium",
+              "platform": "GeeksforGeeks",
+              "solution": "https://www.baeldung.com/java-dependency-inversion-principle",
+              "solutions": [
+                {
+                  "title": "Solution",
+                  "url": "https://www.baeldung.com/java-dependency-inversion-principle"
+                }
+              ],
+              "youtube": [
+                {
+                  "title": "Video Solution",
+                  "url": "https://www.youtube.com/watch?v=S9awxA1wNjU"
+                }
+              ],
+              "important": false
+            }
+          ]
+        },
+        {
+          "title": "Advanced OOP Concepts",
+          "problemCount": 3,
+          "problems": [
+            {
+              "id": 6013,
+              "title": "Composition vs Inheritance",
+              "slug": "composition-vs-inheritance",
+              "url": "https://www.geeksforgeeks.org/composition-vs-inheritance/",
+              "difficulty": "Medium",
+              "platform": "GeeksforGeeks",
+              "solution": "https://www.baeldung.com/java-composition-vs-inheritance",
+              "solutions": [
+                {
+                  "title": "Solution",
+                  "url": "https://www.baeldung.com/java-composition-vs-inheritance"
+                }
+              ],
+              "youtube": [
+                {
+                  "title": "Video Solution",
+                  "url": "https://www.youtube.com/watch?v=dYUZiJEy0JE"
+                }
+              ],
+              "important": false
+            },
+            {
+              "id": 6014,
+              "title": "Interface vs Abstract Class",
+              "slug": "difference-between-abstract-class-and-interface-in-java",
+              "url": "https://www.geeksforgeeks.org/difference-between-abstract-class-and-interface-in-java/",
+              "difficulty": "Medium",
+              "platform": "GeeksforGeeks",
+              "solution": "https://www.javatpoint.com/difference-between-abstract-class-and-interface",
+              "solutions": [
+                {
+                  "title": "Solution",
+                  "url": "https://www.javatpoint.com/difference-between-abstract-class-and-interface"
+                }
+              ],
+              "youtube": [
+                {
+                  "title": "Video Solution",
+                  "url": "https://www.youtube.com/watch?v=Ud3Vy4pzSV4"
+                }
+              ],
+              "important": false
+            },
+            {
+              "id": 6015,
+              "title": "Method Overloading vs Overriding",
+              "slug": "difference-between-method-overloading-and-method-overriding-in-java",
+              "url": "https://www.geeksforgeeks.org/difference-between-method-overloading-and-method-overriding-in-java/",
+              "difficulty": "Easy",
+              "platform": "GeeksforGeeks",
+              "solution": "https://www.javatpoint.com/method-overloading-vs-method-overriding-in-java",
+              "solutions": [
+                {
+                  "title": "Solution",
+                  "url": "https://www.javatpoint.com/method-overloading-vs-method-overriding-in-java"
+                }
+              ],
+              "youtube": [
+                {
+                  "title": "Video Solution",
+                  "url": "https://www.youtube.com/watch?v=6Beep1KliNE"
+                }
+              ],
+              "important": false
+            }
+          ]
+        },
+        {
+          "title": "Real-World Examples",
+          "problemCount": 3,
+          "problems": [
+            {
+              "id": 6016,
+              "title": "Zoo Management System Design",
+              "slug": "design-a-zoo-management-system",
+              "url": "https://www.geeksforgeeks.org/design-a-zoo-management-system/",
+              "difficulty": "Hard",
+              "platform": "GeeksforGeeks",
+              "solution": "https://github.com/tssovi/grokking-the-object-oriented-design-interview/blob/master/object-oriented-design-case-studies/design-a-zoo-management-system.md",
+              "solutions": [
+                {
+                  "title": "Solution",
+                  "url": "https://github.com/tssovi/grokking-the-object-oriented-design-interview/blob/master/object-oriented-design-case-studies/design-a-zoo-management-system.md"
+                }
+              ],
+              "youtube": [
+                {
+                  "title": "Video Solution",
+                  "url": "https://www.youtube.com/watch?v=D_6ybDcU5gc"
+                }
+              ],
+              "important": false
+            },
+            {
+              "id": 6017,
+              "title": "ATM System Design",
+              "slug": "design-an-atm-machine",
+              "url": "https://www.geeksforgeeks.org/design-an-atm-machine/",
+              "difficulty": "Hard",
+              "platform": "GeeksforGeeks",
+              "solution": "https://github.com/tssovi/grokking-the-object-oriented-design-interview/blob/master/object-oriented-design-case-studies/design-an-atm.md",
+              "solutions": [
+                {
+                  "title": "Solution",
+                  "url": "https://github.com/tssovi/grokking-the-object-oriented-design-interview/blob/master/object-oriented-design-case-studies/design-an-atm.md"
+                }
+              ],
+              "youtube": [
+                {
+                  "title": "Video Solution",
+                  "url": "https://www.youtube.com/watch?v=yX8kRGRrKlk"
+                }
+              ],
+              "important": false
+            },
+            {
+              "id": 6018,
+              "title": "Vehicle Rental System",
+              "slug": "design-a-car-rental-system",
+              "url": "https://www.geeksforgeeks.org/design-a-car-rental-system/",
+              "difficulty": "Hard",
+              "platform": "GeeksforGeeks",
+              "solution": "https://github.com/tssovi/grokking-the-object-oriented-design-interview/blob/master/object-oriented-design-case-studies/design-a-car-rental-system.md",
+              "solutions": [
+                {
+                  "title": "Solution",
+                  "url": "https://github.com/tssovi/grokking-the-object-oriented-design-interview/blob/master/object-oriented-design-case-studies/design-a-car-rental-system.md"
+                }
+              ],
+              "youtube": [
+                {
+                  "title": "Video Solution",
+                  "url": "https://www.youtube.com/watch?v=wy_qiQMKTdI"
+                }
+              ],
+              "important": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Design Patterns",
+      "problemCount": 22,
+      "subsections": [
+        {
+          "title": "Creational Patterns",
+          "problemCount": 5,
+          "problems": [
+            {
+              "id": 6019,
+              "title": "Singleton Pattern",
+              "slug": "singleton-design-pattern",
+              "url": "https://www.geeksforgeeks.org/singleton-design-pattern/",
+              "difficulty": "Medium",
+              "platform": "GeeksforGeeks",
+              "solution": null,
+              "solutions": [
+                {
+                  "title": "GeeksforGeeks Singleton",
+                  "url": "https://www.geeksforgeeks.org/singleton-design-pattern/"
+                },
+                {
+                  "title": "Refactoring Guru Guide",
+                  "url": "https://refactoring.guru/design-patterns/singleton"
+                },
+                {
+                  "title": "Baeldung Implementation",
+                  "url": "https://www.baeldung.com/java-singleton"
+                },
+                {
+                  "title": "Thread-Safe Singleton",
+                  "url": "https://www.journaldev.com/1377/java-singleton-design-pattern-best-practices-examples"
+                }
+              ],
+              "youtube": [
+                {
+                  "title": "Singleton Pattern Explained",
+                  "url": "https://www.youtube.com/watch?v=hUE_j6q0LTQ"
+                },
+                {
+                  "title": "Thread-Safe Singleton",
+                  "url": "https://www.youtube.com/watch?v=tSZn4wkBIu8"
+                },
+                {
+                  "title": "Design Patterns Series",
+                  "url": "https://www.youtube.com/watch?v=EcFVTgRHJLM"
+                }
+              ],
+              "important": false
+            },
+            {
+              "id": 6020,
+              "title": "Factory Pattern",
+              "slug": "factory-method-design-pattern-in-java",
+              "url": "https://www.geeksforgeeks.org/factory-method-design-pattern-in-java/",
+              "difficulty": "Medium",
+              "platform": "GeeksforGeeks",
+              "solution": "https://refactoring.guru/design-patterns/factory-method",
+              "solutions": [
+                {
+                  "title": "Solution",
+                  "url": "https://refactoring.guru/design-patterns/factory-method"
+                }
+              ],
+              "youtube": [
+                {
+                  "title": "Video Solution",
+                  "url": "https://www.youtube.com/watch?v=EcFVTgRHJLM"
+                }
+              ],
+              "important": false
+            },
+            {
+              "id": 6021,
+              "title": "Builder Pattern",
+              "slug": "builder-design-pattern",
+              "url": "https://www.geeksforgeeks.org/builder-design-pattern/",
+              "difficulty": "Medium",
+              "platform": "GeeksforGeeks",
+              "solution": "https://refactoring.guru/design-patterns/builder",
+              "solutions": [
+                {
+                  "title": "Solution",
+                  "url": "https://refactoring.guru/design-patterns/builder"
+                }
+              ],
+              "youtube": [
+                {
+                  "title": "Video Solution",
+                  "url": "https://www.youtube.com/watch?v=9XnsOpjclUg"
+                }
+              ],
+              "important": false
+            },
+            {
+              "id": 6069,
+              "title": "Abstract Factory Pattern",
+              "slug": "abstract-factory-design-pattern",
+              "url": "https://www.geeksforgeeks.org/abstract-factory-design-pattern/",
+              "difficulty": "Medium",
+              "platform": "GeeksforGeeks",
+              "solution": "https://refactoring.guru/design-patterns/abstract-factory",
+              "solutions": [
+                {
+                  "title": "Solution",
+                  "url": "https://refactoring.guru/design-patterns/abstract-factory"
+                }
+              ],
+              "youtube": [
+                {
+                  "title": "Video Solution",
+                  "url": "https://www.youtube.com/watch?v=EcFVTgRHJLM"
+                }
+              ],
+              "important": false
+            },
+            {
+              "id": 6022,
+              "title": "Prototype Pattern",
+              "slug": "prototype-design-pattern",
+              "url": "https://www.geeksforgeeks.org/prototype-design-pattern/",
+              "difficulty": "Medium",
+              "platform": "GeeksforGeeks",
+              "solution": "https://refactoring.guru/design-patterns/prototype",
+              "solutions": [
+                {
+                  "title": "Solution",
+                  "url": "https://refactoring.guru/design-patterns/prototype"
+                }
+              ],
+              "youtube": [
+                {
+                  "title": "Video Solution",
+                  "url": "https://www.youtube.com/watch?v=AFbZhRL0Uz8"
+                }
+              ],
+              "important": false
+            }
+          ]
+        },
+        {
+          "title": "Structural Patterns",
+          "problemCount": 7,
+          "problems": [
+            {
+              "id": 6024,
+              "title": "Composite Pattern",
+              "slug": "composite-design-pattern",
+              "url": "https://www.geeksforgeeks.org/composite-design-pattern/",
+              "difficulty": "Medium",
+              "platform": "GeeksforGeeks",
+              "solution": "https://refactoring.guru/design-patterns/composite",
+              "solutions": [
+                {
+                  "title": "Solution",
+                  "url": "https://refactoring.guru/design-patterns/composite"
+                }
+              ],
+              "youtube": [
+                {
+                  "title": "Video Solution",
+                  "url": "https://www.youtube.com/watch?v=EWDmWbJ4wRA"
+                }
+              ],
+              "important": false
+            },
+            {
+              "id": 6023,
+              "title": "Adapter Pattern",
+              "slug": "adapter-pattern",
+              "url": "https://www.geeksforgeeks.org/adapter-pattern/",
+              "difficulty": "Medium",
+              "platform": "GeeksforGeeks",
+              "solution": "https://refactoring.guru/design-patterns/adapter",
+              "solutions": [
+                {
+                  "title": "Solution",
+                  "url": "https://refactoring.guru/design-patterns/adapter"
+                }
+              ],
+              "youtube": [
+                {
+                  "title": "Video Solution",
+                  "url": "https://www.youtube.com/watch?v=2PKQtcJjYvc"
+                }
+              ],
+              "important": false
+            },
+            {
+              "id": 6025,
+              "title": "Decorator Pattern",
+              "slug": "decorator-design-pattern-in-java-with-example",
+              "url": "https://www.geeksforgeeks.org/decorator-design-pattern-in-java-with-example/",
+              "difficulty": "Medium",
+              "platform": "GeeksforGeeks",
+              "solution": "https://refactoring.guru/design-patterns/decorator",
+              "solutions": [
+                {
+                  "title": "Solution",
+                  "url": "https://refactoring.guru/design-patterns/decorator"
+                }
+              ],
+              "youtube": [
+                {
+                  "title": "Video Solution",
+                  "url": "https://www.youtube.com/watch?v=GCraGHx6gso"
+                }
+              ],
+              "important": false
+            },
+            {
+              "id": 6026,
+              "title": "Proxy Pattern",
+              "slug": "proxy-design-pattern",
+              "url": "https://www.geeksforgeeks.org/proxy-design-pattern/",
+              "difficulty": "Medium",
+              "platform": "GeeksforGeeks",
+              "solution": "https://refactoring.guru/design-patterns/proxy",
+              "solutions": [
+                {
+                  "title": "Solution",
+                  "url": "https://refactoring.guru/design-patterns/proxy"
+                }
+              ],
+              "youtube": [
+                {
+                  "title": "Video Solution",
+                  "url": "https://www.youtube.com/watch?v=NwaabHqPHeM"
+                }
+              ],
+              "important": false
+            },
+            {
+              "id": 6070,
+              "title": "Facade Pattern",
+              "slug": "facade-design-pattern",
+              "url": "https://www.geeksforgeeks.org/facade-design-pattern/",
+              "difficulty": "Medium",
+              "platform": "GeeksforGeeks",
+              "solution": "https://refactoring.guru/design-patterns/facade",
+              "solutions": [
+                {
+                  "title": "Solution",
+                  "url": "https://refactoring.guru/design-patterns/facade"
+                }
+              ],
+              "youtube": [
+                {
+                  "title": "Video Solution",
+                  "url": "https://www.youtube.com/watch?v=1j8d2a6b3gk"
+                }
+              ],
+              "important": false
+            },
+            {
+              "id": 6072,
+              "title": "Bridge Pattern",
+              "slug": "bridge-design-pattern",
+              "url": "https://www.geeksforgeeks.org/bridge-design-pattern/",
+              "difficulty": "Medium",
+              "platform": "GeeksforGeeks",
+              "solution": "https://refactoring.guru/design-patterns/bridge",
+              "solutions": [
+                {
+                  "title": "Solution",
+                  "url": "https://refactoring.guru/design-patterns/bridge"
+                }
+              ],
+              "youtube": [
+                {
+                  "title": "Video Solution",
+                  "url": "https://www.youtube.com/watch?v=8bZh5S7-2c4"
+                }
+              ],
+              "important": false
+            },
+            {
+              "id": 6071,
+              "title": "Flyweight Pattern",
+              "slug": "flyweight-design-pattern",
+              "url": "https://www.geeksforgeeks.org/flyweight-design-pattern/",
+              "difficulty": "Medium",
+              "platform": "GeeksforGeeks",
+              "solution": "https://refactoring.guru/design-patterns/flyweight",
+              "solutions": [
+                {
+                  "title": "Solution",
+                  "url": "https://refactoring.guru/design-patterns/flyweight"
+                }
+              ],
+              "youtube": [
+                {
+                  "title": "Video Solution",
+                  "url": "https://www.youtube.com/watch?v=8bZh5S7-2c4"
+                }
+              ],
+              "important": false
+            }
+          ]
+        },
+        {
+          "title": "Behavioral Patterns",
+          "problemCount": 10,
+          "problems": [
+            {
+              "id": 6027,
+              "title": "Strategy Pattern",
+              "slug": "strategy-pattern-set-1",
+              "url": "https://www.geeksforgeeks.org/strategy-pattern-set-1/",
+              "difficulty": "Medium",
+              "platform": "GeeksforGeeks",
+              "solution": "https://refactoring.guru/design-patterns/strategy",
+              "solutions": [
+                {
+                  "title": "Solution",
+                  "url": "https://refactoring.guru/design-patterns/strategy"
+                }
+              ],
+              "youtube": [
+                {
+                  "title": "Video Solution",
+                  "url": "https://www.youtube.com/watch?v=v9ejT8FO-7I"
+                }
+              ],
+              "important": false
+            },
+            {
+              "id": 6028,
+              "title": "Observer Pattern",
+              "slug": "observer-pattern-set-1-introduction",
+              "url": "https://www.geeksforgeeks.org/observer-pattern-set-1-introduction/",
+              "difficulty": "Medium",
+              "platform": "GeeksforGeeks",
+              "solution": "https://refactoring.guru/design-patterns/observer",
+              "solutions": [
+                {
+                  "title": "Solution",
+                  "url": "https://refactoring.guru/design-patterns/observer"
+                }
+              ],
+              "youtube": [
+                {
+                  "title": "Video Solution",
+                  "url": "https://www.youtube.com/watch?v=_BpmfnqjgzQ"
+                }
+              ],
+              "important": false
+            },
+            {
+              "id": 6074,
+              "title": "Iterator Pattern",
+              "slug": "iterator-design-pattern",
+              "url": "https://www.geeksforgeeks.org/iterator-design-pattern/",
+              "difficulty": "Medium",
+              "platform": "GeeksforGeeks",
+              "solution": "https://refactoring.guru/design-patterns/iterator",
+              "solutions": [
+                {
+                  "title": "Solution",
+                  "url": "https://refactoring.guru/design-patterns/iterator"
+                }
+              ],
+              "youtube": [
+                {
+                  "title": "Video Solution",
+                  "url": "https://www.youtube.com/watch?v=v9ejT8FO-7I"
+                }
+              ],
+              "important": false
+            },
+            {
+              "id": 6029,
+              "title": "Command Pattern",
+              "slug": "command-pattern",
+              "url": "https://www.geeksforgeeks.org/command-pattern/",
+              "difficulty": "Medium",
+              "platform": "GeeksforGeeks",
+              "solution": "https://refactoring.guru/design-patterns/command",
+              "solutions": [
+                {
+                  "title": "Solution",
+                  "url": "https://refactoring.guru/design-patterns/command"
+                }
+              ],
+              "youtube": [
+                {
+                  "title": "Video Solution",
+                  "url": "https://www.youtube.com/watch?v=9qA5kw8dcSU"
+                }
+              ],
+              "important": false
+            },
+            {
+              "id": 6077,
+              "title": "Template Pattern",
+              "slug": "template-method-design-pattern",
+              "url": "https://www.geeksforgeeks.org/template-method-design-pattern/",
+              "difficulty": "Medium",
+              "platform": "GeeksforGeeks",
+              "solution": "https://refactoring.guru/design-patterns/template-method",
+              "solutions": [
+                {
+                  "title": "Solution",
+                  "url": "https://refactoring.guru/design-patterns/template-method"
+                }
+              ],
+              "youtube": [
+                {
+                  "title": "Video Solution",
+                  "url": "https://www.youtube.com/watch?v=0bK8g1g1g1g"
+                }
+              ],
+              "important": false
+            },
+            {
+              "id": 6078,
+              "title": "Visitor Pattern",
+              "slug": "visitor-design-pattern",
+              "url": "https://www.geeksforgeeks.org/visitor-design-pattern/",
+              "difficulty": "Medium",
+              "platform": "GeeksforGeeks",
+              "solution": "https://refactoring.guru/design-patterns/visitor",
+              "solutions": [
+                {
+                  "title": "Solution",
+                  "url": "https://refactoring.guru/design-patterns/visitor"
+                }
+              ],
+              "youtube": [
+                {
+                  "title": "Video Solution",
+                  "url": "https://www.youtube.com/watch?v=0bK8g1g1g1g"
+                }
+              ],
+              "important": false
+            },
+            {
+              "id": 6030,
+              "title": "State Pattern",
+              "slug": "state-design-pattern",
+              "url": "https://www.geeksforgeeks.org/state-design-pattern/",
+              "difficulty": "Medium",
+              "platform": "GeeksforGeeks",
+              "solution": "https://refactoring.guru/design-patterns/state",
+              "solutions": [
+                {
+                  "title": "Solution",
+                  "url": "https://refactoring.guru/design-patterns/state"
+                }
+              ],
+              "youtube": [
+                {
+                  "title": "Video Solution",
+                  "url": "https://www.youtube.com/watch?v=N12L5D78MAA"
+                }
+              ],
+              "important": false
+            },
+            {
+              "id": 6073,
+              "title": "Chain of Responsibility Pattern",
+              "slug": "chain-of-responsibility-design-pattern",
+              "url": "https://www.geeksforgeeks.org/chain-of-responsibility-design-pattern/",
+              "difficulty": "Medium",
+              "platform": "GeeksforGeeks",
+              "solution": "https://refactoring.guru/design-patterns/chain-of-responsibility",
+              "solutions": [
+                {
+                  "title": "Solution",
+                  "url": "https://refactoring.guru/design-patterns/chain-of-responsibility"
+                }
+              ],
+              "youtube": [
+                {
+                  "title": "Video Solution",
+                  "url": "https://www.youtube.com/watch?v=4t8c6a1b2d0"
+                }
+              ],
+              "important": false
+            },
+            {
+              "id": 6076,
+              "title": "Memento Pattern",
+              "slug": "memento-design-pattern",
+              "url": "https://www.geeksforgeeks.org/memento-design-pattern/",
+              "difficulty": "Medium",
+              "platform": "GeeksforGeeks",
+              "solution": "https://refactoring.guru/design-patterns/memento",
+              "solutions": [
+                {
+                  "title": "Solution",
+                  "url": "https://refactoring.guru/design-patterns/memento"
+                }
+              ],
+              "youtube": [
+                {
+                  "title": "Video Solution",
+                  "url": "https://www.youtube.com/watch?v=0bK8g1g1g1g"
+                }
+              ],
+              "important": false
+            },
+            {
+              "id": 6075,
+              "title": "Mediator Pattern",
+              "slug": "mediator-design-pattern",
+              "url": "https://www.geeksforgeeks.org/mediator-design-pattern/",
+              "difficulty": "Medium",
+              "platform": "GeeksforGeeks",
+              "solution": "https://refactoring.guru/design-patterns/mediator",
+              "solutions": [
+                {
+                  "title": "Solution",
+                  "url": "https://refactoring.guru/design-patterns/mediator"
+                }
+              ],
+              "youtube": [
+                {
+                  "title": "Video Solution",
+                  "url": "https://www.youtube.com/watch?v=0bK8g1g1g1g"
+                }
+              ],
+              "important": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "50+ LLD Problems",
+      "problemCount": 38,
+      "subsections": [
+        {
+          "title": "Basic System Design",
+          "problemCount": 8,
+          "problems": [
+            {
+              "id": 6031,
+              "title": "Design a Parking Lot",
+              "slug": "design-a-parking-lot",
+              "url": "https://www.geeksforgeeks.org/design-a-parking-lot/",
+              "difficulty": "Medium",
+              "platform": "GeeksforGeeks",
+              "solution": "https://github.com/tssovi/grokking-the-object-oriented-design-interview/blob/master/object-oriented-design-case-studies/design-a-parking-lot.md",
+              "solutions": [
+                {
+                  "title": "Solution",
+                  "url": "https://github.com/tssovi/grokking-the-object-oriented-design-interview/blob/master/object-oriented-design-case-studies/design-a-parking-lot.md"
+                }
+              ],
+              "youtube": [
+                {
+                  "title": "Video Solution",
+                  "url": "https://www.youtube.com/watch?v=DSGsa0pu8-k"
+                }
+              ],
+              "important": false
+            },
+            {
+              "id": 6032,
+              "title": "Design an Elevator System",
+              "slug": "design-an-elevator-system",
+              "url": "https://www.geeksforgeeks.org/design-an-elevator-system/",
+              "difficulty": "Hard",
+              "platform": "GeeksforGeeks",
+              "solution": "https://github.com/tssovi/grokking-the-object-oriented-design-interview/blob/master/object-oriented-design-case-studies/design-an-elevator-system.md",
+              "solutions": [
+                {
+                  "title": "Solution",
+                  "url": "https://github.com/tssovi/grokking-the-object-oriented-design-interview/blob/master/object-oriented-design-case-studies/design-an-elevator-system.md"
+                }
+              ],
+              "youtube": [
+                {
+                  "title": "Video Solution",
+                  "url": "https://www.youtube.com/watch?v=siqfOwhW4B0"
+                }
+              ],
+              "important": false
+            },
+            {
+              "id": 6033,
+              "title": "Design a Library Management System",
+              "slug": "design-a-library-management-system",
+              "url": "https://www.geeksforgeeks.org/design-a-library-management-system/",
+              "difficulty": "Medium",
+              "platform": "GeeksforGeeks",
+              "solution": "https://github.com/tssovi/grokking-the-object-oriented-design-interview/blob/master/object-oriented-design-case-studies/design-a-library-management-system.md",
+              "solutions": [
+                {
+                  "title": "Solution",
+                  "url": "https://github.com/tssovi/grokking-the-object-oriented-design-interview/blob/master/object-oriented-design-case-studies/design-a-library-management-system.md"
+                }
+              ],
+              "youtube": [
+                {
+                  "title": "Video Solution",
+                  "url": "https://www.youtube.com/watch?v=Z_8zBOCTmyI"
+                }
+              ],
+              "important": false
+            },
+            {
+              "id": 6034,
+              "title": "Design a Hotel Management System",
+              "slug": "design-a-hotel-management-system",
+              "url": "https://www.geeksforgeeks.org/design-a-hotel-management-system/",
+              "difficulty": "Medium",
+              "platform": "GeeksforGeeks",
+              "solution": "https://github.com/tssovi/grokking-the-object-oriented-design-interview/blob/master/object-oriented-design-case-studies/design-a-hotel-management-system.md",
+              "solutions": [
+                {
+                  "title": "Solution",
+                  "url": "https://github.com/tssovi/grokking-the-object-oriented-design-interview/blob/master/object-oriented-design-case-studies/design-a-hotel-management-system.md"
+                }
+              ],
+              "youtube": [
+                {
+                  "title": "Video Solution",
+                  "url": "https://www.youtube.com/watch?v=YyOXt2MEkv4"
+                }
+              ],
+              "important": false
+            },
+            {
+              "id": 6035,
+              "title": "Design a Restaurant Management System",
+              "slug": "design-a-restaurant-management-system",
+              "url": "https://www.geeksforgeeks.org/design-a-restaurant-management-system/",
+              "difficulty": "Medium",
+              "platform": "GeeksforGeeks",
+              "solution": "https://github.com/tssovi/grokking-the-object-oriented-design-interview/blob/master/object-oriented-design-case-studies/design-a-restaurant-management-system.md",
+              "solutions": [
+                {
+                  "title": "Solution",
+                  "url": "https://github.com/tssovi/grokking-the-object-oriented-design-interview/blob/master/object-oriented-design-case-studies/design-a-restaurant-management-system.md"
+                }
+              ],
+              "youtube": [
+                {
+                  "title": "Video Solution",
+                  "url": "https://www.youtube.com/watch?v=i_sxVCiQGlk"
+                }
+              ],
+              "important": false
+            },
+            {
+              "id": 6036,
+              "title": "Design a Movie Ticket Booking System",
+              "slug": "design-a-movie-ticket-booking-system",
+              "url": "https://www.geeksforgeeks.org/design-a-movie-ticket-booking-system/",
+              "difficulty": "Hard",
+              "platform": "GeeksforGeeks",
+              "solution": "https://github.com/tssovi/grokking-the-object-oriented-design-interview/blob/master/object-oriented-design-case-studies/design-a-movie-ticket-booking-system.md",
+              "solutions": [
+                {
+                  "title": "Solution",
+                  "url": "https://github.com/tssovi/grokking-the-object-oriented-design-interview/blob/master/object-oriented-design-case-studies/design-a-movie-ticket-booking-system.md"
+                }
+              ],
+              "youtube": [
+                {
+                  "title": "Video Solution",
+                  "url": "https://www.youtube.com/watch?v=lBAwJgoO3Ek"
+                }
+              ],
+              "important": false
+            },
+            {
+              "id": 6037,
+              "title": "Design an Online Shopping System",
+              "slug": "design-an-online-shopping-system",
+              "url": "https://www.geeksforgeeks.org/design-an-online-shopping-system/",
+              "difficulty": "Hard",
+              "platform": "GeeksforGeeks",
+              "solution": "https://github.com/tssovi/grokking-the-object-oriented-design-interview/blob/master/object-oriented-design-case-studies/design-amazon-online-shopping-system.md",
+              "solutions": [
+                {
+                  "title": "Solution",
+                  "url": "https://github.com/tssovi/grokking-the-object-oriented-design-interview/blob/master/object-oriented-design-case-studies/design-amazon-online-shopping-system.md"
+                }
+              ],
+              "youtube": [
+                {
+                  "title": "Video Solution",
+                  "url": "https://www.youtube.com/watch?v=EpASu_1dUdE"
+                }
+              ],
+              "important": false
+            },
+            {
+              "id": 6038,
+              "title": "Design a Stack Overflow",
+              "slug": "design-stack-overflow",
+              "url": "https://www.geeksforgeeks.org/design-stack-overflow/",
+              "difficulty": "Hard",
+              "platform": "GeeksforGeeks",
+              "solution": "https://github.com/tssovi/grokking-the-object-oriented-design-interview/blob/master/object-oriented-design-case-studies/design-stack-overflow.md",
+              "solutions": [
+                {
+                  "title": "Solution",
+                  "url": "https://github.com/tssovi/grokking-the-object-oriented-design-interview/blob/master/object-oriented-design-case-studies/design-stack-overflow.md"
+                }
+              ],
+              "youtube": [
+                {
+                  "title": "Video Solution",
+                  "url": "https://www.youtube.com/watch?v=MzRvRJcE2Ww"
+                }
+              ],
+              "important": false
+            }
+          ]
+        },
+        {
+          "title": "Gaming Systems",
+          "problemCount": 5,
+          "problems": [
+            {
+              "id": 6039,
+              "title": "Design Chess Game",
+              "slug": "design-a-chess-game",
+              "url": "https://www.geeksforgeeks.org/design-a-chess-game/",
+              "difficulty": "Hard",
+              "platform": "GeeksforGeeks",
+              "solution": "https://github.com/tssovi/grokking-the-object-oriented-design-interview/blob/master/object-oriented-design-case-studies/design-a-chess-game.md",
+              "solutions": [
+                {
+                  "title": "Solution",
+                  "url": "https://github.com/tssovi/grokking-the-object-oriented-design-interview/blob/master/object-oriented-design-case-studies/design-a-chess-game.md"
+                }
+              ],
+              "youtube": [
+                {
+                  "title": "Video Solution",
+                  "url": "https://www.youtube.com/watch?v=yBsWza2039o"
+                }
+              ],
+              "important": false
+            },
+            {
+              "id": 6040,
+              "title": "Design Tic Tac Toe",
+              "slug": "design-tic-tac-toe",
+              "url": "https://leetcode.com/problems/design-tic-tac-toe/",
+              "difficulty": "Medium",
+              "platform": "LeetCode",
+              "solution": "https://github.com/tssovi/grokking-the-object-oriented-design-interview/blob/master/object-oriented-design-case-studies/design-tic-tac-toe.md",
+              "solutions": [
+                {
+                  "title": "Solution",
+                  "url": "https://github.com/tssovi/grokking-the-object-oriented-design-interview/blob/master/object-oriented-design-case-studies/design-tic-tac-toe.md"
+                }
+              ],
+              "youtube": [
+                {
+                  "title": "Video Solution",
+                  "url": "https://www.youtube.com/watch?v=gktZDxzOqHU"
+                }
+              ],
+              "important": false
+            },
+            {
+              "id": 6041,
+              "title": "Design Blackjack Game",
+              "slug": "design-a-blackjack-game",
+              "url": "https://www.geeksforgeeks.org/design-a-blackjack-game/",
+              "difficulty": "Medium",
+              "platform": "GeeksforGeeks",
+              "solution": "https://github.com/tssovi/grokking-the-object-oriented-design-interview/blob/master/object-oriented-design-case-studies/design-blackjack-and-a-deck-of-cards.md",
+              "solutions": [
+                {
+                  "title": "Solution",
+                  "url": "https://github.com/tssovi/grokking-the-object-oriented-design-interview/blob/master/object-oriented-design-case-studies/design-blackjack-and-a-deck-of-cards.md"
+                }
+              ],
+              "youtube": [
+                {
+                  "title": "Video Solution",
+                  "url": "https://www.youtube.com/watch?v=qk7N4Wv4ir8"
+                }
+              ],
+              "important": false
+            },
+            {
+              "id": 6042,
+              "title": "Design Snake and Ladder Game",
+              "slug": "design-snake-and-ladder-game",
+              "url": "https://www.geeksforgeeks.org/design-snake-and-ladder-game/",
+              "difficulty": "Medium",
+              "platform": "GeeksforGeeks",
+              "solution": "https://github.com/anomaly2104/lld-snake-ladder",
+              "solutions": [
+                {
+                  "title": "Solution",
+                  "url": "https://github.com/anomaly2104/lld-snake-ladder"
+                }
+              ],
+              "youtube": [
+                {
+                  "title": "Video Solution",
+                  "url": "https://www.youtube.com/watch?v=OutDY_ICb80"
+                }
+              ],
+              "important": false
+            },
+            {
+              "id": 6043,
+              "title": "Design Ludo Game",
+              "slug": "design-a-ludo-game",
+              "url": "https://www.geeksforgeeks.org/design-a-ludo-game/",
+              "difficulty": "Hard",
+              "platform": "GeeksforGeeks",
+              "solution": "https://github.com/anomaly2104/lld-ludo-game",
+              "solutions": [
+                {
+                  "title": "Solution",
+                  "url": "https://github.com/anomaly2104/lld-ludo-game"
+                }
+              ],
+              "youtube": [
+                {
+                  "title": "Video Solution",
+                  "url": "https://www.youtube.com/watch?v=K27EJH5xqBg"
+                }
+              ],
+              "important": false
+            }
+          ]
+        },
+        {
+          "title": "Transportation Systems",
+          "problemCount": 4,
+          "problems": [
+            {
+              "id": 6044,
+              "title": "Design Uber/Ola Cab Service",
+              "slug": "design-uber-backend",
+              "url": "https://www.geeksforgeeks.org/design-uber-backend/",
+              "difficulty": "Hard",
+              "platform": "GeeksforGeeks",
+              "solution": "https://github.com/tssovi/grokking-the-object-oriented-design-interview/blob/master/object-oriented-design-case-studies/design-uber.md",
+              "solutions": [
+                {
+                  "title": "Solution",
+                  "url": "https://github.com/tssovi/grokking-the-object-oriented-design-interview/blob/master/object-oriented-design-case-studies/design-uber.md"
+                }
+              ],
+              "youtube": [
+                {
+                  "title": "Video Solution",
+                  "url": "https://www.youtube.com/watch?v=umWABit-wbk"
+                }
+              ],
+              "important": false
+            },
+            {
+              "id": 6045,
+              "title": "Design Flight Reservation System",
+              "slug": "design-an-airline-management-system",
+              "url": "https://www.geeksforgeeks.org/design-an-airline-management-system/",
+              "difficulty": "Hard",
+              "platform": "GeeksforGeeks",
+              "solution": "https://github.com/tssovi/grokking-the-object-oriented-design-interview/blob/master/object-oriented-design-case-studies/design-an-airline-management-system.md",
+              "solutions": [
+                {
+                  "title": "Solution",
+                  "url": "https://github.com/tssovi/grokking-the-object-oriented-design-interview/blob/master/object-oriented-design-case-studies/design-an-airline-management-system.md"
+                }
+              ],
+              "youtube": [
+                {
+                  "title": "Video Solution",
+                  "url": "https://www.youtube.com/watch?v=qpyayCM4obA"
+                }
+              ],
+              "important": false
+            },
+            {
+              "id": 6046,
+              "title": "Design Car Rental System",
+              "slug": "design-a-car-rental-system",
+              "url": "https://www.geeksforgeeks.org/design-a-car-rental-system/",
+              "difficulty": "Medium",
+              "platform": "GeeksforGeeks",
+              "solution": "https://github.com/tssovi/grokking-the-object-oriented-design-interview/blob/master/object-oriented-design-case-studies/design-a-car-rental-system.md",
+              "solutions": [
+                {
+                  "title": "Solution",
+                  "url": "https://github.com/tssovi/grokking-the-object-oriented-design-interview/blob/master/object-oriented-design-case-studies/design-a-car-rental-system.md"
+                }
+              ],
+              "youtube": [
+                {
+                  "title": "Video Solution",
+                  "url": "https://www.youtube.com/watch?v=wy_qiQMKTdI"
+                }
+              ],
+              "important": false
+            },
+            {
+              "id": 6047,
+              "title": "Design Traffic Control System",
+              "slug": "design-a-traffic-control-system",
+              "url": "https://www.geeksforgeeks.org/design-a-traffic-control-system/",
+              "difficulty": "Medium",
+              "platform": "GeeksforGeeks",
+              "solution": "https://github.com/anomaly2104/lld-traffic-signal-system",
+              "solutions": [
+                {
+                  "title": "Solution",
+                  "url": "https://github.com/anomaly2104/lld-traffic-signal-system"
+                }
+              ],
+              "youtube": [
+                {
+                  "title": "Video Solution",
+                  "url": "https://www.youtube.com/watch?v=7LtqhECHDhU"
+                }
+              ],
+              "important": false
+            }
+          ]
+        },
+        {
+          "title": "Social Media & Communication",
+          "problemCount": 5,
+          "problems": [
+            {
+              "id": 6048,
+              "title": "Design Facebook",
+              "slug": "design-facebook-a-social-network",
+              "url": "https://www.geeksforgeeks.org/design-facebook-a-social-network/",
+              "difficulty": "Hard",
+              "platform": "GeeksforGeeks",
+              "solution": "https://github.com/tssovi/grokking-the-object-oriented-design-interview/blob/master/object-oriented-design-case-studies/design-facebook.md",
+              "solutions": [
+                {
+                  "title": "Solution",
+                  "url": "https://github.com/tssovi/grokking-the-object-oriented-design-interview/blob/master/object-oriented-design-case-studies/design-facebook.md"
+                }
+              ],
+              "youtube": [
+                {
+                  "title": "Video Solution",
+                  "url": "https://www.youtube.com/watch?v=YaYr7XivhqE"
+                }
+              ],
+              "important": false
+            },
+            {
+              "id": 6049,
+              "title": "Design WhatsApp",
+              "slug": "design-whatsapp-a-system-design-interview-question",
+              "url": "https://www.geeksforgeeks.org/design-whatsapp-a-system-design-interview-question/",
+              "difficulty": "Hard",
+              "platform": "GeeksforGeeks",
+              "solution": "https://github.com/tssovi/grokking-the-object-oriented-design-interview/blob/master/object-oriented-design-case-studies/design-whatsapp.md",
+              "solutions": [
+                {
+                  "title": "Solution",
+                  "url": "https://github.com/tssovi/grokking-the-object-oriented-design-interview/blob/master/object-oriented-design-case-studies/design-whatsapp.md"
+                }
+              ],
+              "youtube": [
+                {
+                  "title": "Video Solution",
+                  "url": "https://www.youtube.com/watch?v=vvhC64hQZMk"
+                }
+              ],
+              "important": false
+            },
+            {
+              "id": 6050,
+              "title": "Design LinkedIn",
+              "slug": "design-linkedin-a-system-design-interview-question",
+              "url": "https://www.geeksforgeeks.org/design-linkedin-a-system-design-interview-question/",
+              "difficulty": "Hard",
+              "platform": "GeeksforGeeks",
+              "solution": "https://github.com/tssovi/grokking-the-object-oriented-design-interview/blob/master/object-oriented-design-case-studies/design-linkedin.md",
+              "solutions": [
+                {
+                  "title": "Solution",
+                  "url": "https://github.com/tssovi/grokking-the-object-oriented-design-interview/blob/master/object-oriented-design-case-studies/design-linkedin.md"
+                }
+              ],
+              "youtube": [
+                {
+                  "title": "Video Solution",
+                  "url": "https://www.youtube.com/watch?v=QMcDsQb-2mw"
+                }
+              ],
+              "important": false
+            },
+            {
+              "id": 6051,
+              "title": "Design Twitter",
+              "slug": "design-twitter-a-system-design-interview-question",
+              "url": "https://www.geeksforgeeks.org/design-twitter-a-system-design-interview-question/",
+              "difficulty": "Hard",
+              "platform": "GeeksforGeeks",
+              "solution": "https://github.com/tssovi/grokking-the-object-oriented-design-interview/blob/master/object-oriented-design-case-studies/design-twitter.md",
+              "solutions": [
+                {
+                  "title": "Solution",
+                  "url": "https://github.com/tssovi/grokking-the-object-oriented-design-interview/blob/master/object-oriented-design-case-studies/design-twitter.md"
+                }
+              ],
+              "youtube": [
+                {
+                  "title": "Video Solution",
+                  "url": "https://www.youtube.com/watch?v=KmAyPUv9gOY"
+                }
+              ],
+              "important": false
+            },
+            {
+              "id": 6052,
+              "title": "Design Instagram",
+              "slug": "design-instagram-a-system-design-interview-question",
+              "url": "https://www.geeksforgeeks.org/design-instagram-a-system-design-interview-question/",
+              "difficulty": "Hard",
+              "platform": "GeeksforGeeks",
+              "solution": "https://github.com/tssovi/grokking-the-object-oriented-design-interview/blob/master/object-oriented-design-case-studies/design-instagram.md",
+              "solutions": [
+                {
+                  "title": "Solution",
+                  "url": "https://github.com/tssovi/grokking-the-object-oriented-design-interview/blob/master/object-oriented-design-case-studies/design-instagram.md"
+                }
+              ],
+              "youtube": [
+                {
+                  "title": "Video Solution",
+                  "url": "https://www.youtube.com/watch?v=VJpfO6KdyWE"
+                }
+              ],
+              "important": false
+            }
+          ]
+        },
+        {
+          "title": "Financial Systems",
+          "problemCount": 4,
+          "problems": [
+            {
+              "id": 6053,
+              "title": "Design ATM Machine",
+              "slug": "design-an-atm-machine",
+              "url": "https://www.geeksforgeeks.org/design-an-atm-machine/",
+              "difficulty": "Medium",
+              "platform": "GeeksforGeeks",
+              "solution": "https://github.com/tssovi/grokking-the-object-oriented-design-interview/blob/master/object-oriented-design-case-studies/design-an-atm.md",
+              "solutions": [
+                {
+                  "title": "Solution",
+                  "url": "https://github.com/tssovi/grokking-the-object-oriented-design-interview/blob/master/object-oriented-design-case-studies/design-an-atm.md"
+                }
+              ],
+              "youtube": [
+                {
+                  "title": "Video Solution",
+                  "url": "https://www.youtube.com/watch?v=yX8kRGRrKlk"
+                }
+              ],
+              "important": false
+            },
+            {
+              "id": 6054,
+              "title": "Design Banking System",
+              "slug": "design-a-banking-system",
+              "url": "https://www.geeksforgeeks.org/design-a-banking-system/",
+              "difficulty": "Hard",
+              "platform": "GeeksforGeeks",
+              "solution": "https://github.com/anomaly2104/lld-banking-system",
+              "solutions": [
+                {
+                  "title": "Solution",
+                  "url": "https://github.com/anomaly2104/lld-banking-system"
+                }
+              ],
+              "youtube": [
+                {
+                  "title": "Video Solution",
+                  "url": "https://www.youtube.com/watch?v=7LtqhECHDhU"
+                }
+              ],
+              "important": false
+            },
+            {
+              "id": 6055,
+              "title": "Design Stock Trading System",
+              "slug": "design-a-stock-trading-system",
+              "url": "https://www.geeksforgeeks.org/design-a-stock-trading-system/",
+              "difficulty": "Hard",
+              "platform": "GeeksforGeeks",
+              "solution": "https://github.com/anomaly2104/lld-stock-exchange",
+              "solutions": [
+                {
+                  "title": "Solution",
+                  "url": "https://github.com/anomaly2104/lld-stock-exchange"
+                }
+              ],
+              "youtube": [
+                {
+                  "title": "Video Solution",
+                  "url": "https://www.youtube.com/watch?v=dUMWMZmMsVE"
+                }
+              ],
+              "important": false
+            },
+            {
+              "id": 6056,
+              "title": "Design Payment Gateway",
+              "slug": "design-a-payment-system",
+              "url": "https://www.geeksforgeeks.org/design-a-payment-system/",
+              "difficulty": "Hard",
+              "platform": "GeeksforGeeks",
+              "solution": "https://github.com/anomaly2104/lld-payment-gateway",
+              "solutions": [
+                {
+                  "title": "Solution",
+                  "url": "https://github.com/anomaly2104/lld-payment-gateway"
+                }
+              ],
+              "youtube": [
+                {
+                  "title": "Video Solution",
+                  "url": "https://www.youtube.com/watch?v=olfaBgJrUBI"
+                }
+              ],
+              "important": false
+            }
+          ]
+        },
+        {
+          "title": "E-commerce & Marketplace",
+          "problemCount": 4,
+          "problems": [
+            {
+              "id": 6057,
+              "title": "Design Amazon/Flipkart",
+              "slug": "design-amazon-online-shopping-system",
+              "url": "https://www.geeksforgeeks.org/design-amazon-online-shopping-system/",
+              "difficulty": "Hard",
+              "platform": "GeeksforGeeks",
+              "solution": "https://github.com/tssovi/grokking-the-object-oriented-design-interview/blob/master/object-oriented-design-case-studies/design-amazon-online-shopping-system.md",
+              "solutions": [
+                {
+                  "title": "Solution",
+                  "url": "https://github.com/tssovi/grokking-the-object-oriented-design-interview/blob/master/object-oriented-design-case-studies/design-amazon-online-shopping-system.md"
+                }
+              ],
+              "youtube": [
+                {
+                  "title": "Video Solution",
+                  "url": "https://www.youtube.com/watch?v=EpASu_1dUdE"
+                }
+              ],
+              "important": false
+            },
+            {
+              "id": 6058,
+              "title": "Design Food Delivery System (Zomato/Swiggy)",
+              "slug": "design-food-delivery-system-like-swiggy-zomato",
+              "url": "https://www.geeksforgeeks.org/design-food-delivery-system-like-swiggy-zomato/",
+              "difficulty": "Hard",
+              "platform": "GeeksforGeeks",
+              "solution": "https://github.com/anomaly2104/lld-food-delivery-zomato-swiggy",
+              "solutions": [
+                {
+                  "title": "Solution",
+                  "url": "https://github.com/anomaly2104/lld-food-delivery-zomato-swiggy"
+                }
+              ],
+              "youtube": [
+                {
+                  "title": "Video Solution",
+                  "url": "https://www.youtube.com/watch?v=M4lR_Va97cQ"
+                }
+              ],
+              "important": false
+            },
+            {
+              "id": 6059,
+              "title": "Design Auction System",
+              "slug": "design-an-auction-system",
+              "url": "https://www.geeksforgeeks.org/design-an-auction-system/",
+              "difficulty": "Medium",
+              "platform": "GeeksforGeeks",
+              "solution": "https://github.com/anomaly2104/lld-auction-system",
+              "solutions": [
+                {
+                  "title": "Solution",
+                  "url": "https://github.com/anomaly2104/lld-auction-system"
+                }
+              ],
+              "youtube": [
+                {
+                  "title": "Video Solution",
+                  "url": "https://www.youtube.com/watch?v=ZbM3am3K3dM"
+                }
+              ],
+              "important": false
+            },
+            {
+              "id": 6060,
+              "title": "Design Inventory Management System",
+              "slug": "design-an-inventory-management-system",
+              "url": "https://www.geeksforgeeks.org/design-an-inventory-management-system/",
+              "difficulty": "Medium",
+              "platform": "GeeksforGeeks",
+              "solution": "https://github.com/anomaly2104/lld-inventory-management",
+              "solutions": [
+                {
+                  "title": "Solution",
+                  "url": "https://github.com/anomaly2104/lld-inventory-management"
+                }
+              ],
+              "youtube": [
+                {
+                  "title": "Video Solution",
+                  "url": "https://www.youtube.com/watch?v=lX4CrbXMsNQ"
+                }
+              ],
+              "important": false
+            }
+          ]
+        },
+        {
+          "title": "Entertainment & Media",
+          "problemCount": 4,
+          "problems": [
+            {
+              "id": 6061,
+              "title": "Design Netflix/YouTube",
+              "slug": "design-netflix-a-system-design-interview-question",
+              "url": "https://www.geeksforgeeks.org/design-netflix-a-system-design-interview-question/",
+              "difficulty": "Hard",
+              "platform": "GeeksforGeeks",
+              "solution": "https://github.com/tssovi/grokking-the-object-oriented-design-interview/blob/master/object-oriented-design-case-studies/design-netflix.md",
+              "solutions": [
+                {
+                  "title": "Solution",
+                  "url": "https://github.com/tssovi/grokking-the-object-oriented-design-interview/blob/master/object-oriented-design-case-studies/design-netflix.md"
+                }
+              ],
+              "youtube": [
+                {
+                  "title": "Video Solution",
+                  "url": "https://www.youtube.com/watch?v=psQzyFfsUGU"
+                }
+              ],
+              "important": false
+            },
+            {
+              "id": 6062,
+              "title": "Design Spotify/Music Streaming",
+              "slug": "design-spotify-a-system-design-interview-question",
+              "url": "https://www.geeksforgeeks.org/design-spotify-a-system-design-interview-question/",
+              "difficulty": "Hard",
+              "platform": "GeeksforGeeks",
+              "solution": "https://github.com/anomaly2104/lld-music-streaming-service",
+              "solutions": [
+                {
+                  "title": "Solution",
+                  "url": "https://github.com/anomaly2104/lld-music-streaming-service"
+                }
+              ],
+              "youtube": [
+                {
+                  "title": "Video Solution",
+                  "url": "https://www.youtube.com/watch?v=VvZf7lISfgs"
+                }
+              ],
+              "important": false
+            },
+            {
+              "id": 6063,
+              "title": "Design Online Judge System",
+              "slug": "design-an-online-judge-system",
+              "url": "https://www.geeksforgeeks.org/design-an-online-judge-system/",
+              "difficulty": "Hard",
+              "platform": "GeeksforGeeks",
+              "solution": "https://github.com/anomaly2104/lld-online-judge",
+              "solutions": [
+                {
+                  "title": "Solution",
+                  "url": "https://github.com/anomaly2104/lld-online-judge"
+                }
+              ],
+              "youtube": [
+                {
+                  "title": "Video Solution",
+                  "url": "https://www.youtube.com/watch?v=B1J6k2j2eJg"
+                }
+              ],
+              "important": false
+            },
+            {
+              "id": 6064,
+              "title": "Design News Feed System",
+              "slug": "design-a-news-feed-system",
+              "url": "https://www.geeksforgeeks.org/design-a-news-feed-system/",
+              "difficulty": "Medium",
+              "platform": "GeeksforGeeks",
+              "solution": "https://github.com/anomaly2104/lld-news-feed-system",
+              "solutions": [
+                {
+                  "title": "Solution",
+                  "url": "https://github.com/anomaly2104/lld-news-feed-system"
+                }
+              ],
+              "youtube": [
+                {
+                  "title": "Video Solution",
+                  "url": "https://www.youtube.com/watch?v=QmX2NPkJTKg"
+                }
+              ],
+              "important": false
+            }
+          ]
+        },
+        {
+          "title": "Productivity & Collaboration",
+          "problemCount": 4,
+          "problems": [
+            {
+              "id": 6065,
+              "title": "Design Google Calendar",
+              "slug": "design-a-calendar-application",
+              "url": "https://www.geeksforgeeks.org/design-a-calendar-application/",
+              "difficulty": "Medium",
+              "platform": "GeeksforGeeks",
+              "solution": "https://github.com/anomaly2104/lld-calendar-scheduling-system",
+              "solutions": [
+                {
+                  "title": "Solution",
+                  "url": "https://github.com/anomaly2104/lld-calendar-scheduling-system"
+                }
+              ],
+              "youtube": [
+                {
+                  "title": "Video Solution",
+                  "url": "https://www.youtube.com/watch?v=3Q_oYDQ2whs"
+                }
+              ],
+              "important": true
+            },
+            {
+              "id": 6066,
+              "title": "Design Meeting Scheduler",
+              "slug": "design-a-meeting-scheduler",
+              "url": "https://www.geeksforgeeks.org/design-a-meeting-scheduler/",
+              "difficulty": "Medium",
+              "platform": "GeeksforGeeks",
+              "solution": "https://github.com/anomaly2104/lld-meeting-scheduler",
+              "solutions": [
+                {
+                  "title": "Solution",
+                  "url": "https://github.com/anomaly2104/lld-meeting-scheduler"
+                }
+              ],
+              "youtube": [
+                {
+                  "title": "Video Solution",
+                  "url": "https://www.youtube.com/watch?v=weVkHfSHWfM"
+                }
+              ],
+              "important": false
+            },
+            {
+              "id": 6067,
+              "title": "Design Task Management System",
+              "slug": "design-a-task-management-system",
+              "url": "https://www.geeksforgeeks.org/design-a-task-management-system/",
+              "difficulty": "Medium",
+              "platform": "GeeksforGeeks",
+              "solution": "https://github.com/anomaly2104/lld-task-management-system",
+              "solutions": [
+                {
+                  "title": "Solution",
+                  "url": "https://github.com/anomaly2104/lld-task-management-system"
+                }
+              ],
+              "youtube": [
+                {
+                  "title": "Video Solution",
+                  "url": "https://www.youtube.com/watch?v=A2e1Zt-1s5I"
+                }
+              ],
+              "important": false
+            },
+            {
+              "id": 6068,
+              "title": "Design File Storage System (Google Drive)",
+              "slug": "design-dropbox-a-system-design-interview-question",
+              "url": "https://www.geeksforgeeks.org/design-dropbox-a-system-design-interview-question/",
+              "difficulty": "Hard",
+              "platform": "GeeksforGeeks",
+              "solution": "https://github.com/tssovi/grokking-the-object-oriented-design-interview/blob/master/object-oriented-design-case-studies/design-dropbox.md",
+              "solutions": [
+                {
+                  "title": "Solution",
+                  "url": "https://github.com/tssovi/grokking-the-object-oriented-design-interview/blob/master/object-oriented-design-case-studies/design-dropbox.md"
+                }
+              ],
+              "youtube": [
+                {
+                  "title": "Video Solution",
+                  "url": "https://www.youtube.com/watch?v=U0xTu6E2CT8"
+                }
+              ],
+              "important": false
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

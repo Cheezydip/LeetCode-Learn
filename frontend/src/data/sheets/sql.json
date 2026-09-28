@@ -1,0 +1,2689 @@
+{
+  "key": "sql",
+  "name": "SQL & Database Mastery",
+  "description": "180+ SQL interview challenges ranging from foundational DML/Joins to Window Functions, CTEs, and query optimization.",
+  "badge": "Database Track",
+  "totalProblems": 189,
+  "difficulties": {
+    "Easy": 61,
+    "Medium": 81,
+    "Hard": 47
+  },
+  "sections": [
+    {
+      "title": "Foundational SQL",
+      "problemCount": 46,
+      "problems": [],
+      "subsections": [
+        {
+          "title": "Data Manipulation (DML)",
+          "problemCount": 24,
+          "problems": [
+            {
+              "id": 5001,
+              "title": "Insert Single Employee Record",
+              "slug": "insert-a-record",
+              "url": "https://www.hackerrank.com/challenges/insert-a-record/problem",
+              "difficulty": "Easy",
+              "platform": "HackerRank",
+              "solution": null,
+              "solutions": [],
+              "youtube": [],
+              "important": false
+            },
+            {
+              "id": 5002,
+              "title": "Insert Multiple Rows into Orders",
+              "slug": "sql-insert-statement",
+              "url": "https://www.geeksforgeeks.org/sql-insert-statement/",
+              "difficulty": "Easy",
+              "platform": "GeeksforGeeks",
+              "solution": null,
+              "solutions": [],
+              "youtube": [],
+              "important": false
+            },
+            {
+              "id": 5003,
+              "title": "Insert with Default Values",
+              "slug": "insert-with-default-values",
+              "url": "https://www.sqlzoo.net/wiki/INSERT_with_DEFAULT",
+              "difficulty": "Easy",
+              "platform": "Other",
+              "solution": null,
+              "solutions": [],
+              "youtube": [],
+              "important": false
+            },
+            {
+              "id": 5004,
+              "title": "Delete Duplicate Emails",
+              "slug": "delete-duplicate-emails",
+              "url": "https://leetcode.com/problems/delete-duplicate-emails/",
+              "difficulty": "Easy",
+              "platform": "LeetCode",
+              "solution": "https://leetcode.com/problems/delete-duplicate-emails/solution/",
+              "solutions": [
+                {
+                  "title": "Solution",
+                  "url": "https://leetcode.com/problems/delete-duplicate-emails/solution/"
+                }
+              ],
+              "youtube": [],
+              "important": false
+            },
+            {
+              "id": 5005,
+              "title": "Delete Inactive Users",
+              "slug": "delete-inactive-users",
+              "url": "https://www.hackerrank.com/challenges/delete-inactive-users/problem",
+              "difficulty": "Easy",
+              "platform": "HackerRank",
+              "solution": null,
+              "solutions": [],
+              "youtube": [],
+              "important": false
+            },
+            {
+              "id": 5006,
+              "title": "Delete Records Older Than 30 Days",
+              "slug": "delete-records-older-than-30-days",
+              "url": "https://www.sqlzoo.net/wiki/DELETE_with_WHERE",
+              "difficulty": "Easy",
+              "platform": "Other",
+              "solution": null,
+              "solutions": [],
+              "youtube": [],
+              "important": false
+            },
+            {
+              "id": 5007,
+              "title": "Swap Salary",
+              "slug": "swap-salary",
+              "url": "https://leetcode.com/problems/swap-salary/",
+              "difficulty": "Easy",
+              "platform": "LeetCode",
+              "solution": "https://leetcode.com/problems/swap-salary/solution/",
+              "solutions": [
+                {
+                  "title": "Solution",
+                  "url": "https://leetcode.com/problems/swap-salary/solution/"
+                }
+              ],
+              "youtube": [],
+              "important": false
+            },
+            {
+              "id": 5008,
+              "title": "Update Employee Status",
+              "slug": "update-employee-status",
+              "url": "https://www.sqlzoo.net/wiki/UPDATE_statement",
+              "difficulty": "Easy",
+              "platform": "Other",
+              "solution": null,
+              "solutions": [],
+              "youtube": [],
+              "important": false
+            },
+            {
+              "id": 5009,
+              "title": "Increase Salary by Percentage",
+              "slug": "update-salary",
+              "url": "https://www.hackerrank.com/challenges/update-salary/problem",
+              "difficulty": "Easy",
+              "platform": "HackerRank",
+              "solution": null,
+              "solutions": [],
+              "youtube": [],
+              "important": false
+            },
+            {
+              "id": 5010,
+              "title": "Insert Records from Another Table",
+              "slug": "insert-from-select",
+              "url": "https://www.hackerrank.com/challenges/insert-from-select/problem",
+              "difficulty": "Medium",
+              "platform": "HackerRank",
+              "solution": null,
+              "solutions": [],
+              "youtube": [],
+              "important": false
+            },
+            {
+              "id": 5011,
+              "title": "Insert Unique Product IDs",
+              "slug": "insert-unique-product-ids",
+              "url": "",
+              "difficulty": "Medium",
+              "platform": "Other",
+              "solution": null,
+              "solutions": [],
+              "youtube": [],
+              "important": false
+            },
+            {
+              "id": 5012,
+              "title": "Insert with Subquery",
+              "slug": "insert-with-subquery",
+              "url": "https://www.sqlzoo.net/wiki/INSERT_with_SUBQUERY",
+              "difficulty": "Medium",
+              "platform": "Other",
+              "solution": null,
+              "solutions": [],
+              "youtube": [],
+              "important": false
+            },
+            {
+              "id": 5013,
+              "title": "Delete with Join",
+              "slug": "sql-delete-join",
+              "url": "https://www.geeksforgeeks.org/sql-delete-join/",
+              "difficulty": "Medium",
+              "platform": "GeeksforGeeks",
+              "solution": null,
+              "solutions": [],
+              "youtube": [],
+              "important": false
+            },
+            {
+              "id": 5014,
+              "title": "Delete Rows Based on Subquery",
+              "slug": "delete-rows-based-on-subquery",
+              "url": "",
+              "difficulty": "Medium",
+              "platform": "Other",
+              "solution": null,
+              "solutions": [],
+              "youtube": [],
+              "important": false
+            },
+            {
+              "id": 5015,
+              "title": "Delete All Except Top N",
+              "slug": "delete-all-except-top-n",
+              "url": "",
+              "difficulty": "Medium",
+              "platform": "Other",
+              "solution": null,
+              "solutions": [],
+              "youtube": [],
+              "important": false
+            },
+            {
+              "id": 5016,
+              "title": "Update Records with Join",
+              "slug": "sql-update-with-join",
+              "url": "https://www.geeksforgeeks.org/sql-update-with-join/",
+              "difficulty": "Medium",
+              "platform": "GeeksforGeeks",
+              "solution": null,
+              "solutions": [],
+              "youtube": [],
+              "important": false
+            },
+            {
+              "id": 5017,
+              "title": "Update Based on Subquery",
+              "slug": "update-based-on-subquery",
+              "url": "",
+              "difficulty": "Medium",
+              "platform": "Other",
+              "solution": null,
+              "solutions": [],
+              "youtube": [],
+              "important": false
+            },
+            {
+              "id": 5018,
+              "title": "Update Multiple Columns Conditionally",
+              "slug": "update-multiple-columns-conditionally",
+              "url": "",
+              "difficulty": "Medium",
+              "platform": "Other",
+              "solution": null,
+              "solutions": [],
+              "youtube": [],
+              "important": false
+            },
+            {
+              "id": 5019,
+              "title": "Update Prices with Inflation Rate",
+              "slug": "update-prices-with-inflation-rate",
+              "url": "",
+              "difficulty": "Hard",
+              "platform": "Other",
+              "solution": null,
+              "solutions": [],
+              "youtube": [],
+              "important": false
+            },
+            {
+              "id": 5020,
+              "title": "Update with Window Function",
+              "slug": "update-with-window-function",
+              "url": "",
+              "difficulty": "Hard",
+              "platform": "Other",
+              "solution": null,
+              "solutions": [],
+              "youtube": [],
+              "important": false
+            },
+            {
+              "id": 5021,
+              "title": "Bulk Insert from CSV",
+              "slug": "how-to-import-csv-file-in-sql-server",
+              "url": "https://www.geeksforgeeks.org/how-to-import-csv-file-in-sql-server/",
+              "difficulty": "Hard",
+              "platform": "GeeksforGeeks",
+              "solution": null,
+              "solutions": [],
+              "youtube": [],
+              "important": false
+            },
+            {
+              "id": 5022,
+              "title": "Insert with Conditional Logic",
+              "slug": "insert-with-conditional-logic",
+              "url": "",
+              "difficulty": "Hard",
+              "platform": "Other",
+              "solution": null,
+              "solutions": [],
+              "youtube": [],
+              "important": false
+            },
+            {
+              "id": 5023,
+              "title": "Delete Overlapping Intervals",
+              "slug": "non-overlapping-intervals",
+              "url": "https://leetcode.com/problems/non-overlapping-intervals/",
+              "difficulty": "Hard",
+              "platform": "LeetCode",
+              "solution": "https://leetcode.com/problems/non-overlapping-intervals/solution/",
+              "solutions": [
+                {
+                  "title": "Solution",
+                  "url": "https://leetcode.com/problems/non-overlapping-intervals/solution/"
+                }
+              ],
+              "youtube": [],
+              "important": false
+            },
+            {
+              "id": 5024,
+              "title": "Cascading Delete in Related Tables",
+              "slug": "sql-on-delete-cascade",
+              "url": "https://www.geeksforgeeks.org/sql-on-delete-cascade/",
+              "difficulty": "Hard",
+              "platform": "GeeksforGeeks",
+              "solution": null,
+              "solutions": [],
+              "youtube": [],
+              "important": false
+            }
+          ]
+        },
+        {
+          "title": "Basic Queries (SELECT)",
+          "problemCount": 12,
+          "problems": [
+            {
+              "id": 5025,
+              "title": "Big Countries",
+              "slug": "big-countries",
+              "url": "https://leetcode.com/problems/big-countries/",
+              "difficulty": "Easy",
+              "platform": "LeetCode",
+              "solution": "https://leetcode.com/problems/big-countries/solution/",
+              "solutions": [
+                {
+                  "title": "Solution",
+                  "url": "https://leetcode.com/problems/big-countries/solution/"
+                }
+              ],
+              "youtube": [],
+              "important": false
+            },
+            {
+              "id": 5026,
+              "title": "Customers Who Never Order",
+              "slug": "customers-who-never-order",
+              "url": "https://leetcode.com/problems/customers-who-never-order/",
+              "difficulty": "Easy",
+              "platform": "LeetCode",
+              "solution": "https://leetcode.com/problems/customers-who-never-order/solution/",
+              "solutions": [
+                {
+                  "title": "Solution",
+                  "url": "https://leetcode.com/problems/customers-who-never-order/solution/"
+                }
+              ],
+              "youtube": [],
+              "important": false
+            },
+            {
+              "id": 5027,
+              "title": "Find Customer Referee",
+              "slug": "find-customer-referee",
+              "url": "https://leetcode.com/problems/find-customer-referee/",
+              "difficulty": "Easy",
+              "platform": "LeetCode",
+              "solution": "https://leetcode.com/problems/find-customer-referee/solution/",
+              "solutions": [
+                {
+                  "title": "Solution",
+                  "url": "https://leetcode.com/problems/find-customer-referee/solution/"
+                }
+              ],
+              "youtube": [],
+              "important": false
+            },
+            {
+              "id": 5028,
+              "title": "Article Views I",
+              "slug": "article-views-i",
+              "url": "https://leetcode.com/problems/article-views-i/",
+              "difficulty": "Easy",
+              "platform": "LeetCode",
+              "solution": "https://leetcode.com/problems/article-views-i/solution/",
+              "solutions": [
+                {
+                  "title": "Solution",
+                  "url": "https://leetcode.com/problems/article-views-i/solution/"
+                }
+              ],
+              "youtube": [],
+              "important": false
+            },
+            {
+              "id": 5029,
+              "title": "Invalid Tweets",
+              "slug": "invalid-tweets",
+              "url": "https://leetcode.com/problems/invalid-tweets/",
+              "difficulty": "Easy",
+              "platform": "LeetCode",
+              "solution": "https://leetcode.com/problems/invalid-tweets/solution/",
+              "solutions": [
+                {
+                  "title": "Solution",
+                  "url": "https://leetcode.com/problems/invalid-tweets/solution/"
+                }
+              ],
+              "youtube": [],
+              "important": false
+            },
+            {
+              "id": 5030,
+              "title": "Product Sales Analysis I",
+              "slug": "product-sales-analysis-i",
+              "url": "https://leetcode.com/problems/product-sales-analysis-i/",
+              "difficulty": "Easy",
+              "platform": "LeetCode",
+              "solution": "https://leetcode.com/problems/product-sales-analysis-i/solution/",
+              "solutions": [
+                {
+                  "title": "Solution",
+                  "url": "https://leetcode.com/problems/product-sales-analysis-i/solution/"
+                }
+              ],
+              "youtube": [],
+              "important": false
+            },
+            {
+              "id": 5031,
+              "title": "Not Boring Movies",
+              "slug": "not-boring-movies",
+              "url": "https://leetcode.com/problems/not-boring-movies/",
+              "difficulty": "Easy",
+              "platform": "LeetCode",
+              "solution": "https://leetcode.com/problems/not-boring-movies/solution/",
+              "solutions": [
+                {
+                  "title": "Solution",
+                  "url": "https://leetcode.com/problems/not-boring-movies/solution/"
+                }
+              ],
+              "youtube": [],
+              "important": false
+            },
+            {
+              "id": 5032,
+              "title": "Classes More Than 5 Students",
+              "slug": "classes-more-than-5-students",
+              "url": "https://leetcode.com/problems/classes-more-than-5-students/",
+              "difficulty": "Easy",
+              "platform": "LeetCode",
+              "solution": "https://leetcode.com/problems/classes-more-than-5-students/solution/",
+              "solutions": [
+                {
+                  "title": "Solution",
+                  "url": "https://leetcode.com/problems/classes-more-than-5-students/solution/"
+                }
+              ],
+              "youtube": [],
+              "important": false
+            },
+            {
+              "id": 5033,
+              "title": "Rising Temperature",
+              "slug": "rising-temperature",
+              "url": "https://leetcode.com/problems/rising-temperature/",
+              "difficulty": "Easy",
+              "platform": "LeetCode",
+              "solution": "https://leetcode.com/problems/rising-temperature/solution/",
+              "solutions": [
+                {
+                  "title": "Solution",
+                  "url": "https://leetcode.com/problems/rising-temperature/solution/"
+                }
+              ],
+              "youtube": [],
+              "important": false
+            },
+            {
+              "id": 5034,
+              "title": "Average Selling Price",
+              "slug": "average-selling-price",
+              "url": "https://leetcode.com/problems/average-selling-price/",
+              "difficulty": "Easy",
+              "platform": "LeetCode",
+              "solution": "https://leetcode.com/problems/average-selling-price/solution/",
+              "solutions": [
+                {
+                  "title": "Solution",
+                  "url": "https://leetcode.com/problems/average-selling-price/solution/"
+                }
+              ],
+              "youtube": [],
+              "important": false
+            },
+            {
+              "id": 5035,
+              "title": "Second Highest Salary",
+              "slug": "second-highest-salary",
+              "url": "https://leetcode.com/problems/second-highest-salary/",
+              "difficulty": "Easy",
+              "platform": "LeetCode",
+              "solution": "https://leetcode.com/problems/second-highest-salary/solution/",
+              "solutions": [
+                {
+                  "title": "Solution",
+                  "url": "https://leetcode.com/problems/second-highest-salary/solution/"
+                }
+              ],
+              "youtube": [],
+              "important": false
+            },
+            {
+              "id": 5036,
+              "title": "Weather Observation Station 1",
+              "slug": "weather-observation-station-1",
+              "url": "https://www.hackerrank.com/challenges/weather-observation-station-1/problem",
+              "difficulty": "Easy",
+              "platform": "HackerRank",
+              "solution": null,
+              "solutions": [],
+              "youtube": [],
+              "important": false
+            }
+          ]
+        },
+        {
+          "title": "Joins",
+          "problemCount": 10,
+          "problems": [
+            {
+              "id": 5037,
+              "title": "Combine Two Tables",
+              "slug": "combine-two-tables",
+              "url": "https://leetcode.com/problems/combine-two-tables/",
+              "difficulty": "Easy",
+              "platform": "LeetCode",
+              "solution": "https://leetcode.com/problems/combine-two-tables/solution/",
+              "solutions": [
+                {
+                  "title": "Solution",
+                  "url": "https://leetcode.com/problems/combine-two-tables/solution/"
+                }
+              ],
+              "youtube": [],
+              "important": false
+            },
+            {
+              "id": 5038,
+              "title": "Employees Earning More Than Managers",
+              "slug": "employees-earning-more-than-their-managers",
+              "url": "https://leetcode.com/problems/employees-earning-more-than-their-managers/",
+              "difficulty": "Easy",
+              "platform": "LeetCode",
+              "solution": "https://leetcode.com/problems/employees-earning-more-than-their-managers/solution/",
+              "solutions": [
+                {
+                  "title": "Solution",
+                  "url": "https://leetcode.com/problems/employees-earning-more-than-their-managers/solution/"
+                }
+              ],
+              "youtube": [],
+              "important": false
+            },
+            {
+              "id": 5039,
+              "title": "Duplicate Emails",
+              "slug": "duplicate-emails",
+              "url": "https://leetcode.com/problems/duplicate-emails/",
+              "difficulty": "Easy",
+              "platform": "LeetCode",
+              "solution": "https://leetcode.com/problems/duplicate-emails/solution/",
+              "solutions": [
+                {
+                  "title": "Solution",
+                  "url": "https://leetcode.com/problems/duplicate-emails/solution/"
+                }
+              ],
+              "youtube": [],
+              "important": false
+            },
+            {
+              "id": 5040,
+              "title": "Sales Analysis III",
+              "slug": "sales-analysis-iii",
+              "url": "https://leetcode.com/problems/sales-analysis-iii/",
+              "difficulty": "Easy",
+              "platform": "LeetCode",
+              "solution": "https://leetcode.com/problems/sales-analysis-iii/solution/",
+              "solutions": [
+                {
+                  "title": "Solution",
+                  "url": "https://leetcode.com/problems/sales-analysis-iii/solution/"
+                }
+              ],
+              "youtube": [],
+              "important": false
+            },
+            {
+              "id": 5041,
+              "title": "Customer Placing Largest Orders",
+              "slug": "customer-placing-the-largest-number-of-orders",
+              "url": "https://leetcode.com/problems/customer-placing-the-largest-number-of-orders/",
+              "difficulty": "Easy",
+              "platform": "LeetCode",
+              "solution": "https://leetcode.com/problems/customer-placing-the-largest-number-of-orders/solution/",
+              "solutions": [
+                {
+                  "title": "Solution",
+                  "url": "https://leetcode.com/problems/customer-placing-the-largest-number-of-orders/solution/"
+                }
+              ],
+              "youtube": [],
+              "important": false
+            },
+            {
+              "id": 5042,
+              "title": "Managers with 5+ Direct Reports",
+              "slug": "managers-with-at-least-5-direct-reports",
+              "url": "https://leetcode.com/problems/managers-with-at-least-5-direct-reports/",
+              "difficulty": "Medium",
+              "platform": "LeetCode",
+              "solution": "https://leetcode.com/problems/managers-with-at-least-5-direct-reports/solution/",
+              "solutions": [
+                {
+                  "title": "Solution",
+                  "url": "https://leetcode.com/problems/managers-with-at-least-5-direct-reports/solution/"
+                }
+              ],
+              "youtube": [],
+              "important": false
+            },
+            {
+              "id": 5043,
+              "title": "Triangle Judgement",
+              "slug": "triangle-judgement",
+              "url": "https://leetcode.com/problems/triangle-judgement/",
+              "difficulty": "Easy",
+              "platform": "LeetCode",
+              "solution": "https://leetcode.com/problems/triangle-judgement/solution/",
+              "solutions": [
+                {
+                  "title": "Solution",
+                  "url": "https://leetcode.com/problems/triangle-judgement/solution/"
+                }
+              ],
+              "youtube": [],
+              "important": false
+            },
+            {
+              "id": 5044,
+              "title": "Unpopular Books",
+              "slug": "unpopular-books",
+              "url": "https://leetcode.com/problems/unpopular-books/",
+              "difficulty": "Medium",
+              "platform": "LeetCode",
+              "solution": "https://leetcode.com/problems/unpopular-books/solution/",
+              "solutions": [
+                {
+                  "title": "Solution",
+                  "url": "https://leetcode.com/problems/unpopular-books/solution/"
+                }
+              ],
+              "youtube": [],
+              "important": false
+            },
+            {
+              "id": 5045,
+              "title": "Product Price at Given Date",
+              "slug": "product-price-at-a-given-date",
+              "url": "https://leetcode.com/problems/product-price-at-a-given-date/",
+              "difficulty": "Medium",
+              "platform": "LeetCode",
+              "solution": "https://leetcode.com/problems/product-price-at-a-given-date/solution/",
+              "solutions": [
+                {
+                  "title": "Solution",
+                  "url": "https://leetcode.com/problems/product-price-at-a-given-date/solution/"
+                }
+              ],
+              "youtube": [],
+              "important": false
+            },
+            {
+              "id": 5046,
+              "title": "Highest Grade per Student",
+              "slug": "highest-grade-for-each-student",
+              "url": "https://leetcode.com/problems/highest-grade-for-each-student/",
+              "difficulty": "Medium",
+              "platform": "LeetCode",
+              "solution": "https://leetcode.com/problems/highest-grade-for-each-student/solution/",
+              "solutions": [
+                {
+                  "title": "Solution",
+                  "url": "https://leetcode.com/problems/highest-grade-for-each-student/solution/"
+                }
+              ],
+              "youtube": [],
+              "important": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Intermediate SQL",
+      "problemCount": 50,
+      "problems": [],
+      "subsections": [
+        {
+          "title": "Subqueries",
+          "problemCount": 10,
+          "problems": [
+            {
+              "id": 5047,
+              "title": "Second Degree Follower",
+              "slug": "second-degree-follower",
+              "url": "https://leetcode.com/problems/second-degree-follower/",
+              "difficulty": "Medium",
+              "platform": "LeetCode",
+              "solution": "https://leetcode.com/problems/second-degree-follower/solution/",
+              "solutions": [
+                {
+                  "title": "Solution",
+                  "url": "https://leetcode.com/problems/second-degree-follower/solution/"
+                }
+              ],
+              "youtube": [],
+              "important": false
+            },
+            {
+              "id": 5048,
+              "title": "Biggest Single Number",
+              "slug": "biggest-single-number",
+              "url": "https://leetcode.com/problems/biggest-single-number/",
+              "difficulty": "Easy",
+              "platform": "LeetCode",
+              "solution": "https://leetcode.com/problems/biggest-single-number/solution/",
+              "solutions": [
+                {
+                  "title": "Solution",
+                  "url": "https://leetcode.com/problems/biggest-single-number/solution/"
+                }
+              ],
+              "youtube": [],
+              "important": false
+            },
+            {
+              "id": 5049,
+              "title": "Employees with Missing Info",
+              "slug": "employees-with-missing-information",
+              "url": "https://leetcode.com/problems/employees-with-missing-information/",
+              "difficulty": "Easy",
+              "platform": "LeetCode",
+              "solution": "https://leetcode.com/problems/employees-with-missing-information/solution/",
+              "solutions": [
+                {
+                  "title": "Solution",
+                  "url": "https://leetcode.com/problems/employees-with-missing-information/solution/"
+                }
+              ],
+              "youtube": [],
+              "important": false
+            },
+            {
+              "id": 5050,
+              "title": "Find Team Size",
+              "slug": "find-the-team-size",
+              "url": "https://leetcode.com/problems/find-the-team-size/",
+              "difficulty": "Easy",
+              "platform": "LeetCode",
+              "solution": "https://leetcode.com/problems/find-the-team-size/solution/",
+              "solutions": [
+                {
+                  "title": "Solution",
+                  "url": "https://leetcode.com/problems/find-the-team-size/solution/"
+                }
+              ],
+              "youtube": [],
+              "important": false
+            },
+            {
+              "id": 5051,
+              "title": "Count Students in Departments",
+              "slug": "count-students",
+              "url": "https://www.hackerrank.com/challenges/count-students/problem",
+              "difficulty": "Medium",
+              "platform": "HackerRank",
+              "solution": null,
+              "solutions": [],
+              "youtube": [],
+              "important": false
+            },
+            {
+              "id": 5052,
+              "title": "Most Frequent Customer",
+              "slug": "most-frequent-customer",
+              "url": "",
+              "difficulty": "Medium",
+              "platform": "Other",
+              "solution": null,
+              "solutions": [],
+              "youtube": [],
+              "important": false
+            },
+            {
+              "id": 5053,
+              "title": "Highest Salary in Department",
+              "slug": "sql-query-to-find-the-highest-salary-of-each-department",
+              "url": "https://www.geeksforgeeks.org/sql-query-to-find-the-highest-salary-of-each-department/",
+              "difficulty": "Medium",
+              "platform": "GeeksforGeeks",
+              "solution": null,
+              "solutions": [],
+              "youtube": [],
+              "important": false
+            },
+            {
+              "id": 5054,
+              "title": "Users with Valid Emails",
+              "slug": "find-users-with-valid-e-mails",
+              "url": "https://leetcode.com/problems/find-users-with-valid-e-mails/",
+              "difficulty": "Easy",
+              "platform": "LeetCode",
+              "solution": "https://leetcode.com/problems/find-users-with-valid-e-mails/solution/",
+              "solutions": [
+                {
+                  "title": "Solution",
+                  "url": "https://leetcode.com/problems/find-users-with-valid-e-mails/solution/"
+                }
+              ],
+              "youtube": [],
+              "important": false
+            },
+            {
+              "id": 5055,
+              "title": "Top K Customers by Revenue",
+              "slug": "top-k-customers-by-revenue",
+              "url": "",
+              "difficulty": "Medium",
+              "platform": "Other",
+              "solution": null,
+              "solutions": [],
+              "youtube": [],
+              "important": false
+            },
+            {
+              "id": 5056,
+              "title": "Employees Not in Department",
+              "slug": "employees-not-in-department",
+              "url": "",
+              "difficulty": "Medium",
+              "platform": "Other",
+              "solution": null,
+              "solutions": [],
+              "youtube": [],
+              "important": false
+            }
+          ]
+        },
+        {
+          "title": "Aggregations",
+          "problemCount": 10,
+          "problems": [
+            {
+              "id": 5057,
+              "title": "Count Apples and Oranges",
+              "slug": "count-apples-and-oranges",
+              "url": "https://www.sqlzoo.net/wiki/COUNT_and_GROUP_BY",
+              "difficulty": "Easy",
+              "platform": "Other",
+              "solution": null,
+              "solutions": [],
+              "youtube": [],
+              "important": false
+            },
+            {
+              "id": 5058,
+              "title": "Average Salary by Department",
+              "slug": "average-salary-department",
+              "url": "https://www.hackerrank.com/challenges/average-salary-department/problem",
+              "difficulty": "Easy",
+              "platform": "HackerRank",
+              "solution": null,
+              "solutions": [],
+              "youtube": [],
+              "important": false
+            },
+            {
+              "id": 5059,
+              "title": "Max Sales by Product",
+              "slug": "sql-query-to-find-the-maximum-sales-of-a-product",
+              "url": "https://www.geeksforgeeks.org/sql-query-to-find-the-maximum-sales-of-a-product/",
+              "difficulty": "Easy",
+              "platform": "GeeksforGeeks",
+              "solution": null,
+              "solutions": [],
+              "youtube": [],
+              "important": false
+            },
+            {
+              "id": 5060,
+              "title": "Total Orders per Customer",
+              "slug": "total-orders-per-customer",
+              "url": "https://www.sqlzoo.net/wiki/SUM_and_COUNT",
+              "difficulty": "Easy",
+              "platform": "Other",
+              "solution": null,
+              "solutions": [],
+              "youtube": [],
+              "important": false
+            },
+            {
+              "id": 5061,
+              "title": "Group Employees by Age",
+              "slug": "group-employees-by-age",
+              "url": "",
+              "difficulty": "Easy",
+              "platform": "Other",
+              "solution": null,
+              "solutions": [],
+              "youtube": [],
+              "important": false
+            },
+            {
+              "id": 5062,
+              "title": "Sum Transactions by Month",
+              "slug": "monthly-transactions",
+              "url": "https://www.hackerrank.com/challenges/monthly-transactions/problem",
+              "difficulty": "Medium",
+              "platform": "HackerRank",
+              "solution": null,
+              "solutions": [],
+              "youtube": [],
+              "important": false
+            },
+            {
+              "id": 5063,
+              "title": "Average Time Between Orders",
+              "slug": "average-time-between-orders",
+              "url": "",
+              "difficulty": "Medium",
+              "platform": "Other",
+              "solution": null,
+              "solutions": [],
+              "youtube": [],
+              "important": false
+            },
+            {
+              "id": 5064,
+              "title": "Count Distinct Users per Day",
+              "slug": "count-distinct-users-per-day",
+              "url": "",
+              "difficulty": "Medium",
+              "platform": "Other",
+              "solution": null,
+              "solutions": [],
+              "youtube": [],
+              "important": false
+            },
+            {
+              "id": 5065,
+              "title": "Top 5 Products by Revenue",
+              "slug": "sql-query-to-find-top-5-products-by-revenue",
+              "url": "https://www.geeksforgeeks.org/sql-query-to-find-top-5-products-by-revenue/",
+              "difficulty": "Medium",
+              "platform": "GeeksforGeeks",
+              "solution": null,
+              "solutions": [],
+              "youtube": [],
+              "important": false
+            },
+            {
+              "id": 5066,
+              "title": "Min and Max Temps by Station",
+              "slug": "weather-observation-station-13",
+              "url": "https://www.hackerrank.com/challenges/weather-observation-station-13/problem",
+              "difficulty": "Medium",
+              "platform": "HackerRank",
+              "solution": null,
+              "solutions": [],
+              "youtube": [],
+              "important": false
+            }
+          ]
+        },
+        {
+          "title": "String Functions",
+          "problemCount": 10,
+          "problems": [
+            {
+              "id": 5067,
+              "title": "Capitalize Names",
+              "slug": "capitalize-names",
+              "url": "https://www.sqlzoo.net/wiki/Using_string_functions",
+              "difficulty": "Easy",
+              "platform": "Other",
+              "solution": null,
+              "solutions": [],
+              "youtube": [],
+              "important": false
+            },
+            {
+              "id": 5068,
+              "title": "Extract Domain from Email",
+              "slug": "extract-domain-from-email",
+              "url": "",
+              "difficulty": "Easy",
+              "platform": "Other",
+              "solution": null,
+              "solutions": [],
+              "youtube": [],
+              "important": false
+            },
+            {
+              "id": 5069,
+              "title": "Concatenate First and Last Name",
+              "slug": "concatenate-first-and-last-name",
+              "url": "https://www.w3schools.com/sql/func_sqlserver_concat.asp",
+              "difficulty": "Easy",
+              "platform": "Other",
+              "solution": null,
+              "solutions": [],
+              "youtube": [],
+              "important": false
+            },
+            {
+              "id": 5070,
+              "title": "Find Length of Product Names",
+              "slug": "name-length",
+              "url": "https://www.hackerrank.com/challenges/name-length/problem",
+              "difficulty": "Easy",
+              "platform": "HackerRank",
+              "solution": null,
+              "solutions": [],
+              "youtube": [],
+              "important": false
+            },
+            {
+              "id": 5071,
+              "title": "Replace Substring in Address",
+              "slug": "replace-substring-in-address",
+              "url": "https://www.sqlzoo.net/wiki/REPLACE",
+              "difficulty": "Easy",
+              "platform": "Other",
+              "solution": null,
+              "solutions": [],
+              "youtube": [],
+              "important": false
+            },
+            {
+              "id": 5072,
+              "title": "Parse Date from String",
+              "slug": "parse-date-from-string",
+              "url": "",
+              "difficulty": "Medium",
+              "platform": "Other",
+              "solution": null,
+              "solutions": [],
+              "youtube": [],
+              "important": false
+            },
+            {
+              "id": 5073,
+              "title": "Split Full Name into Columns",
+              "slug": "split-full-name-into-columns",
+              "url": "",
+              "difficulty": "Medium",
+              "platform": "Other",
+              "solution": null,
+              "solutions": [],
+              "youtube": [],
+              "important": false
+            },
+            {
+              "id": 5074,
+              "title": "Format Phone Numbers",
+              "slug": "format-phone-numbers",
+              "url": "",
+              "difficulty": "Medium",
+              "platform": "Other",
+              "solution": null,
+              "solutions": [],
+              "youtube": [],
+              "important": false
+            },
+            {
+              "id": 5075,
+              "title": "Extract Initials from Name",
+              "slug": "extract-initials-from-name",
+              "url": "",
+              "difficulty": "Medium",
+              "platform": "Other",
+              "solution": null,
+              "solutions": [],
+              "youtube": [],
+              "important": false
+            },
+            {
+              "id": 5076,
+              "title": "Reverse Customer Names",
+              "slug": "reverse-customer-names",
+              "url": "",
+              "difficulty": "Medium",
+              "platform": "Other",
+              "solution": null,
+              "solutions": [],
+              "youtube": [],
+              "important": false
+            }
+          ]
+        },
+        {
+          "title": "Date Functions",
+          "problemCount": 10,
+          "problems": [
+            {
+              "id": 5077,
+              "title": "Find Records from Last Week",
+              "slug": "find-records-from-last-week",
+              "url": "https://www.sqlzoo.net/wiki/SELECT_within_SELECT_Tutorial",
+              "difficulty": "Easy",
+              "platform": "Other",
+              "solution": null,
+              "solutions": [],
+              "youtube": [],
+              "important": false
+            },
+            {
+              "id": 5078,
+              "title": "Calculate Age from Birthdate",
+              "slug": "sql-query-to-calculate-age-from-date-of-birth",
+              "url": "https://www.geeksforgeeks.org/sql-query-to-calculate-age-from-date-of-birth/",
+              "difficulty": "Easy",
+              "platform": "GeeksforGeeks",
+              "solution": null,
+              "solutions": [],
+              "youtube": [],
+              "important": false
+            },
+            {
+              "id": 5079,
+              "title": "Extract Month from Date",
+              "slug": "weather-observation-station-2",
+              "url": "https://www.hackerrank.com/challenges/weather-observation-station-2/problem",
+              "difficulty": "Easy",
+              "platform": "HackerRank",
+              "solution": null,
+              "solutions": [],
+              "youtube": [],
+              "important": false
+            },
+            {
+              "id": 5080,
+              "title": "Count Orders by Year",
+              "slug": "count-orders-by-year",
+              "url": "",
+              "difficulty": "Easy",
+              "platform": "Other",
+              "solution": null,
+              "solutions": [],
+              "youtube": [],
+              "important": false
+            },
+            {
+              "id": 5081,
+              "title": "Days Between Dates",
+              "slug": "days-between-dates",
+              "url": "https://www.sqlzoo.net/wiki/DATEDIFF",
+              "difficulty": "Easy",
+              "platform": "Other",
+              "solution": null,
+              "solutions": [],
+              "youtube": [],
+              "important": false
+            },
+            {
+              "id": 5082,
+              "title": "Sales by Quarter",
+              "slug": "sales-by-quarter",
+              "url": "",
+              "difficulty": "Medium",
+              "platform": "Other",
+              "solution": null,
+              "solutions": [],
+              "youtube": [],
+              "important": false
+            },
+            {
+              "id": 5083,
+              "title": "Find Overdue Payments",
+              "slug": "find-overdue-payments",
+              "url": "",
+              "difficulty": "Medium",
+              "platform": "Other",
+              "solution": null,
+              "solutions": [],
+              "youtube": [],
+              "important": false
+            },
+            {
+              "id": 5084,
+              "title": "Group by Week Number",
+              "slug": "group-by-week-number",
+              "url": "",
+              "difficulty": "Medium",
+              "platform": "Other",
+              "solution": null,
+              "solutions": [],
+              "youtube": [],
+              "important": false
+            },
+            {
+              "id": 5085,
+              "title": "Latest Transaction per User",
+              "slug": "latest-transaction-per-user",
+              "url": "",
+              "difficulty": "Medium",
+              "platform": "Other",
+              "solution": null,
+              "solutions": [],
+              "youtube": [],
+              "important": false
+            },
+            {
+              "id": 5086,
+              "title": "Rolling 7-Day Sales",
+              "slug": "rolling-7-day-sales",
+              "url": "",
+              "difficulty": "Medium",
+              "platform": "Other",
+              "solution": null,
+              "solutions": [],
+              "youtube": [],
+              "important": false
+            }
+          ]
+        },
+        {
+          "title": "Conditional Logic",
+          "problemCount": 10,
+          "problems": [
+            {
+              "id": 5087,
+              "title": "Classify Salary Ranges",
+              "slug": "classify-salary-ranges",
+              "url": "https://www.sqlzoo.net/wiki/CASE",
+              "difficulty": "Easy",
+              "platform": "Other",
+              "solution": null,
+              "solutions": [],
+              "youtube": [],
+              "important": false
+            },
+            {
+              "id": 5088,
+              "title": "Flag Active Users",
+              "slug": "flag-active-users",
+              "url": "",
+              "difficulty": "Easy",
+              "platform": "Other",
+              "solution": null,
+              "solutions": [],
+              "youtube": [],
+              "important": false
+            },
+            {
+              "id": 5089,
+              "title": "Assign Grades Based on Scores",
+              "slug": "sql-case-statement",
+              "url": "https://www.geeksforgeeks.org/sql-case-statement/",
+              "difficulty": "Easy",
+              "platform": "GeeksforGeeks",
+              "solution": null,
+              "solutions": [],
+              "youtube": [],
+              "important": false
+            },
+            {
+              "id": 5090,
+              "title": "Mark Orders as Shipped/Pending",
+              "slug": "mark-orders-as-shipped-pending",
+              "url": "",
+              "difficulty": "Easy",
+              "platform": "Other",
+              "solution": null,
+              "solutions": [],
+              "youtube": [],
+              "important": false
+            },
+            {
+              "id": 5091,
+              "title": "Categorize Products by Price",
+              "slug": "categorize-products-by-price",
+              "url": "",
+              "difficulty": "Easy",
+              "platform": "Other",
+              "solution": null,
+              "solutions": [],
+              "youtube": [],
+              "important": false
+            },
+            {
+              "id": 5092,
+              "title": "Conditional Sales Count",
+              "slug": "conditional-sales-count",
+              "url": "",
+              "difficulty": "Medium",
+              "platform": "Other",
+              "solution": null,
+              "solutions": [],
+              "youtube": [],
+              "important": false
+            },
+            {
+              "id": 5093,
+              "title": "Dynamic Status by Date",
+              "slug": "dynamic-status-by-date",
+              "url": "",
+              "difficulty": "Medium",
+              "platform": "Other",
+              "solution": null,
+              "solutions": [],
+              "youtube": [],
+              "important": false
+            },
+            {
+              "id": 5094,
+              "title": "Nested Case Statements",
+              "slug": "nested-case-statements",
+              "url": "",
+              "difficulty": "Medium",
+              "platform": "Other",
+              "solution": null,
+              "solutions": [],
+              "youtube": [],
+              "important": false
+            },
+            {
+              "id": 5095,
+              "title": "Rank with Conditions",
+              "slug": "rank-with-conditions",
+              "url": "",
+              "difficulty": "Medium",
+              "platform": "Other",
+              "solution": null,
+              "solutions": [],
+              "youtube": [],
+              "important": false
+            },
+            {
+              "id": 5096,
+              "title": "Complex Bonus Calculation",
+              "slug": "complex-bonus-calculation",
+              "url": "",
+              "difficulty": "Medium",
+              "platform": "Other",
+              "solution": null,
+              "solutions": [],
+              "youtube": [],
+              "important": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Advanced SQL",
+      "problemCount": 33,
+      "problems": [],
+      "subsections": [
+        {
+          "title": "Complex Queries",
+          "problemCount": 13,
+          "problems": [
+            {
+              "id": 5097,
+              "title": "Rank Scores",
+              "slug": "rank-scores",
+              "url": "https://leetcode.com/problems/rank-scores/",
+              "difficulty": "Medium",
+              "platform": "LeetCode",
+              "solution": "https://leetcode.com/problems/rank-scores/solution/",
+              "solutions": [
+                {
+                  "title": "Solution",
+                  "url": "https://leetcode.com/problems/rank-scores/solution/"
+                }
+              ],
+              "youtube": [],
+              "important": false
+            },
+            {
+              "id": 5098,
+              "title": "Consecutive Numbers",
+              "slug": "consecutive-numbers",
+              "url": "https://leetcode.com/problems/consecutive-numbers/",
+              "difficulty": "Medium",
+              "platform": "LeetCode",
+              "solution": "https://leetcode.com/problems/consecutive-numbers/solution/",
+              "solutions": [
+                {
+                  "title": "Solution",
+                  "url": "https://leetcode.com/problems/consecutive-numbers/solution/"
+                }
+              ],
+              "youtube": [],
+              "important": false
+            },
+            {
+              "id": 5099,
+              "title": "Department Highest Salary",
+              "slug": "department-highest-salary",
+              "url": "https://leetcode.com/problems/department-highest-salary/",
+              "difficulty": "Medium",
+              "platform": "LeetCode",
+              "solution": "https://leetcode.com/problems/department-highest-salary/solution/",
+              "solutions": [
+                {
+                  "title": "Solution",
+                  "url": "https://leetcode.com/problems/department-highest-salary/solution/"
+                }
+              ],
+              "youtube": [],
+              "important": false
+            },
+            {
+              "id": 5100,
+              "title": "Nth Highest Salary",
+              "slug": "nth-highest-salary",
+              "url": "https://leetcode.com/problems/nth-highest-salary/",
+              "difficulty": "Medium",
+              "platform": "LeetCode",
+              "solution": "https://leetcode.com/problems/nth-highest-salary/solution/",
+              "solutions": [
+                {
+                  "title": "Solution",
+                  "url": "https://leetcode.com/problems/nth-highest-salary/solution/"
+                }
+              ],
+              "youtube": [],
+              "important": false
+            },
+            {
+              "id": 5101,
+              "title": "Exchange Seats",
+              "slug": "exchange-seats",
+              "url": "https://leetcode.com/problems/exchange-seats/",
+              "difficulty": "Medium",
+              "platform": "LeetCode",
+              "solution": "https://leetcode.com/problems/exchange-seats/solution/",
+              "solutions": [
+                {
+                  "title": "Solution",
+                  "url": "https://leetcode.com/problems/exchange-seats/solution/"
+                }
+              ],
+              "youtube": [],
+              "important": false
+            },
+            {
+              "id": 5102,
+              "title": "Top Travellers",
+              "slug": "top-travellers",
+              "url": "https://leetcode.com/problems/top-travellers/",
+              "difficulty": "Medium",
+              "platform": "LeetCode",
+              "solution": "https://leetcode.com/problems/top-travellers/solution/",
+              "solutions": [
+                {
+                  "title": "Solution",
+                  "url": "https://leetcode.com/problems/top-travellers/solution/"
+                }
+              ],
+              "youtube": [],
+              "important": false
+            },
+            {
+              "id": 5103,
+              "title": "Sales Person",
+              "slug": "sales-person",
+              "url": "https://leetcode.com/problems/sales-person/",
+              "difficulty": "Medium",
+              "platform": "LeetCode",
+              "solution": "https://leetcode.com/problems/sales-person/solution/",
+              "solutions": [
+                {
+                  "title": "Solution",
+                  "url": "https://leetcode.com/problems/sales-person/solution/"
+                }
+              ],
+              "youtube": [],
+              "important": false
+            },
+            {
+              "id": 5104,
+              "title": "Tree Node",
+              "slug": "tree-node",
+              "url": "https://leetcode.com/problems/tree-node/",
+              "difficulty": "Medium",
+              "platform": "LeetCode",
+              "solution": "https://leetcode.com/problems/tree-node/solution/",
+              "solutions": [
+                {
+                  "title": "Solution",
+                  "url": "https://leetcode.com/problems/tree-node/solution/"
+                }
+              ],
+              "youtube": [],
+              "important": false
+            },
+            {
+              "id": 5105,
+              "title": "Friend Requests I",
+              "slug": "friend-requests-i-overall-acceptance-rate",
+              "url": "https://leetcode.com/problems/friend-requests-i-overall-acceptance-rate/",
+              "difficulty": "Medium",
+              "platform": "LeetCode",
+              "solution": "https://leetcode.com/problems/friend-requests-i-overall-acceptance-rate/solution/",
+              "solutions": [
+                {
+                  "title": "Solution",
+                  "url": "https://leetcode.com/problems/friend-requests-i-overall-acceptance-rate/solution/"
+                }
+              ],
+              "youtube": [],
+              "important": false
+            },
+            {
+              "id": 5106,
+              "title": "Game Play Analysis IV",
+              "slug": "game-play-analysis-iv",
+              "url": "https://leetcode.com/problems/game-play-analysis-iv/",
+              "difficulty": "Medium",
+              "platform": "LeetCode",
+              "solution": "https://leetcode.com/problems/game-play-analysis-iv/solution/",
+              "solutions": [
+                {
+                  "title": "Solution",
+                  "url": "https://leetcode.com/problems/game-play-analysis-iv/solution/"
+                }
+              ],
+              "youtube": [],
+              "important": false
+            },
+            {
+              "id": 5107,
+              "title": "Trips and Users",
+              "slug": "trips-and-users",
+              "url": "https://leetcode.com/problems/trips-and-users/",
+              "difficulty": "Hard",
+              "platform": "LeetCode",
+              "solution": "https://leetcode.com/problems/trips-and-users/solution/",
+              "solutions": [
+                {
+                  "title": "Solution",
+                  "url": "https://leetcode.com/problems/trips-and-users/solution/"
+                }
+              ],
+              "youtube": [],
+              "important": false
+            },
+            {
+              "id": 5108,
+              "title": "Department Top 3 Salaries",
+              "slug": "department-top-three-salaries",
+              "url": "https://leetcode.com/problems/department-top-three-salaries/",
+              "difficulty": "Hard",
+              "platform": "LeetCode",
+              "solution": "https://leetcode.com/problems/department-top-three-salaries/solution/",
+              "solutions": [
+                {
+                  "title": "Solution",
+                  "url": "https://leetcode.com/problems/department-top-three-salaries/solution/"
+                }
+              ],
+              "youtube": [],
+              "important": false
+            },
+            {
+              "id": 5109,
+              "title": "Median Employee Salary",
+              "slug": "median-employee-salary",
+              "url": "https://leetcode.com/problems/median-employee-salary/",
+              "difficulty": "Hard",
+              "platform": "LeetCode",
+              "solution": null,
+              "solutions": [],
+              "youtube": [],
+              "important": false
+            }
+          ]
+        },
+        {
+          "title": "Window Functions",
+          "problemCount": 10,
+          "problems": [
+            {
+              "id": 5110,
+              "title": "Cumulative Salary",
+              "slug": "cumulative-salary",
+              "url": "https://www.hackerrank.com/challenges/cumulative-salary/problem",
+              "difficulty": "Medium",
+              "platform": "HackerRank",
+              "solution": null,
+              "solutions": [],
+              "youtube": [],
+              "important": false
+            },
+            {
+              "id": 5111,
+              "title": "Percentage of Contest Users",
+              "slug": "percentage-of-users-attended-a-contest",
+              "url": "https://leetcode.com/problems/percentage-of-users-attended-a-contest/",
+              "difficulty": "Medium",
+              "platform": "LeetCode",
+              "solution": "https://leetcode.com/problems/percentage-of-users-attended-a-contest/solution/",
+              "solutions": [
+                {
+                  "title": "Solution",
+                  "url": "https://leetcode.com/problems/percentage-of-users-attended-a-contest/solution/"
+                }
+              ],
+              "youtube": [],
+              "important": false
+            },
+            {
+              "id": 5112,
+              "title": "Last Person in Elevator",
+              "slug": "last-person-to-fit-in-the-elevator",
+              "url": "https://leetcode.com/problems/last-person-to-fit-in-the-elevator/",
+              "difficulty": "Medium",
+              "platform": "LeetCode",
+              "solution": "https://leetcode.com/problems/last-person-to-fit-in-the-elevator/solution/",
+              "solutions": [
+                {
+                  "title": "Solution",
+                  "url": "https://leetcode.com/problems/last-person-to-fit-in-the-elevator/solution/"
+                }
+              ],
+              "youtube": [],
+              "important": false
+            },
+            {
+              "id": 5113,
+              "title": "Moving Average",
+              "slug": "sql-window-functions",
+              "url": "https://www.geeksforgeeks.org/sql-window-functions/",
+              "difficulty": "Medium",
+              "platform": "GeeksforGeeks",
+              "solution": null,
+              "solutions": [],
+              "youtube": [],
+              "important": false
+            },
+            {
+              "id": 5114,
+              "title": "Top K Frequent Elements",
+              "slug": "top-k-frequent-elements",
+              "url": "",
+              "difficulty": "Hard",
+              "platform": "Other",
+              "solution": null,
+              "solutions": [],
+              "youtube": [],
+              "important": false
+            },
+            {
+              "id": 5115,
+              "title": "Partition Sales by Month",
+              "slug": "partition-sales-by-month",
+              "url": "",
+              "difficulty": "Medium",
+              "platform": "Other",
+              "solution": null,
+              "solutions": [],
+              "youtube": [],
+              "important": false
+            },
+            {
+              "id": 5116,
+              "title": "Dense Rank Scores",
+              "slug": "dense-rank-scores",
+              "url": "",
+              "difficulty": "Medium",
+              "platform": "Other",
+              "solution": null,
+              "solutions": [],
+              "youtube": [],
+              "important": false
+            },
+            {
+              "id": 5117,
+              "title": "Row Number for Sales",
+              "slug": "row-number-for-sales",
+              "url": "https://www.sqlzoo.net/wiki/Window_functions",
+              "difficulty": "Easy",
+              "platform": "Other",
+              "solution": null,
+              "solutions": [],
+              "youtube": [],
+              "important": false
+            },
+            {
+              "id": 5118,
+              "title": "Lag for Previous Sales",
+              "slug": "lag-for-previous-sales",
+              "url": "",
+              "difficulty": "Medium",
+              "platform": "Other",
+              "solution": null,
+              "solutions": [],
+              "youtube": [],
+              "important": false
+            },
+            {
+              "id": 5119,
+              "title": "Lead for Next Event",
+              "slug": "lead-for-next-event",
+              "url": "",
+              "difficulty": "Medium",
+              "platform": "Other",
+              "solution": null,
+              "solutions": [],
+              "youtube": [],
+              "important": false
+            }
+          ]
+        },
+        {
+          "title": "Common Table Expressions (CTE)",
+          "problemCount": 10,
+          "problems": [
+            {
+              "id": 5120,
+              "title": "Employees Never Left",
+              "slug": "employees-never-left",
+              "url": "",
+              "difficulty": "Medium",
+              "platform": "Other",
+              "solution": null,
+              "solutions": [],
+              "youtube": [],
+              "important": false
+            },
+            {
+              "id": 5121,
+              "title": "Duplicate Subtrees",
+              "slug": "find-all-duplicate-subtrees",
+              "url": "https://leetcode.com/problems/find-all-duplicate-subtrees/",
+              "difficulty": "Medium",
+              "platform": "LeetCode",
+              "solution": null,
+              "solutions": [],
+              "youtube": [],
+              "important": false
+            },
+            {
+              "id": 5122,
+              "title": "Recursive Employee Hierarchy",
+              "slug": "hierarchical-data-sql-using-cte",
+              "url": "https://www.geeksforgeeks.org/hierarchical-data-sql-using-cte/",
+              "difficulty": "Hard",
+              "platform": "GeeksforGeeks",
+              "solution": null,
+              "solutions": [],
+              "youtube": [],
+              "important": false
+            },
+            {
+              "id": 5123,
+              "title": "Paths in Graph",
+              "slug": "paths-in-graph",
+              "url": "",
+              "difficulty": "Hard",
+              "platform": "Other",
+              "solution": null,
+              "solutions": [],
+              "youtube": [],
+              "important": false
+            },
+            {
+              "id": 5124,
+              "title": "Organizational Chart",
+              "slug": "organizational-chart",
+              "url": "",
+              "difficulty": "Medium",
+              "platform": "Other",
+              "solution": null,
+              "solutions": [],
+              "youtube": [],
+              "important": false
+            },
+            {
+              "id": 5125,
+              "title": "Find All Ancestors",
+              "slug": "find-all-ancestors",
+              "url": "",
+              "difficulty": "Medium",
+              "platform": "Other",
+              "solution": null,
+              "solutions": [],
+              "youtube": [],
+              "important": false
+            },
+            {
+              "id": 5126,
+              "title": "Shortest Path in Tree",
+              "slug": "shortest-path-in-tree",
+              "url": "",
+              "difficulty": "Hard",
+              "platform": "Other",
+              "solution": null,
+              "solutions": [],
+              "youtube": [],
+              "important": false
+            },
+            {
+              "id": 5127,
+              "title": "Employee Reporting Structure",
+              "slug": "reporting-structure",
+              "url": "https://www.hackerrank.com/challenges/reporting-structure/problem",
+              "difficulty": "Medium",
+              "platform": "HackerRank",
+              "solution": null,
+              "solutions": [],
+              "youtube": [],
+              "important": false
+            },
+            {
+              "id": 5128,
+              "title": "Cycle Detection",
+              "slug": "cycle-detection",
+              "url": "",
+              "difficulty": "Hard",
+              "platform": "Other",
+              "solution": null,
+              "solutions": [],
+              "youtube": [],
+              "important": false
+            },
+            {
+              "id": 5129,
+              "title": "Bill of Materials",
+              "slug": "bill-of-materials",
+              "url": "",
+              "difficulty": "Hard",
+              "platform": "Other",
+              "solution": null,
+              "solutions": [],
+              "youtube": [],
+              "important": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Database Design and Optimization",
+      "problemCount": 30,
+      "problems": [],
+      "subsections": [
+        {
+          "title": "Indexes",
+          "problemCount": 10,
+          "problems": [
+            {
+              "id": 5130,
+              "title": "Create Index on Employee ID",
+              "slug": "create-index-on-employee-id",
+              "url": "https://www.w3schools.com/sql/sql_create_index.asp",
+              "difficulty": "Easy",
+              "platform": "Other",
+              "solution": null,
+              "solutions": [],
+              "youtube": [],
+              "important": false
+            },
+            {
+              "id": 5131,
+              "title": "Composite Index Optimization",
+              "slug": "composite-index-optimization",
+              "url": "",
+              "difficulty": "Medium",
+              "platform": "Other",
+              "solution": null,
+              "solutions": [],
+              "youtube": [],
+              "important": false
+            },
+            {
+              "id": 5132,
+              "title": "Analyze Query Performance",
+              "slug": "query-performance",
+              "url": "https://www.hackerrank.com/challenges/query-performance/problem",
+              "difficulty": "Medium",
+              "platform": "HackerRank",
+              "solution": null,
+              "solutions": [],
+              "youtube": [],
+              "important": false
+            },
+            {
+              "id": 5133,
+              "title": "Drop Unused Index",
+              "slug": "drop-unused-index",
+              "url": "",
+              "difficulty": "Easy",
+              "platform": "Other",
+              "solution": null,
+              "solutions": [],
+              "youtube": [],
+              "important": false
+            },
+            {
+              "id": 5134,
+              "title": "Index for Joins",
+              "slug": "index-for-joins",
+              "url": "",
+              "difficulty": "Medium",
+              "platform": "Other",
+              "solution": null,
+              "solutions": [],
+              "youtube": [],
+              "important": false
+            },
+            {
+              "id": 5135,
+              "title": "Optimize Large Table Scan",
+              "slug": "optimize-large-table-scan",
+              "url": "",
+              "difficulty": "Hard",
+              "platform": "Other",
+              "solution": null,
+              "solutions": [],
+              "youtube": [],
+              "important": false
+            },
+            {
+              "id": 5136,
+              "title": "Clustered vs Non-Clustered",
+              "slug": "difference-between-clustered-and-non-clustered-index",
+              "url": "https://www.geeksforgeeks.org/difference-between-clustered-and-non-clustered-index/",
+              "difficulty": "Hard",
+              "platform": "GeeksforGeeks",
+              "solution": null,
+              "solutions": [],
+              "youtube": [],
+              "important": false
+            },
+            {
+              "id": 5137,
+              "title": "Index for Date Ranges",
+              "slug": "index-for-date-ranges",
+              "url": "",
+              "difficulty": "Medium",
+              "platform": "Other",
+              "solution": null,
+              "solutions": [],
+              "youtube": [],
+              "important": false
+            },
+            {
+              "id": 5138,
+              "title": "Tune Slow Aggregation",
+              "slug": "tune-slow-aggregation",
+              "url": "",
+              "difficulty": "Hard",
+              "platform": "Other",
+              "solution": null,
+              "solutions": [],
+              "youtube": [],
+              "important": false
+            },
+            {
+              "id": 5139,
+              "title": "Optimize Subquery",
+              "slug": "optimize-subquery",
+              "url": "",
+              "difficulty": "Medium",
+              "platform": "Other",
+              "solution": null,
+              "solutions": [],
+              "youtube": [],
+              "important": false
+            }
+          ]
+        },
+        {
+          "title": "Views and Temp Tables",
+          "problemCount": 10,
+          "problems": [
+            {
+              "id": 5140,
+              "title": "View for Active Employees",
+              "slug": "view-for-active-employees",
+              "url": "https://www.w3schools.com/sql/sql_view.asp",
+              "difficulty": "Easy",
+              "platform": "Other",
+              "solution": null,
+              "solutions": [],
+              "youtube": [],
+              "important": false
+            },
+            {
+              "id": 5141,
+              "title": "Temp Table for Sales Report",
+              "slug": "temp-table-for-sales-report",
+              "url": "",
+              "difficulty": "Medium",
+              "platform": "Other",
+              "solution": null,
+              "solutions": [],
+              "youtube": [],
+              "important": false
+            },
+            {
+              "id": 5142,
+              "title": "View for Top Customers",
+              "slug": "view-for-top-customers",
+              "url": "",
+              "difficulty": "Easy",
+              "platform": "Other",
+              "solution": null,
+              "solutions": [],
+              "youtube": [],
+              "important": false
+            },
+            {
+              "id": 5143,
+              "title": "Materialized View for Aggregates",
+              "slug": "materialized-view-in-sql",
+              "url": "https://www.geeksforgeeks.org/materialized-view-in-sql/",
+              "difficulty": "Hard",
+              "platform": "GeeksforGeeks",
+              "solution": null,
+              "solutions": [],
+              "youtube": [],
+              "important": false
+            },
+            {
+              "id": 5144,
+              "title": "Temp Table for Recursive Data",
+              "slug": "temp-table-for-recursive-data",
+              "url": "",
+              "difficulty": "Medium",
+              "platform": "Other",
+              "solution": null,
+              "solutions": [],
+              "youtube": [],
+              "important": false
+            },
+            {
+              "id": 5145,
+              "title": "View with Joins",
+              "slug": "view-with-joins",
+              "url": "",
+              "difficulty": "Medium",
+              "platform": "Other",
+              "solution": null,
+              "solutions": [],
+              "youtube": [],
+              "important": false
+            },
+            {
+              "id": 5146,
+              "title": "Dynamic Temp Table",
+              "slug": "dynamic-temp-table",
+              "url": "",
+              "difficulty": "Hard",
+              "platform": "Other",
+              "solution": null,
+              "solutions": [],
+              "youtube": [],
+              "important": false
+            },
+            {
+              "id": 5147,
+              "title": "View for Monthly Sales",
+              "slug": "view-for-monthly-sales",
+              "url": "",
+              "difficulty": "Easy",
+              "platform": "Other",
+              "solution": null,
+              "solutions": [],
+              "youtube": [],
+              "important": false
+            },
+            {
+              "id": 5148,
+              "title": "Temp Table for Staging",
+              "slug": "temp-table-for-staging",
+              "url": "",
+              "difficulty": "Medium",
+              "platform": "Other",
+              "solution": null,
+              "solutions": [],
+              "youtube": [],
+              "important": false
+            },
+            {
+              "id": 5149,
+              "title": "Optimize View Performance",
+              "slug": "optimize-view-performance",
+              "url": "",
+              "difficulty": "Hard",
+              "platform": "Other",
+              "solution": null,
+              "solutions": [],
+              "youtube": [],
+              "important": false
+            }
+          ]
+        },
+        {
+          "title": "Transactions and Constraints",
+          "problemCount": 10,
+          "problems": [
+            {
+              "id": 5150,
+              "title": "Add Primary Key",
+              "slug": "add-primary-key",
+              "url": "https://www.w3schools.com/sql/sql_primarykey.asp",
+              "difficulty": "Easy",
+              "platform": "Other",
+              "solution": null,
+              "solutions": [],
+              "youtube": [],
+              "important": false
+            },
+            {
+              "id": 5151,
+              "title": "Enforce Foreign Key",
+              "slug": "enforce-foreign-key",
+              "url": "https://www.w3schools.com/sql/sql_foreignkey.asp",
+              "difficulty": "Easy",
+              "platform": "Other",
+              "solution": null,
+              "solutions": [],
+              "youtube": [],
+              "important": false
+            },
+            {
+              "id": 5152,
+              "title": "Simple Transfer Transaction",
+              "slug": "sql-transactions",
+              "url": "https://www.geeksforgeeks.org/sql-transactions/",
+              "difficulty": "Medium",
+              "platform": "GeeksforGeeks",
+              "solution": null,
+              "solutions": [],
+              "youtube": [],
+              "important": false
+            },
+            {
+              "id": 5153,
+              "title": "Rollback Failed Update",
+              "slug": "rollback-failed-update",
+              "url": "",
+              "difficulty": "Medium",
+              "platform": "Other",
+              "solution": null,
+              "solutions": [],
+              "youtube": [],
+              "important": false
+            },
+            {
+              "id": 5154,
+              "title": "Unique Email Constraint",
+              "slug": "unique-email-constraint",
+              "url": "https://www.w3schools.com/sql/sql_unique.asp",
+              "difficulty": "Easy",
+              "platform": "Other",
+              "solution": null,
+              "solutions": [],
+              "youtube": [],
+              "important": false
+            },
+            {
+              "id": 5155,
+              "title": "Transaction with Savepoint",
+              "slug": "transaction-with-savepoint",
+              "url": "",
+              "difficulty": "Hard",
+              "platform": "Other",
+              "solution": null,
+              "solutions": [],
+              "youtube": [],
+              "important": false
+            },
+            {
+              "id": 5156,
+              "title": "Check Age Constraint",
+              "slug": "check-age-constraint",
+              "url": "https://www.w3schools.com/sql/sql_check.asp",
+              "difficulty": "Easy",
+              "platform": "Other",
+              "solution": null,
+              "solutions": [],
+              "youtube": [],
+              "important": false
+            },
+            {
+              "id": 5157,
+              "title": "Batch Insert Transaction",
+              "slug": "batch-insert-transaction",
+              "url": "",
+              "difficulty": "Medium",
+              "platform": "Other",
+              "solution": null,
+              "solutions": [],
+              "youtube": [],
+              "important": false
+            },
+            {
+              "id": 5158,
+              "title": "Handle Deadlock",
+              "slug": "deadlock-in-dbms",
+              "url": "https://www.geeksforgeeks.org/deadlock-in-dbms/",
+              "difficulty": "Hard",
+              "platform": "GeeksforGeeks",
+              "solution": null,
+              "solutions": [],
+              "youtube": [],
+              "important": false
+            },
+            {
+              "id": 5159,
+              "title": "Cascade Delete",
+              "slug": "cascade-delete",
+              "url": "https://www.sqlzoo.net/wiki/ON_DELETE_CASCADE",
+              "difficulty": "Medium",
+              "platform": "Other",
+              "solution": null,
+              "solutions": [],
+              "youtube": [],
+              "important": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Expert SQL",
+      "problemCount": 30,
+      "problems": [],
+      "subsections": [
+        {
+          "title": "Analytical Queries",
+          "problemCount": 10,
+          "problems": [
+            {
+              "id": 5160,
+              "title": "Human Traffic of Stadium",
+              "slug": "human-traffic-of-stadium",
+              "url": "https://leetcode.com/problems/human-traffic-of-stadium/",
+              "difficulty": "Hard",
+              "platform": "LeetCode",
+              "solution": "https://leetcode.com/problems/human-traffic-of-stadium/solution/",
+              "solutions": [
+                {
+                  "title": "Solution",
+                  "url": "https://leetcode.com/problems/human-traffic-of-stadium/solution/"
+                }
+              ],
+              "youtube": [],
+              "important": false
+            },
+            {
+              "id": 5161,
+              "title": "Active Businesses",
+              "slug": "active-businesses",
+              "url": "https://leetcode.com/problems/active-businesses/",
+              "difficulty": "Hard",
+              "platform": "LeetCode",
+              "solution": "https://leetcode.com/problems/active-businesses/solution/",
+              "solutions": [
+                {
+                  "title": "Solution",
+                  "url": "https://leetcode.com/problems/active-businesses/solution/"
+                }
+              ],
+              "youtube": [],
+              "important": false
+            },
+            {
+              "id": 5162,
+              "title": "Investments in 2016",
+              "slug": "investments-in-2016",
+              "url": "https://leetcode.com/problems/investments-in-2016/",
+              "difficulty": "Hard",
+              "platform": "LeetCode",
+              "solution": "https://leetcode.com/problems/investments-in-2016/solution/",
+              "solutions": [
+                {
+                  "title": "Solution",
+                  "url": "https://leetcode.com/problems/investments-in-2016/solution/"
+                }
+              ],
+              "youtube": [],
+              "important": false
+            },
+            {
+              "id": 5163,
+              "title": "Friend Requests II",
+              "slug": "friend-requests-ii-who-has-the-most-friends",
+              "url": "https://leetcode.com/problems/friend-requests-ii-who-has-the-most-friends/",
+              "difficulty": "Hard",
+              "platform": "LeetCode",
+              "solution": "https://leetcode.com/problems/friend-requests-ii-who-has-the-most-friends/solution/",
+              "solutions": [
+                {
+                  "title": "Solution",
+                  "url": "https://leetcode.com/problems/friend-requests-ii-who-has-the-most-friends/solution/"
+                }
+              ],
+              "youtube": [],
+              "important": false
+            },
+            {
+              "id": 5164,
+              "title": "Transactions per Visit",
+              "slug": "number-of-transactions-per-visit",
+              "url": "https://leetcode.com/problems/number-of-transactions-per-visit/",
+              "difficulty": "Hard",
+              "platform": "LeetCode",
+              "solution": "https://leetcode.com/problems/number-of-transactions-per-visit/solution/",
+              "solutions": [
+                {
+                  "title": "Solution",
+                  "url": "https://leetcode.com/problems/number-of-transactions-per-visit/solution/"
+                }
+              ],
+              "youtube": [],
+              "important": false
+            },
+            {
+              "id": 5165,
+              "title": "Find Median from Stream",
+              "slug": "find-median-from-data-stream",
+              "url": "https://leetcode.com/problems/find-median-from-data-stream/",
+              "difficulty": "Hard",
+              "platform": "LeetCode",
+              "solution": null,
+              "solutions": [],
+              "youtube": [],
+              "important": false
+            },
+            {
+              "id": 5166,
+              "title": "Quiet Students in Exams",
+              "slug": "find-the-quiet-students-in-all-exams",
+              "url": "https://leetcode.com/problems/find-the-quiet-students-in-all-exams/",
+              "difficulty": "Hard",
+              "platform": "LeetCode",
+              "solution": "https://leetcode.com/problems/find-the-quiet-students-in-all-exams/solution/",
+              "solutions": [
+                {
+                  "title": "Solution",
+                  "url": "https://leetcode.com/problems/find-the-quiet-students-in-all-exams/solution/"
+                }
+              ],
+              "youtube": [],
+              "important": false
+            },
+            {
+              "id": 5167,
+              "title": "Rolling Average Sales",
+              "slug": "rolling-average-sales",
+              "url": "",
+              "difficulty": "Hard",
+              "platform": "Other",
+              "solution": null,
+              "solutions": [],
+              "youtube": [],
+              "important": false
+            },
+            {
+              "id": 5168,
+              "title": "Pivot Sales Data",
+              "slug": "pivot-in-sql",
+              "url": "https://www.geeksforgeeks.org/pivot-in-sql/",
+              "difficulty": "Hard",
+              "platform": "GeeksforGeeks",
+              "solution": null,
+              "solutions": [],
+              "youtube": [],
+              "important": false
+            },
+            {
+              "id": 5169,
+              "title": "Year-over-Year Growth",
+              "slug": "year-over-year-growth",
+              "url": "",
+              "difficulty": "Hard",
+              "platform": "Other",
+              "solution": null,
+              "solutions": [],
+              "youtube": [],
+              "important": false
+            }
+          ]
+        },
+        {
+          "title": "Complex Joins and Aggregations",
+          "problemCount": 10,
+          "problems": [
+            {
+              "id": 5170,
+              "title": "Shortest Distance in Line",
+              "slug": "shortest-distance-in-a-line",
+              "url": "https://leetcode.com/problems/shortest-distance-in-a-line/",
+              "difficulty": "Medium",
+              "platform": "LeetCode",
+              "solution": "https://leetcode.com/problems/shortest-distance-in-a-line/solution/",
+              "solutions": [
+                {
+                  "title": "Solution",
+                  "url": "https://leetcode.com/problems/shortest-distance-in-a-line/solution/"
+                }
+              ],
+              "youtube": [],
+              "important": false
+            },
+            {
+              "id": 5171,
+              "title": "Market Analysis I",
+              "slug": "market-analysis-i",
+              "url": "https://leetcode.com/problems/market-analysis-i/",
+              "difficulty": "Medium",
+              "platform": "LeetCode",
+              "solution": "https://leetcode.com/problems/market-analysis-i/solution/",
+              "solutions": [
+                {
+                  "title": "Solution",
+                  "url": "https://leetcode.com/problems/market-analysis-i/solution/"
+                }
+              ],
+              "youtube": [],
+              "important": false
+            },
+            {
+              "id": 5172,
+              "title": "Project Employees II",
+              "slug": "project-employees-ii",
+              "url": "https://leetcode.com/problems/project-employees-ii/",
+              "difficulty": "Medium",
+              "platform": "LeetCode",
+              "solution": "https://leetcode.com/problems/project-employees-ii/solution/",
+              "solutions": [
+                {
+                  "title": "Solution",
+                  "url": "https://leetcode.com/problems/project-employees-ii/solution/"
+                }
+              ],
+              "youtube": [],
+              "important": false
+            },
+            {
+              "id": 5173,
+              "title": "Students and Examinations",
+              "slug": "students-and-examinations",
+              "url": "https://leetcode.com/problems/students-and-examinations/",
+              "difficulty": "Medium",
+              "platform": "LeetCode",
+              "solution": "https://leetcode.com/problems/students-and-examinations/solution/",
+              "solutions": [
+                {
+                  "title": "Solution",
+                  "url": "https://leetcode.com/problems/students-and-examinations/solution/"
+                }
+              ],
+              "youtube": [],
+              "important": false
+            },
+            {
+              "id": 5174,
+              "title": "User Activity Past 30 Days",
+              "slug": "user-activity-for-the-past-30-days-ii",
+              "url": "https://leetcode.com/problems/user-activity-for-the-past-30-days-ii/",
+              "difficulty": "Medium",
+              "platform": "LeetCode",
+              "solution": "https://leetcode.com/problems/user-activity-for-the-past-30-days-ii/solution/",
+              "solutions": [
+                {
+                  "title": "Solution",
+                  "url": "https://leetcode.com/problems/user-activity-for-the-past-30-days-ii/solution/"
+                }
+              ],
+              "youtube": [],
+              "important": false
+            },
+            {
+              "id": 5175,
+              "title": "Join Three Tables for Report",
+              "slug": "join-three-tables-for-report",
+              "url": "",
+              "difficulty": "Medium",
+              "platform": "Other",
+              "solution": null,
+              "solutions": [],
+              "youtube": [],
+              "important": false
+            },
+            {
+              "id": 5176,
+              "title": "Multi-Condition Aggregation",
+              "slug": "multi-condition-aggregation",
+              "url": "",
+              "difficulty": "Hard",
+              "platform": "Other",
+              "solution": null,
+              "solutions": [],
+              "youtube": [],
+              "important": false
+            },
+            {
+              "id": 5177,
+              "title": "Overlapping Schedules",
+              "slug": "overlapping-schedules",
+              "url": "",
+              "difficulty": "Hard",
+              "platform": "Other",
+              "solution": null,
+              "solutions": [],
+              "youtube": [],
+              "important": false
+            },
+            {
+              "id": 5178,
+              "title": "Consecutive Login Days",
+              "slug": "consecutive-login-days",
+              "url": "",
+              "difficulty": "Hard",
+              "platform": "Other",
+              "solution": null,
+              "solutions": [],
+              "youtube": [],
+              "important": false
+            },
+            {
+              "id": 5179,
+              "title": "Complex Bonus with Joins",
+              "slug": "complex-bonus-with-joins",
+              "url": "",
+              "difficulty": "Hard",
+              "platform": "Other",
+              "solution": null,
+              "solutions": [],
+              "youtube": [],
+              "important": false
+            }
+          ]
+        },
+        {
+          "title": "Performance Tuning",
+          "problemCount": 10,
+          "problems": [
+            {
+              "id": 5180,
+              "title": "Optimize Large Joins",
+              "slug": "optimize-large-joins",
+              "url": "",
+              "difficulty": "Hard",
+              "platform": "Other",
+              "solution": null,
+              "solutions": [],
+              "youtube": [],
+              "important": false
+            },
+            {
+              "id": 5181,
+              "title": "Tune Complex Subquery",
+              "slug": "tune-complex-subquery",
+              "url": "",
+              "difficulty": "Hard",
+              "platform": "Other",
+              "solution": null,
+              "solutions": [],
+              "youtube": [],
+              "important": false
+            },
+            {
+              "id": 5182,
+              "title": "Index for Analytical Query",
+              "slug": "index-for-analytical-query",
+              "url": "",
+              "difficulty": "Hard",
+              "platform": "Other",
+              "solution": null,
+              "solutions": [],
+              "youtube": [],
+              "important": false
+            },
+            {
+              "id": 5183,
+              "title": "Partition Large Table",
+              "slug": "table-partitioning-in-sql-server",
+              "url": "https://www.geeksforgeeks.org/table-partitioning-in-sql-server/",
+              "difficulty": "Hard",
+              "platform": "GeeksforGeeks",
+              "solution": null,
+              "solutions": [],
+              "youtube": [],
+              "important": false
+            },
+            {
+              "id": 5184,
+              "title": "Optimize Window Function",
+              "slug": "optimize-window-function",
+              "url": "",
+              "difficulty": "Hard",
+              "platform": "Other",
+              "solution": null,
+              "solutions": [],
+              "youtube": [],
+              "important": false
+            },
+            {
+              "id": 5185,
+              "title": "Reduce Query Execution Time",
+              "slug": "reduce-query-execution-time",
+              "url": "",
+              "difficulty": "Hard",
+              "platform": "Other",
+              "solution": null,
+              "solutions": [],
+              "youtube": [],
+              "important": false
+            },
+            {
+              "id": 5186,
+              "title": "Handle High Concurrency",
+              "slug": "handle-high-concurrency",
+              "url": "",
+              "difficulty": "Hard",
+              "platform": "Other",
+              "solution": null,
+              "solutions": [],
+              "youtube": [],
+              "important": false
+            },
+            {
+              "id": 5187,
+              "title": "Optimize Recursive CTE",
+              "slug": "optimize-recursive-cte",
+              "url": "",
+              "difficulty": "Hard",
+              "platform": "Other",
+              "solution": null,
+              "solutions": [],
+              "youtube": [],
+              "important": false
+            },
+            {
+              "id": 5188,
+              "title": "Tune Pivot Query",
+              "slug": "tune-pivot-query",
+              "url": "",
+              "difficulty": "Hard",
+              "platform": "Other",
+              "solution": null,
+              "solutions": [],
+              "youtube": [],
+              "important": false
+            },
+            {
+              "id": 5189,
+              "title": "Analyze Explain Plan",
+              "slug": "explain-plan",
+              "url": "https://www.hackerrank.com/challenges/explain-plan/problem",
+              "difficulty": "Hard",
+              "platform": "HackerRank",
+              "solution": null,
+              "solutions": [],
+              "youtube": [],
+              "important": false
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

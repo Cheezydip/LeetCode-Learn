@@ -51,7 +51,7 @@ export const VerificationGateway = () => {
     : 'https://leetcode.com/profile/';
 
   return (
-    <div className="max-w-4xl mx-auto my-6 sm:my-10 px-4 animate-in fade-in zoom-in-95 duration-200 font-mono">
+    <div className="max-w-4xl mx-auto my-6 sm:my-10 px-4 animate-fade-slide-up">
       
       {/* Top Restricted Access Alert Banner */}
       <div className="p-4 rounded-xl bg-[#161B22] border border-[#FF7A00]/40 shadow-2xl mb-8 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">

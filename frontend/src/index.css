@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Fira+Code:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600;700&display=swap');
 @import "tailwindcss";
 
 @theme {
@@ -15,6 +15,8 @@
   --color-green-easy: #3FB950;
   --color-yellow-med: #D29922;
   --color-red-hard: #F85149;
+  --font-sans: 'Onest', system-ui, -apple-system, sans-serif;
+  --font-mono: 'IBM Plex Mono', ui-monospace, SFMono-Regular, monospace;
 }
 
 :root {
@@ -32,7 +34,12 @@
   --green-easy: #3FB950;
   --yellow-med: #D29922;
   --red-hard: #F85149;
-  font-family: 'JetBrains Mono', 'Fira Code', ui-monospace, SFMono-Regular, monospace;
+  font-family: 'Onest', system-ui, -apple-system, sans-serif;
+}
+
+html {
+  scrollbar-gutter: stable;
+  overflow-y: scroll;
 }
 
 body {
@@ -43,6 +50,127 @@ body {
   min-height: 100vh;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
+}
+
+/* ── Typography Hierarchy ── */
+h1, .h1 {
+  font-family: 'Onest', system-ui, sans-serif;
+  font-weight: 800;
+  font-size: 1.75rem;
+  letter-spacing: -0.03em;
+  line-height: 1.2;
+  color: var(--text-main);
+}
+h2, .h2 {
+  font-family: 'Onest', system-ui, sans-serif;
+  font-weight: 700;
+  font-size: 1.25rem;
+  letter-spacing: -0.02em;
+  line-height: 1.3;
+  color: var(--text-main);
+}
+h3, .h3 {
+  font-family: 'Onest', system-ui, sans-serif;
+  font-weight: 600;
+  font-size: 1rem;
+  letter-spacing: -0.01em;
+  line-height: 1.4;
+  color: var(--text-main);
+}
+h4, .h4 {
+  font-family: 'Onest', system-ui, sans-serif;
+  font-weight: 600;
+  font-size: 0.875rem;
+  letter-spacing: 0;
+  line-height: 1.4;
+  color: var(--text-muted);
+}
+
+/* ── Code / Data Monospace ── */
+.font-mono, code, pre, kbd {
+  font-family: 'IBM Plex Mono', ui-monospace, SFMono-Regular, monospace !important;
+}
+
+/* ── Text Animations ── */
+@keyframes fadeSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes headingReveal {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+    letter-spacing: 0.04em;
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    letter-spacing: -0.03em;
+  }
+}
+
+@keyframes subtleGlow {
+  0%, 100% {
+    text-shadow: 0 0 8px rgba(255, 122, 0, 0.0);
+  }
+  50% {
+    text-shadow: 0 0 12px rgba(255, 122, 0, 0.3);
+  }
+}
+
+@keyframes countUp {
+  from {
+    opacity: 0;
+    transform: translateY(6px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.animate-heading-reveal {
+  animation: headingReveal 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.animate-fade-slide-up {
+  animation: fadeSlideUp 0.4s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.animate-fade-slide-up-delayed {
+  animation: fadeSlideUp 0.4s cubic-bezier(0.22, 1, 0.36, 1) 0.1s both;
+}
+
+.animate-count-up {
+  animation: countUp 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.animate-subtle-glow {
+  animation: subtleGlow 3s ease-in-out infinite;
+}
+
+/* Stagger delays for cards entering view */
+.stagger-1 { animation-delay: 0.05s; }
+.stagger-2 { animation-delay: 0.1s; }
+.stagger-3 { animation-delay: 0.15s; }
+.stagger-4 { animation-delay: 0.2s; }
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .animate-heading-reveal,
+  .animate-fade-slide-up,
+  .animate-fade-slide-up-delayed,
+  .animate-count-up,
+  .animate-subtle-glow {
+    animation: none !important;
+  }
 }
 
 /* Custom Cockpit Scrollbar */
@@ -59,4 +187,28 @@ body {
 }
 ::-webkit-scrollbar-thumb:hover {
   background: var(--orange-muted);
+}
+
+/* Scrollbar hiding utilities */
+.scrollbar-none,
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-none::-webkit-scrollbar,
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Global Select Reset */
+select {
+  border: none;
+  outline: none;
+  box-shadow: none;
+}
+select:focus,
+select:focus-visible {
+  outline: none !important;
+  box-shadow: none !important;
+  border-color: transparent !important;
 }

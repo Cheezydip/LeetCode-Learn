@@ -85,15 +85,15 @@ export const DashboardPage = () => {
   }, [displayText, isDeleting, currentLineIdx, typewriterLines]);
 
   return (
-    <div className="space-y-10 animate-in fade-in duration-200">
-      
+    <div className="space-y-10 animate-fade-slide-up">
+
       {/* SECTION 1: HERO IDE PANEL */}
       <section className="relative">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
 
           {/* Main IDE Editor Panel */}
           <div className="lg:col-span-8 rounded-xl border border-[#21262D] bg-[#0D1117] overflow-hidden shadow-2xl">
-            
+
             {/* File Tabs Header */}
             <div className="h-10 bg-[#090C10] border-b border-[#21262D] flex items-center px-2 select-none text-xs font-mono">
               <div className="h-full px-4 flex items-center gap-2 bg-[#0D1117] border-t-2 border-t-[#FF7A00] border-r border-r-[#21262D] text-[#F0F6FC]">
@@ -148,29 +148,29 @@ export const DashboardPage = () => {
                 <span className="inline-block w-2 h-4 ml-1 bg-[#FF7A00] animate-pulse shrink-0" />
               </div>
 
-              <div className="pt-4 mt-4 border-t border-[#21262D] text-[11px] text-[#8B949E] flex flex-col sm:flex-row justify-between gap-1">
+              {/* <div className="pt-4 mt-4 border-t border-[#21262D] text-[11px] text-[#8B949E] flex flex-col sm:flex-row justify-between gap-1">
                 <span>Dashboard • React Router 7</span>
                 <span className="text-[#FF7A00]">JavaScript ES2023 • Vite</span>
-              </div>
+              </div> */}
             </div>
 
           </div>
 
           {/* Floating HUD Stack */}
           <div className="lg:col-span-4 space-y-5">
-            
+
             {/* Card 1: Live Contest Elo */}
-            <div className="p-5 rounded-xl bg-[#0D1117] border border-[#21262D] shadow-2xl hover:border-[#FF7A00]/40 transition-colors">
+            <div className="p-5 rounded-xl bg-[#0D1117] border border-[#21262D] shadow-2xl hover:border-[#FF7A00]/40 transition-colors animate-fade-slide-up stagger-1">
               <div className="flex justify-between items-start mb-2">
-                <span className="text-[10px] uppercase tracking-widest text-[#8B949E] font-mono font-semibold">
+                <h4 className="text-[10px] uppercase tracking-widest text-[#8B949E] font-mono font-semibold">
                   Live Contest Rating
-                </span>
+                </h4>
                 <span className="px-2 py-0.5 rounded text-[10px] font-mono bg-[#FF7A00]/10 text-[#FF7A00] border border-[#FF7A00]/30 font-bold">
                   ▲ +38 Proj
                 </span>
               </div>
               <div className="flex items-baseline gap-2">
-                <div className="font-mono text-4xl font-extrabold text-[#F0F6FC]">
+                <div className="text-4xl font-extrabold text-[#F0F6FC] animate-count-up animate-subtle-glow" style={{ fontFamily: "'Onest', sans-serif" }}>
                   {contestElo.toLocaleString()}
                 </div>
                 <span className="text-xs text-[#FF7A00] font-mono font-bold">
@@ -186,18 +186,19 @@ export const DashboardPage = () => {
             </div>
 
             {/* Card 2: Spaced Repetition Due Vault */}
-            <div className="p-5 rounded-xl bg-[#0D1117] border border-[#21262D] shadow-2xl hover:border-[#F0F6FC]/30 transition-colors">
+            <div className="p-5 rounded-xl bg-[#0D1117] border border-[#21262D] shadow-2xl hover:border-[#F0F6FC]/30 transition-colors animate-fade-slide-up stagger-2">
               <div className="flex justify-between items-start mb-2">
-                <span className="text-[10px] uppercase tracking-widest text-[#8B949E] font-mono font-semibold">
+                <h4 className="text-[10px] uppercase tracking-widest text-[#8B949E] font-mono font-semibold">
                   Review Queue
-                </span>
+
+                </h4>
                 <span className="px-2 py-0.5 rounded text-[10px] font-mono bg-white/10 text-white border border-white/20 font-bold">
                   Due Today
                 </span>
               </div>
               <div className="flex items-baseline gap-2">
-                <div className="font-mono text-4xl font-extrabold text-[#FF7A00]">3</div>
-                <span className="text-sm font-mono text-[#8B949E]">struggled problems</span>
+                <div className="text-4xl font-extrabold text-[#FF7A00] animate-count-up" style={{ fontFamily: "'Onest', sans-serif" }}>3</div>
+                <span className="text-sm text-[#8B949E]">struggled problems</span>
               </div>
               <p className="text-[11px] text-[#8B949E] mt-2 font-mono">Trapping Rain Water (7d review cadence)</p>
               <div className="mt-3 flex gap-2">
@@ -220,7 +221,7 @@ export const DashboardPage = () => {
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
             <Terminal className="size-4 text-[#FF7A00]" />
-            <h2 className="text-sm font-bold text-[#F0F6FC] uppercase tracking-wider">
+            <h2 className="text-sm font-bold text-[#F0F6FC] uppercase tracking-wider animate-heading-reveal">
               Explore All Pages
             </h2>
           </div>
@@ -234,11 +235,11 @@ export const DashboardPage = () => {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-          
+
           {/* Module 1: Simulator */}
           <Link
             to="/growth"
-            className="group p-5 rounded-xl bg-[#0D1117] border border-[#21262D] hover:border-[#FF7A00]/50 transition-all hover:-translate-y-0.5 shadow-xl flex flex-col justify-between"
+            className="group p-5 rounded-xl bg-[#0D1117] border border-[#21262D] hover:border-[#FF7A00]/50 transition-all hover:-translate-y-0.5 shadow-xl flex flex-col justify-between animate-fade-slide-up stagger-1"
           >
             <div>
               <div className="flex items-center justify-between mb-3">
@@ -263,7 +264,7 @@ export const DashboardPage = () => {
           {/* Module 2: Radar */}
           <Link
             to="/topics"
-            className="group p-5 rounded-xl bg-[#0D1117] border border-[#21262D] hover:border-[#FF7A00]/50 transition-all hover:-translate-y-0.5 shadow-xl flex flex-col justify-between"
+            className="group p-5 rounded-xl bg-[#0D1117] border border-[#21262D] hover:border-[#FF7A00]/50 transition-all hover:-translate-y-0.5 shadow-xl flex flex-col justify-between animate-fade-slide-up stagger-2"
           >
             <div>
               <div className="flex items-center justify-between mb-3">
@@ -288,7 +289,7 @@ export const DashboardPage = () => {
           {/* Module 3: Roadmaps */}
           <Link
             to="/paths"
-            className="group p-5 rounded-xl bg-[#0D1117] border border-[#21262D] hover:border-[#FF7A00]/50 transition-all hover:-translate-y-0.5 shadow-xl flex flex-col justify-between"
+            className="group p-5 rounded-xl bg-[#0D1117] border border-[#21262D] hover:border-[#FF7A00]/50 transition-all hover:-translate-y-0.5 shadow-xl flex flex-col justify-between animate-fade-slide-up stagger-3"
           >
             <div>
               <div className="flex items-center justify-between mb-3">
@@ -313,7 +314,7 @@ export const DashboardPage = () => {
           {/* Module 4: Upsolve */}
           <Link
             to="/practice"
-            className="group p-5 rounded-xl bg-[#0D1117] border border-[#21262D] hover:border-[#FF7A00]/50 transition-all hover:-translate-y-0.5 shadow-xl flex flex-col justify-between"
+            className="group p-5 rounded-xl bg-[#0D1117] border border-[#21262D] hover:border-[#FF7A00]/50 transition-all hover:-translate-y-0.5 shadow-xl flex flex-col justify-between animate-fade-slide-up stagger-4"
           >
             <div>
               <div className="flex items-center justify-between mb-3">
