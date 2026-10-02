@@ -1,13 +1,29 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Outlet } from 'react-router-dom';
 import { AppHeader } from '../components/AppHeader.jsx';
 import { GridCanvas } from '../components/GridCanvas.jsx';
 import { LeetCodeSyncModal } from '../components/LeetCodeSyncModal.jsx';
+import { GlobalSearchModal } from '../components/GlobalSearchModal.jsx';
 import { VerificationGateway } from '../components/VerificationGateway.jsx';
 import { useProfileStore } from '../store/useProfileStore.js';
+import { useSearchStore } from '../store/useSearchStore.js';
 
 export const RootLayout = () => {
   const { isVerified } = useProfileStore();
+  const { toggleSearch } = useSearchStore();
+
+  // Global Ctrl+K / Cmd+K shortcut listener
+  useEffect(() => {
+    const handleGlobalKeyDown = (e) => {
+      if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'k') {
+        e.preventDefault();
+        toggleSearch();
+      }
+    };
+
+    window.addEventListener('keydown', handleGlobalKeyDown);
+    return () => window.removeEventListener('keydown', handleGlobalKeyDown);
+  }, [toggleSearch]);
 
   return (
     <div className="min-h-screen bg-[#090C10] text-[#F0F6FC] font-mono selection:bg-[#FF7A00]/20 selection:text-[#FF7A00] relative">
@@ -19,6 +35,9 @@ export const RootLayout = () => {
 
       {/* Synchronized LeetCode Profile Modal */}
       <LeetCodeSyncModal />
+
+      {/* Global Command Palette / Problem Search Modal */}
+      <GlobalSearchModal />
 
       {/* Page Content Outlet or Zero-Trust Verification Gateway */}
       <main className="max-w-7xl mx-auto px-3 sm:px-4 relative z-10 pb-24">

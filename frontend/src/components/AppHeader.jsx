@@ -1,10 +1,12 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { useProfileStore } from '../store/useProfileStore.js';
-import { Activity, Compass, Flame, LayoutDashboard, LineChart, Lock, LogOut, ShieldCheck } from 'lucide-react';
+import { useSearchStore } from '../store/useSearchStore.js';
+import { Activity, Compass, Flame, LayoutDashboard, LineChart, Lock, LogOut, Search, ShieldCheck } from 'lucide-react';
 
 export const AppHeader = () => {
   const { handle, contestElo, syncStatus, isVerified, setSyncModalOpen, unlinkAccount } = useProfileStore();
+  const { openSearch } = useSearchStore();
 
   const navItems = [
     { label: 'Dashboard', path: '/', icon: LayoutDashboard },
@@ -65,8 +67,27 @@ export const AppHeader = () => {
           </div>
         )}
 
-        {/* Action: Profile Sync Trigger & Unlink */}
+        {/* Action: Search Trigger, Profile Sync Trigger & Unlink */}
         <div className="flex items-center gap-2">
+          {/* Global Search Bar Trigger */}
+          <button
+            type="button"
+            onClick={() => openSearch()}
+            className="flex items-center justify-between gap-2.5 px-3 py-1.5 rounded-lg bg-[#161B22] hover:bg-[#21262D] border border-[#21262D] hover:border-[#FF7A00]/50 text-[#8B949E] hover:text-[#F0F6FC] transition-all text-xs cursor-pointer shadow-sm group w-auto sm:w-48 md:w-60"
+            title="Global Problem Search (Ctrl+K)"
+          >
+            <div className="flex items-center gap-2 min-w-0">
+              <Search className="size-3.5 text-[#FF7A00] shrink-0 group-hover:scale-110 transition-transform" />
+              <span className="font-sans text-[11px] truncate hidden sm:inline text-[#8B949E] group-hover:text-[#F0F6FC]">
+                Search 3,216 problems...
+              </span>
+              <span className="font-sans text-[11px] sm:hidden">Search</span>
+            </div>
+            <kbd className="hidden md:inline-flex items-center text-[10px] px-1.5 py-0.5 rounded bg-[#0D1117] border border-[#30363D] text-[#8B949E] font-mono group-hover:text-[#FF7A00] group-hover:border-[#FF7A00]/40 transition-colors shrink-0">
+              Ctrl K
+            </kbd>
+          </button>
+
           {isVerified ? (
             <>
               <button

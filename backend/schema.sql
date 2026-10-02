@@ -4,17 +4,50 @@
 -- https://supabase.com/dashboard/project/eueljujuptrwbpzldste/sql
 -- ==========================================================
 
--- 1. Create problems table
+-- 1. Create/Enhance problems table
 CREATE TABLE IF NOT EXISTS public.problems (
     id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    frontend_id INT,
     title TEXT NOT NULL,
+    title_slug TEXT UNIQUE,
     difficulty TEXT CHECK (difficulty IN ('Easy', 'Medium', 'Hard')) DEFAULT 'Medium',
     category TEXT DEFAULT 'General',
+    ac_rate NUMERIC,
     leetcode_url TEXT,
     description TEXT,
+    topic_tags TEXT[] DEFAULT ARRAY[]::TEXT[],
+    sheet_tags TEXT[] DEFAULT ARRAY[]::TEXT[],
+    company_tags TEXT[] DEFAULT ARRAY[]::TEXT[],
+    solutions JSONB DEFAULT '[]'::jsonb,
+    youtube JSONB DEFAULT '[]'::jsonb,
     created_at TIMESTAMPTZ DEFAULT now(),
     updated_at TIMESTAMPTZ DEFAULT now()
 );
+
+-- Migration helpers if table already existed with older schema:
+ALTER TABLE public.problems
+  ADD COLUMN IF NOT EXISTS frontend_id INT,
+  ADD COLUMN IF NOT EXISTS title_slug TEXT,
+  ADD COLUMN IF NOT EXISTS ac_rate NUMERIC,
+  ADD COLUMN IF NOT EXISTS topic_tags TEXT[] DEFAULT ARRAY[]::TEXT[],
+  ADD COLUMN IF NOT EXISTS sheet_tags TEXT[] DEFAULT ARRAY[]::TEXT[],
+  ADD COLUMN IF NOT EXISTS company_tags TEXT[] DEFAULT ARRAY[]::TEXT[],
+  ADD COLUMN IF NOT EXISTS solutions JSONB DEFAULT '[]'::jsonb,
+  ADD COLUMN IF NOT EXISTS youtube JSONB DEFAULT '[]'::jsonb;
+
+DO $$
+BEGIN
+    IF NOT EXISTS (SELECT 1 FROM pg_constraint WHERE conname = 'problems_title_slug_key') THEN
+        ALTER TABLE public.problems ADD CONSTRAINT problems_title_slug_key UNIQUE (title_slug);
+    END IF;
+END $$;
+
+CREATE INDEX IF NOT EXISTS idx_problems_title_slug ON public.problems(title_slug);
+CREATE INDEX IF NOT EXISTS idx_problems_difficulty ON public.problems(difficulty);
+CREATE INDEX IF NOT EXISTS idx_problems_topic_tags ON public.problems USING GIN(topic_tags);
+CREATE INDEX IF NOT EXISTS idx_problems_sheet_tags ON public.problems USING GIN(sheet_tags);
+CREATE INDEX IF NOT EXISTS idx_problems_company_tags ON public.problems USING GIN(company_tags);
+
 
 -- 2. Create users table (with LeetCode Ingestion Telemetry & Verification)
 CREATE TABLE IF NOT EXISTS public.users (

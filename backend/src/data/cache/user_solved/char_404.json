@@ -203,8 +203,13 @@
     "swap-two-numbers-without-using-temporary-variable",
     "check-if-given-number-is-perfect-square-in-cpp",
     "greatest-common-divisor-of-strings",
-    "c-program-to-check-prime-number"
+    "c-program-to-check-prime-number",
+    "longest-nice-substring",
+    "longest-substring-with-at-least-k-repeating-characters",
+    "maximum-number-of-occurrences-of-a-substring",
+    "rectangle-overlap",
+    "separate-squares-i"
   ],
-  "totalSolvedCount": 203,
-  "updatedAt": "2026-09-28T15:36:44.133Z"
+  "totalSolvedCount": 208,
+  "updatedAt": "2026-10-02T15:58:02.109Z"
 }

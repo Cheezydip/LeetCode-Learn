@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 import { RootLayout } from './layouts/RootLayout';
 import { DashboardPage } from './pages/DashboardPage';
@@ -6,8 +6,15 @@ import { GrowthPage } from './pages/GrowthPage';
 import { RadarPage } from './pages/RadarPage';
 import { RoadmapsPage } from './pages/RoadmapsPage';
 import { PracticePage } from './pages/PracticePage';
+import { syncProblemsWithCloud } from './services/problemCache';
 
 export const App = () => {
+  useEffect(() => {
+    // Non-blocking background sync of problems to device IndexedDB
+    syncProblemsWithCloud().catch((err) => {
+      console.warn('[App] Background problem cache sync notice:', err?.message || err);
+    });
+  }, []);
   return (
     <BrowserRouter>
       <Routes>

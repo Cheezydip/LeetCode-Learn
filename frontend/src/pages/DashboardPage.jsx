@@ -94,19 +94,25 @@ export const DashboardPage = () => {
           {/* Main IDE Editor Panel */}
           <div className="lg:col-span-8 rounded-xl border border-[#21262D] bg-[#0D1117] overflow-hidden shadow-2xl">
 
-            {/* File Tabs Header */}
-            <div className="h-10 bg-[#090C10] border-b border-[#21262D] flex items-center px-2 select-none text-xs font-mono">
-              <div className="h-full px-4 flex items-center gap-2 bg-[#0D1117] border-t-2 border-t-[#FF7A00] border-r border-r-[#21262D] text-[#F0F6FC]">
-                <span className="text-[#FF7A00] font-bold text-[11px]">JS</span>
-                <span>growth_engine.js</span>
+            {/* File Tab Header & IDE Telemetry Status */}
+            <div className="h-10 bg-[#090C10] border-b border-[#21262D] flex items-center justify-between px-3 select-none text-xs font-mono">
+              <div className="flex items-center h-full">
+                <div className="h-full px-4 flex items-center gap-2 bg-[#0D1117] border-t-2 border-t-[#FF7A00] border-r border-[#21262D] text-[#F0F6FC]">
+                  <span className="text-[#FF7A00] font-bold text-[11px]">JS</span>
+                  <span className="font-semibold tracking-wide">growth_engine.js</span>
+                </div>
               </div>
-              <div className="h-full px-4 flex items-center gap-2 border-r border-r-[#21262D] text-[#8B949E] hidden sm:flex">
-                <span className="text-[#F0F6FC] text-[11px]">RS</span>
-                <span>review_queue.rs</span>
-              </div>
-              <div className="h-full px-4 flex items-center gap-2 border-r border-r-[#21262D] text-[#8B949E] hidden sm:flex">
-                <span className="text-[#FF7A00] text-[11px]">PY</span>
-                <span>staircase_dp.py</span>
+
+              {/* Clean IDE Telemetry & Runtime Status */}
+              <div className="flex items-center gap-3 text-[11px] text-[#8B949E]">
+                <div className="flex items-center gap-1.5 px-2.5 py-1 rounded bg-[#161B22] border border-[#21262D] shadow-inner">
+                  <span className="size-1.5 rounded-full bg-[#3FB950] animate-pulse"></span>
+                  <span className="text-[#3FB950] font-semibold text-[10px] tracking-wider uppercase">Live Telemetry</span>
+                </div>
+                <div className="hidden sm:flex items-center gap-2 text-[#484F58] text-[11px]">
+                  <span>•</span>
+                  <span className="text-[#8B949E] font-mono">Node.js v22</span>
+                </div>
               </div>
             </div>
 

@@ -81,7 +81,7 @@ function sortByDifficultyProgression(problems) {
 /**
  * Fetch ALL free problems for a single topic tag from LeetCode's GraphQL API
  */
-async function fetchTopicProblems(tagSlug, region = 'global') {
+async function fetchTopicProblems(tagSlug, region = 'global', onTagsDiscovered = null) {
   const allProblems = [];
   let skip = 0;
   let totalExpected = null;
@@ -100,20 +100,35 @@ async function fetchTopicProblems(tagSlug, region = 'global') {
 
       if (totalExpected === null) {
         totalExpected = result.total;
+        // If a specific tag returns > 2500 problems and tag isn't 'array', LeetCode ignored the tag filter
+        if (totalExpected > 2500 && tagSlug !== 'array') {
+          console.warn(`[Enrichment] Tag "${tagSlug}" returned ${totalExpected} problems (unsupported filter tag). Skipping.`);
+          break;
+        }
       }
 
-      // Filter out premium problems
+      // Filter out premium problems and verify question has this tag
       const freeProblems = result.questions
-        .filter((p) => !p.isPaidOnly)
-        .map((p) => ({
-          questionId: p.questionFrontendId,
-          title: p.title,
-          titleSlug: p.titleSlug,
-          difficulty: p.difficulty,
-          acRate: Math.round((p.acRate || 0) * 10) / 10,
-          url: `https://leetcode.com/problems/${p.titleSlug}/`,
-          tags: (p.topicTags || []).map((t) => t.name),
-        }));
+        .filter((p) => !p.isPaidOnly && (p.topicTags || []).some((t) => t.slug === tagSlug))
+        .map((p) => {
+          if (typeof onTagsDiscovered === 'function' && Array.isArray(p.topicTags)) {
+            for (const t of p.topicTags) {
+              if (t?.name && t?.slug) {
+                onTagsDiscovered(t.slug, t.name);
+              }
+            }
+          }
+
+          return {
+            questionId: p.questionFrontendId,
+            title: p.title,
+            titleSlug: p.titleSlug,
+            difficulty: p.difficulty,
+            acRate: Math.round((p.acRate || 0) * 10) / 10,
+            url: `https://leetcode.com/problems/${p.titleSlug}/`,
+            tags: (p.topicTags || []).map((t) => t.name),
+          };
+        });
 
       allProblems.push(...freeProblems);
 
@@ -137,13 +152,20 @@ async function fetchTopicProblems(tagSlug, region = 'global') {
 async function enrichAll() {
   const topics = loadTopicList();
   const enrichedTopics = [];
+  const discoveredTags = new Map();
+
+  function recordDiscoveredTag(slug, name) {
+    if (slug && name && !discoveredTags.has(slug)) {
+      discoveredTags.set(slug, name);
+    }
+  }
 
   console.log(`[Enrichment] Starting enrichment for ${topics.length} topics...`);
 
   for (const topic of topics) {
     try {
       console.log(`[Enrichment] Fetching: ${topic.name} (${topic.tagSlug})...`);
-      const problems = await fetchTopicProblems(topic.tagSlug);
+      const problems = await fetchTopicProblems(topic.tagSlug, 'global', recordDiscoveredTag);
 
       const difficultyCounts = {
         Easy: problems.filter((p) => p.difficulty === 'Easy').length,
@@ -180,11 +202,71 @@ async function enrichAll() {
     }
   }
 
-  // Write cache
+  // Auto-discover brand new topics added to LeetCode questions
+  const knownTagSlugs = new Set(topics.map((t) => t.tagSlug));
+  const newlyDiscoveredTopics = [];
+
+  for (const [slug, name] of discoveredTags.entries()) {
+    if (!knownTagSlugs.has(slug)) {
+      newlyDiscoveredTopics.push({
+        key: slug,
+        name,
+        tagSlug: slug,
+        description: `Algorithmic problems and solutions covering ${name}.`,
+      });
+      knownTagSlugs.add(slug);
+    }
+  }
+
+  if (newlyDiscoveredTopics.length > 0) {
+    console.log(`[Enrichment] 🆕 Discovered ${newlyDiscoveredTopics.length} new topics on LeetCode! Auto-registering...`);
+    try {
+      const updatedTopics = [...topics, ...newlyDiscoveredTopics];
+      fs.writeFileSync(TOPIC_LIST_PATH, JSON.stringify(updatedTopics, null, 2), 'utf-8');
+      console.log(`[Enrichment] ✓ Saved ${newlyDiscoveredTopics.length} new topics to topicList.json`);
+    } catch (saveErr) {
+      console.warn('[Enrichment] Could not persist new topics to topicList.json:', saveErr.message);
+    }
+
+    // Fetch problems for each newly discovered topic
+    for (const newTopic of newlyDiscoveredTopics) {
+      try {
+        console.log(`[Enrichment] Fetching newly discovered topic: ${newTopic.name} (${newTopic.tagSlug})...`);
+        const problems = await fetchTopicProblems(newTopic.tagSlug, 'global', recordDiscoveredTag);
+        const difficultyCounts = {
+          Easy: problems.filter((p) => p.difficulty === 'Easy').length,
+          Medium: problems.filter((p) => p.difficulty === 'Medium').length,
+          Hard: problems.filter((p) => p.difficulty === 'Hard').length,
+        };
+
+        enrichedTopics.push({
+          key: newTopic.key,
+          name: newTopic.name,
+          tagSlug: newTopic.tagSlug,
+          description: newTopic.description,
+          totalProblems: problems.length,
+          difficultyCounts,
+          problems,
+        });
+
+        await sleep(DELAY_BETWEEN_TOPICS_MS);
+      } catch (err) {
+        console.warn(`[Enrichment] Could not fetch problems for new topic ${newTopic.name}:`, err.message);
+      }
+    }
+  }
+
+  // Calculate distinct unique problems across all topics (avoids double counting multi-topic problems)
+  const uniqueSlugs = new Set();
+  enrichedTopics.forEach((t) => {
+    (t.problems || []).forEach((p) => uniqueSlugs.add(p.titleSlug));
+  });
+
+  // Write disk cache
   const catalog = {
     generatedAt: new Date().toISOString(),
     topicCount: enrichedTopics.length,
-    totalProblems: enrichedTopics.reduce((sum, t) => sum + t.totalProblems, 0),
+    totalProblems: uniqueSlugs.size,
     topics: enrichedTopics,
   };
 
@@ -193,9 +275,17 @@ async function enrichAll() {
       fs.mkdirSync(CACHE_DIR, { recursive: true });
     }
     fs.writeFileSync(CACHE_PATH, JSON.stringify(catalog, null, 2), 'utf-8');
-    console.log(`[Enrichment] ✓ Cache written: ${catalog.topicCount} topics, ${catalog.totalProblems} total problems`);
+    console.log(`[Enrichment] ✓ Cache written: ${catalog.topicCount} topics, ${catalog.totalProblems} unique problems`);
   } catch (err) {
     console.error('[Enrichment] ✗ Failed to write cache:', err.message);
+  }
+
+  // Automatically sync to Supabase in the background
+  try {
+    const { syncCatalogToSupabase } = require('./catalogSyncService');
+    await syncCatalogToSupabase(catalog);
+  } catch (syncErr) {
+    console.warn('[Enrichment] Supabase auto-sync notice:', syncErr.message);
   }
 
   return catalog;

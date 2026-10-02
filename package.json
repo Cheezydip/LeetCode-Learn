@@ -12,7 +12,8 @@
     "postinstall": "npm --prefix frontend install --include=dev && npm --prefix frontend run build",
     "start": "node backend/src/server.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "test-connection": "node backend/test-connection.js"
+    "test-connection": "node backend/test-connection.js",
+    "db:seed-problems": "node backend/src/scripts/seedSupabaseProblems.js"
   },
   "keywords": [],
   "author": "",

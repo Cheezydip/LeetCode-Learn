@@ -29,7 +29,8 @@ logs
 task.md
 tech.md
 .agent/
-.agents/
+*.agents/
 .design
 design-palette-preview.html
 
+brag-output/*
