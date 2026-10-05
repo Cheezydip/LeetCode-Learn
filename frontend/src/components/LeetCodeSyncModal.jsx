@@ -417,7 +417,7 @@ export const LeetCodeSyncModal = () => {
 
                 <div className="grid grid-cols-3 gap-2">
                   <div>
-                    <span className="text-[9px] uppercase text-[#8B949E] block">Contest Elo</span>
+                    <span className="text-[9px] uppercase text-[#8B949E] block">Contest Rating</span>
                     <span className="font-bold text-[#F0F6FC] text-sm">{contestElo ? contestElo.toLocaleString() : '—'}</span>
                   </div>
                   <div>

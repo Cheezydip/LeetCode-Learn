@@ -523,7 +523,7 @@ export const PracticePage = () => {
                     <div className="text-[10px] text-[#8B949E] mt-1.5 flex items-center justify-between">
                       <span>{topicSolvesCount} LC solves</span>
                       <span>z = <span className={t.zScore < -1 ? 'text-[#F85149] font-bold' : 'text-[#8B949E]'}>{t.zScore}</span></span>
-                      <span>Elo <span className="text-[#FF7A00] font-bold">{t.competencyElo}</span></span>
+                      <span>Rating <span className="text-[#FF7A00] font-bold">{t.competencyElo}</span></span>
                     </div>
                   </button>
                 );
@@ -542,7 +542,7 @@ export const PracticePage = () => {
             </p>
             {contestElo && (
               <p className="text-[#484F58] text-[10px]">
-                Contest Elo baseline: <span className="text-white font-semibold">{contestElo}</span>
+                Contest Rating baseline: <span className="text-white font-semibold">{contestElo}</span>
               </p>
             )}
           </div>

@@ -11,7 +11,33 @@ const DB_VERSION = 1;
 const PROBLEMS_STORE = 'problems';
 const METADATA_STORE = 'metadata';
 
-const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+const API_BASE_URL = import.meta.env.VITE_API_URL || '';
+
+/**
+ * Standardize problem schema across different endpoints (Supabase, local catalog, sheets)
+ */
+export function normalizeProblem(p) {
+  if (!p) return null;
+  const rawId = p.frontend_id ?? p.questionId ?? p.questionFrontendId ?? p.id ?? null;
+  const numId = rawId != null ? parseInt(rawId, 10) : null;
+  const validId = !isNaN(numId) && numId !== null ? numId : rawId;
+  const slug = p.title_slug || p.titleSlug || p.slug || '';
+
+  return {
+    ...p,
+    frontend_id: validId,
+    questionId: validId,
+    title_slug: slug,
+    titleSlug: slug,
+    title: p.title || slug,
+    difficulty: p.difficulty || 'Medium',
+    ac_rate: p.ac_rate ?? p.acRate ?? null,
+    leetcode_url: p.leetcode_url || p.url || (slug ? `https://leetcode.com/problems/${slug}/` : ''),
+    topic_tags: Array.isArray(p.topic_tags) ? p.topic_tags : (Array.isArray(p.tags) ? p.tags : []),
+    sheet_tags: Array.isArray(p.sheet_tags) ? p.sheet_tags : [],
+    company_tags: Array.isArray(p.company_tags) ? p.company_tags : [],
+  };
+}
 
 /**
  * Open or initialize the IndexedDB database
@@ -124,50 +150,80 @@ export async function syncProblemsWithCloud({ onProgress, force = false } = {}) 
         cloudMeta = await res.json();
       }
     } catch {
-      // Offline fallback: if network is down, continue with existing cache
+      // Offline fallback: continue with existing cache
       console.info('[ProblemCache] Offline mode: using device-cached problems.');
       return await getCacheStatus();
     }
 
-    if (!cloudMeta || !cloudMeta.version) {
-      return await getCacheStatus();
-    }
-
+    const currentVersion = cloudMeta?.version || 'v1-default';
     const localVersion = await getMetadata('version');
     const status = await getCacheStatus();
 
     // If already up-to-date and has items, skip download
-    if (!force && localVersion === cloudMeta.version && status.totalCount > 0) {
+    if (!force && localVersion === currentVersion && status.totalCount > 0) {
       return status;
     }
 
-    if (onProgress) onProgress({ status: 'downloading', message: 'Downloading catalog from cloud...' });
+    if (onProgress) onProgress({ status: 'downloading', message: 'Downloading catalog...' });
 
-    // 2. Fetch full catalog from cloud
-    const syncRes = await fetch(`${API_BASE_URL}/api/problems/cloud-sync`);
-    if (!syncRes.ok) {
-      throw new Error(`Cloud sync failed with status ${syncRes.status}`);
+    // 2. Fetch full catalog from cloud or fallback to local backend API
+    let problems = [];
+    try {
+      const syncRes = await fetch(`${API_BASE_URL}/api/problems/cloud-sync`);
+      if (syncRes.ok) {
+        const syncData = await syncRes.json();
+        problems = syncData.problems || [];
+      }
+    } catch (err) {
+      console.warn('[ProblemCache] Cloud-sync fetch failed, trying /api/problems/all fallback:', err);
     }
 
-    const syncData = await syncRes.json();
-    const problems = syncData.problems || [];
+    // Fallback: If cloud-sync was empty or failed, fetch from /api/problems/all
+    if (problems.length === 0) {
+      try {
+        const allRes = await fetch(`${API_BASE_URL}/api/problems/all`);
+        if (allRes.ok) {
+          const allData = await allRes.json();
+          const seen = new Set();
+          for (const topic of allData.topics || []) {
+            for (const p of topic.problems || []) {
+              const slug = p.titleSlug || p.title_slug;
+              if (slug && !seen.has(slug)) {
+                seen.add(slug);
+                problems.push({
+                  ...p,
+                  topic_tags: [topic.name, ...(p.tags || [])],
+                });
+              }
+            }
+          }
+        }
+      } catch (fallbackErr) {
+        console.warn('[ProblemCache] Fallback catalog fetch failed:', fallbackErr);
+      }
+    }
+
+    if (problems.length === 0) {
+      return await getCacheStatus();
+    }
 
     if (onProgress) onProgress({ status: 'saving', message: `Saving ${problems.length} problems to device storage...` });
 
-    // 3. Batch store into IndexedDB
+    // 3. Batch store normalized problems into IndexedDB
     const db = await openDB();
     await new Promise((resolve, reject) => {
       const tx = db.transaction([PROBLEMS_STORE, METADATA_STORE], 'readwrite');
       const pStore = tx.objectStore(PROBLEMS_STORE);
       const mStore = tx.objectStore(METADATA_STORE);
 
-      // Upsert problems
-      for (const p of problems) {
-        pStore.put(p);
+      for (const rawP of problems) {
+        const p = normalizeProblem(rawP);
+        if (p && p.title_slug) {
+          pStore.put(p);
+        }
       }
 
-      // Update metadata
-      mStore.put({ key: 'version', value: cloudMeta.version });
+      mStore.put({ key: 'version', value: currentVersion });
       mStore.put({ key: 'lastSynced', value: new Date().toISOString() });
       mStore.put({ key: 'totalCount', value: problems.length });
 
@@ -180,7 +236,7 @@ export async function syncProblemsWithCloud({ onProgress, force = false } = {}) 
     return {
       isCached: true,
       totalCount: problems.length,
-      version: cloudMeta.version,
+      version: currentVersion,
       lastSynced: new Date().toISOString(),
     };
   } catch (err) {
@@ -249,32 +305,71 @@ export async function getCachedProblemsByTopic(topicTag) {
  * Search problems locally with instantaneous fuzzy match & tag/company matching
  */
 export async function searchLocalProblems(query, { limit = 40 } = {}) {
-  const cleanQ = (query || '').toLowerCase().trim();
-  if (!cleanQ) return [];
+  const rawQ = (query || '').trim();
+  if (!rawQ) return [];
 
-  const all = await getAllCachedProblems();
+  const cleanQ = rawQ.toLowerCase();
+  const cleanNoHash = cleanQ.startsWith('#') ? cleanQ.slice(1).trim() : cleanQ;
+  const isNumeric = /^\d+$/.test(cleanNoHash);
+
+  let all = await getAllCachedProblems();
+
+  // If local cache is not populated yet, fetch directly from backend API
+  if (!all || all.length === 0) {
+    try {
+      const res = await fetch(`${API_BASE_URL}/api/problems/all`);
+      if (res.ok) {
+        const data = await res.json();
+        const extracted = [];
+        const seen = new Set();
+        for (const topic of data.topics || []) {
+          for (const p of topic.problems || []) {
+            const slug = p.titleSlug || p.title_slug;
+            if (slug && !seen.has(slug)) {
+              seen.add(slug);
+              extracted.push(
+                normalizeProblem({
+                  ...p,
+                  topic_tags: [topic.name, ...(p.tags || [])],
+                })
+              );
+            }
+          }
+        }
+        all = extracted;
+      }
+    } catch (err) {
+      console.warn('[ProblemCache] Fallback search fetch failed:', err);
+    }
+  }
+
   if (!all || all.length === 0) return [];
 
-  const results = [];
+  const exactIdMatches = [];
+  const idStartsWithMatches = [];
   const startsWithMatches = [];
-  const idMatches = [];
   const otherMatches = [];
 
-  for (const p of all) {
+  for (const rawP of all) {
+    const p = normalizeProblem(rawP);
     const titleLower = (p.title || '').toLowerCase();
     const slugLower = (p.title_slug || '').toLowerCase();
-    const idStr = p.frontend_id ? String(p.frontend_id) : '';
+    const id = p.frontend_id ?? p.questionId ?? p.id;
+    const idStr = id != null ? String(id) : '';
 
     const hasTagMatch = Array.isArray(p.topic_tags) && p.topic_tags.some((t) => t.toLowerCase().includes(cleanQ));
     const hasCompanyMatch = Array.isArray(p.company_tags) && p.company_tags.some((c) => c.toLowerCase().includes(cleanQ));
     const hasSheetMatch = Array.isArray(p.sheet_tags) && p.sheet_tags.some((s) => s.toLowerCase().includes(cleanQ));
     const hasDiffMatch = (p.difficulty || '').toLowerCase() === cleanQ;
 
-    if (idStr === cleanQ || `#${idStr}` === cleanQ) {
-      idMatches.push(p);
+    if (isNumeric && idStr === cleanNoHash) {
+      exactIdMatches.push(p);
+    } else if (isNumeric && idStr.startsWith(cleanNoHash)) {
+      idStartsWithMatches.push(p);
     } else if (titleLower.startsWith(cleanQ) || slugLower.startsWith(cleanQ)) {
       startsWithMatches.push(p);
     } else if (
+      (isNumeric && idStr.includes(cleanNoHash)) ||
       titleLower.includes(cleanQ) ||
       slugLower.includes(cleanQ) ||
       hasTagMatch ||
@@ -285,11 +380,18 @@ export async function searchLocalProblems(query, { limit = 40 } = {}) {
       otherMatches.push(p);
     }
 
-    if (idMatches.length + startsWithMatches.length + otherMatches.length >= limit * 2) {
+    if (exactIdMatches.length + idStartsWithMatches.length + startsWithMatches.length + otherMatches.length >= limit * 3) {
       break;
     }
   }
 
-  return [...idMatches, ...startsWithMatches, ...otherMatches].slice(0, limit);
+  // Sort idStartsWith numerically so #1, #10, #11, etc. appear in clean ascending order
+  idStartsWithMatches.sort((a, b) => {
+    const idA = parseInt(a.frontend_id || a.questionId || 0, 10);
+    const idB = parseInt(b.frontend_id || b.questionId || 0, 10);
+    return idA - idB;
+  });
+
+  return [...exactIdMatches, ...idStartsWithMatches, ...startsWithMatches, ...otherMatches].slice(0, limit);
 }
 

@@ -11,7 +11,7 @@ const TOPIC_CATALOG = {
   dp: {
     title: 'Dynamic Programming Intuition Ladder',
     desc: 'Core Invariant: Overlapping subproblems with optimal substructure. Move from 1D memoization array to rolling state variables.',
-    elo: '1,850 Elo • 88% AC',
+    elo: '1,850 Rating • 88% AC',
     progress: '1 / 4 Mastered',
     steps: [
       {
@@ -75,7 +75,7 @@ const TOPIC_CATALOG = {
   monostack: {
     title: 'Monotonic Stack Intuition Ladder [Deficit Topic]',
     desc: 'Core Invariant: Strictly decreasing/increasing stack elements. Popping an element identifies its nearest geometric boundary.',
-    elo: '1,540 Elo • 28% AC (-302 Deficit)',
+    elo: '1,540 Rating • 28% AC (-302 Deficit)',
     progress: '1 / 4 Mastered',
     isDeficit: true,
     steps: [
@@ -141,7 +141,7 @@ const TOPIC_CATALOG = {
   graphs: {
     title: 'Graphs & Trees Intuition Ladder',
     desc: 'Core Invariant: State exploration via Breadth-First search levels or Depth-First tree subtrees with cycle prevention.',
-    elo: '1,820 Elo • 79% AC',
+    elo: '1,820 Rating • 79% AC',
     progress: '2 / 4 Mastered',
     steps: [
       {
@@ -205,7 +205,7 @@ const TOPIC_CATALOG = {
   window: {
     title: 'Sliding Window & Two Pointers Intuition Ladder',
     desc: 'Core Invariant: Monotonic expansion and contraction of subarray bounds [L, R] to achieve O(N) linear execution.',
-    elo: '1,910 Elo • 94% AC (Peak Mastery)',
+    elo: '1,910 Rating • 94% AC (Peak Mastery)',
     progress: '3 / 4 Mastered',
     steps: [
       {
@@ -269,7 +269,7 @@ const TOPIC_CATALOG = {
   binsearch: {
     title: 'Binary Search Intuition Ladder',
     desc: 'Core Invariant: Monotonicity of search space or boolean feasibility predicate f(x). Halve candidate space each iteration.',
-    elo: '1,880 Elo • 88% AC',
+    elo: '1,880 Rating • 88% AC',
     progress: '2 / 4 Mastered',
     steps: [
       {
@@ -333,7 +333,7 @@ const TOPIC_CATALOG = {
   heaps: {
     title: 'Heaps & Hash Tables Intuition Ladder',
     desc: 'Core Invariant: Priority queues for dynamic extremum extraction and hash tables for O(1) amortized relational lookups.',
-    elo: '1,810 Elo • 82% AC',
+    elo: '1,810 Rating • 82% AC',
     progress: '2 / 4 Mastered',
     steps: [
       {
@@ -397,7 +397,7 @@ const TOPIC_CATALOG = {
   'two-pointers': {
     title: 'Two Pointers Convergence Ladder',
     desc: 'Core Invariant: Converging or parallel index pointers to search or contract sorted spaces in linear time O(N).',
-    elo: '1,820 Elo • 85% AC',
+    elo: '1,820 Rating • 85% AC',
     progress: '2 / 4 Mastered',
     steps: [
       {
@@ -461,7 +461,7 @@ const TOPIC_CATALOG = {
   'sliding-window': {
     title: 'Sliding Window Invariant Ladder',
     desc: 'Core Invariant: Dynamic expansion and contraction of subarray bounds [L, R] to achieve linear-time range queries.',
-    elo: '1,890 Elo • 81% AC',
+    elo: '1,890 Rating • 81% AC',
     progress: '1 / 4 Mastered',
     steps: [
       {
@@ -525,7 +525,7 @@ const TOPIC_CATALOG = {
   'prefix-sum': {
     title: 'Prefix Sum & Cumulative Query Ladder',
     desc: 'Core Invariant: Precompute running cumulative totals to convert arbitrary range sum queries into O(1) lookups.',
-    elo: '1,840 Elo • 83% AC',
+    elo: '1,840 Rating • 83% AC',
     progress: '2 / 4 Mastered',
     steps: [
       {
@@ -589,7 +589,7 @@ const TOPIC_CATALOG = {
   'linked-list': {
     title: 'Linked List Pointer Manipulation Ladder',
     desc: 'Core Invariant: Safe node relinking, pointer chasing, dummy head sentinel nodes, and cycle detection.',
-    elo: '1,810 Elo • 86% AC',
+    elo: '1,810 Rating • 86% AC',
     progress: '1 / 4 Mastered',
     steps: [
       {
@@ -653,7 +653,7 @@ const TOPIC_CATALOG = {
   trees: {
     title: 'Binary Tree & BST Invariant Ladder',
     desc: 'Core Invariant: Recursive structural divide-and-conquer, parent-child state propagation, and BST ordering.',
-    elo: '1,830 Elo • 87% AC',
+    elo: '1,830 Rating • 87% AC',
     progress: '2 / 4 Mastered',
     steps: [
       {
@@ -717,7 +717,7 @@ const TOPIC_CATALOG = {
   backtracking: {
     title: 'Backtracking & Search Space Ladder',
     desc: 'Core Invariant: DFS candidate exploration with in-place state mutation, condition validation, and branch rollback.',
-    elo: '1,860 Elo • 79% AC',
+    elo: '1,860 Rating • 79% AC',
     progress: '1 / 4 Mastered',
     steps: [
       {
@@ -781,7 +781,7 @@ const TOPIC_CATALOG = {
   trie: {
     title: 'Trie Prefix Invariant Ladder',
     desc: 'Core Invariant: Character-edge multi-branch prefix tree to accelerate dictionary queries and bitwise prefix matching.',
-    elo: '1,840 Elo • 83% AC',
+    elo: '1,840 Rating • 83% AC',
     progress: '1 / 4 Mastered',
     steps: [
       {
@@ -845,7 +845,7 @@ const TOPIC_CATALOG = {
   'bit-manipulation': {
     title: 'Bit Manipulation Invariant Ladder',
     desc: 'Core Invariant: Low-level bitwise operations, XOR cancellation, binary arithmetic, and compact state representation.',
-    elo: '1,800 Elo • 89% AC',
+    elo: '1,800 Rating • 89% AC',
     progress: '2 / 4 Mastered',
     steps: [
       {
@@ -909,7 +909,7 @@ const TOPIC_CATALOG = {
   'union-find': {
     title: 'Disjoint Set Union (DSU) Invariant Ladder',
     desc: 'Core Invariant: Dynamic graph connectivity, equivalence relations, cycle detection, and nearly O(1) amortized operations.',
-    elo: '1,850 Elo • 84% AC',
+    elo: '1,850 Rating • 84% AC',
     progress: '1 / 4 Mastered',
     steps: [
       {
@@ -973,7 +973,7 @@ const TOPIC_CATALOG = {
   greedy: {
     title: 'Greedy & Intervals Invariant Ladder',
     desc: 'Core Invariant: Locally optimal choices yielding global optimum, interval overlap consolidation, and deadline scheduling.',
-    elo: '1,820 Elo • 86% AC',
+    elo: '1,820 Rating • 86% AC',
     progress: '2 / 4 Mastered',
     steps: [
       {
@@ -1037,7 +1037,7 @@ const TOPIC_CATALOG = {
   design: {
     title: 'Data Structure Design Invariant Ladder',
     desc: 'Core Invariant: Composite data structure architectures ensuring strict worst-case or amortized O(1) time complexity.',
-    elo: '1,870 Elo • 80% AC',
+    elo: '1,870 Rating • 80% AC',
     progress: '1 / 4 Mastered',
     steps: [
       {
@@ -1101,7 +1101,7 @@ const TOPIC_CATALOG = {
   'two-pointers': {
     title: 'Two Pointers & Binary Invariants Ladder',
     desc: 'Core Invariant: Converging or parallel index bounds exploiting sorted arrays or monotonic properties.',
-    elo: '1,720 Elo • 91% AC',
+    elo: '1,720 Rating • 91% AC',
     progress: '2 / 4 Mastered',
     steps: [
       {
@@ -1165,7 +1165,7 @@ const TOPIC_CATALOG = {
   'prefix-sum': {
     title: 'Prefix Sum & Difference Array Ladder',
     desc: 'Core Invariant: Precomputed cumulative sums enabling O(1) range sum queries and O(1) interval updates.',
-    elo: '1,680 Elo • 89% AC',
+    elo: '1,680 Rating • 89% AC',
     progress: '2 / 4 Mastered',
     steps: [
       {
@@ -1229,7 +1229,7 @@ const TOPIC_CATALOG = {
   'linked-list': {
     title: 'Linked List Structural Pointer Ladder',
     desc: 'Core Invariant: Sequential memory traversal, slow-fast cycle detection, dummy head nodes, and pointer manipulation.',
-    elo: '1,650 Elo • 92% AC',
+    elo: '1,650 Rating • 92% AC',
     progress: '2 / 4 Mastered',
     steps: [
       {
@@ -1293,7 +1293,7 @@ const TOPIC_CATALOG = {
   'bit-manipulation': {
     title: 'Bit Manipulation Invariant Ladder',
     desc: 'Core Invariant: Low-level bitwise masking, XOR cancellation (x ^ x = 0), and 2s-complement lowbit extraction.',
-    elo: '1,810 Elo • 84% AC',
+    elo: '1,810 Rating • 84% AC',
     progress: '2 / 4 Mastered',
     steps: [
       {
@@ -1357,7 +1357,7 @@ const TOPIC_CATALOG = {
   'union-find': {
     title: 'Disjoint Set Union (DSU) Invariant Ladder',
     desc: 'Core Invariant: Near O(1) amortized connected components via path compression and rank union heuristics.',
-    elo: '1,890 Elo • 82% AC',
+    elo: '1,890 Rating • 82% AC',
     progress: '1 / 4 Mastered',
     steps: [
       {
@@ -1421,7 +1421,7 @@ const TOPIC_CATALOG = {
   strings: {
     title: 'String Algorithms & Pattern Matching Ladder',
     desc: 'Core Invariant: Longest prefix-suffix arrays (KMP failure function), rolling hash polynomials, and palindromic centers.',
-    elo: '1,780 Elo • 85% AC',
+    elo: '1,780 Rating • 85% AC',
     progress: '1 / 4 Mastered',
     steps: [
       {
@@ -1485,7 +1485,7 @@ const TOPIC_CATALOG = {
   recursion: {
     title: 'Recursion & Divide-and-Conquer Ladder',
     desc: 'Core Invariant: Self-similar subproblem reduction, base-case guarantees, call stack unwinding, and expression parsing.',
-    elo: '1,790 Elo • 86% AC',
+    elo: '1,790 Rating • 86% AC',
     progress: '1 / 4 Mastered',
     steps: [
       {
@@ -1549,7 +1549,7 @@ const TOPIC_CATALOG = {
   sorting: {
     title: 'Sorting Algorithms & Array Partitions Ladder',
     desc: 'Core Invariant: Dutch National Flag partitions, custom comparator transitivity, Quickselect expected O(N) selection.',
-    elo: '1,740 Elo • 90% AC',
+    elo: '1,740 Rating • 90% AC',
     progress: '2 / 4 Mastered',
     steps: [
       {
@@ -1613,7 +1613,7 @@ const TOPIC_CATALOG = {
   'fenwick-tree': {
     title: 'Binary Indexed Tree & Segment Tree Ladder',
     desc: 'Core Invariant: Prefix range decomposition via lowest set bit (i & -i), point updates in O(log N), and lazy interval tags.',
-    elo: '1,960 Elo • 72% AC',
+    elo: '1,960 Rating • 72% AC',
     progress: '1 / 4 Mastered',
     steps: [
       {
@@ -1677,7 +1677,7 @@ const TOPIC_CATALOG = {
   'sweep-line': {
     title: 'Sweep Line & Event Processing Ladder',
     desc: 'Core Invariant: Chronological event point sorting, active boundary tracking, 2D geometry projection, and interval concurrency.',
-    elo: '1,920 Elo • 76% AC',
+    elo: '1,920 Rating • 76% AC',
     progress: '1 / 4 Mastered',
     steps: [
       {
@@ -1741,7 +1741,7 @@ const TOPIC_CATALOG = {
   'monotonic-queue': {
     title: 'Monotonic Queue & Deque Ladder',
     desc: 'Core Invariant: Extremum maintenance in sliding windows, double-ended pruning of dominated candidates, and DP acceleration to O(N).',
-    elo: '1,880 Elo • 81% AC',
+    elo: '1,880 Rating • 81% AC',
     progress: '1 / 4 Mastered',
     steps: [
       {
@@ -1805,7 +1805,7 @@ const TOPIC_CATALOG = {
   math: {
     title: 'Math & Number Theory Ladder',
     desc: 'Core Invariant: Prime sieving (Eratosthenes), Euclidean GCD & Bezout identity, modular exponentiation, and combinatorial counting.',
-    elo: '1,750 Elo • 88% AC',
+    elo: '1,750 Rating • 88% AC',
     progress: '2 / 4 Mastered',
     steps: [
       {
@@ -1869,7 +1869,7 @@ const TOPIC_CATALOG = {
   geometry: {
     title: 'Computational Geometry & Vectors Ladder',
     desc: 'Core Invariant: Normalized slope rational hashing, 2D vector cross product orientation, and Monotone Chain convex hull.',
-    elo: '1,940 Elo • 73% AC',
+    elo: '1,940 Rating • 73% AC',
     progress: '1 / 4 Mastered',
     steps: [
       {

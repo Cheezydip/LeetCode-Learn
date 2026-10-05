@@ -14,7 +14,12 @@ import {
 } from 'lucide-react';
 import { useSearchStore } from '../store/useSearchStore.js';
 import { useProfileStore } from '../store/useProfileStore.js';
-import { searchLocalProblems, getAllCachedProblems } from '../services/problemCache.js';
+import { 
+  searchLocalProblems, 
+  getAllCachedProblems, 
+  normalizeProblem, 
+  syncProblemsWithCloud 
+} from '../services/problemCache.js';
 
 const QUICK_FILTERS = [
   { label: 'All', query: '' },
@@ -64,11 +69,44 @@ export const GlobalSearchModal = () => {
   // Load starter/suggested problems when search opens
   useEffect(() => {
     if (isOpen && suggestedProblems.length === 0) {
-      getAllCachedProblems().then((all) => {
-        if (!all || all.length === 0) return;
-        const matches = all.filter((p) => SUGGESTED_SLUGS.includes(p.title_slug));
-        setSuggestedProblems(matches.length > 0 ? matches : all.slice(0, 8));
-      }).catch(() => {});
+      const loadSuggestions = async () => {
+        try {
+          let all = await getAllCachedProblems();
+          if (!all || all.length === 0) {
+            await syncProblemsWithCloud().catch(() => {});
+            all = await getAllCachedProblems();
+          }
+
+          if ((!all || all.length === 0)) {
+            const res = await fetch('/api/problems/all');
+            if (res.ok) {
+              const data = await res.json();
+              const list = [];
+              const seen = new Set();
+              for (const topic of data.topics || []) {
+                for (const p of topic.problems || []) {
+                  const slug = p.titleSlug || p.title_slug;
+                  if (slug && !seen.has(slug)) {
+                    seen.add(slug);
+                    list.push(normalizeProblem(p));
+                  }
+                }
+              }
+              all = list;
+            }
+          }
+
+          if (all && all.length > 0) {
+            const normalized = all.map(normalizeProblem);
+            const matches = normalized.filter((p) => SUGGESTED_SLUGS.includes(p.title_slug));
+            setSuggestedProblems(matches.length > 0 ? matches : normalized.slice(0, 8));
+          }
+        } catch (err) {
+          console.warn('[GlobalSearch] Error loading suggestions:', err);
+        }
+      };
+
+      loadSuggestions();
     }
   }, [isOpen, suggestedProblems.length]);
 
@@ -174,8 +212,8 @@ export const GlobalSearchModal = () => {
             type="text"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
-            placeholder="Search 3,216 problems by #ID, title, topic, company..."
-            className="w-full bg-transparent text-sm text-[#F0F6FC] placeholder-[#8B949E] outline-none font-sans"
+            placeholder="Search 3,216 problems by #ID (e.g. 1, 42), title, topic, company..."
+            className="w-full bg-transparent text-sm text-[#F0F6FC] placeholder-[#8B949E] outline-none font-mono font-medium selection:bg-[#FF7A00]/30"
           />
           {query && (
             <button
@@ -240,10 +278,11 @@ export const GlobalSearchModal = () => {
               p.difficulty === 'Easy' ? 'text-[#3FB950] border-[#3FB950]/30 bg-[#3FB950]/10' :
               p.difficulty === 'Medium' ? 'text-[#FF7A00] border-[#FF7A00]/30 bg-[#FF7A00]/10' :
               'text-[#F85149] border-[#F85149]/30 bg-[#F85149]/10';
+            const problemId = p.frontend_id ?? p.questionId ?? p.id ?? p.frontendQuestionId;
 
             return (
               <div
-                key={p.title_slug || p.frontend_id || idx}
+                key={p.title_slug || problemId || idx}
                 data-selected={isSelected}
                 onClick={() => handleSelectProblem(p)}
                 onMouseEnter={() => setSelectedIndex(idx)}
@@ -265,9 +304,9 @@ export const GlobalSearchModal = () => {
                   {/* ID & Title */}
                   <div className="min-w-0">
                     <div className="flex items-center gap-2">
-                      {p.frontend_id && (
-                        <span className="text-[11px] text-[#8B949E] font-bold shrink-0">
-                          #{p.frontend_id}
+                      {problemId != null && (
+                        <span className="px-1.5 py-0.5 rounded bg-[#21262D] border border-[#30363D] text-[11px] font-mono font-bold text-[#FF7A00] shrink-0 shadow-xs">
+                          #{problemId}
                         </span>
                       )}
                       <h4 className="text-xs sm:text-sm font-semibold text-[#F0F6FC] truncate">

@@ -22,19 +22,36 @@ export const GrowthPage = () => {
   const trajectory = calculateTrajectory(startElo, volume, horizon);
   const breakdown = getProblemBreakdown(volume, horizon);
 
-  // Scrubber position calculation
+  // Scrubber: interpolate from real trajectory points
   const activeDay = scrubDay ?? Math.round(horizon * 0.5);
   const progress = Math.max(0, Math.min(horizon, activeDay)) / horizon;
   const clampedX = 48 + progress * 552;
-  const deltaTotal = trajectory.currentProjectedElo - startElo;
-  const dayElo = Math.round(startElo + deltaTotal * Math.pow(progress, 0.85));
-  const dayY = Math.round(190 - ((dayElo - 1500) / 700) * 170);
+
+  // Interpolate rating from trajectory points (real Elo engine output)
+  const pts = trajectory.trajectoryPoints || [];
+  const interpolateRating = (day) => {
+    if (!pts.length) return startElo;
+    if (day <= pts[0].day) return pts[0].rating;
+    if (day >= pts[pts.length - 1].day) return pts[pts.length - 1].rating;
+    for (let i = 0; i < pts.length - 1; i++) {
+      if (day >= pts[i].day && day <= pts[i + 1].day) {
+        const t = (day - pts[i].day) / (pts[i + 1].day - pts[i].day);
+        return Math.round(pts[i].rating + t * (pts[i + 1].rating - pts[i].rating));
+      }
+    }
+    return pts[pts.length - 1].rating;
+  };
+
+  const dayElo = interpolateRating(activeDay);
+  const ratingToY = (r) => Math.round(190 - ((r - 1500) / 700) * 170);
+  const dayY = ratingToY(dayElo);
 
   const startRank = eloToWorldwideRank(startElo);
   const dayRank = eloToWorldwideRank(dayElo);
   const startProfileRank = 185420;
   const projectedProfileRank = calculateProfileRank(trajectory.currentProjectedElo, volume, horizon);
-  const dayProfileRank = Math.round(startProfileRank - (startProfileRank - projectedProfileRank) * Math.pow(progress, 0.85));
+  const dayProgress = Math.max(0, Math.min(1, activeDay / horizon));
+  const dayProfileRank = Math.round(startProfileRank - (startProfileRank - projectedProfileRank) * dayProgress);
 
   const handleMouseMove = (e) => {
     if (!svgRef.current) return;
@@ -68,7 +85,7 @@ export const GrowthPage = () => {
             Algorithmic Trajectory & Rank Forecasting
           </h1>
           <p className="text-xs text-[#8B949E] font-mono mt-1">
-            Simulate Elo rating momentum, worldwide contest rank gains, and platform-wide profile rank velocity.
+            Simulate contest rating momentum, worldwide contest rank gains, and platform-wide profile rank velocity.
           </p>
         </div>
 
@@ -83,7 +100,7 @@ export const GrowthPage = () => {
                 : 'text-[#8B949E] hover:text-[#F0F6FC]'
             }`}
           >
-            Elo Rating
+            Contest Rating
           </button>
           <button
             type="button"
@@ -199,7 +216,7 @@ export const GrowthPage = () => {
                   </div>
                   <div className="text-xl font-bold text-[#F0F6FC]">
                     {chartMode === 'elo'
-                      ? `${trajectory.currentProjectedElo.toLocaleString()} Elo`
+                      ? `${trajectory.currentProjectedElo.toLocaleString()} Rating`
                       : chartMode === 'rank'
                       ? `#${trajectory.projectedRank.toLocaleString()}`
                       : `#${trajectory.projectedProfileRank.toLocaleString()}`}
@@ -348,7 +365,7 @@ export const GrowthPage = () => {
                 <div className="flex items-baseline gap-2 pt-1">
                   <span className="text-[#F0F6FC] font-bold text-sm">
                     {chartMode === 'elo'
-                      ? `${dayElo.toLocaleString()} Elo`
+                      ? `${dayElo.toLocaleString()} Rating`
                       : chartMode === 'rank'
                       ? `Rank #${dayRank.toLocaleString()}`
                       : `Profile #${dayProfileRank.toLocaleString()}`}
@@ -431,6 +448,42 @@ export const GrowthPage = () => {
                 Plateau Baseline
               </text>
 
+              {/* ±1σ Confidence Corridor */}
+              {trajectory.corridorPoints && trajectory.corridorPoints.length > 1 && (
+                <path
+                  d={(() => {
+                    const cp = trajectory.corridorPoints;
+                    const upper = cp.map(p => `${p.x},${Math.max(20, p.upperY)}`).join(' L ');
+                    const lower = [...cp].reverse().map(p => `${p.x},${Math.min(190, p.lowerY)}`).join(' L ');
+                    return `M ${upper} L ${lower} Z`;
+                  })()}
+                  fill="rgba(255, 122, 0, 0.06)"
+                  stroke="none"
+                />
+              )}
+
+              {/* Confidence corridor upper/lower dashed lines */}
+              {trajectory.corridorPoints && trajectory.corridorPoints.length > 1 && (
+                <>
+                  <path
+                    d={`M ${trajectory.corridorPoints.map(p => `${p.x},${Math.max(20, p.upperY)}`).join(' L ')}`}
+                    fill="none"
+                    stroke="#FF7A00"
+                    strokeWidth="0.75"
+                    strokeDasharray="2,3"
+                    opacity={0.35}
+                  />
+                  <path
+                    d={`M ${trajectory.corridorPoints.map(p => `${p.x},${Math.min(190, p.lowerY)}`).join(' L ')}`}
+                    fill="none"
+                    stroke="#FF7A00"
+                    strokeWidth="0.75"
+                    strokeDasharray="2,3"
+                    opacity={0.35}
+                  />
+                </>
+              )}
+
               {/* Area Fill */}
               <path
                 d={`M 48 107 C 181 ${trajectory.y15}, 453 ${trajectory.y45}, 600 ${trajectory.endY} L 600 190 L 48 190 Z`}
@@ -471,11 +524,11 @@ export const GrowthPage = () => {
           <div className="flex flex-wrap justify-between items-center text-[11px] font-mono text-[#8B949E] pt-2 border-t border-[#21262D]">
             <span className="flex items-center gap-2">
               <span className="size-1.5 rounded-full bg-[#FF7A00]" />
-              <span>Hover anywhere across chart to scrub daily progression checkpoints</span>
+              <span>Hover to scrub • {trajectory.contestsSimulated || 0} contests simulated • ±{trajectory.confidence?.sigma || 0} pts confidence</span>
             </span>
             <span className="text-[#8B949E]">
               {chartMode === 'elo'
-                ? 'Model: ΔElo = Σ [K · (S - E) · Decay(Δt)] + UpsolveBoost'
+                ? 'Elo Engine: ERank = Σ P(opp > user) | m = √(ERank × ARank) | Binary Search → δ'
                 : chartMode === 'rank'
                 ? 'Model: R(E) = 50,000 · (0.022)^((E - 1500)/700)^1.414'
                 : 'Model: Score = 1.0·E + 2.5·M + 6.0·H | Rank ≈ N · exp(-λ · Score^0.94)'}
@@ -566,7 +619,7 @@ export const GrowthPage = () => {
                   ? 'Hard Problem Profile Velocity'
                   : chartMode === 'rank'
                   ? 'Contest Leaderboard Advancement'
-                  : 'Elo Rating Calibration'}
+                  : 'Contest Rating Calibration'}
               </span>
             </div>
             <p className="text-[#8B949E]">
@@ -574,7 +627,7 @@ export const GrowthPage = () => {
                 ? `Each Hard breaks ~12,400 profile score ties. Solving ${breakdown.hard} Hards propels your global profile rank by +${trajectory.profileGain.toLocaleString()} spots.`
                 : chartMode === 'rank'
                 ? `Active contest pool is ~50,000 contestants. Solving ${breakdown.hard} Hards unlocks Q3/Q4 speed, advancing your contest rank to #${trajectory.projectedRank.toLocaleString()}.`
-                : `Allocating ${volume} probs/wk (${breakdown.hard} Hards + ${breakdown.med} Meds) builds algorithmic intuition to breach ${trajectory.currentProjectedElo} Elo.`}
+                : `Allocating ${volume} probs/wk (${breakdown.hard} Hards + ${breakdown.med} Meds) builds algorithmic intuition to breach ${trajectory.currentProjectedElo} Rating.`}
             </p>
           </div>
 

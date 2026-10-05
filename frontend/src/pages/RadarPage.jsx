@@ -35,8 +35,8 @@ const CATEGORY_META = {
 
 const SORT_OPTIONS = [
   { value: 'deficit', label: 'Deficit Severity' },
-  { value: 'elo-asc', label: 'Competency Elo (Low → High)' },
-  { value: 'elo-desc', label: 'Competency Elo (High → Low)' },
+  { value: 'elo-asc', label: 'Competency Rating (Low → High)' },
+  { value: 'elo-desc', label: 'Competency Rating (High → Low)' },
   { value: 'solved-desc', label: 'Solve Count (High → Low)' },
   { value: 'solved-asc', label: 'Solve Count (Low → High)' },
   { value: 'alpha', label: 'Alphabetical' },
@@ -411,7 +411,7 @@ export const RadarPage = () => {
                       ? 'Top 8 weakest topics by deficit delta • Click to inspect'
                       : chartView === 'bars'
                       ? `${subTopicBars.length} sub-topics • Click any sub-topic to open deep-dive chart`
-                      : `Topic competency rating vs ${contestElo || 1500} contest Elo baseline`}
+                      : `Topic competency rating vs ${contestElo || 1500} contest rating baseline`}
                   </p>
                 </div>
               </div>
@@ -677,7 +677,7 @@ export const RadarPage = () => {
                             }}
                           />
                           <span className="absolute inset-y-0 right-1.5 flex items-center text-[9px] font-mono text-[#F0F6FC] font-bold">
-                            {t.competencyElo} Elo
+                            {t.competencyElo} Rating
                           </span>
                         </div>
 
@@ -709,7 +709,7 @@ export const RadarPage = () => {
                 <div className="flex items-center justify-between text-[10px] text-[#484F58] pt-1 border-t border-[#21262D]">
                   <div className="flex items-center gap-2">
                     <span className="size-2 rounded-full bg-[#FF7A00]" />
-                    <span>Contest Elo Baseline: <strong className="text-white">{contestElo || 1500}</strong></span>
+                    <span>Contest Rating Baseline: <strong className="text-white">{contestElo || 1500}</strong></span>
                   </div>
                   <span className="text-[#8B949E]">Click any sub-topic to open deep-dive chart</span>
                 </div>
@@ -753,12 +753,12 @@ export const RadarPage = () => {
                     {currentTopic.isDeficit ? (
                       <span className="px-2 py-0.5 rounded bg-red-950/50 text-[#F85149] text-[10px] font-bold border border-red-800/40 flex items-center gap-1">
                         <AlertTriangle className="size-3" />
-                        <span>Deficit ({currentTopic.deficitDelta} Elo)</span>
+                        <span>Deficit ({currentTopic.deficitDelta} Rating)</span>
                       </span>
                     ) : (
                       <span className="px-2 py-0.5 rounded bg-emerald-950/40 text-[#3FB950] text-[10px] font-bold border border-emerald-800/40 flex items-center gap-1">
                         <CheckCircle2 className="size-3" />
-                        <span>Proficient (+{currentTopic.deficitDelta} Elo)</span>
+                        <span>Proficient (+{currentTopic.deficitDelta} Rating)</span>
                       </span>
                     )}
                   </div>
@@ -768,7 +768,7 @@ export const RadarPage = () => {
                 <div className="p-3.5 rounded-lg bg-[#161B22] border border-[#21262D] space-y-2">
                   <div className="flex items-center justify-between text-[11px]">
                     <span className="text-[#8B949E]">Topic Competency Rating</span>
-                    <span className="font-bold text-[#FF7A00]">{currentTopic.competencyElo} Elo</span>
+                    <span className="font-bold text-[#FF7A00]">{currentTopic.competencyElo} Rating</span>
                   </div>
 
                   {/* Multi-zone Progress Bar */}
@@ -784,7 +784,7 @@ export const RadarPage = () => {
                     <div
                       className="absolute top-0 bottom-0 w-0.5 bg-[#FF7A00] z-10"
                       style={{ left: `${Math.round(((contestElo || 1500) / ((contestElo || 1500) * 1.25)) * 100)}%` }}
-                      title={`Contest Baseline: ${contestElo || 1500} Elo`}
+                      title={`Contest Baseline: ${contestElo || 1500} Rating`}
                     />
                   </div>
 
@@ -814,7 +814,7 @@ export const RadarPage = () => {
                     <span className={`text-base font-bold block ${currentTopic.deficitDelta < 0 ? 'text-[#F85149]' : 'text-[#3FB950]'}`}>
                       {currentTopic.deficitDelta > 0 ? `+${currentTopic.deficitDelta}` : currentTopic.deficitDelta}
                     </span>
-                    <span className="text-[9px] text-[#484F58]">Elo vs Baseline</span>
+                    <span className="text-[9px] text-[#484F58]">Rating vs Baseline</span>
                   </div>
                 </div>
 
@@ -884,7 +884,7 @@ export const RadarPage = () => {
                       <span className="text-white font-bold">{cat.totalSolved}</span> solved
                     </div>
                     <div className="text-[10px] text-[#8B949E]">
-                      Elo <span style={{ color: cat.color }} className="font-bold">{cat.avgElo}</span>
+                      Rating <span style={{ color: cat.color }} className="font-bold">{cat.avgElo}</span>
                     </div>
                     {/* Health bar */}
                     <div className="h-1 rounded-full bg-[#21262D] overflow-hidden">
@@ -940,7 +940,7 @@ export const RadarPage = () => {
                   </span>
                 </div>
                 <div>
-                  <span className="text-[10px] text-[#8B949E] block">Competency Elo:</span>
+                  <span className="text-[10px] text-[#8B949E] block">Competency Rating:</span>
                   <span className={`text-base font-bold ${currentTopic.isDeficit ? 'text-[#F85149]' : 'text-[#FF7A00]'}`}>
                     {currentTopic.competencyElo}
                   </span>
@@ -956,7 +956,7 @@ export const RadarPage = () => {
               <div className="flex flex-col sm:flex-row sm:items-center justify-between pt-2 border-t border-[#21262D] gap-2">
                 <span className="text-[11px] text-[#8B949E]">
                   {currentTopic.isDeficit
-                    ? `Deficit of ${Math.abs(currentTopic.deficitDelta)} Elo vs contest baseline`
+                    ? `Deficit of ${Math.abs(currentTopic.deficitDelta)} Rating vs contest baseline`
                     : 'Proficient volume and balanced solve ratio'}
                 </span>
                 <div className="flex items-center gap-3">

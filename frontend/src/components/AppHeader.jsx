@@ -101,7 +101,7 @@ export const AppHeader = () => {
                   @{handle}
                 </span>
                 <span className="text-[11px] text-[#8B949E] hidden lg:inline">
-                  • {contestElo || 1500} Elo
+                  • {contestElo || 1500} Rating
                 </span>
               </button>
 
