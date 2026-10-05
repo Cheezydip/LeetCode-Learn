@@ -208,8 +208,11 @@
     "longest-substring-with-at-least-k-repeating-characters",
     "maximum-number-of-occurrences-of-a-substring",
     "rectangle-overlap",
-    "separate-squares-i"
+    "separate-squares-i",
+    "minimum-number-of-operations-to-move-all-balls-to-each-box",
+    "largest-triangle-area",
+    "integer-to-english-words"
   ],
-  "totalSolvedCount": 208,
-  "updatedAt": "2026-10-02T15:58:02.109Z"
+  "totalSolvedCount": 211,
+  "updatedAt": "2026-10-05T14:59:46.870Z"
 }

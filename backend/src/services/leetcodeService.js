@@ -365,14 +365,65 @@ async function verifyBioToken(username, expectedToken, region = 'global') {
 }
 
 /**
+ * Query 6: Contest Rating History (Full Timeline)
+ * Returns array of { rating, ranking, contest { title, startTime } }
+ * Used for historical volatility calculation and trajectory calibration.
+ */
+async function fetchContestRankingHistory(username, region = 'global') {
+  const query = `
+    query getUserContestRankingHistory($username: String!) {
+      userContestRankingHistory(username: $username) {
+        attended
+        rating
+        ranking
+        trendDirection
+        problemsSolved
+        totalProblems
+        finishTimeInSeconds
+        contest {
+          title
+          startTime
+        }
+      }
+    }
+  `;
+
+  try {
+    const data = await queryGraphQL(query, { username }, region);
+    const history = data?.userContestRankingHistory || [];
+
+    // Filter to only attended contests (attended === true)
+    return history
+      .filter(entry => entry.attended)
+      .map(entry => ({
+        rating: Math.round(entry.rating || 1500),
+        ranking: entry.ranking,
+        problemsSolved: entry.problemsSolved || 0,
+        totalProblems: entry.totalProblems || 4,
+        finishTimeInSeconds: entry.finishTimeInSeconds || 0,
+        contestTitle: entry.contest?.title || '',
+        contestStartTime: entry.contest?.startTime
+          ? new Date(entry.contest.startTime * 1000).toISOString()
+          : null,
+        trendDirection: entry.trendDirection || 'NONE',
+      }));
+  } catch (err) {
+    // If history query fails, return empty array rather than failing whole sync
+    console.warn(`[LeetCode] Contest history query failed for @${username}:`, err.message);
+    return [];
+  }
+}
+
+/**
  * Full Composite Ingestion Pipeline
  */
 async function importFullUserStats(username, region = 'global') {
-  const [profile, contest, rawTags, recentAc] = await Promise.all([
+  const [profile, contest, rawTags, recentAc, contestHistory] = await Promise.all([
     fetchUserProfileAndCounts(username, region),
     fetchContestRanking(username, region),
     fetchTopicSkillCounts(username, region),
     fetchRecentAcSubmissions(username, 10, region),
+    fetchContestRankingHistory(username, region),
   ]);
 
   return {
@@ -380,6 +431,7 @@ async function importFullUserStats(username, region = 'global') {
     ...contest,
     rawTags,
     recentAc,
+    contestHistory,
     region,
     syncedAt: new Date().toISOString(),
   };
@@ -391,6 +443,7 @@ module.exports = {
   fetchContestRanking,
   fetchTopicSkillCounts,
   fetchRecentAcSubmissions,
+  fetchContestRankingHistory,
   fetchSolvedProblemsWithCookie,
   verifyBioToken,
   importFullUserStats,

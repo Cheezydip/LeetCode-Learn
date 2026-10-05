@@ -132,7 +132,14 @@ const DEFICIT_Z_THRESHOLD = -1.0;  // >1σ below user's own average
 
 /**
  * Normalizes raw tag problem counters into separate topic metrics for all topics
- * using Z-score relative deficit detection.
+ * using Z-score relative deficit detection and Elo-style difficulty-weighted
+ * competency rating.
+ * 
+ * Topic Competency Algorithm:
+ * - Each solved problem is a "match" against a problem of known difficulty
+ * - Uses Elo win probability: E = 1 / (1 + 10^((Rd - Ru) / 400))
+ * - Rating update: topicRating += K * (1 - E) per solved problem
+ * - Difficulty ratings: Easy ≈ 1200, Medium ≈ 1500, Hard ≈ 2100
  * 
  * @param {Array} rawTags Array of { tagName, tagSlug, problemsSolved }
  * @param {number} baseElo The user's contest Elo rating (default 1500)
@@ -186,7 +193,7 @@ function normalizeTopicMetrics(rawTags = [], baseElo = 1500) {
   const variance = solveCounts.reduce((sum, c) => sum + (c - mean) ** 2, 0) / n;
   const stddev = Math.sqrt(variance);
 
-  // Stage 3: Score each topic with Z-score and evaluate deficit status
+  // Stage 3: Score each topic with Z-score and Elo-style competency rating
   const normalized = {};
 
   topicEntries.forEach(([key, topic], i) => {
@@ -202,10 +209,11 @@ function normalizeTopicMetrics(rawTags = [], baseElo = 1500) {
     const isUndertrained = solvedCount < UNDERTRAINED_THRESHOLD;
     const isDeficit = isRelativeDeficit || isUndertrained;
 
-    // Topic Elo: scales between 70% and 100% of contest Elo based on solve volume
-    const benchmark = Math.max(mean, 10);
-    const eloScale = 0.70 + 0.30 * Math.min(1.0, solvedCount / benchmark);
-    const topicElo = Math.round(baseElo * eloScale);
+    // Topic Competency Rating: Elo-style difficulty-weighted updates
+    // Each solved problem is a "match" against a problem difficulty
+    // Since we don't have per-topic difficulty breakdowns, we estimate
+    // the distribution from LeetCode's general pool: ~30% Easy, 50% Medium, 20% Hard
+    const topicElo = computeTopicCompetencyElo(baseElo, solvedCount);
     const deficitDelta = topicElo - baseElo;
 
     normalized[key] = {
@@ -224,6 +232,66 @@ function normalizeTopicMetrics(rawTags = [], baseElo = 1500) {
   });
 
   return normalized;
+}
+
+/**
+ * Compute topic competency rating using Elo-style updates.
+ * Each solved problem is treated as a "win" against a problem of
+ * estimated difficulty, using the standard Elo expected-score formula.
+ * 
+ * Difficulty ratings (from Zerotrac's calibrated data):
+ *   Easy   ≈ 1200
+ *   Medium ≈ 1500
+ *   Hard   ≈ 2100
+ * 
+ * @param {number} baseElo - User's contest rating (anchor point)
+ * @param {number} totalSolved - Total problems solved for this topic
+ * @returns {number} Topic competency Elo rating
+ */
+function computeTopicCompetencyElo(baseElo, totalSolved) {
+  if (totalSolved === 0) {
+    // No data → floor at 70% of contest rating
+    return Math.round(baseElo * 0.70);
+  }
+
+  const DIFFICULTY_EASY = 1200;
+  const DIFFICULTY_MEDIUM = 1500;
+  const DIFFICULTY_HARD = 2100;
+  const K = 16; // K-factor per solved problem (moderate learning rate)
+
+  // Estimate difficulty distribution (LeetCode general pool)
+  const easy = Math.round(totalSolved * 0.30);
+  const medium = Math.round(totalSolved * 0.50);
+  const hard = Math.max(0, totalSolved - easy - medium);
+
+  // Start topic rating at 70% of contest rating
+  let topicRating = baseElo * 0.70;
+
+  // Build sorted problem list (easy → medium → hard progression)
+  const problems = [
+    ...Array(easy).fill(DIFFICULTY_EASY),
+    ...Array(medium).fill(DIFFICULTY_MEDIUM),
+    ...Array(hard).fill(DIFFICULTY_HARD),
+  ];
+
+  for (let i = 0; i < problems.length; i++) {
+    const problemDifficulty = problems[i];
+
+    // Elo expected score: probability user "beats" this problem
+    const expected = 1.0 / (1.0 + Math.pow(10, (problemDifficulty - topicRating) / 400));
+
+    // User solved it (actual score = 1), gain = K * (1 - expected)
+    const gain = K * (1.0 - expected);
+
+    // Diminishing returns: cap gains as topic rating approaches ceiling
+    const approachFactor = Math.max(0.1, 1.0 - (topicRating / (baseElo * 1.3)));
+    topicRating += gain * approachFactor;
+  }
+
+  // Floor: 70% of base, Ceiling: 115% of base
+  topicRating = Math.max(baseElo * 0.70, Math.min(baseElo * 1.15, topicRating));
+
+  return Math.round(topicRating);
 }
 
 module.exports = {

@@ -1,58 +1,1022 @@
 [
-  { "key": "array", "name": "Array", "tagSlug": "array", "description": "Traversal, manipulation, and pattern detection on ordered collections." },
-  { "key": "string", "name": "String", "tagSlug": "string", "description": "Pattern matching, parsing, and transformation of character sequences." },
-  { "key": "hash-table", "name": "Hash Table", "tagSlug": "hash-table", "description": "O(1) lookups for counting, grouping, and deduplication." },
-  { "key": "dynamic-programming", "name": "Dynamic Programming", "tagSlug": "dynamic-programming", "description": "Build solutions by combining answers to overlapping subproblems with optimal substructure." },
-  { "key": "math", "name": "Math", "tagSlug": "math", "description": "Number theory, arithmetic operations, and mathematical reasoning." },
-  { "key": "greedy", "name": "Greedy", "tagSlug": "greedy", "description": "Make locally optimal choices at each step to find the global optimum." },
-  { "key": "sorting", "name": "Sorting", "tagSlug": "sorting", "description": "Ordering elements and leveraging sorted invariants for efficient solutions." },
-  { "key": "binary-search", "name": "Binary Search", "tagSlug": "binary-search", "description": "Halve the search space each step using monotonic predicates." },
-  { "key": "depth-first-search", "name": "Depth-First Search", "tagSlug": "depth-first-search", "description": "Explore as deep as possible before backtracking through graphs and trees." },
-  { "key": "two-pointers", "name": "Two Pointers", "tagSlug": "two-pointers", "description": "Use converging or sliding pointer pairs for linear-time array and string problems." },
-  { "key": "matrix", "name": "Matrix", "tagSlug": "matrix", "description": "2D grid traversal, rotation, and path-finding problems." },
-  { "key": "tree", "name": "Tree", "tagSlug": "tree", "description": "Hierarchical data structure traversal, construction, and property validation." },
-  { "key": "prefix-sum", "name": "Prefix Sum", "tagSlug": "prefix-sum", "description": "Precompute cumulative sums for O(1) range queries." },
-  { "key": "bit-manipulation", "name": "Bit Manipulation", "tagSlug": "bit-manipulation", "description": "Use bitwise operations for compact state representation and fast computations." },
-  { "key": "stack", "name": "Stack", "tagSlug": "stack", "description": "LIFO structure for expression parsing, backtracking, and nested structure problems." },
-  { "key": "binary-tree", "name": "Binary Tree", "tagSlug": "binary-tree", "description": "Traversal, construction, and property validation of binary tree structures." },
-  { "key": "heap-priority-queue", "name": "Heap / Priority Queue", "tagSlug": "heap-priority-queue", "description": "Dynamic extremum extraction and priority-based scheduling." },
-  { "key": "simulation", "name": "Simulation", "tagSlug": "simulation", "description": "Step-by-step process modeling and state machine execution." },
-  { "key": "breadth-first-search", "name": "Breadth-First Search", "tagSlug": "breadth-first-search", "description": "Level-by-level exploration for shortest paths in unweighted graphs." },
-  { "key": "backtracking", "name": "Backtracking", "tagSlug": "backtracking", "description": "Systematic exploration of all candidate solutions with pruning." },
-  { "key": "counting", "name": "Counting", "tagSlug": "counting", "description": "Frequency analysis and combinatorial counting techniques." },
-  { "key": "sliding-window", "name": "Sliding Window", "tagSlug": "sliding-window", "description": "Expand and contract subarray bounds for O(N) range optimization." },
-  { "key": "graph", "name": "Graph Theory", "tagSlug": "graph", "description": "Connectivity, shortest paths, and cycle detection in node-edge structures." },
-  { "key": "design", "name": "Design", "tagSlug": "design", "description": "Architect data structures and systems to meet specific interface contracts." },
-  { "key": "linked-list", "name": "Linked List", "tagSlug": "linked-list", "description": "Pointer manipulation, reversal, and cycle detection in sequential node chains." },
-  { "key": "monotonic-stack", "name": "Monotonic Stack", "tagSlug": "monotonic-stack", "description": "Maintain a strictly ordered stack to find next greater/smaller elements efficiently." },
-  { "key": "enumeration", "name": "Enumeration", "tagSlug": "enumeration", "description": "Systematically iterate through all possible states or configurations." },
-  { "key": "trie", "name": "Trie", "tagSlug": "trie", "description": "Prefix tree for efficient string storage, lookup, and autocomplete." },
-  { "key": "union-find", "name": "Union-Find", "tagSlug": "union-find", "description": "Disjoint set data structure for dynamic connectivity and component grouping." },
-  { "key": "bitmask", "name": "Bitmask", "tagSlug": "bitmask", "description": "Represent subsets as binary integers for compact state-space DP." },
-  { "key": "memoization", "name": "Memoization", "tagSlug": "memoization", "description": "Cache recursive function results to avoid redundant computation." },
-  { "key": "segment-tree", "name": "Segment Tree", "tagSlug": "segment-tree", "description": "Range query and point update operations in O(log N) time." },
-  { "key": "recursion", "name": "Recursion", "tagSlug": "recursion", "description": "Solve problems by breaking them into smaller instances of the same problem." },
-  { "key": "combinatorics", "name": "Combinatorics", "tagSlug": "combinatorics", "description": "Counting arrangements, permutations, and combinations." },
-  { "key": "binary-indexed-tree", "name": "Binary Indexed Tree", "tagSlug": "binary-indexed-tree", "description": "Fenwick tree for efficient prefix sum queries and updates." },
-  { "key": "divide-and-conquer", "name": "Divide and Conquer", "tagSlug": "divide-and-conquer", "description": "Split problems into independent subproblems, solve, and merge results." },
-  { "key": "string-matching", "name": "String Matching", "tagSlug": "string-matching", "description": "Pattern search algorithms like KMP, Rabin-Karp, and Z-algorithm." },
-  { "key": "hash-function", "name": "Hash Function", "tagSlug": "hash-function", "description": "Design and apply hash functions for efficient data comparison." },
-  { "key": "queue", "name": "Queue", "tagSlug": "queue", "description": "FIFO structure for BFS, task scheduling, and stream processing." },
-  { "key": "ordered-set", "name": "Ordered Set", "tagSlug": "ordered-set", "description": "Maintain sorted unique elements with efficient insertion and lookup." },
-  { "key": "binary-search-tree", "name": "Binary Search Tree", "tagSlug": "binary-search-tree", "description": "Ordered tree structure supporting O(log N) search, insert, and delete." },
-  { "key": "topological-sort", "name": "Topological Sort", "tagSlug": "topological-sort", "description": "Linear ordering of directed acyclic graph nodes respecting dependencies." },
-  { "key": "number-theory", "name": "Number Theory", "tagSlug": "number-theory", "description": "GCD, primes, modular arithmetic, and divisibility problems." },
-  { "key": "monotonic-queue", "name": "Monotonic Queue", "tagSlug": "monotonic-queue", "description": "Maintain monotonic order in a queue for sliding window extremum queries." },
-  { "key": "shortest-path", "name": "Shortest Path", "tagSlug": "shortest-path", "description": "Dijkstra, Bellman-Ford, and Floyd-Warshall algorithms for minimum distance paths." },
-  { "key": "game-theory", "name": "Game Theory", "tagSlug": "game-theory", "description": "Minimax, Sprague-Grundy, and optimal play in zero-sum sequential games." },
-  { "key": "geometry", "name": "Geometry", "tagSlug": "geometry", "description": "Point orientation, convex hull, line intersections, and geometric calculations." },
-  { "key": "data-stream", "name": "Data Stream", "tagSlug": "data-stream", "description": "Process sequential input elements in real-time with limited space." },
-  { "key": "rolling-hash", "name": "Rolling Hash", "tagSlug": "rolling-hash", "description": "Efficiently compute hash values across sliding windows (Rabin-Karp)." },
-  { "key": "brainteaser", "name": "Brainteaser", "tagSlug": "brainteaser", "description": "Insight-driven puzzle questions with creative and non-standard invariants." },
-  { "key": "quickselect", "name": "Quickselect", "tagSlug": "quickselect", "description": "Selection algorithm to find the Kth smallest/largest element in expected O(N) time." },
-  { "key": "randomized", "name": "Randomized", "tagSlug": "randomized", "description": "Use random choices to achieve good expected time or space complexity." },
-  { "key": "doubly-linked-list", "name": "Doubly-Linked List", "tagSlug": "doubly-linked-list", "description": "Nodes with bidirectional pointers for O(1) removals and two-way traversals." },
-  { "key": "suffix-array", "name": "Suffix Array", "tagSlug": "suffix-array", "description": "Sorted array of all string suffixes for advanced pattern searching." },
-  { "key": "minimum-spanning-tree", "name": "Minimum Spanning Tree", "tagSlug": "minimum-spanning-tree", "description": "Kruskal and Prim algorithms to connect all vertices with minimal edge weight." },
-  { "key": "eulerian-circuit", "name": "Eulerian Circuit", "tagSlug": "eulerian-circuit", "description": "Hierholzer algorithm to traverse every edge in a graph exactly once." }
+  {
+    "key": "array",
+    "name": "Array",
+    "tagSlug": "array",
+    "description": "Traversal, manipulation, and pattern detection on ordered collections."
+  },
+  {
+    "key": "string",
+    "name": "String",
+    "tagSlug": "string",
+    "description": "Pattern matching, parsing, and transformation of character sequences."
+  },
+  {
+    "key": "hash-table",
+    "name": "Hash Table",
+    "tagSlug": "hash-table",
+    "description": "O(1) lookups for counting, grouping, and deduplication."
+  },
+  {
+    "key": "dynamic-programming",
+    "name": "Dynamic Programming",
+    "tagSlug": "dynamic-programming",
+    "description": "Build solutions by combining answers to overlapping subproblems with optimal substructure."
+  },
+  {
+    "key": "math",
+    "name": "Math",
+    "tagSlug": "math",
+    "description": "Number theory, arithmetic operations, and mathematical reasoning."
+  },
+  {
+    "key": "greedy",
+    "name": "Greedy",
+    "tagSlug": "greedy",
+    "description": "Make locally optimal choices at each step to find the global optimum."
+  },
+  {
+    "key": "sorting",
+    "name": "Sorting",
+    "tagSlug": "sorting",
+    "description": "Ordering elements and leveraging sorted invariants for efficient solutions."
+  },
+  {
+    "key": "binary-search",
+    "name": "Binary Search",
+    "tagSlug": "binary-search",
+    "description": "Halve the search space each step using monotonic predicates."
+  },
+  {
+    "key": "depth-first-search",
+    "name": "Depth-First Search",
+    "tagSlug": "depth-first-search",
+    "description": "Explore as deep as possible before backtracking through graphs and trees."
+  },
+  {
+    "key": "two-pointers",
+    "name": "Two Pointers",
+    "tagSlug": "two-pointers",
+    "description": "Use converging or sliding pointer pairs for linear-time array and string problems."
+  },
+  {
+    "key": "matrix",
+    "name": "Matrix",
+    "tagSlug": "matrix",
+    "description": "2D grid traversal, rotation, and path-finding problems."
+  },
+  {
+    "key": "tree",
+    "name": "Tree",
+    "tagSlug": "tree",
+    "description": "Hierarchical data structure traversal, construction, and property validation."
+  },
+  {
+    "key": "prefix-sum",
+    "name": "Prefix Sum",
+    "tagSlug": "prefix-sum",
+    "description": "Precompute cumulative sums for O(1) range queries."
+  },
+  {
+    "key": "bit-manipulation",
+    "name": "Bit Manipulation",
+    "tagSlug": "bit-manipulation",
+    "description": "Use bitwise operations for compact state representation and fast computations."
+  },
+  {
+    "key": "stack",
+    "name": "Stack",
+    "tagSlug": "stack",
+    "description": "LIFO structure for expression parsing, backtracking, and nested structure problems."
+  },
+  {
+    "key": "binary-tree",
+    "name": "Binary Tree",
+    "tagSlug": "binary-tree",
+    "description": "Traversal, construction, and property validation of binary tree structures."
+  },
+  {
+    "key": "heap-priority-queue",
+    "name": "Heap / Priority Queue",
+    "tagSlug": "heap-priority-queue",
+    "description": "Dynamic extremum extraction and priority-based scheduling."
+  },
+  {
+    "key": "simulation",
+    "name": "Simulation",
+    "tagSlug": "simulation",
+    "description": "Step-by-step process modeling and state machine execution."
+  },
+  {
+    "key": "breadth-first-search",
+    "name": "Breadth-First Search",
+    "tagSlug": "breadth-first-search",
+    "description": "Level-by-level exploration for shortest paths in unweighted graphs."
+  },
+  {
+    "key": "backtracking",
+    "name": "Backtracking",
+    "tagSlug": "backtracking",
+    "description": "Systematic exploration of all candidate solutions with pruning."
+  },
+  {
+    "key": "counting",
+    "name": "Counting",
+    "tagSlug": "counting",
+    "description": "Frequency analysis and combinatorial counting techniques."
+  },
+  {
+    "key": "sliding-window",
+    "name": "Sliding Window",
+    "tagSlug": "sliding-window",
+    "description": "Expand and contract subarray bounds for O(N) range optimization."
+  },
+  {
+    "key": "graph",
+    "name": "Graph Theory",
+    "tagSlug": "graph",
+    "description": "Connectivity, shortest paths, and cycle detection in node-edge structures."
+  },
+  {
+    "key": "design",
+    "name": "Design",
+    "tagSlug": "design",
+    "description": "Architect data structures and systems to meet specific interface contracts."
+  },
+  {
+    "key": "linked-list",
+    "name": "Linked List",
+    "tagSlug": "linked-list",
+    "description": "Pointer manipulation, reversal, and cycle detection in sequential node chains."
+  },
+  {
+    "key": "monotonic-stack",
+    "name": "Monotonic Stack",
+    "tagSlug": "monotonic-stack",
+    "description": "Maintain a strictly ordered stack to find next greater/smaller elements efficiently."
+  },
+  {
+    "key": "enumeration",
+    "name": "Enumeration",
+    "tagSlug": "enumeration",
+    "description": "Systematically iterate through all possible states or configurations."
+  },
+  {
+    "key": "trie",
+    "name": "Trie",
+    "tagSlug": "trie",
+    "description": "Prefix tree for efficient string storage, lookup, and autocomplete."
+  },
+  {
+    "key": "union-find",
+    "name": "Union-Find",
+    "tagSlug": "union-find",
+    "description": "Disjoint set data structure for dynamic connectivity and component grouping."
+  },
+  {
+    "key": "bitmask",
+    "name": "Bitmask",
+    "tagSlug": "bitmask",
+    "description": "Represent subsets as binary integers for compact state-space DP."
+  },
+  {
+    "key": "memoization",
+    "name": "Memoization",
+    "tagSlug": "memoization",
+    "description": "Cache recursive function results to avoid redundant computation."
+  },
+  {
+    "key": "segment-tree",
+    "name": "Segment Tree",
+    "tagSlug": "segment-tree",
+    "description": "Range query and point update operations in O(log N) time."
+  },
+  {
+    "key": "recursion",
+    "name": "Recursion",
+    "tagSlug": "recursion",
+    "description": "Solve problems by breaking them into smaller instances of the same problem."
+  },
+  {
+    "key": "combinatorics",
+    "name": "Combinatorics",
+    "tagSlug": "combinatorics",
+    "description": "Counting arrangements, permutations, and combinations."
+  },
+  {
+    "key": "binary-indexed-tree",
+    "name": "Binary Indexed Tree",
+    "tagSlug": "binary-indexed-tree",
+    "description": "Fenwick tree for efficient prefix sum queries and updates."
+  },
+  {
+    "key": "divide-and-conquer",
+    "name": "Divide and Conquer",
+    "tagSlug": "divide-and-conquer",
+    "description": "Split problems into independent subproblems, solve, and merge results."
+  },
+  {
+    "key": "string-matching",
+    "name": "String Matching",
+    "tagSlug": "string-matching",
+    "description": "Pattern search algorithms like KMP, Rabin-Karp, and Z-algorithm."
+  },
+  {
+    "key": "hash-function",
+    "name": "Hash Function",
+    "tagSlug": "hash-function",
+    "description": "Design and apply hash functions for efficient data comparison."
+  },
+  {
+    "key": "queue",
+    "name": "Queue",
+    "tagSlug": "queue",
+    "description": "FIFO structure for BFS, task scheduling, and stream processing."
+  },
+  {
+    "key": "ordered-set",
+    "name": "Ordered Set",
+    "tagSlug": "ordered-set",
+    "description": "Maintain sorted unique elements with efficient insertion and lookup."
+  },
+  {
+    "key": "binary-search-tree",
+    "name": "Binary Search Tree",
+    "tagSlug": "binary-search-tree",
+    "description": "Ordered tree structure supporting O(log N) search, insert, and delete."
+  },
+  {
+    "key": "topological-sort",
+    "name": "Topological Sort",
+    "tagSlug": "topological-sort",
+    "description": "Linear ordering of directed acyclic graph nodes respecting dependencies."
+  },
+  {
+    "key": "number-theory",
+    "name": "Number Theory",
+    "tagSlug": "number-theory",
+    "description": "GCD, primes, modular arithmetic, and divisibility problems."
+  },
+  {
+    "key": "monotonic-queue",
+    "name": "Monotonic Queue",
+    "tagSlug": "monotonic-queue",
+    "description": "Maintain monotonic order in a queue for sliding window extremum queries."
+  },
+  {
+    "key": "shortest-path",
+    "name": "Shortest Path",
+    "tagSlug": "shortest-path",
+    "description": "Dijkstra, Bellman-Ford, and Floyd-Warshall algorithms for minimum distance paths."
+  },
+  {
+    "key": "game-theory",
+    "name": "Game Theory",
+    "tagSlug": "game-theory",
+    "description": "Minimax, Sprague-Grundy, and optimal play in zero-sum sequential games."
+  },
+  {
+    "key": "geometry",
+    "name": "Geometry",
+    "tagSlug": "geometry",
+    "description": "Point orientation, convex hull, line intersections, and geometric calculations."
+  },
+  {
+    "key": "data-stream",
+    "name": "Data Stream",
+    "tagSlug": "data-stream",
+    "description": "Process sequential input elements in real-time with limited space."
+  },
+  {
+    "key": "rolling-hash",
+    "name": "Rolling Hash",
+    "tagSlug": "rolling-hash",
+    "description": "Efficiently compute hash values across sliding windows (Rabin-Karp)."
+  },
+  {
+    "key": "brainteaser",
+    "name": "Brainteaser",
+    "tagSlug": "brainteaser",
+    "description": "Insight-driven puzzle questions with creative and non-standard invariants."
+  },
+  {
+    "key": "quickselect",
+    "name": "Quickselect",
+    "tagSlug": "quickselect",
+    "description": "Selection algorithm to find the Kth smallest/largest element in expected O(N) time."
+  },
+  {
+    "key": "randomized",
+    "name": "Randomized",
+    "tagSlug": "randomized",
+    "description": "Use random choices to achieve good expected time or space complexity."
+  },
+  {
+    "key": "doubly-linked-list",
+    "name": "Doubly-Linked List",
+    "tagSlug": "doubly-linked-list",
+    "description": "Nodes with bidirectional pointers for O(1) removals and two-way traversals."
+  },
+  {
+    "key": "suffix-array",
+    "name": "Suffix Array",
+    "tagSlug": "suffix-array",
+    "description": "Sorted array of all string suffixes for advanced pattern searching."
+  },
+  {
+    "key": "minimum-spanning-tree",
+    "name": "Minimum Spanning Tree",
+    "tagSlug": "minimum-spanning-tree",
+    "description": "Kruskal and Prim algorithms to connect all vertices with minimal edge weight."
+  },
+  {
+    "key": "eulerian-circuit",
+    "name": "Eulerian Circuit",
+    "tagSlug": "eulerian-circuit",
+    "description": "Hierholzer algorithm to traverse every edge in a graph exactly once."
+  },
+  {
+    "key": "algorithm-x",
+    "name": "Algorithm X",
+    "tagSlug": "algorithm-x",
+    "description": "Algorithmic problems and solutions covering Algorithm X."
+  },
+  {
+    "key": "dancing-links",
+    "name": "Dancing Links",
+    "tagSlug": "dancing-links",
+    "description": "Algorithmic problems and solutions covering Dancing Links."
+  },
+  {
+    "key": "quicksort",
+    "name": "Quicksort",
+    "tagSlug": "quicksort",
+    "description": "Algorithmic problems and solutions covering Quicksort."
+  },
+  {
+    "key": "bubble-sort",
+    "name": "Bubble Sort",
+    "tagSlug": "bubble-sort",
+    "description": "Algorithmic problems and solutions covering Bubble Sort."
+  },
+  {
+    "key": "range-minimum-maximum-query",
+    "name": "Range Minimum/Maximum Query",
+    "tagSlug": "range-minimum-maximum-query",
+    "description": "Algorithmic problems and solutions covering Range Minimum/Maximum Query."
+  },
+  {
+    "key": "brute-force-search",
+    "name": "Brute-Force Search",
+    "tagSlug": "brute-force-search",
+    "description": "Algorithmic problems and solutions covering Brute-Force Search."
+  },
+  {
+    "key": "euclidean-algorithm",
+    "name": "Euclidean Algorithm",
+    "tagSlug": "euclidean-algorithm",
+    "description": "Algorithmic problems and solutions covering Euclidean Algorithm."
+  },
+  {
+    "key": "greatest-common-divisor",
+    "name": "Greatest Common Divisor",
+    "tagSlug": "greatest-common-divisor",
+    "description": "Algorithmic problems and solutions covering Greatest Common Divisor."
+  },
+  {
+    "key": "bucket-sort",
+    "name": "Bucket Sort",
+    "tagSlug": "bucket-sort",
+    "description": "Algorithmic problems and solutions covering Bucket Sort."
+  },
+  {
+    "key": "radix-sort",
+    "name": "Radix Sort",
+    "tagSlug": "radix-sort",
+    "description": "Algorithmic problems and solutions covering Radix Sort."
+  },
+  {
+    "key": "pigeonhole-principle",
+    "name": "Pigeonhole Principle",
+    "tagSlug": "pigeonhole-principle",
+    "description": "Algorithmic problems and solutions covering Pigeonhole Principle."
+  },
+  {
+    "key": "boyer-moore-majority-vote-algorithm",
+    "name": "Boyer–Moore Majority Vote Algorithm",
+    "tagSlug": "boyer-moore-majority-vote-algorithm",
+    "description": "Algorithmic problems and solutions covering Boyer–Moore Majority Vote Algorithm."
+  },
+  {
+    "key": "primality-test",
+    "name": "Primality Test",
+    "tagSlug": "primality-test",
+    "description": "Algorithmic problems and solutions covering Primality Test."
+  },
+  {
+    "key": "sieve-theory",
+    "name": "Sieve Theory",
+    "tagSlug": "sieve-theory",
+    "description": "Algorithmic problems and solutions covering Sieve Theory."
+  },
+  {
+    "key": "prime-number-sieve",
+    "name": "Prime Number Sieve",
+    "tagSlug": "prime-number-sieve",
+    "description": "Algorithmic problems and solutions covering Prime Number Sieve."
+  },
+  {
+    "key": "sweep-line",
+    "name": "Sweep Line",
+    "tagSlug": "sweep-line",
+    "description": "Algorithmic problems and solutions covering Sweep Line."
+  },
+  {
+    "key": "counting-sort",
+    "name": "Counting Sort",
+    "tagSlug": "counting-sort",
+    "description": "Algorithmic problems and solutions covering Counting Sort."
+  },
+  {
+    "key": "iterator",
+    "name": "Iterator",
+    "tagSlug": "iterator",
+    "description": "Algorithmic problems and solutions covering Iterator."
+  },
+  {
+    "key": "floyds-cycle-finding-algorithm",
+    "name": "Floyd's Cycle Finding Algorithm",
+    "tagSlug": "floyds-cycle-finding-algorithm",
+    "description": "Algorithmic problems and solutions covering Floyd's Cycle Finding Algorithm."
+  },
+  {
+    "key": "longest-increasing-subsequence",
+    "name": "Longest Increasing Subsequence",
+    "tagSlug": "longest-increasing-subsequence",
+    "description": "Algorithmic problems and solutions covering Longest Increasing Subsequence."
+  },
+  {
+    "key": "sqrt-decomposition",
+    "name": "Sqrt Decomposition",
+    "tagSlug": "sqrt-decomposition",
+    "description": "Algorithmic problems and solutions covering Sqrt Decomposition."
+  },
+  {
+    "key": "merge-sort",
+    "name": "Merge Sort",
+    "tagSlug": "merge-sort",
+    "description": "Algorithmic problems and solutions covering Merge Sort."
+  },
+  {
+    "key": "treap",
+    "name": "Treap",
+    "tagSlug": "treap",
+    "description": "Algorithmic problems and solutions covering Treap."
+  },
+  {
+    "key": "knapsack-problem",
+    "name": "Knapsack Problem",
+    "tagSlug": "knapsack-problem",
+    "description": "Algorithmic problems and solutions covering Knapsack Problem."
+  },
+  {
+    "key": "complete-knapsack",
+    "name": "Complete Knapsack",
+    "tagSlug": "complete-knapsack",
+    "description": "Algorithmic problems and solutions covering Complete Knapsack."
+  },
+  {
+    "key": "directed-acyclic-graph",
+    "name": "Directed Acyclic Graph",
+    "tagSlug": "directed-acyclic-graph",
+    "description": "Algorithmic problems and solutions covering Directed Acyclic Graph."
+  },
+  {
+    "key": "eulerian-path",
+    "name": "Eulerian Path",
+    "tagSlug": "eulerian-path",
+    "description": "Algorithmic problems and solutions covering Eulerian Path."
+  },
+  {
+    "key": "semi-eulerian-graph",
+    "name": "Semi-Eulerian Graph",
+    "tagSlug": "semi-eulerian-graph",
+    "description": "Algorithmic problems and solutions covering Semi-Eulerian Graph."
+  },
+  {
+    "key": "bellman-ford-algorithm",
+    "name": "Bellman–Ford Algorithm",
+    "tagSlug": "bellman-ford-algorithm",
+    "description": "Algorithmic problems and solutions covering Bellman–Ford Algorithm."
+  },
+  {
+    "key": "floyd-warshall-algorithm",
+    "name": "Floyd–Warshall Algorithm",
+    "tagSlug": "floyd-warshall-algorithm",
+    "description": "Algorithmic problems and solutions covering Floyd–Warshall Algorithm."
+  },
+  {
+    "key": "0-1-knapsack",
+    "name": "0-1 Knapsack",
+    "tagSlug": "0-1-knapsack",
+    "description": "Algorithmic problems and solutions covering 0-1 Knapsack."
+  },
+  {
+    "key": "minimax-algorithm",
+    "name": "Minimax",
+    "tagSlug": "minimax-algorithm",
+    "description": "Algorithmic problems and solutions covering Minimax."
+  },
+  {
+    "key": "zero-sum-game",
+    "name": "Zero-Sum Game",
+    "tagSlug": "zero-sum-game",
+    "description": "Algorithmic problems and solutions covering Zero-Sum Game."
+  },
+  {
+    "key": "reservoir-sampling",
+    "name": "Reservoir Sampling",
+    "tagSlug": "reservoir-sampling",
+    "description": "Algorithmic problems and solutions covering Reservoir Sampling."
+  },
+  {
+    "key": "convex-hull",
+    "name": "Convex Hull",
+    "tagSlug": "convex-hull",
+    "description": "Algorithmic problems and solutions covering Convex Hull."
+  },
+  {
+    "key": "polygons",
+    "name": "Polygons",
+    "tagSlug": "polygons",
+    "description": "Algorithmic problems and solutions covering Polygons."
+  },
+  {
+    "key": "cartesian-tree",
+    "name": "Cartesian Tree",
+    "tagSlug": "cartesian-tree",
+    "description": "Algorithmic problems and solutions covering Cartesian Tree."
+  },
+  {
+    "key": "bidirectional-search",
+    "name": "Bidirectional Search",
+    "tagSlug": "bidirectional-search",
+    "description": "Algorithmic problems and solutions covering Bidirectional Search."
+  },
+  {
+    "key": "heuristic-search",
+    "name": "Heuristic Search",
+    "tagSlug": "heuristic-search",
+    "description": "Algorithmic problems and solutions covering Heuristic Search."
+  },
+  {
+    "key": "a-search",
+    "name": "A* Search",
+    "tagSlug": "a-search",
+    "description": "Algorithmic problems and solutions covering A* Search."
+  },
+  {
+    "key": "dijkstra",
+    "name": "Dijkstra's Algorithm",
+    "tagSlug": "dijkstra",
+    "description": "Algorithmic problems and solutions covering Dijkstra's Algorithm."
+  },
+  {
+    "key": "meet-in-the-middle",
+    "name": "Meet in the Middle",
+    "tagSlug": "meet-in-the-middle",
+    "description": "Algorithmic problems and solutions covering Meet in the Middle."
+  },
+  {
+    "key": "impartial-game",
+    "name": "Impartial Game",
+    "tagSlug": "impartial-game",
+    "description": "Algorithmic problems and solutions covering Impartial Game."
+  },
+  {
+    "key": "interactive",
+    "name": "Interactive",
+    "tagSlug": "interactive",
+    "description": "Algorithmic problems and solutions covering Interactive."
+  },
+  {
+    "key": "ternary-search",
+    "name": "Ternary Search",
+    "tagSlug": "ternary-search",
+    "description": "Algorithmic problems and solutions covering Ternary Search."
+  },
+  {
+    "key": "timsort",
+    "name": "Timsort",
+    "tagSlug": "timsort",
+    "description": "Algorithmic problems and solutions covering Timsort."
+  },
+  {
+    "key": "hamiltonian-path",
+    "name": "Hamiltonian Path",
+    "tagSlug": "hamiltonian-path",
+    "description": "Algorithmic problems and solutions covering Hamiltonian Path."
+  },
+  {
+    "key": "prime-factorization",
+    "name": "Prime Factorization",
+    "tagSlug": "prime-factorization",
+    "description": "Algorithmic problems and solutions covering Prime Factorization."
+  },
+  {
+    "key": "planar-graph",
+    "name": "Planar Graph",
+    "tagSlug": "planar-graph",
+    "description": "Algorithmic problems and solutions covering Planar Graph."
+  },
+  {
+    "key": "k-d-tree",
+    "name": "K-D Tree",
+    "tagSlug": "k-d-tree",
+    "description": "Algorithmic problems and solutions covering K-D Tree."
+  },
+  {
+    "key": "hungarian-algorithm",
+    "name": "Hungarian Algorithm",
+    "tagSlug": "hungarian-algorithm",
+    "description": "Algorithmic problems and solutions covering Hungarian Algorithm."
+  },
+  {
+    "key": "successive-shortest-path-algorithm",
+    "name": "Successive Shortest Path Algorithm",
+    "tagSlug": "successive-shortest-path-algorithm",
+    "description": "Algorithmic problems and solutions covering Successive Shortest Path Algorithm."
+  },
+  {
+    "key": "aho-corasick-algorithm",
+    "name": "Aho–Corasick Algorithm",
+    "tagSlug": "aho-corasick-algorithm",
+    "description": "Algorithmic problems and solutions covering Aho–Corasick Algorithm."
+  },
+  {
+    "key": "longest-common-subsequence",
+    "name": "Longest Common Subsequence",
+    "tagSlug": "longest-common-subsequence",
+    "description": "Algorithmic problems and solutions covering Longest Common Subsequence."
+  },
+  {
+    "key": "triangulation",
+    "name": "Triangulation",
+    "tagSlug": "triangulation",
+    "description": "Algorithmic problems and solutions covering Triangulation."
+  },
+  {
+    "key": "probability-and-statistics",
+    "name": "Probability and Statistics",
+    "tagSlug": "probability-and-statistics",
+    "description": "Algorithmic problems and solutions covering Probability and Statistics."
+  },
+  {
+    "key": "persistent-data-structure",
+    "name": "Persistent Data Structure",
+    "tagSlug": "persistent-data-structure",
+    "description": "Algorithmic problems and solutions covering Persistent Data Structure."
+  },
+  {
+    "key": "bezouts-lemma",
+    "name": "Bézout's Lemma",
+    "tagSlug": "bezouts-lemma",
+    "description": "Algorithmic problems and solutions covering Bézout's Lemma."
+  },
+  {
+    "key": "extended-euclidean-algorithm",
+    "name": "Extended Euclidean Algorithm",
+    "tagSlug": "extended-euclidean-algorithm",
+    "description": "Algorithmic problems and solutions covering Extended Euclidean Algorithm."
+  },
+  {
+    "key": "maximum-flow",
+    "name": "Maximum Flow",
+    "tagSlug": "maximum-flow",
+    "description": "Algorithmic problems and solutions covering Maximum Flow."
+  },
+  {
+    "key": "maximum-matching",
+    "name": "Maximum Matching",
+    "tagSlug": "maximum-matching",
+    "description": "Algorithmic problems and solutions covering Maximum Matching."
+  },
+  {
+    "key": "bipartite-graph",
+    "name": "Bipartite Graph",
+    "tagSlug": "bipartite-graph",
+    "description": "Algorithmic problems and solutions covering Bipartite Graph."
+  },
+  {
+    "key": "edmonds-karp-algorithm",
+    "name": "Edmonds–Karp Algorithm",
+    "tagSlug": "edmonds-karp-algorithm",
+    "description": "Algorithmic problems and solutions covering Edmonds–Karp Algorithm."
+  },
+  {
+    "key": "mpm-algorithm",
+    "name": "MPM Algorithm",
+    "tagSlug": "mpm-algorithm",
+    "description": "Algorithmic problems and solutions covering MPM Algorithm."
+  },
+  {
+    "key": "push-relabel-algorithm",
+    "name": "Push-Relabel Algorithm",
+    "tagSlug": "push-relabel-algorithm",
+    "description": "Algorithmic problems and solutions covering Push-Relabel Algorithm."
+  },
+  {
+    "key": "minimum-cut",
+    "name": "Minimum Cut",
+    "tagSlug": "minimum-cut",
+    "description": "Algorithmic problems and solutions covering Minimum Cut."
+  },
+  {
+    "key": "matching-graph",
+    "name": "Matching (Graph)",
+    "tagSlug": "matching-graph",
+    "description": "Algorithmic problems and solutions covering Matching (Graph)."
+  },
+  {
+    "key": "flow-network",
+    "name": "Flow Network",
+    "tagSlug": "flow-network",
+    "description": "Algorithmic problems and solutions covering Flow Network."
+  },
+  {
+    "key": "dinics-algorithm",
+    "name": "Dinic's Algorithm",
+    "tagSlug": "dinics-algorithm",
+    "description": "Algorithmic problems and solutions covering Dinic's Algorithm."
+  },
+  {
+    "key": "0-1-bfs",
+    "name": "0-1 BFS",
+    "tagSlug": "0-1-bfs",
+    "description": "Algorithmic problems and solutions covering 0-1 BFS."
+  },
+  {
+    "key": "perfect-matching",
+    "name": "Perfect Matching",
+    "tagSlug": "perfect-matching",
+    "description": "Algorithmic problems and solutions covering Perfect Matching."
+  },
+  {
+    "key": "sparse-table",
+    "name": "Sparse Table",
+    "tagSlug": "sparse-table",
+    "description": "Algorithmic problems and solutions covering Sparse Table."
+  },
+  {
+    "key": "strongly-connected-component",
+    "name": "Strongly Connected Component",
+    "tagSlug": "strongly-connected-component",
+    "description": "Algorithmic problems and solutions covering Strongly Connected Component."
+  },
+  {
+    "key": "articulation-point",
+    "name": "Articulation Point",
+    "tagSlug": "articulation-point",
+    "description": "Algorithmic problems and solutions covering Articulation Point."
+  },
+  {
+    "key": "fermats-little-theorem",
+    "name": "Fermat's Little Theorem",
+    "tagSlug": "fermats-little-theorem",
+    "description": "Algorithmic problems and solutions covering Fermat's Little Theorem."
+  },
+  {
+    "key": "prims-algorithm",
+    "name": "Prim's Algorithm",
+    "tagSlug": "prims-algorithm",
+    "description": "Algorithmic problems and solutions covering Prim's Algorithm."
+  },
+  {
+    "key": "kruskals-algorithm",
+    "name": "Kruskal's Algorithm",
+    "tagSlug": "kruskals-algorithm",
+    "description": "Algorithmic problems and solutions covering Kruskal's Algorithm."
+  },
+  {
+    "key": "boruvkas-algorithm",
+    "name": "Borůvka's Algorithm",
+    "tagSlug": "boruvkas-algorithm",
+    "description": "Algorithmic problems and solutions covering Borůvka's Algorithm."
+  },
+  {
+    "key": "minimum-cost-flow",
+    "name": "Minimum-Cost Flow",
+    "tagSlug": "minimum-cost-flow",
+    "description": "Algorithmic problems and solutions covering Minimum-Cost Flow."
+  },
+  {
+    "key": "knuth-morris-pratt-algorithm",
+    "name": "Knuth–Morris–Pratt Algorithm",
+    "tagSlug": "knuth-morris-pratt-algorithm",
+    "description": "Algorithmic problems and solutions covering Knuth–Morris–Pratt Algorithm."
+  },
+  {
+    "key": "mixed-knapsack",
+    "name": "Mixed Knapsack",
+    "tagSlug": "mixed-knapsack",
+    "description": "Algorithmic problems and solutions covering Mixed Knapsack."
+  },
+  {
+    "key": "dp-on-trees",
+    "name": "DP on Trees",
+    "tagSlug": "dp-on-trees",
+    "description": "Algorithmic problems and solutions covering DP on Trees."
+  },
+  {
+    "key": "suffix-automaton",
+    "name": "Suffix Automaton",
+    "tagSlug": "suffix-automaton",
+    "description": "Algorithmic problems and solutions covering Suffix Automaton."
+  },
+  {
+    "key": "suffix-tree",
+    "name": "Suffix Tree",
+    "tagSlug": "suffix-tree",
+    "description": "Algorithmic problems and solutions covering Suffix Tree."
+  },
+  {
+    "key": "nim-game",
+    "name": "Nim Game",
+    "tagSlug": "nim-game",
+    "description": "Algorithmic problems and solutions covering Nim Game."
+  },
+  {
+    "key": "kosarajus-algorithm",
+    "name": "Kosaraju's Algorithm",
+    "tagSlug": "kosarajus-algorithm",
+    "description": "Algorithmic problems and solutions covering Kosaraju's Algorithm."
+  },
+  {
+    "key": "tarjans-scc-algorithm",
+    "name": "Tarjan's SCC Algorithm",
+    "tagSlug": "tarjans-scc-algorithm",
+    "description": "Algorithmic problems and solutions covering Tarjan's SCC Algorithm."
+  },
+  {
+    "key": "least-common-multiple",
+    "name": "Least Common Multiple",
+    "tagSlug": "least-common-multiple",
+    "description": "Algorithmic problems and solutions covering Least Common Multiple."
+  },
+  {
+    "key": "bracket-sequences",
+    "name": "Bracket Sequences",
+    "tagSlug": "bracket-sequences",
+    "description": "Algorithmic problems and solutions covering Bracket Sequences."
+  },
+  {
+    "key": "binary-lifting",
+    "name": "Binary Lifting",
+    "tagSlug": "binary-lifting",
+    "description": "Algorithmic problems and solutions covering Binary Lifting."
+  },
+  {
+    "key": "lowest-common-ancestor",
+    "name": "Lowest Common Ancestor",
+    "tagSlug": "lowest-common-ancestor",
+    "description": "Algorithmic problems and solutions covering Lowest Common Ancestor."
+  },
+  {
+    "key": "sort",
+    "name": "Sort",
+    "tagSlug": "sort",
+    "description": "Algorithmic problems and solutions covering Sort."
+  },
+  {
+    "key": "multiple-knapsack",
+    "name": "Multiple Knapsack",
+    "tagSlug": "multiple-knapsack",
+    "description": "Algorithmic problems and solutions covering Multiple Knapsack."
+  },
+  {
+    "key": "z-algorithm",
+    "name": "Z Algorithm",
+    "tagSlug": "z-algorithm",
+    "description": "Algorithmic problems and solutions covering Z Algorithm."
+  },
+  {
+    "key": "li-chao-tree",
+    "name": "Li Chao Tree",
+    "tagSlug": "li-chao-tree",
+    "description": "Algorithmic problems and solutions covering Li Chao Tree."
+  },
+  {
+    "key": "heap",
+    "name": "Heap",
+    "tagSlug": "heap",
+    "description": "Algorithmic problems and solutions covering Heap."
+  },
+  {
+    "key": "manacher",
+    "name": "Manacher",
+    "tagSlug": "manacher",
+    "description": "Algorithmic problems and solutions covering Manacher."
+  },
+  {
+    "key": "boyer-moore-string-search-algorithm",
+    "name": "Boyer–Moore String-Search Algorithm",
+    "tagSlug": "boyer-moore-string-search-algorithm",
+    "description": "Algorithmic problems and solutions covering Boyer–Moore String-Search Algorithm."
+  },
+  {
+    "key": "linear-algebra",
+    "name": "Linear Algebra",
+    "tagSlug": "linear-algebra",
+    "description": "Algorithmic problems and solutions covering Linear Algebra."
+  },
+  {
+    "key": "eulerian-graph",
+    "name": "Eulerian Graph",
+    "tagSlug": "eulerian-graph",
+    "description": "Algorithmic problems and solutions covering Eulerian Graph."
+  },
+  {
+    "key": "lexicographically-minimal-string-rotation",
+    "name": "Lexicographically Minimal String Rotation",
+    "tagSlug": "lexicographically-minimal-string-rotation",
+    "description": "Algorithmic problems and solutions covering Lexicographically Minimal String Rotation."
+  },
+  {
+    "key": "lyndon-factorization",
+    "name": "Lyndon Factorization",
+    "tagSlug": "lyndon-factorization",
+    "description": "Algorithmic problems and solutions covering Lyndon Factorization."
+  },
+  {
+    "key": "palindromic-tree",
+    "name": "Palindromic Tree",
+    "tagSlug": "palindromic-tree",
+    "description": "Algorithmic problems and solutions covering Palindromic Tree."
+  },
+  {
+    "key": "graph-coloring",
+    "name": "Graph Coloring",
+    "tagSlug": "graph-coloring",
+    "description": "Algorithmic problems and solutions covering Graph Coloring."
+  },
+  {
+    "key": "sprague-grundy-theorem",
+    "name": "Sprague–Grundy Theorem",
+    "tagSlug": "sprague-grundy-theorem",
+    "description": "Algorithmic problems and solutions covering Sprague–Grundy Theorem."
+  },
+  {
+    "key": "newtons-method",
+    "name": "Newton's Method",
+    "tagSlug": "newtons-method",
+    "description": "Algorithmic problems and solutions covering Newton's Method."
+  },
+  {
+    "key": "eulers-totient-function",
+    "name": "Euler's Totient Function",
+    "tagSlug": "eulers-totient-function",
+    "description": "Algorithmic problems and solutions covering Euler's Totient Function."
+  },
+  {
+    "key": "eulers-theorem",
+    "name": "Euler's Theorem",
+    "tagSlug": "eulers-theorem",
+    "description": "Algorithmic problems and solutions covering Euler's Theorem."
+  },
+  {
+    "key": "rejection-sampling",
+    "name": "Rejection Sampling",
+    "tagSlug": "rejection-sampling",
+    "description": "Algorithmic problems and solutions covering Rejection Sampling."
+  },
+  {
+    "key": "inclusion-exclusion-principle",
+    "name": "Inclusion-Exclusion Principle",
+    "tagSlug": "inclusion-exclusion-principle",
+    "description": "Algorithmic problems and solutions covering Inclusion-Exclusion Principle."
+  },
+  {
+    "key": "biconnected-component",
+    "name": "Biconnected Component",
+    "tagSlug": "biconnected-component",
+    "description": "Algorithmic problems and solutions covering Biconnected Component."
+  },
+  {
+    "key": "bridge-graph",
+    "name": "Bridge (Graph)",
+    "tagSlug": "bridge-graph",
+    "description": "Algorithmic problems and solutions covering Bridge (Graph)."
+  },
+  {
+    "key": "tournament-sort",
+    "name": "Tournament Sort",
+    "tagSlug": "tournament-sort",
+    "description": "Algorithmic problems and solutions covering Tournament Sort."
+  },
+  {
+    "key": "k-shortest-path",
+    "name": "K Shortest Path",
+    "tagSlug": "k-shortest-path",
+    "description": "Algorithmic problems and solutions covering K Shortest Path."
+  }
 ]
