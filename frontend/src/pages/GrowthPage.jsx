@@ -6,6 +6,7 @@ import { Calculator, Sparkles } from 'lucide-react';
 export const GrowthPage = () => {
   const {
     contestElo,
+    profileRank,
     chartMode,
     setChartMode,
     volume,
@@ -19,7 +20,8 @@ export const GrowthPage = () => {
   const svgRef = useRef(null);
 
   const startElo = contestElo || 1842;
-  const trajectory = calculateTrajectory(startElo, volume, horizon);
+  const actualProfileRank = profileRank || null;
+  const trajectory = calculateTrajectory(startElo, volume, horizon, 10, actualProfileRank);
   const breakdown = getProblemBreakdown(volume, horizon);
 
   // Scrubber: interpolate from real trajectory points
@@ -48,8 +50,8 @@ export const GrowthPage = () => {
 
   const startRank = eloToWorldwideRank(startElo);
   const dayRank = eloToWorldwideRank(dayElo);
-  const startProfileRank = 185420;
-  const projectedProfileRank = calculateProfileRank(trajectory.currentProjectedElo, volume, horizon);
+  const startProfileRank = actualProfileRank || 185420;
+  const projectedProfileRank = calculateProfileRank(trajectory.currentProjectedElo, volume, horizon, startProfileRank);
   const dayProgress = Math.max(0, Math.min(1, activeDay / horizon));
   const dayProfileRank = Math.round(startProfileRank - (startProfileRank - projectedProfileRank) * dayProgress);
 

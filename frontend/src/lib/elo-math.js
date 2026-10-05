@@ -11,23 +11,27 @@ export function eloToWorldwideRank(elo) {
 
 // LeetCode Profile Global Rank Model (Calibrated against 5,000,000+ platform accounts)
 // Points formula: Score = 1.0*E + 2.5*M + 6.0*H + ContestEloBonus
-// Baseline: ~#185,420 (Top 3.7% platform).
-export function calculateProfileRank(elo, vol, horizon) {
-  const baseRank = 185420;
+// Uses the user's ACTUAL profile rank from LeetCode as the starting point.
+export function calculateProfileRank(elo, vol, horizon, actualProfileRank = null) {
+  // Use the real profile rank from LeetCode if available, otherwise estimate
+  const currentRank = actualProfileRank || 185420;
   const totalProblems = (vol / 7) * horizon;
   const hardProblems = totalProblems * 0.21;
   const mediumProblems = totalProblems * 0.54;
   const easyProblems = totalProblems * 0.25;
 
+  // Score points gained over the horizon period
   const scoreGained =
     easyProblems * 1.0 +
     mediumProblems * 2.5 +
     hardProblems * 6.0 +
-    (elo - 1842) * 0.35;
-  const rank = Math.round(
-    baseRank * Math.exp(-0.0086 * Math.pow(Math.max(1, scoreGained), 0.94))
-  );
-  return Math.max(1, rank);
+    Math.max(0, (elo - 1500) * 0.35);
+
+  // Improvement factor: exponential decay from current rank
+  // Higher starting rank (worse position) → more room to climb → larger absolute gain
+  const improvementFactor = Math.exp(-0.0086 * Math.pow(Math.max(1, scoreGained), 0.94));
+  const projectedRank = Math.round(currentRank * improvementFactor);
+  return Math.max(1, projectedRank);
 }
 
 export function getProblemBreakdown(vol, horizon) {
@@ -72,7 +76,7 @@ export function getProblemBreakdown(vol, horizon) {
  * @param {number} contestsAttended - Historical contests attended (for damping)
  * @returns {object} Full trajectory data with SVG coordinates
  */
-export function calculateTrajectory(startElo, volume, horizon, contestsAttended = 10) {
+export function calculateTrajectory(startElo, volume, horizon, contestsAttended = 10, actualProfileRank = null) {
   // Import the rating engine dynamically to avoid circular deps
   // Since this is a pure function module, we inline the core algorithm here
   // mirroring rating-engine.js predictTrajectory
@@ -86,11 +90,12 @@ export function calculateTrajectory(startElo, volume, horizon, contestsAttended 
   const projectedRank = eloToWorldwideRank(currentProjectedElo);
   const rankPositionsGained = Math.max(0, startRank - projectedRank);
 
-  const startProfileRank = 185420;
+  const startProfileRank = actualProfileRank || 185420;
   const projectedProfileRank = calculateProfileRank(
     currentProjectedElo,
     volume,
-    horizon
+    horizon,
+    startProfileRank
   );
   const profileGain = Math.max(0, startProfileRank - projectedProfileRank);
 
