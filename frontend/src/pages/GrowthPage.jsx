@@ -45,15 +45,60 @@ export const GrowthPage = () => {
   };
 
   const dayElo = interpolateRating(activeDay);
-  const ratingToY = (r) => Math.round(190 - ((r - 1500) / 700) * 170);
-  const dayY = ratingToY(dayElo);
-
   const startRank = eloToWorldwideRank(startElo);
   const dayRank = eloToWorldwideRank(dayElo);
   const startProfileRank = actualProfileRank || 185420;
   const projectedProfileRank = calculateProfileRank(trajectory.currentProjectedElo, volume, horizon, startProfileRank);
   const dayProgress = Math.max(0, Math.min(1, activeDay / horizon));
   const dayProfileRank = Math.round(startProfileRank - (startProfileRank - projectedProfileRank) * dayProgress);
+
+  // Dynamic range & Y-coordinate mapper for active chartMode
+  const rankRange = Math.max(10000, Math.round((startProfileRank - projectedProfileRank) * 1.3));
+  const topProfileRank = Math.max(1, startProfileRank - rankRange);
+
+  const getY = (val) => {
+    if (chartMode === 'elo') {
+      return Math.round(190 - Math.max(0, Math.min(1, (val - 1500) / 700)) * 170);
+    }
+    if (chartMode === 'rank') {
+      return Math.round(190 - Math.max(0, Math.min(1, (50000 - val) / 49000)) * 170);
+    }
+    return Math.round(180 - Math.max(0, Math.min(1, (startProfileRank - val) / Math.max(1, startProfileRank - topProfileRank))) * 155);
+  };
+
+  const dayVal = chartMode === 'elo' ? dayElo : chartMode === 'rank' ? dayRank : dayProfileRank;
+  const dayY = getY(dayVal);
+
+  const startVal = chartMode === 'elo' ? startElo : chartMode === 'rank' ? startRank : startProfileRank;
+  const y0 = getY(startVal);
+
+  const val25 = chartMode === 'elo'
+    ? interpolateRating(horizon * 0.25)
+    : chartMode === 'rank'
+    ? eloToWorldwideRank(interpolateRating(horizon * 0.25))
+    : Math.round(startProfileRank - (startProfileRank - projectedProfileRank) * 0.25);
+  const y15 = getY(val25);
+
+  const val50 = chartMode === 'elo'
+    ? interpolateRating(horizon * 0.50)
+    : chartMode === 'rank'
+    ? eloToWorldwideRank(interpolateRating(horizon * 0.50))
+    : Math.round(startProfileRank - (startProfileRank - projectedProfileRank) * 0.50);
+  const y30 = getY(val50);
+
+  const val75 = chartMode === 'elo'
+    ? interpolateRating(horizon * 0.75)
+    : chartMode === 'rank'
+    ? eloToWorldwideRank(interpolateRating(horizon * 0.75))
+    : Math.round(startProfileRank - (startProfileRank - projectedProfileRank) * 0.75);
+  const y45 = getY(val75);
+
+  const endVal = chartMode === 'elo'
+    ? trajectory.currentProjectedElo
+    : chartMode === 'rank'
+    ? trajectory.projectedRank
+    : projectedProfileRank;
+  const yEnd = getY(endVal);
 
   const handleMouseMove = (e) => {
     if (!svgRef.current) return;
@@ -178,57 +223,29 @@ export const GrowthPage = () => {
           {/* Controls Box */}
           <div className="p-4 sm:p-5 rounded-xl bg-[#090C10] border border-[#21262D] space-y-4 font-mono text-xs shadow-inner">
             
-            {/* Target Presets & Current Projected Stats */}
+            {/* Projected Stats Row */}
             <div className="flex flex-wrap items-center justify-between gap-4">
-              <div className="flex items-center gap-2">
-                <span className="text-[#8B949E] text-[11px] font-semibold">PRESET TARGET:</span>
-                <div className="inline-flex rounded-lg border border-[#21262D] p-0.5 bg-[#161B22]">
-                  {[
-                    { val: 4, label: '4 Casual' },
-                    { val: 8, label: '8 Standard' },
-                    { val: 14, label: '14 Sprint' },
-                    { val: 20, label: '20 Intensive' },
-                  ].map((p) => (
-                    <button
-                      key={p.val}
-                      type="button"
-                      onClick={() => setVolume(p.val)}
-                      className={`px-2.5 py-1 rounded text-[10px] font-bold transition-all cursor-pointer ${
-                        volume === p.val
-                          ? 'bg-[#FF7A00] text-black'
-                          : 'text-[#8B949E] hover:text-[#F0F6FC]'
-                      }`}
-                    >
-                      {p.label}
-                    </button>
-                  ))}
+              <div>
+                <div className="text-[10px] text-[#8B949E] uppercase tracking-wider">
+                  {horizon}-Day{' '}
+                  {chartMode === 'elo'
+                    ? 'Projected Rating'
+                    : chartMode === 'rank'
+                    ? 'Projected Contest Rank'
+                    : 'Projected Profile Rank'}
+                </div>
+                <div className="text-xl font-bold text-[#F0F6FC]">
+                  {chartMode === 'elo'
+                    ? `${trajectory.currentProjectedElo.toLocaleString()} Rating`
+                    : chartMode === 'rank'
+                    ? `#${trajectory.projectedRank.toLocaleString()}`
+                    : `#${trajectory.projectedProfileRank.toLocaleString()}`}
                 </div>
               </div>
 
-              {/* Top Projected Stat Badges */}
-              <div className="flex items-center gap-4 text-right">
+              <div className="flex items-center gap-5 text-right">
                 <div>
-                  <div className="text-[10px] text-[#8B949E] uppercase tracking-wider">
-                    {horizon}-Day{' '}
-                    {chartMode === 'elo'
-                      ? 'Projected Rating'
-                      : chartMode === 'rank'
-                      ? 'Projected Contest Rank'
-                      : 'Projected Profile Rank'}
-                  </div>
-                  <div className="text-xl font-bold text-[#F0F6FC]">
-                    {chartMode === 'elo'
-                      ? `${trajectory.currentProjectedElo.toLocaleString()} Rating`
-                      : chartMode === 'rank'
-                      ? `#${trajectory.projectedRank.toLocaleString()}`
-                      : `#${trajectory.projectedProfileRank.toLocaleString()}`}
-                  </div>
-                </div>
-
-                <div className="pl-4 border-l border-[#21262D]">
-                  <div className="text-[10px] text-[#8B949E] uppercase tracking-wider">
-                    Advancement
-                  </div>
+                  <div className="text-[10px] text-[#8B949E] uppercase tracking-wider">Advancement</div>
                   <div className="text-xs font-bold text-[#FF7A00]">
                     {chartMode === 'elo'
                       ? `+${trajectory.deltaElo} pts (${trajectory.currentProjectedElo >= 2150 ? 'Guardian Tier' : 'Knight Tier'})`
@@ -237,113 +254,90 @@ export const GrowthPage = () => {
                       : `+${trajectory.profileGain.toLocaleString()} spots`}
                   </div>
                 </div>
+                <div className="pl-4 border-l border-[#21262D]">
+                  <div className="text-[10px] text-[#8B949E] uppercase tracking-wider">Effort</div>
+                  <div className="text-xs font-bold text-[#F0F6FC]">
+                    {volume <= 4 ? '~20 min/day' : volume <= 8 ? '~40 min/day' : volume <= 14 ? '~75 min/day' : '~1h 45m/day'}
+                  </div>
+                </div>
               </div>
             </div>
 
-            {/* Segmented Volume Slider with Steppers */}
-            <div className="space-y-2 pt-1">
-              <div className="flex items-center gap-3">
-                <button
-                  type="button"
-                  onClick={() => setVolume(Math.max(4, volume - 1))}
-                  className="size-8 rounded-lg bg-[#161B22] hover:bg-[#21262D] border border-[#21262D] text-[#F0F6FC] font-bold flex items-center justify-center transition-all cursor-pointer"
-                >
-                  −
-                </button>
+            {/* Clean Volume Slider */}
+            <div className="pt-2 space-y-3">
+              <div className="flex items-center justify-between">
+                <span className="text-[11px] text-[#8B949E] font-semibold uppercase tracking-wider">Practice Volume</span>
+                <span className="text-base font-bold text-[#FF7A00]">{volume} <span className="text-[11px] text-[#8B949E] font-normal">problems / week</span></span>
+              </div>
 
-                <div className="relative flex-1 flex items-center h-8">
-                  <div className="absolute inset-x-0 h-2 rounded bg-[#161B22] border border-[#21262D] overflow-hidden pointer-events-none">
-                    <div
-                      className="h-full bg-[#FF7A00] transition-all duration-75"
-                      style={{ width: `${((volume - 4) / 16) * 100}%` }}
-                    />
-                  </div>
-                  <input
-                    type="range"
-                    min={4}
-                    max={20}
-                    step={1}
-                    value={volume}
-                    onChange={(e) => setVolume(parseInt(e.target.value, 10))}
-                    className="w-full relative z-10 opacity-0 cursor-ew-resize h-8"
+              {/* Slider Track */}
+              <div className="relative pt-1 pb-6">
+                <div className="relative h-2 rounded-full bg-[#161B22] border border-[#21262D]">
+                  {/* Fill */}
+                  <div
+                    className="absolute inset-y-0 left-0 rounded-full bg-gradient-to-r from-[#FF7A00] to-[#FF9A40] transition-all duration-100"
+                    style={{ width: `${((volume - 4) / 16) * 100}%` }}
+                  />
+                  {/* Thumb indicator */}
+                  <div
+                    className="absolute top-1/2 -translate-y-1/2 -translate-x-1/2 size-5 rounded-full bg-[#FF7A00] border-2 border-[#F0F6FC] shadow-lg shadow-[#FF7A00]/30 transition-all duration-100 pointer-events-none"
+                    style={{ left: `${((volume - 4) / 16) * 100}%` }}
                   />
                 </div>
-
-                <button
-                  type="button"
-                  onClick={() => setVolume(Math.min(20, volume + 1))}
-                  className="size-8 rounded-lg bg-[#161B22] hover:bg-[#21262D] border border-[#21262D] text-[#F0F6FC] font-bold flex items-center justify-center transition-all cursor-pointer"
-                >
-                  +
-                </button>
-
-                <div className="w-28 text-right font-bold text-[#FF7A00] text-sm">
-                  {volume} probs/wk
-                </div>
-              </div>
-
-              {/* Tick Notches */}
-              <div className="flex justify-between px-10 text-[9px] font-mono select-none">
-                {[
-                  { t: 4, l: '4 Steady' },
-                  { t: 8, l: '8 Standard' },
-                  { t: 12, l: '12 Focused' },
-                  { t: 16, l: '16 Sprint' },
-                  { t: 20, l: '20 Intensive' },
-                ].map((tick) => (
-                  <button
-                    key={tick.t}
-                    type="button"
-                    onClick={() => setVolume(tick.t)}
-                    className="text-center hover:text-[#FF7A00] transition-colors cursor-pointer"
-                  >
-                    <div
-                      className={`size-1.5 rounded-full mx-auto mb-1 ${
-                        volume >= tick.t ? 'bg-[#FF7A00]' : 'bg-[#484F58]'
+                {/* Invisible native input over the track */}
+                <input
+                  type="range"
+                  min={4}
+                  max={20}
+                  step={1}
+                  value={volume}
+                  onChange={(e) => setVolume(parseInt(e.target.value, 10))}
+                  className="absolute inset-x-0 top-0 w-full h-5 opacity-0 cursor-ew-resize z-10"
+                  style={{ marginTop: '1px' }}
+                />
+                {/* Snap-point labels */}
+                <div className="absolute inset-x-0 top-6 flex justify-between select-none text-[10px]">
+                  {[
+                    { val: 4, label: 'Casual' },
+                    { val: 8, label: 'Standard' },
+                    { val: 12, label: 'Focused' },
+                    { val: 16, label: 'Sprint' },
+                    { val: 20, label: 'Intensive' },
+                  ].map((tick) => (
+                    <button
+                      key={tick.val}
+                      type="button"
+                      onClick={() => setVolume(tick.val)}
+                      className={`flex flex-col items-center gap-0.5 transition-colors cursor-pointer min-w-[48px] ${
+                        volume === tick.val ? 'text-[#FF7A00]' : 'text-[#484F58] hover:text-[#8B949E]'
                       }`}
-                    />
-                    <span className={volume === tick.t ? 'text-[#FF7A00] font-bold' : 'text-[#8B949E]'}>
-                      {tick.l}
-                    </span>
-                  </button>
-                ))}
+                    >
+                      <span className={`text-[11px] font-bold ${volume === tick.val ? 'text-[#FF7A00]' : 'text-[#6E7681]'}`}>{tick.val}</span>
+                      <span className="font-medium">{tick.label}</span>
+                    </button>
+                  ))}
+                </div>
               </div>
             </div>
 
-            {/* Commitment Telemetry Bar */}
-            <div className="pt-3 border-t border-[#21262D] grid grid-cols-2 sm:grid-cols-4 gap-3 text-[11px] text-[#8B949E]">
-              <div>
-                <span className="text-[#484F58] text-[9px] uppercase block tracking-wider font-semibold">
-                  Daily Practice
-                </span>
-                <strong className="text-[#F0F6FC]">
-                  {volume <= 4 ? '~20 min / day' : volume <= 8 ? '~40 min / day' : volume <= 14 ? '~75 min / day' : '~1h 45m / day'}
-                </strong>
-              </div>
-              <div>
-                <span className="text-[#484F58] text-[9px] uppercase block tracking-wider font-semibold">
-                  Contest Upsolves
-                </span>
-                <strong className="text-[#FF7A00]">+2 problems / biweek</strong>
-              </div>
-              <div>
-                <span className="text-[#484F58] text-[9px] uppercase block tracking-wider font-semibold">
-                  Global Standing
-                </span>
+            {/* Compact Telemetry Row */}
+            <div className="pt-3 border-t border-[#21262D] flex flex-wrap items-center gap-x-6 gap-y-2 text-[11px] text-[#8B949E]">
+              <span>
+                <span className="text-[#484F58] text-[9px] uppercase tracking-wider mr-1.5">Rank:</span>
+                <strong className="text-[#FF7A00]">#{startRank.toLocaleString()} → #{trajectory.projectedRank.toLocaleString()}</strong>
+              </span>
+              <span>
+                <span className="text-[#484F58] text-[9px] uppercase tracking-wider mr-1.5">Standing:</span>
                 <strong className="text-white">
                   {chartMode === 'profile'
-                    ? trajectory.projectedProfileRank <= 50000 ? 'Top 3.7% → Top 0.8%' : 'Top 3.7% → Top 2.2%'
-                    : volume <= 8 ? 'Top 5.5% → Top 2.5%' : 'Top 5.5% → Top 0.8%'}
+                    ? `Top ${((startProfileRank / 5000000) * 100).toFixed(1)}% → ${((projectedProfileRank / 5000000) * 100).toFixed(1)}%`
+                    : volume <= 8 ? 'Top 5.5% → 2.5%' : 'Top 5.5% → 0.8%'}
                 </strong>
-              </div>
-              <div>
-                <span className="text-[#484F58] text-[9px] uppercase block tracking-wider font-semibold">
-                  Worldwide Rank
-                </span>
-                <strong className="text-[#FF7A00]">
-                  #{startRank.toLocaleString()} → #{trajectory.projectedRank.toLocaleString()}
-                </strong>
-              </div>
+              </span>
+              <span>
+                <span className="text-[#484F58] text-[9px] uppercase tracking-wider mr-1.5">Upsolves:</span>
+                <strong className="text-[#F0F6FC]">+2 / biweek</strong>
+              </span>
             </div>
 
           </div>
@@ -397,44 +391,47 @@ export const GrowthPage = () => {
               onMouseMove={handleMouseMove}
               onMouseLeave={handleMouseLeave}
             >
-              {/* Guardian Tier Band */}
-              <rect x="48" y="15" width="552" height="22" fill="rgba(255, 122, 0, 0.04)" />
-              <line x1="48" y1="37" x2="600" y2="37" stroke="#FF7A00" strokeWidth="1" strokeDasharray="3,3" opacity="0.5" />
-              <text x="595" y="27" fill="#FF7A00" fontSize="8" fontFamily="monospace" textAnchor="end" fontWeight="bold">
-                GUARDIAN CUTOFF (2150+)
-              </text>
+              {/* Guardian / Knight Tier Bands (for Contest Mode) */}
+              {chartMode !== 'profile' && (
+                <>
+                  <rect x="48" y="15" width="552" height="22" fill="rgba(255, 122, 0, 0.04)" />
+                  <line x1="48" y1="37" x2="600" y2="37" stroke="#FF7A00" strokeWidth="1" strokeDasharray="3,3" opacity="0.5" />
+                  <text x="595" y="27" fill="#FF7A00" fontSize="8" fontFamily="monospace" textAnchor="end" fontWeight="bold">
+                    GUARDIAN CUTOFF (2150+)
+                  </text>
 
-              {/* Knight Tier Band */}
-              <rect x="48" y="37" width="552" height="68" fill="rgba(255, 255, 255, 0.01)" />
-              <line x1="48" y1="105" x2="600" y2="105" stroke="#F0F6FC" strokeWidth="1" strokeDasharray="3,3" opacity="0.25" />
-              <text x="595" y="99" fill="#8B949E" fontSize="8" fontFamily="monospace" textAnchor="end">
-                KNIGHT CUTOFF (1850)
-              </text>
+                  <rect x="48" y="37" width="552" height="68" fill="rgba(255, 255, 255, 0.01)" />
+                  <line x1="48" y1="105" x2="600" y2="105" stroke="#F0F6FC" strokeWidth="1" strokeDasharray="3,3" opacity="0.25" />
+                  <text x="595" y="99" fill="#8B949E" fontSize="8" fontFamily="monospace" textAnchor="end">
+                    KNIGHT CUTOFF (1850)
+                  </text>
+                </>
+              )}
 
               {/* Grid Lines */}
               <line x1="48" y1="20" x2="600" y2="20" stroke="#21262D" strokeDasharray="3,3" />
               <text x="42" y="23" fill="#6E7681" fontSize="9" fontFamily="monospace" textAnchor="end">
-                {chartMode === 'elo' ? '2200' : chartMode === 'rank' ? '#1,100' : '#25,000'}
+                {chartMode === 'elo' ? '2200' : chartMode === 'rank' ? '#1,100' : `#${topProfileRank.toLocaleString()}`}
               </text>
 
               <line x1="48" y1="65" x2="600" y2="65" stroke="#21262D" strokeDasharray="3,3" />
               <text x="42" y="68" fill="#6E7681" fontSize="9" fontFamily="monospace" textAnchor="end">
-                {chartMode === 'elo' ? '2000' : chartMode === 'rank' ? '#4,500' : '#60,000'}
+                {chartMode === 'elo' ? '2000' : chartMode === 'rank' ? '#4,500' : `#${Math.round(startProfileRank - rankRange * 0.75).toLocaleString()}`}
               </text>
 
               <line x1="48" y1="105" x2="600" y2="105" stroke="#21262D" strokeDasharray="3,3" />
               <text x="42" y="108" fill="#8B949E" fontSize="9" fontFamily="monospace" textAnchor="end">
-                {chartMode === 'elo' ? '1850' : chartMode === 'rank' ? '#12,000' : '#120,000'}
+                {chartMode === 'elo' ? '1850' : chartMode === 'rank' ? '#12,000' : `#${Math.round(startProfileRank - rankRange * 0.50).toLocaleString()}`}
               </text>
 
               <line x1="48" y1="145" x2="600" y2="145" stroke="#21262D" strokeDasharray="3,3" />
               <text x="42" y="148" fill="#6E7681" fontSize="9" fontFamily="monospace" textAnchor="end">
-                {chartMode === 'elo' ? '1700' : chartMode === 'rank' ? '#25,000' : '#200,000'}
+                {chartMode === 'elo' ? '1700' : chartMode === 'rank' ? '#25,000' : `#${Math.round(startProfileRank - rankRange * 0.25).toLocaleString()}`}
               </text>
 
               <line x1="48" y1="190" x2="600" y2="190" stroke="#21262D" strokeWidth="1" />
               <text x="42" y="193" fill="#6E7681" fontSize="9" fontFamily="monospace" textAnchor="end">
-                {chartMode === 'elo' ? '1500' : chartMode === 'rank' ? '#50,000' : '#350,000'}
+                {chartMode === 'elo' ? '1500' : chartMode === 'rank' ? '#50,000' : `#${startProfileRank.toLocaleString()}`}
               </text>
 
               {/* X-Axis Days */}
@@ -445,28 +442,24 @@ export const GrowthPage = () => {
               <text x="575" y="208" fill="#8B949E" fontSize="9" fontFamily="monospace">Day {horizon}</text>
 
               {/* Baseline Plateau Curve */}
-              <path d="M 48 107 C 180 105, 360 102, 600 100" fill="none" stroke="#6E7681" strokeWidth="1.5" strokeDasharray="4,4" />
-              <text x="595" y="122" fill="#6E7681" fontSize="8" fontFamily="monospace" textAnchor="end">
-                Plateau Baseline
+              <path d={`M 48 ${y0} C 180 ${y0}, 360 ${y0}, 600 ${y0}`} fill="none" stroke="#6E7681" strokeWidth="1.5" strokeDasharray="4,4" />
+              <text x="595" y={Math.min(185, y0 + 15)} fill="#6E7681" fontSize="8" fontFamily="monospace" textAnchor="end">
+                Baseline
               </text>
 
-              {/* ±1σ Confidence Corridor */}
-              {trajectory.corridorPoints && trajectory.corridorPoints.length > 1 && (
-                <path
-                  d={(() => {
-                    const cp = trajectory.corridorPoints;
-                    const upper = cp.map(p => `${p.x},${Math.max(20, p.upperY)}`).join(' L ');
-                    const lower = [...cp].reverse().map(p => `${p.x},${Math.min(190, p.lowerY)}`).join(' L ');
-                    return `M ${upper} L ${lower} Z`;
-                  })()}
-                  fill="rgba(255, 122, 0, 0.06)"
-                  stroke="none"
-                />
-              )}
-
-              {/* Confidence corridor upper/lower dashed lines */}
-              {trajectory.corridorPoints && trajectory.corridorPoints.length > 1 && (
+              {/* ±1σ Confidence Corridor (in Elo mode) */}
+              {chartMode === 'elo' && trajectory.corridorPoints && trajectory.corridorPoints.length > 1 && (
                 <>
+                  <path
+                    d={(() => {
+                      const cp = trajectory.corridorPoints;
+                      const upper = cp.map(p => `${p.x},${Math.max(20, p.upperY)}`).join(' L ');
+                      const lower = [...cp].reverse().map(p => `${p.x},${Math.min(190, p.lowerY)}`).join(' L ');
+                      return `M ${upper} L ${lower} Z`;
+                    })()}
+                    fill="rgba(255, 122, 0, 0.06)"
+                    stroke="none"
+                  />
                   <path
                     d={`M ${trajectory.corridorPoints.map(p => `${p.x},${Math.max(20, p.upperY)}`).join(' L ')}`}
                     fill="none"
@@ -488,13 +481,13 @@ export const GrowthPage = () => {
 
               {/* Area Fill */}
               <path
-                d={`M 48 107 C 181 ${trajectory.y15}, 453 ${trajectory.y45}, 600 ${trajectory.endY} L 600 190 L 48 190 Z`}
+                d={`M 48 ${y0} C 181 ${y15}, 453 ${y45}, 600 ${yEnd} L 600 190 L 48 190 Z`}
                 fill="rgba(255, 122, 0, 0.08)"
               />
 
               {/* Spline Curve */}
               <path
-                d={`M 48 107 C 181 ${trajectory.y15}, 453 ${trajectory.y45}, 600 ${trajectory.endY}`}
+                d={`M 48 ${y0} C 181 ${y15}, 453 ${y45}, 600 ${yEnd}`}
                 fill="none"
                 stroke="#FF7A00"
                 strokeWidth="3"
@@ -502,11 +495,11 @@ export const GrowthPage = () => {
               />
 
               {/* Milestone Checkpoint Nodes */}
-              <circle cx="48" cy="107" r="4.5" fill="#FF7A00" stroke="#090C10" strokeWidth="2" />
-              <circle cx="181" cy={trajectory.y15} r="3.5" fill="#F0F6FC" stroke="#090C10" strokeWidth="1.5" />
-              <circle cx="317" cy={trajectory.y30} r="3.5" fill="#F0F6FC" stroke="#090C10" strokeWidth="1.5" />
-              <circle cx="453" cy={trajectory.y45} r="3.5" fill="#F0F6FC" stroke="#090C10" strokeWidth="1.5" />
-              <circle cx="600" cy={trajectory.endY} r="5.5" fill="#FF7A00" stroke="#F0F6FC" strokeWidth="2" />
+              <circle cx="48" cy={y0} r="4.5" fill="#FF7A00" stroke="#090C10" strokeWidth="2" />
+              <circle cx="181" cy={y15} r="3.5" fill="#F0F6FC" stroke="#090C10" strokeWidth="1.5" />
+              <circle cx="317" cy={y30} r="3.5" fill="#F0F6FC" stroke="#090C10" strokeWidth="1.5" />
+              <circle cx="453" cy={y45} r="3.5" fill="#F0F6FC" stroke="#090C10" strokeWidth="1.5" />
+              <circle cx="600" cy={yEnd} r="5.5" fill="#FF7A00" stroke="#F0F6FC" strokeWidth="2" />
 
               {/* Hover Scrubber Line & Dot */}
               <line
@@ -530,10 +523,10 @@ export const GrowthPage = () => {
             </span>
             <span className="text-[#8B949E]">
               {chartMode === 'elo'
-                ? 'Elo Engine: ERank = Σ P(opp > user) | m = √(ERank × ARank) | Binary Search → δ'
+                ? 'Elo Engine: ERank = Σ P(opp > user) | m = √(ERank × ARank) | Damped δ'
                 : chartMode === 'rank'
                 ? 'Model: R(E) = 50,000 · (0.022)^((E - 1500)/700)^1.414'
-                : 'Model: Score = 1.0·E + 2.5·M + 6.0·H | Rank ≈ N · exp(-λ · Score^0.94)'}
+                : 'Model: Density dR/dS = -c · R^1.25 | Calibrated against 5M+ LC accounts'}
             </span>
           </div>
 
@@ -626,10 +619,10 @@ export const GrowthPage = () => {
             </div>
             <p className="text-[#8B949E]">
               {chartMode === 'profile'
-                ? `Each Hard breaks ~12,400 profile score ties. Solving ${breakdown.hard} Hards propels your global profile rank by +${trajectory.profileGain.toLocaleString()} spots.`
+                ? `In your rank tier (#${startProfileRank.toLocaleString()}), solving ${breakdown.hard} Hards + ${breakdown.med} Meds advances your global profile rank by +${trajectory.profileGain.toLocaleString()} spots.`
                 : chartMode === 'rank'
-                ? `Active contest pool is ~50,000 contestants. Solving ${breakdown.hard} Hards unlocks Q3/Q4 speed, advancing your contest rank to #${trajectory.projectedRank.toLocaleString()}.`
-                : `Allocating ${volume} probs/wk (${breakdown.hard} Hards + ${breakdown.med} Meds) builds algorithmic intuition to breach ${trajectory.currentProjectedElo} Rating.`}
+                ? `Active contest pool is ~50,000 contestants. Consistent practice builds contest pace, advancing your projected rank to #${trajectory.projectedRank.toLocaleString()}.`
+                : `Allocating ${volume} probs/wk (${breakdown.hard} Hards + ${breakdown.med} Meds) builds algorithmic intuition, steadily projecting +${trajectory.deltaElo} Elo to reach ${trajectory.currentProjectedElo} Rating.`}
             </p>
           </div>
 

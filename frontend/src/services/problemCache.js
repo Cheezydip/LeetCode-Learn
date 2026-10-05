@@ -345,53 +345,102 @@ export async function searchLocalProblems(query, { limit = 40 } = {}) {
 
   if (!all || all.length === 0) return [];
 
-  const exactIdMatches = [];
-  const idStartsWithMatches = [];
-  const startsWithMatches = [];
-  const otherMatches = [];
+  // ── 1. NUMERIC SEARCH (e.g. "1", "15", "#42") ──
+  if (isNumeric) {
+    const exactId = [];
+    const prefixId = [];
+    const titleWithNum = [];
+
+    for (const rawP of all) {
+      const p = normalizeProblem(rawP);
+      const id = p.frontend_id ?? p.questionId ?? p.id;
+      const idStr = id != null ? String(id) : '';
+      const titleLower = (p.title || '').toLowerCase();
+
+      if (idStr === cleanNoHash) {
+        exactId.push(p);
+      } else if (idStr.startsWith(cleanNoHash)) {
+        prefixId.push(p);
+      } else if (titleLower.startsWith(cleanNoHash) || titleLower.includes(` ${cleanNoHash} `) || titleLower.includes(` ${cleanNoHash}`)) {
+        titleWithNum.push(p);
+      }
+    }
+
+    // Sort prefix IDs numerically: #10, #11, etc.
+    prefixId.sort((a, b) => {
+      const idA = parseInt(a.frontend_id || a.questionId || 0, 10);
+      const idB = parseInt(b.frontend_id || b.questionId || 0, 10);
+      return idA - idB;
+    });
+
+    // Exact ID match is the primary target. Do NOT flood with arbitrary substring IDs.
+    const results = [
+      ...exactId,
+      ...(exactId.length > 0 ? prefixId.slice(0, 5) : prefixId.slice(0, 15)),
+      ...titleWithNum.slice(0, 5),
+    ];
+
+    return results.slice(0, limit);
+  }
+
+  // ── 2. TEXT SEARCH (Ranked by Relevance) ──
+  const exactTitleMatches = [];
+  const startsWithTitleMatches = [];
+  const wordBoundaryMatches = [];
+  const containsTitleMatches = [];
+  const tagOrCompanyMatches = [];
+
+  const escapedQ = cleanNoHash.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  const wordRegex = new RegExp(`\\b${escapedQ}`, 'i');
 
   for (const rawP of all) {
     const p = normalizeProblem(rawP);
     const titleLower = (p.title || '').toLowerCase();
     const slugLower = (p.title_slug || '').toLowerCase();
-    const id = p.frontend_id ?? p.questionId ?? p.id;
-    const idStr = id != null ? String(id) : '';
 
     const hasTagMatch = Array.isArray(p.topic_tags) && p.topic_tags.some((t) => t.toLowerCase().includes(cleanQ));
     const hasCompanyMatch = Array.isArray(p.company_tags) && p.company_tags.some((c) => c.toLowerCase().includes(cleanQ));
     const hasSheetMatch = Array.isArray(p.sheet_tags) && p.sheet_tags.some((s) => s.toLowerCase().includes(cleanQ));
     const hasDiffMatch = (p.difficulty || '').toLowerCase() === cleanQ;
 
-    if (isNumeric && idStr === cleanNoHash) {
-      exactIdMatches.push(p);
-    } else if (isNumeric && idStr.startsWith(cleanNoHash)) {
-      idStartsWithMatches.push(p);
-    } else if (titleLower.startsWith(cleanQ) || slugLower.startsWith(cleanQ)) {
-      startsWithMatches.push(p);
-    } else if (
-      (isNumeric && idStr.includes(cleanNoHash)) ||
-      titleLower.includes(cleanQ) ||
-      slugLower.includes(cleanQ) ||
-      hasTagMatch ||
-      hasCompanyMatch ||
-      hasSheetMatch ||
-      hasDiffMatch
-    ) {
-      otherMatches.push(p);
+    // Rank 1: Exact title or slug match (e.g. "Two Sum" -> "two-sum")
+    if (titleLower === cleanQ || slugLower === cleanQ) {
+      exactTitleMatches.push(p);
+    } 
+    // Rank 2: Title or slug starts with query (e.g. "Two Sum II...")
+    else if (titleLower.startsWith(cleanQ) || slugLower.startsWith(cleanQ)) {
+      startsWithTitleMatches.push(p);
+    } 
+    // Rank 3: Whole-word match in title (e.g. "tree" matching "...Binary Tree...")
+    else if (wordRegex.test(p.title || '')) {
+      wordBoundaryMatches.push(p);
+    } 
+    // Rank 4: Substring in title or slug
+    else if (titleLower.includes(cleanQ) || slugLower.includes(cleanQ)) {
+      containsTitleMatches.push(p);
+    } 
+    // Rank 5: Tag, company, or sheet match
+    else if (hasTagMatch || hasCompanyMatch || hasSheetMatch || hasDiffMatch) {
+      tagOrCompanyMatches.push(p);
     }
 
-    if (exactIdMatches.length + idStartsWithMatches.length + startsWithMatches.length + otherMatches.length >= limit * 3) {
+    if (
+      exactTitleMatches.length +
+      startsWithTitleMatches.length +
+      wordBoundaryMatches.length +
+      containsTitleMatches.length +
+      tagOrCompanyMatches.length >= limit * 3
+    ) {
       break;
     }
   }
 
-  // Sort idStartsWith numerically so #1, #10, #11, etc. appear in clean ascending order
-  idStartsWithMatches.sort((a, b) => {
-    const idA = parseInt(a.frontend_id || a.questionId || 0, 10);
-    const idB = parseInt(b.frontend_id || b.questionId || 0, 10);
-    return idA - idB;
-  });
-
-  return [...exactIdMatches, ...idStartsWithMatches, ...startsWithMatches, ...otherMatches].slice(0, limit);
+  return [
+    ...exactTitleMatches,
+    ...startsWithTitleMatches,
+    ...wordBoundaryMatches,
+    ...containsTitleMatches,
+    ...tagOrCompanyMatches,
+  ].slice(0, limit);
 }
 

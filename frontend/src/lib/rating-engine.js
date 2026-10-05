@@ -255,34 +255,22 @@ function estimateRankFromSolvedCount(solved, timeMinutes) {
  * @param {{ easy: number, medium: number, hard: number }} difficultyMix - Fraction of each difficulty
  * @returns {number} Estimated effective rating improvement from practice alone
  */
-export function practiceToSkillGain(currentRating, weeklyVolume, weeksElapsed, difficultyMix = { easy: 0.25, medium: 0.54, hard: 0.21 }) {
+export function practiceToSkillGain(currentRating, weeklyVolume, weeksElapsed) {
   let totalGain = 0;
   const totalProblems = weeklyVolume * weeksElapsed;
+  if (totalProblems <= 0) return 0;
   
   for (let i = 0; i < totalProblems; i++) {
-    // Determine difficulty of this practice problem
-    const roll = i / totalProblems; // Deterministic for reproducibility
-    let problemRating;
-    if (roll < difficultyMix.easy) {
-      problemRating = DIFFICULTY_RATINGS.easy;
-    } else if (roll < difficultyMix.easy + difficultyMix.medium) {
-      problemRating = DIFFICULTY_RATINGS.medium;
-    } else {
-      problemRating = DIFFICULTY_RATINGS.hard;
-    }
+    const frac = i / Math.max(1, totalProblems);
+    let problemRating = frac < 0.25 ? currentRating - 250 : frac < 0.80 ? currentRating + 50 : currentRating + 350;
+    problemRating = Math.max(1200, Math.min(2700, problemRating));
     
-    // Expected score against this problem
     const effectiveRating = currentRating + totalGain;
     const expectedScore = winProbability(effectiveRating, problemRating);
     
-    // Learning gain: you learn more from problems near your level
-    // K-factor for practice is lower than contest (practice ≠ contest pressure)
-    const K = 4; // Practice K-factor (much lower than contest's ~32)
-    const gain = K * (1.0 - expectedScore);
-    
-    // Diminishing returns: each additional problem in the same range teaches less
-    const diminishingFactor = 1.0 / (1.0 + i * 0.002);
-    totalGain += gain * diminishingFactor;
+    const k = 4.2 / Math.pow(Math.max(1200, currentRating) / 1400, 0.7);
+    const gain = (k * (1.0 - expectedScore)) / (1.0 + i * 0.015);
+    totalGain += gain;
   }
   
   return totalGain;
@@ -295,11 +283,11 @@ export function practiceToSkillGain(currentRating, weeklyVolume, weeksElapsed, d
  * 
  * Process:
  * 1. For each simulated biweekly contest:
- *    a. Add skill gain from practice since last contest
+ *    a. Add realistic skill gain from practice since last contest
  *    b. Estimate contest performance at current effective skill
- *    c. Compute rating delta using the full Elo engine
- *    d. Apply delta to official rating
- * 2. Track confidence bounds (±1σ from K-factor variance)
+ *    c. Compute rating delta using geometric mean of expected and actual rank
+ *    d. Apply dampened delta to official rating
+ * 2. Track confidence bounds (±1σ from variance)
  * 
  * @param {number} startRating - Starting contest rating
  * @param {number} weeklyVolume - Problems solved per week
@@ -312,46 +300,38 @@ export function predictTrajectory(startRating, weeklyVolume, horizonDays, contes
   const numContests = Math.floor(horizonDays / contestIntervalDays);
   
   let currentRating = startRating;
-  let currentSkillBonus = 0; // Accumulated practice improvement
   const points = [{ day: 0, rating: startRating, upper: startRating, lower: startRating }];
   
-  // Track variance for confidence corridor
   let varianceSum = 0;
   let contestCount = 0;
   
-  const difficultyMix = { easy: 0.25, medium: 0.54, hard: 0.21 };
-  
   for (let c = 1; c <= numContests; c++) {
     const dayOfContest = c * contestIntervalDays;
-    const weeksElapsed = c * 2; // 2 weeks per contest interval
+    const problemsInPeriod = weeklyVolume * 2;
+    let periodGain = 0;
     
-    // Skill gain from practice (cumulative from day 0)
-    currentSkillBonus = practiceToSkillGain(
-      startRating, weeklyVolume, weeksElapsed, difficultyMix
-    );
+    if (problemsInPeriod > 0) {
+      for (let i = 0; i < problemsInPeriod; i++) {
+        const frac = i / Math.max(1, problemsInPeriod);
+        let probDiff = frac < 0.25 ? currentRating - 250 : frac < 0.80 ? currentRating + 50 : currentRating + 350;
+        probDiff = Math.max(1200, Math.min(2700, probDiff));
+        const effective = currentRating + periodGain;
+        const expected = winProbability(effective, probDiff);
+        const k = 4.2 / Math.pow(Math.max(1200, currentRating) / 1400, 0.7);
+        periodGain += (k * (1.0 - expected)) / (1.0 + i * 0.015);
+      }
+    }
     
-    // Effective skill = official rating + practice bonus
-    const effectiveSkill = currentRating + currentSkillBonus;
+    const perfRating = currentRating + periodGain;
+    const targetRank = expectedRank(perfRating);
+    const eRank = expectedRank(currentRating);
+    const geoMean = Math.sqrt(eRank * targetRank);
+    const contestPerf = performanceRating(geoMean);
+    const damping = Math.max(1, Math.sqrt(Math.max(1, contestsAttended + c) / 10));
+    const delta = (contestPerf - currentRating) / damping;
+    currentRating = Math.max(0, Math.round(currentRating + delta));
     
-    // Estimate contest performance at effective skill level
-    const perf = estimateContestPerformance(effectiveSkill);
-    
-    // Compute rating delta using the real Elo engine
-    const result = ratingDelta(currentRating, perf.estimatedRank, contestsAttended + c);
-    
-    // Apply the delta
-    currentRating = Math.round(currentRating + result.delta);
-    currentRating = Math.max(0, currentRating); // Floor at 0
-    
-    // Reset skill bonus (it got "cashed in" via the contest)
-    // But not fully — practice compounds. Keep a fraction.
-    currentSkillBonus *= 0.3;
-    
-    // Variance tracking for confidence corridor
-    // The standard deviation of a single Elo update is approximately K/√2
-    const K = 32;
-    const singleContestVariance = (K * K) / 2;
-    varianceSum += singleContestVariance;
+    varianceSum += Math.round(Math.max(16, 64 / damping));
     contestCount += 1;
     
     const sigma = Math.sqrt(varianceSum / Math.max(1, contestCount));
@@ -367,12 +347,15 @@ export function predictTrajectory(startRating, weeklyVolume, horizonDays, contes
   // If horizon extends beyond last contest, extrapolate the final point
   const lastPoint = points[points.length - 1];
   if (lastPoint.day < horizonDays) {
-    const remainingWeeks = (horizonDays - lastPoint.day) / 7;
-    const finalSkillBonus = practiceToSkillGain(
-      currentRating, weeklyVolume, remainingWeeks, difficultyMix
-    );
-    const finalRating = Math.round(currentRating + finalSkillBonus * 0.15);
-    const sigma = Math.sqrt(varianceSum / Math.max(1, contestCount));
+    const remDays = horizonDays - lastPoint.day;
+    const remProbs = (weeklyVolume / 7) * remDays;
+    let remGain = 0;
+    if (remProbs > 0) {
+      const k = 4.2 / Math.pow(Math.max(1200, currentRating) / 1400, 0.7);
+      remGain = remProbs * k * 0.45 * 0.35;
+    }
+    const finalRating = Math.round(currentRating + remGain);
+    const sigma = Math.sqrt(varianceSum / Math.max(1, contestCount || 1));
     
     points.push({
       day: horizonDays,
@@ -383,7 +366,7 @@ export function predictTrajectory(startRating, weeklyVolume, horizonDays, contes
     currentRating = finalRating;
   }
   
-  const finalSigma = Math.sqrt(varianceSum / Math.max(1, contestCount));
+  const finalSigma = Math.sqrt(varianceSum / Math.max(1, contestCount || 1));
   
   return {
     points,
