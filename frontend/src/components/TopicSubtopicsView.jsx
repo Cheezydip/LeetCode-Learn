@@ -1207,11 +1207,6 @@ export const TopicSubtopicsView = ({
             <h2 className="text-base sm:text-lg font-extrabold text-[#F0F6FC] tracking-tight">
               {topicTitle || 'Topic Roadmap'}
             </h2>
-            {topicDesc && (
-              <p className="text-[11px] font-mono text-[#8B949E] leading-relaxed line-clamp-2">
-                {topicDesc}
-              </p>
-            )}
           </div>
 
           {/* Right: Progress Meter Dial & Difficulty Breakdown */}

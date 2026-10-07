@@ -21,21 +21,33 @@ dotenv.config();
 const supabaseUrl = process.env.SUPABASE_URL;
 const supabaseAnonKey = process.env.SUPABASE_ANON_KEY;
 
-if (!supabaseUrl || !supabaseAnonKey) {
-  console.warn('⚠️ SUPABASE_URL or SUPABASE_ANON_KEY is missing in environment variables.');
+const isConfigured = Boolean(supabaseUrl && supabaseAnonKey);
+
+if (!isConfigured) {
+  console.warn('⚠️ SUPABASE_URL or SUPABASE_ANON_KEY is missing in environment variables. Database features will be in degraded mode.');
 }
 
-const supabase = createClient(supabaseUrl || '', supabaseAnonKey || '', {
-  auth: {
-    persistSession: false,
-  },
-});
+// Fallback to dummy client if environment variables are not set during initial deploy
+const supabase = isConfigured
+  ? createClient(supabaseUrl, supabaseAnonKey, {
+      auth: {
+        persistSession: false,
+      },
+    })
+  : createClient('https://placeholder-project.supabase.co', 'placeholder-anon-key', {
+      auth: {
+        persistSession: false,
+      },
+    });
 
 /**
  * Verifies that the Supabase instance is reachable
  * @returns {Promise<{ ok: boolean, message?: string }>}
  */
 async function checkSupabaseConnection() {
+  if (!isConfigured) {
+    return { ok: false, message: 'SUPABASE_URL or SUPABASE_ANON_KEY is not configured in environment variables' };
+  }
   try {
     const { error } = await supabase.auth.getSession();
     if (error) {

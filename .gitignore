@@ -3,6 +3,11 @@ node_modules/
 /.pnp
 .pnp.js
 
+# Build outputs
+dist/
+frontend/dist/
+build/
+
 # Environment variables
 .env
 .env.local

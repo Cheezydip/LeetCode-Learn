@@ -98,6 +98,8 @@ export const LeetCodeSyncModal = () => {
 
   const cleanHandle = (inputHandle || handle || 'username').trim().replace(/^@/, '');
 
+  const appOrigin = typeof window !== 'undefined' && window.location.origin ? window.location.origin : 'http://localhost:5000';
+
   // Generates the 1-click copyable snippet tailored to the user's handle
   const browserSnippetCode = `(async () => {
   console.log("%c[LeetCode-Learn]%c Querying your solved problems from leetcode.com...", "color:#FF7A00;font-weight:bold", "");
@@ -118,11 +120,11 @@ export const LeetCodeSyncModal = () => {
       console.log("%c[LeetCode-Learn] ✓ Solved slugs copied to your clipboard!", "color:#10B981;font-weight:bold");
     }
 
-    // 2. Attempt direct transmission to local app
+    // 2. Attempt direct transmission to app
     let directSynced = false;
     try {
       const targetUser = "${cleanHandle}" || data.user_name || "username";
-      const postRes = await fetch('http://localhost:5000/api/users/' + targetUser + '/import-solved', {
+      const postRes = await fetch('${appOrigin}/api/users/' + targetUser + '/import-solved', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ solvedSlugs: solved, source: 'console_snippet' })

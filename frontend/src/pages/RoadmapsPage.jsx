@@ -2073,9 +2073,6 @@ export const RoadmapsPage = () => {
           <h1 className="text-xl sm:text-2xl font-extrabold text-[#F0F6FC] animate-heading-reveal">
             Step-by-Step Roadmaps & Curated Sheets
           </h1>
-          <p className="text-xs text-[#8B949E] font-mono mt-1">
-            Master algorithmic invariants with progressive intuition trees, or prepare with curated industry sheets and company sets.
-          </p>
         </div>
 
         <div className="flex flex-wrap items-center gap-2">

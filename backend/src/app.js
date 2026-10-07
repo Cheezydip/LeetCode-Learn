@@ -22,6 +22,8 @@ app.use(
 // CORS configuration - restrict to trusted origins
 const allowedOrigins = [
   'https://leetcode-learn.antideploy.app',
+  'https://leetcode.com',
+  'https://leetcode.cn',
   'http://localhost:5173',
   'http://localhost:3000',
   'http://localhost:5000',
@@ -34,7 +36,31 @@ if (process.env.FRONTEND_URL && !allowedOrigins.includes(process.env.FRONTEND_UR
 
 app.use(
   cors({
-    origin: allowedOrigins,
+    origin: (origin, callback) => {
+      // Allow requests with no origin (curl, server-to-server, same-origin)
+      if (!origin) return callback(null, true);
+
+      // Check explicit match or wildcard
+      if (allowedOrigins.includes('*') || allowedOrigins.includes(origin) || process.env.NODE_ENV !== 'production') {
+        return callback(null, true);
+      }
+
+      // Check wildcard patterns (e.g., https://*.vercel.app)
+      const matchesPattern = allowedOrigins.some((allowed) => {
+        if (allowed.includes('*')) {
+          const regex = new RegExp('^' + allowed.replace(/\./g, '\\.').replace(/\*/g, '.*') + '$');
+          return regex.test(origin);
+        }
+        return false;
+      });
+
+      if (matchesPattern) {
+        return callback(null, true);
+      }
+
+      // Origin not permitted
+      callback(null, false);
+    },
     credentials: true,
   })
 );

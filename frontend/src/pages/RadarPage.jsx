@@ -345,37 +345,36 @@ export const RadarPage = () => {
 
   // ── Render ────────────────────────────────────────────────────────────────────
   return (
-    <div className="space-y-8 animate-fade-slide-up">
+    <div className="space-y-8 animate-fade-slide-up font-['Inter',sans-serif]">
 
       {/* Title & Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-[#21262D] pb-5">
         <div>
-          <div className="inline-flex items-center gap-2 px-2.5 py-0.5 rounded bg-[#161B22] border border-[#21262D] text-[#FF7A00] text-[11px] font-mono mb-2 font-semibold">
-            <span>5-Axis Category Analysis</span>
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-[#161B22] border border-[#21262D] text-[#FF7A00] text-xs font-semibold mb-2.5">
+            <span className="font-['JetBrains_Mono',monospace] text-[11px]">5-AXIS</span>
+            <span className="text-[#484F58] font-mono">//</span>
+            <span className="tracking-wide uppercase text-[11px]">Category Competency Analysis</span>
           </div>
-          <h1 className="text-xl sm:text-2xl font-extrabold text-[#F0F6FC] animate-heading-reveal">
+          <h1 className="text-2xl sm:text-3xl font-extrabold text-[#F0F6FC] tracking-tight animate-heading-reveal">
             Topic Competency Overview
           </h1>
-          <p className="text-xs text-[#8B949E] font-mono mt-1">
-            Aggregate competency across {allTopics.length} topics, grouped into 5 core algorithmic disciplines.
-          </p>
         </div>
 
         <div className="flex flex-wrap items-center gap-2">
           <button
             type="button"
             onClick={() => setSyncModalOpen(true, 'past')}
-            className="px-2.5 py-1 rounded bg-[#161B22] hover:bg-[#21262D] text-[#FF7A00] hover:text-[#FFA040] text-xs font-bold border border-[#FF7A00]/30 font-mono flex items-center gap-1.5 cursor-pointer transition-colors"
+            className="px-3 py-1.5 rounded-lg bg-[#161B22] hover:bg-[#21262D] text-[#FF7A00] hover:text-[#FFA040] text-xs font-semibold border border-[#FF7A00]/30 flex items-center gap-1.5 cursor-pointer transition-colors shadow-sm"
           >
             <Sparkles className="size-3.5" />
             <span>Import Past Solved ({solvedSlugs.length})</span>
           </button>
-          <span className="px-2.5 py-1 rounded bg-[#FF7A00]/10 text-[#FF7A00] text-xs font-bold border border-[#FF7A00]/30 font-mono flex items-center gap-1.5">
+          <span className="px-3 py-1.5 rounded-lg bg-[#FF7A00]/10 text-[#FF7A00] text-xs font-semibold border border-[#FF7A00]/30 flex items-center gap-1.5">
             <Target className="size-3.5" />
             <span>{allTopics.length} TOPICS TRACKED</span>
           </span>
           {totalDeficits > 0 && (
-            <span className="px-2.5 py-1 rounded bg-red-950/40 text-red-400 text-xs font-bold border border-red-800/30 font-mono flex items-center gap-1.5">
+            <span className="px-3 py-1.5 rounded-lg bg-red-950/40 text-red-400 text-xs font-semibold border border-red-800/30 flex items-center gap-1.5">
               <Flame className="size-3.5" />
               <span>{totalDeficits} DEFICITS</span>
             </span>
@@ -387,37 +386,26 @@ export const RadarPage = () => {
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
 
         {/* LEFT COLUMN: Radar + Category Cards (7 cols) */}
-        <div className="lg:col-span-7 space-y-5">
+        <div className="lg:col-span-7 flex flex-col gap-3.5 lg:h-[650px]">
 
           {/* Radar Chart Card */}
-          <div className="p-5 sm:p-6 rounded-xl bg-[#0D1117] border border-[#21262D] shadow-2xl space-y-4">
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-3 border-b border-[#21262D] gap-2">
-              <div className="flex items-center gap-2">
+          <div className="p-5 sm:p-6 rounded-xl bg-[#0D1117] border border-[#21262D] shadow-2xl flex-1 flex flex-col justify-between min-h-0 overflow-hidden">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-3 border-b border-[#21262D] gap-2 shrink-0">
+              <div className="flex items-center gap-2.5">
                 <Activity className="size-4 text-[#FF7A00]" />
-                <div>
-                  <h3 className="font-bold text-sm text-[#F0F6FC] font-mono">
-                    {chartView === 'category'
-                      ? 'Category Competency Radar'
-                      : chartView === 'deficits'
-                      ? 'Deficit Focus Radar'
-                      : chartView === 'bars'
-                      ? `${activeCategory || 'All'} — Sub-Topics Breakdown`
-                      : `${currentTopic?.label || 'Topic'} — Deep-Dive Chart`}
-                  </h3>
-                  <p className="text-[10px] text-[#8B949E] font-mono">
-                    {chartView === 'category'
-                      ? '5 core algorithmic disciplines • Click any axis to view sub-topics'
-                      : chartView === 'deficits'
-                      ? 'Top 8 weakest topics by deficit delta • Click to inspect'
-                      : chartView === 'bars'
-                      ? `${subTopicBars.length} sub-topics • Click any sub-topic to open deep-dive chart`
-                      : `Topic competency rating vs ${contestElo || 1500} contest rating baseline`}
-                  </p>
-                </div>
+                <h3 className="font-bold text-base text-[#F0F6FC]">
+                  {chartView === 'category'
+                    ? 'Category Competency Radar'
+                    : chartView === 'deficits'
+                    ? 'Deficit Focus Radar'
+                    : chartView === 'bars'
+                    ? `${activeCategory || 'All'} — Sub-Topics Breakdown`
+                    : `${currentTopic?.label || 'Topic'} — Deep-Dive Chart`}
+                </h3>
               </div>
 
               {/* View toggle */}
-              <div className="flex items-center p-0.5 bg-[#161B22] rounded-lg border border-[#21262D] text-[10px] font-mono shrink-0">
+              <div className="flex items-center p-0.5 bg-[#161B22] rounded-lg border border-[#21262D] text-xs shrink-0">
                 <button
                   type="button"
                   onClick={() => setChartView('category')}
@@ -477,8 +465,8 @@ export const RadarPage = () => {
 
             {/* ─── CATEGORY RADAR (5-axis pentagon) ─── */}
             {chartView === 'category' && (
-              <div className="relative w-full flex items-center justify-center select-none py-2" style={{ height: '320px' }}>
-                <svg className="w-full h-full max-w-md" viewBox="0 0 300 280">
+              <div className="relative w-full flex-1 flex items-center justify-center select-none py-2 min-h-[320px]">
+                <svg className="w-full h-full max-w-md max-h-[340px]" viewBox="0 0 300 280">
                   {radarData.rings.map((ringPoints, i) => (
                     <polygon
                       key={`ring-${i}`}
@@ -548,8 +536,8 @@ export const RadarPage = () => {
 
             {/* ─── DEFICIT FOCUS RADAR (top 8 weakest topics) ─── */}
             {chartView === 'deficits' && deficitRadarData.vertices.length > 0 && (
-              <div className="relative w-full flex items-center justify-center select-none py-2" style={{ height: '320px' }}>
-                <svg className="w-full h-full max-w-md" viewBox="0 0 300 280">
+              <div className="relative w-full flex-1 flex items-center justify-center select-none py-2 min-h-[320px]">
+                <svg className="w-full h-full max-w-md max-h-[340px]" viewBox="0 0 300 280">
                   {deficitRadarData.rings.map((ringPoints, i) => (
                     <polygon key={`dring-${i}`} points={ringPoints} fill="none" stroke="#21262D" strokeWidth="1" strokeDasharray={i < 2 ? '3,3' : ''} />
                   ))}
@@ -796,34 +784,26 @@ export const RadarPage = () => {
                 </div>
 
                 {/* Performance Metrics Trio */}
-                <div className="grid grid-cols-3 gap-2">
-                  <div className="p-2.5 rounded-lg bg-[#161B22] border border-[#21262D] text-center space-y-0.5">
-                    <span className="text-[10px] text-[#8B949E] block">Problems Solved</span>
-                    <span className="text-base font-bold text-white block">{currentTopic.problemsSolved}</span>
-                    <span className="text-[9px] text-[#484F58]">Target: 10+ Solved</span>
+                <div className="grid grid-cols-3 gap-2 items-stretch">
+                  <div className="p-2.5 rounded-lg bg-[#161B22] border border-[#21262D] text-center flex flex-col justify-between h-full min-h-[72px]">
+                    <span className="text-[11px] text-[#8B949E] block">Problems Solved</span>
+                    <span className="text-base font-bold text-white block my-0.5 font-['JetBrains_Mono',monospace]">{currentTopic.problemsSolved}</span>
+                    <span className="text-[10px] text-[#484F58]">Target: 10+ Solved</span>
                   </div>
-                  <div className="p-2.5 rounded-lg bg-[#161B22] border border-[#21262D] text-center space-y-0.5">
-                    <span className="text-[10px] text-[#8B949E] block">Z-Score Deviation</span>
-                    <span className={`text-base font-bold block ${currentTopic.zScore < -1 ? 'text-[#F85149]' : 'text-[#3FB950]'}`}>
+                  <div className="p-2.5 rounded-lg bg-[#161B22] border border-[#21262D] text-center flex flex-col justify-between h-full min-h-[72px]">
+                    <span className="text-[11px] text-[#8B949E] block">Z-Score Deviation</span>
+                    <span className={`text-base font-bold block my-0.5 font-['JetBrains_Mono',monospace] ${currentTopic.zScore < -1 ? 'text-[#F85149]' : 'text-[#3FB950]'}`}>
                       {currentTopic.zScore > 0 ? `+${currentTopic.zScore}` : currentTopic.zScore}σ
                     </span>
-                    <span className="text-[9px] text-[#484F58]">vs Average Topic</span>
+                    <span className="text-[10px] text-[#484F58]">vs Average Topic</span>
                   </div>
-                  <div className="p-2.5 rounded-lg bg-[#161B22] border border-[#21262D] text-center space-y-0.5">
-                    <span className="text-[10px] text-[#8B949E] block">Deficit Delta</span>
-                    <span className={`text-base font-bold block ${currentTopic.deficitDelta < 0 ? 'text-[#F85149]' : 'text-[#3FB950]'}`}>
+                  <div className="p-2.5 rounded-lg bg-[#161B22] border border-[#21262D] text-center flex flex-col justify-between h-full min-h-[72px]">
+                    <span className="text-[11px] text-[#8B949E] block">Deficit Delta</span>
+                    <span className={`text-base font-bold block my-0.5 font-['JetBrains_Mono',monospace] ${currentTopic.deficitDelta < 0 ? 'text-[#F85149]' : 'text-[#3FB950]'}`}>
                       {currentTopic.deficitDelta > 0 ? `+${currentTopic.deficitDelta}` : currentTopic.deficitDelta}
                     </span>
-                    <span className="text-[9px] text-[#484F58]">Rating vs Baseline</span>
+                    <span className="text-[10px] text-[#484F58]">Rating vs Baseline</span>
                   </div>
-                </div>
-
-                {/* Topic Focus & Description */}
-                <div className="p-3 rounded-lg bg-[#161B22]/60 border border-[#21262D] space-y-1 text-[11px] text-[#8B949E]">
-                  <span className="font-bold text-[#F0F6FC] block">Topic Focus & Core Invariants</span>
-                  <p className="leading-relaxed">
-                    {currentTopic.description || `Algorithmic problems and recurring sub-patterns focused on ${currentTopic.label}.`}
-                  </p>
                 </div>
 
                 {/* Action CTAs */}
@@ -850,7 +830,7 @@ export const RadarPage = () => {
           </div>
 
           {/* Category Summary Cards */}
-          <div className="grid grid-cols-2 sm:grid-cols-5 gap-2">
+          <div className="grid grid-cols-2 sm:grid-cols-5 gap-2.5 items-stretch shrink-0">
             {categoryAggregates.map((cat) => {
               const isActive = activeCategory === cat.category;
               const CatIcon = cat.icon;
@@ -859,157 +839,63 @@ export const RadarPage = () => {
                   key={cat.category}
                   type="button"
                   onClick={() => handleCategoryClick(cat.category)}
-                  className={`p-3 rounded-xl border transition-all cursor-pointer text-left font-mono ${
+                  className={`p-3 rounded-xl border transition-all cursor-pointer text-left flex items-center gap-2.5 h-[68px] min-h-[68px] max-h-[68px] w-full ${
                     isActive
-                      ? `bg-[#161B22] ${cat.borderClass} shadow-lg`
-                      : 'bg-[#0D1117] border-[#21262D] hover:border-[#FF7A00]/40'
+                      ? `bg-[#161B22] ${cat.borderClass} shadow-lg ring-1 ring-[#FF7A00]/30`
+                      : 'bg-[#0D1117] border-[#21262D] hover:border-[#38434D]'
                   }`}
                 >
-                  <div className="flex items-center gap-1.5 mb-2">
-                    <div
-                      className={`size-5 rounded flex items-center justify-center ${cat.bgClass}`}
-                      style={{ color: cat.color }}
-                    >
-                      <CatIcon className="size-3" />
-                    </div>
+                  <div
+                    className={`size-8 rounded-lg flex items-center justify-center shrink-0 ${cat.bgClass}`}
+                    style={{ color: cat.color }}
+                  >
+                    <CatIcon className="size-4" />
+                  </div>
+                  <div className="min-w-0 flex-1">
                     <span
-                      className={`text-[10px] font-bold truncate ${isActive ? 'text-white' : 'text-[#8B949E]'}`}
+                      className={`text-xs font-semibold block truncate leading-tight ${isActive ? 'text-white' : 'text-[#C9D1D9]'}`}
+                      title={cat.category}
                     >
                       {cat.category}
                     </span>
-                  </div>
-
-                  <div className="space-y-1">
-                    <div className="text-[10px] text-[#8B949E]">
-                      <span className="text-white font-bold">{cat.totalSolved}</span> solved
-                    </div>
-                    <div className="text-[10px] text-[#8B949E]">
-                      Rating <span style={{ color: cat.color }} className="font-bold">{cat.avgElo}</span>
-                    </div>
-                    {/* Health bar */}
-                    <div className="h-1 rounded-full bg-[#21262D] overflow-hidden">
-                      <div
-                        className="h-full rounded-full transition-all duration-500"
-                        style={{
-                          width: `${cat.healthPct}%`,
-                          backgroundColor: cat.deficitCount > 0 ? '#F85149' : '#3FB950',
-                        }}
-                      />
-                    </div>
-                    <div className="text-[9px]">
-                      {cat.deficitCount > 0 ? (
-                        <span className="text-red-400 font-bold">{cat.deficitCount} deficit{cat.deficitCount > 1 ? 's' : ''}</span>
-                      ) : (
-                        <span className="text-emerald-400 font-bold">Healthy</span>
-                      )}
-                    </div>
+                    <span className="text-xs font-bold text-white font-['JetBrains_Mono',monospace] block mt-1">
+                      {cat.totalSolved}
+                    </span>
                   </div>
                 </button>
               );
             })}
           </div>
-
-          {/* Active Topic Diagnostic Panel */}
-          {currentTopic && (
-            <div className="p-4 rounded-xl bg-[#0D1117] border border-[#21262D] space-y-3 font-mono text-xs">
-              <div className="flex items-center justify-between pb-2 border-b border-[#21262D]">
-                <div className="flex items-center gap-2">
-                  <span className="text-[#8B949E] uppercase tracking-wider text-[10px]">Inspecting:</span>
-                  <span className="font-bold text-[#FF7A00]">{currentTopic.label}</span>
-                </div>
-                <span className={`px-2 py-0.5 rounded text-[10px] font-bold ${
-                  currentTopic.isUndertrained
-                    ? 'bg-red-950/60 text-red-400 border border-red-800/40'
-                    : currentTopic.isDeficit
-                    ? 'bg-[#FF7A00]/10 text-[#FF7A00] border border-[#FF7A00]/30'
-                    : 'bg-emerald-950/40 text-emerald-400 border border-emerald-800/30'
-                }`}>
-                  {currentTopic.isUndertrained ? 'UNDERTRAINED' : currentTopic.isDeficit ? 'DEFICIT' : 'HEALTHY'}
-                </span>
-              </div>
-
-              <div className="grid grid-cols-3 gap-3">
-                <div>
-                  <span className="text-[10px] text-[#8B949E] block">Problems Solved:</span>
-                  <span className="text-base font-bold text-white">{currentTopic.problemsSolved}</span>
-                </div>
-                <div>
-                  <span className="text-[10px] text-[#8B949E] block">Z-Score:</span>
-                  <span className={`text-base font-bold ${currentTopic.zScore < -1 ? 'text-[#F85149]' : 'text-white'}`}>
-                    {currentTopic.zScore}
-                  </span>
-                </div>
-                <div>
-                  <span className="text-[10px] text-[#8B949E] block">Competency Rating:</span>
-                  <span className={`text-base font-bold ${currentTopic.isDeficit ? 'text-[#F85149]' : 'text-[#FF7A00]'}`}>
-                    {currentTopic.competencyElo}
-                  </span>
-                </div>
-              </div>
-
-              {currentTopic.description && (
-                <p className="text-[11px] text-[#8B949E] pt-1">
-                  {currentTopic.description}
-                </p>
-              )}
-
-              <div className="flex flex-col sm:flex-row sm:items-center justify-between pt-2 border-t border-[#21262D] gap-2">
-                <span className="text-[11px] text-[#8B949E]">
-                  {currentTopic.isDeficit
-                    ? `Deficit of ${Math.abs(currentTopic.deficitDelta)} Rating vs contest baseline`
-                    : 'Proficient volume and balanced solve ratio'}
-                </span>
-                <div className="flex items-center gap-3">
-                  <button
-                    type="button"
-                    onClick={() => handlePracticeTopic(currentTopic.catalogKey)}
-                    className="text-[#FF7A00] hover:text-[#FFA040] font-bold flex items-center gap-1 cursor-pointer transition-colors"
-                  >
-                    <span>Practice Topic</span>
-                    <ArrowRight className="size-3" />
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => handleJumpToPath(currentTopic.catalogKey)}
-                    className="text-[#8B949E] hover:text-white flex items-center gap-1 cursor-pointer transition-colors"
-                  >
-                    <span>Path</span>
-                    <ChevronRight className="size-3" />
-                  </button>
-                </div>
-              </div>
-            </div>
-          )}
         </div>
 
         {/* RIGHT COLUMN: Granular Topic Breakdown (5 cols) */}
-        <div className="lg:col-span-5 p-5 sm:p-6 rounded-xl bg-[#0D1117] border border-[#21262D] shadow-2xl space-y-4 font-mono">
+        <div className="lg:col-span-5 p-5 sm:p-6 rounded-xl bg-[#0D1117] border border-[#21262D] shadow-2xl flex flex-col gap-3.5 lg:h-[650px] min-h-0">
 
           {/* Header */}
-          <div className="flex items-center justify-between pb-2 border-b border-[#21262D]">
-            <h3 className="font-bold text-sm text-[#F0F6FC]">
+          <div className="flex items-center justify-between pb-2.5 border-b border-[#21262D] shrink-0">
+            <h3 className="font-bold text-base text-[#F0F6FC]">
               {activeCategory ? `${activeCategory} Topics` : 'All Topics'}
             </h3>
-            <span className="text-[10px] text-[#8B949E]">{filteredTopics.length} TOPICS</span>
+            <span className="text-xs text-[#8B949E] font-['JetBrains_Mono',monospace] font-semibold">{filteredTopics.length} TOPICS</span>
           </div>
 
           {/* Search + Sort */}
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-2 shrink-0">
             <div className="relative flex-1">
-              <Search className="absolute left-3 top-1/2 -translate-y-1/2 size-3 text-[#8B949E]" />
+              <Search className="absolute left-3 top-1/2 -translate-y-1/2 size-3.5 text-[#8B949E]" />
               <input
                 type="text"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 placeholder="Filter topics..."
-                className="w-full bg-[#161B22] border border-[#21262D] rounded-lg pl-8 pr-3 py-1.5 text-xs text-[#F0F6FC] placeholder-[#484F58] focus:border-[#FF7A00]/50 focus:outline-none"
+                className="w-full bg-[#161B22] border border-[#21262D] rounded-lg pl-8 pr-3 py-2 text-xs text-[#F0F6FC] placeholder-[#484F58] focus:border-[#FF7A00]/50 focus:outline-none transition-colors"
               />
             </div>
             <div className="relative">
               <select
                 value={sortBy}
                 onChange={(e) => setSortBy(e.target.value)}
-                className="appearance-none bg-[#161B22] border border-[#21262D] rounded-lg pl-2 pr-7 py-1.5 text-[10px] text-[#8B949E] focus:border-[#FF7A00]/50 focus:outline-none cursor-pointer"
+                className="appearance-none bg-[#161B22] border border-[#21262D] rounded-lg pl-2.5 pr-7 py-2 text-xs text-[#8B949E] focus:border-[#FF7A00]/50 focus:outline-none cursor-pointer"
               >
                 {SORT_OPTIONS.map((opt) => (
                   <option key={opt.value} value={opt.value}>{opt.label}</option>
@@ -1021,7 +907,7 @@ export const RadarPage = () => {
 
           {/* Category quick pills (only when viewing All) */}
           {!activeCategory && (
-            <div className="flex flex-wrap gap-1">
+            <div className="flex flex-wrap gap-1.5 shrink-0">
               {CATEGORY_ORDER.map((cat) => {
                 const meta = CATEGORY_META[cat];
                 return (
@@ -1029,7 +915,7 @@ export const RadarPage = () => {
                     key={cat}
                     type="button"
                     onClick={() => handleCategoryClick(cat)}
-                    className="px-2 py-0.5 rounded text-[10px] bg-[#161B22] text-[#8B949E] border border-[#21262D] hover:text-white transition-colors cursor-pointer"
+                    className="px-2.5 py-1 rounded-md text-xs bg-[#161B22] text-[#8B949E] border border-[#21262D] hover:text-white transition-colors cursor-pointer"
                   >
                     {cat}
                   </button>
@@ -1043,14 +929,14 @@ export const RadarPage = () => {
             <button
               type="button"
               onClick={() => setActiveCategory(null)}
-              className="px-2 py-0.5 rounded text-[10px] bg-[#FF7A00]/10 text-[#FF7A00] border border-[#FF7A00]/30 font-bold cursor-pointer hover:bg-[#FF7A00]/20 transition-colors"
+              className="px-2.5 py-1 rounded-md text-xs bg-[#FF7A00]/10 text-[#FF7A00] border border-[#FF7A00]/30 font-semibold cursor-pointer hover:bg-[#FF7A00]/20 transition-colors shrink-0"
             >
               ✕ Clear Filter — Show All Topics
             </button>
           )}
 
           {/* Topic List */}
-          <div className="space-y-1.5 max-h-[550px] overflow-y-auto pr-1">
+          <div className="space-y-2 flex-1 min-h-[380px] overflow-y-auto pr-1">
             {filteredTopics.length === 0 ? (
               <div className="p-6 text-center text-xs text-[#8B949E]">
                 No topics matching "{searchQuery}"
@@ -1065,33 +951,33 @@ export const RadarPage = () => {
                   <div
                     key={topic.key}
                     onClick={() => handleTopicSelect(topic.key)}
-                    className={`p-2.5 rounded-lg border flex items-center justify-between transition-all cursor-pointer ${
+                    className={`p-3 rounded-xl border flex items-center justify-between transition-all cursor-pointer h-[58px] min-h-[58px] max-h-[58px] ${
                       isSelected
-                        ? 'bg-[#161B22] border-[#FF7A00]/60 shadow-md shadow-[#FF7A00]/10'
-                        : 'bg-[#090C10] hover:bg-[#161B22] border-[#21262D] hover:border-[#FF7A00]/40'
+                        ? 'bg-[#161B22] border-[#FF7A00]/70 shadow-md shadow-[#FF7A00]/10'
+                        : 'bg-[#090C10] hover:bg-[#161B22] border-[#21262D] hover:border-[#38434D]'
                     }`}
                   >
-                    <div className="flex items-center gap-2 min-w-0">
+                    <div className="flex items-center gap-2.5 min-w-0">
                       {topic.isDeficit ? (
-                        <AlertTriangle className="size-3.5 text-[#F85149] shrink-0" />
+                        <AlertTriangle className="size-4 text-[#F85149] shrink-0" />
                       ) : (
-                        <CheckCircle2 className="size-3.5 text-[#3FB950] shrink-0" />
+                        <CheckCircle2 className="size-4 text-[#3FB950] shrink-0" />
                       )}
                       <div className="truncate">
-                        <span className={`font-semibold text-xs block truncate ${
+                        <span className={`font-semibold text-xs sm:text-[13px] block truncate ${
                           isSelected ? 'text-[#FF7A00]' : topic.isDeficit ? 'text-[#F85149]' : 'text-[#F0F6FC]'
                         }`}>
                           {topic.label}
                         </span>
-                        <span className="text-[10px] text-[#8B949E]">
+                        <span className="text-[11px] text-[#8B949E] block truncate mt-0.5">
                           {topic.problemsSolved} solved •{' '}
                           <span style={{ color: catMeta.color }}>{topic.category}</span>
                         </span>
                       </div>
                     </div>
 
-                    <div className="flex items-center gap-2 shrink-0">
-                      <span className="text-[11px] font-bold text-[#FF7A00]">{topic.competencyElo}</span>
+                    <div className="flex items-center gap-2.5 shrink-0">
+                      <span className="text-xs font-bold text-[#FF7A00] font-['JetBrains_Mono',monospace]">{topic.competencyElo}</span>
                       <button
                         type="button"
                         onClick={(e) => {
@@ -1101,7 +987,7 @@ export const RadarPage = () => {
                         className="p-1 rounded hover:bg-[#FF7A00]/20 transition-colors"
                         title="Practice this topic"
                       >
-                        <ArrowRight className="size-3 text-[#FF7A00]" />
+                        <ArrowRight className="size-3.5 text-[#FF7A00]" />
                       </button>
                     </div>
                   </div>

@@ -390,9 +390,6 @@ export const PracticePage = () => {
           <h1 className="text-xl sm:text-2xl font-extrabold text-[#F0F6FC] animate-heading-reveal">
             Weak Spots & Practice Queue
           </h1>
-          <p className="text-xs text-[#8B949E] font-mono mt-1">
-            Independent topic-level diagnostics evaluated across all {allTopics.length} LeetCode topics.
-          </p>
         </div>
 
         <div className="flex flex-wrap items-center gap-2">

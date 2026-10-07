@@ -302,9 +302,6 @@ export const CuratedSheetsView = ({ initialSheetKey = 'master-dsa', onSheetChang
                 </span>
               )}
             </div>
-            <p className="text-xs text-[#8B949E] mt-1 max-w-2xl">
-              {activeSheet?.description}
-            </p>
           </div>
 
           {/* Solved Metric Ring / Stats */}

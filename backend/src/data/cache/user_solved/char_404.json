@@ -211,8 +211,10 @@
     "separate-squares-i",
     "minimum-number-of-operations-to-move-all-balls-to-each-box",
     "largest-triangle-area",
-    "integer-to-english-words"
+    "integer-to-english-words",
+    "maximum-length-of-repeated-subarray",
+    "find-the-distance-value-between-two-arrays"
   ],
-  "totalSolvedCount": 211,
-  "updatedAt": "2026-10-05T14:59:46.870Z"
+  "totalSolvedCount": 213,
+  "updatedAt": "2026-10-07T13:47:55.024Z"
 }
