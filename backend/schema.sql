@@ -1,7 +1,6 @@
 -- ==========================================================
 -- LeetCode-Learn Supabase Schema
--- Run this script in the Supabase SQL Editor:
--- https://supabase.com/dashboard/project/eueljujuptrwbpzldste/sql
+-- Run this script in your Supabase SQL Editor
 -- ==========================================================
 
 -- 1. Create/Enhance problems table
@@ -125,38 +124,38 @@ CREATE TABLE IF NOT EXISTS public.user_problem_attempts (
     created_at TIMESTAMPTZ DEFAULT now()
 );
 
--- 6. Enable Row Level Security (RLS)
+-- 6. Enable Row Level Security (RLS) on all tables
 ALTER TABLE public.problems ENABLE ROW LEVEL SECURITY;
 ALTER TABLE public.users ENABLE ROW LEVEL SECURITY;
 ALTER TABLE public.user_solved_problems ENABLE ROW LEVEL SECURITY;
 ALTER TABLE public.user_progress ENABLE ROW LEVEL SECURITY;
 ALTER TABLE public.user_problem_attempts ENABLE ROW LEVEL SECURITY;
 
--- 7. Policies for public / authenticated access
+-- 7. Policies: Strictly read-only for public/anon clients; writes reserved for backend service role
+DROP POLICY IF EXISTS "Allow public read access on problems" ON public.problems;
+DROP POLICY IF EXISTS "Allow public insert/update on problems" ON public.problems;
 CREATE POLICY "Allow public read access on problems"
     ON public.problems FOR SELECT USING (true);
-CREATE POLICY "Allow public insert/update on problems"
-    ON public.problems FOR ALL USING (true) WITH CHECK (true);
 
+DROP POLICY IF EXISTS "Allow public read access on users" ON public.users;
+DROP POLICY IF EXISTS "Allow public insert/update on users" ON public.users;
 CREATE POLICY "Allow public read access on users"
     ON public.users FOR SELECT USING (true);
-CREATE POLICY "Allow public insert/update on users"
-    ON public.users FOR ALL USING (true) WITH CHECK (true);
 
+DROP POLICY IF EXISTS "Allow public read access on user_solved_problems" ON public.user_solved_problems;
+DROP POLICY IF EXISTS "Allow public insert/update on user_solved_problems" ON public.user_solved_problems;
 CREATE POLICY "Allow public read access on user_solved_problems"
     ON public.user_solved_problems FOR SELECT USING (true);
-CREATE POLICY "Allow public insert/update on user_solved_problems"
-    ON public.user_solved_problems FOR ALL USING (true) WITH CHECK (true);
 
+DROP POLICY IF EXISTS "Allow public read access on user_progress" ON public.user_progress;
+DROP POLICY IF EXISTS "Allow public insert/update on user_progress" ON public.user_progress;
 CREATE POLICY "Allow public read access on user_progress"
     ON public.user_progress FOR SELECT USING (true);
-CREATE POLICY "Allow public insert/update on user_progress"
-    ON public.user_progress FOR ALL USING (true) WITH CHECK (true);
 
+DROP POLICY IF EXISTS "Allow public read access on user_problem_attempts" ON public.user_problem_attempts;
+DROP POLICY IF EXISTS "Allow public insert on user_problem_attempts" ON public.user_problem_attempts;
 CREATE POLICY "Allow public read access on user_problem_attempts"
     ON public.user_problem_attempts FOR SELECT USING (true);
-CREATE POLICY "Allow public insert on user_problem_attempts"
-    ON public.user_problem_attempts FOR INSERT WITH CHECK (true);
 
 -- 8. Seed sample problems
 INSERT INTO public.problems (title, difficulty, category, leetcode_url, description)

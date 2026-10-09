@@ -43,7 +43,7 @@ function readLocalUserSolved(handle) {
 function writeLocalUserSolved(handle, slugs) {
   try {
     const filePath = getLocalUserSolvedPath(handle);
-    const unique = Array.from(new Set((slugs || []).map(s => String(s).trim().toLowerCase())));
+    const unique = Array.from(new Set((slugs || []).map(s => String(s).trim().toLowerCase()))).slice(0, 5000);
     fs.writeFileSync(filePath, JSON.stringify({
       handle,
       solvedSlugs: unique,
@@ -64,10 +64,11 @@ function writeLocalUserSolved(handle, slugs) {
  */
 async function syncUserStats(req, res, next) {
   const { handle } = req.params;
-  const region = req.query?.region || req.body?.region || 'global';
+  const rawRegion = req.query?.region || req.body?.region || 'global';
+  const region = rawRegion === 'china' ? 'china' : 'global';
 
-  if (!handle || typeof handle !== 'string') {
-    return res.status(400).json({ success: false, error: 'Valid LeetCode handle is required.' });
+  if (!handle || typeof handle !== 'string' || !/^[a-zA-Z0-9_.-]{1,50}$/.test(handle.replace(/^@/, ''))) {
+    return res.status(400).json({ success: false, error: 'Valid LeetCode handle is required (alphanumeric, underscore, dash, max 50 chars).' });
   }
 
   try {

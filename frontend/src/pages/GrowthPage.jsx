@@ -201,11 +201,11 @@ export const GrowthPage = () => {
         </div>
 
         {/* Global Chart Mode Switcher */}
-        <div className="inline-flex rounded-lg border border-[#21262D] p-1 bg-[#0D1117] text-xs self-start sm:self-auto shadow-sm">
+        <div className="grid grid-cols-3 sm:inline-flex w-full sm:w-auto rounded-lg border border-[#21262D] p-1 bg-[#0D1117] text-[11px] sm:text-xs self-start sm:self-auto shadow-sm">
           <button
             type="button"
             onClick={() => setChartMode('elo')}
-            className={`px-3.5 py-1.5 rounded-md font-semibold transition-all cursor-pointer ${
+            className={`px-2 sm:px-3.5 py-1.5 rounded-md font-semibold text-center truncate transition-all cursor-pointer ${
               chartMode === 'elo'
                 ? 'bg-[#FF7A00] text-black shadow-md shadow-[#FF7A00]/25'
                 : 'text-[#8B949E] hover:text-[#F0F6FC]'
@@ -216,7 +216,7 @@ export const GrowthPage = () => {
           <button
             type="button"
             onClick={() => setChartMode('rank')}
-            className={`px-3.5 py-1.5 rounded-md font-semibold transition-all cursor-pointer ${
+            className={`px-2 sm:px-3.5 py-1.5 rounded-md font-semibold text-center truncate transition-all cursor-pointer ${
               chartMode === 'rank'
                 ? 'bg-[#FF7A00] text-black shadow-md shadow-[#FF7A00]/25'
                 : 'text-[#8B949E] hover:text-[#F0F6FC]'
@@ -227,7 +227,7 @@ export const GrowthPage = () => {
           <button
             type="button"
             onClick={() => setChartMode('profile')}
-            className={`px-3.5 py-1.5 rounded-md font-semibold transition-all cursor-pointer ${
+            className={`px-2 sm:px-3.5 py-1.5 rounded-md font-semibold text-center truncate transition-all cursor-pointer ${
               chartMode === 'profile'
                 ? 'bg-[#FF7A00] text-black shadow-md shadow-[#FF7A00]/25'
                 : 'text-[#8B949E] hover:text-[#F0F6FC]'
@@ -412,10 +412,10 @@ export const GrowthPage = () => {
             {/* Scrubber Tooltip */}
             {isHovering && (
               <div
-                className="absolute pointer-events-none bg-[#161B22]/95 backdrop-blur-sm border border-[#FF7A00]/80 px-4 py-2.5 rounded-lg text-xs font-['Inter',sans-serif] shadow-2xl z-30 transform -translate-x-1/2 -translate-y-full transition-transform duration-75"
+                className="absolute pointer-events-none bg-[#161B22]/95 backdrop-blur-sm border border-[#FF7A00]/80 px-3 sm:px-4 py-2 sm:py-2.5 rounded-lg text-xs font-['Inter',sans-serif] shadow-2xl z-30 transform -translate-x-1/2 -translate-y-full transition-transform duration-75 max-w-[240px] sm:max-w-none"
                 style={{
-                  left: `${Math.max(10, Math.min(90, (clampedX / 620) * 100))}%`,
-                  top: `${Math.max(10, (dayY / 220) * 100 - 6)}%`,
+                  left: `${Math.max(16, Math.min(84, (clampedX / 620) * 100))}%`,
+                  top: `${Math.max(8, (dayY / 220) * 100 - 6)}%`,
                 }}
               >
                 <div className="flex items-center justify-between gap-4 text-[#8B949E] text-[11px] pb-1.5 border-b border-[#21262D]">

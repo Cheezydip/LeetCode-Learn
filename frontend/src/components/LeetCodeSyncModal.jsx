@@ -267,32 +267,33 @@ export const LeetCodeSyncModal = () => {
         </div>
 
         {/* Tab Navigation */}
-        <div className="flex items-center gap-1.5 p-1 bg-[#161B22] rounded-lg border border-[#21262D] shrink-0">
+        <div className="grid grid-cols-3 gap-1 p-1 bg-[#161B22] rounded-lg border border-[#21262D] shrink-0 text-center">
           <button
             type="button"
             onClick={() => { setSyncModalTab('sync'); clearSolvedImportStatus(); }}
-            className={`flex-1 py-1.5 px-3 rounded text-[11px] font-bold transition-all cursor-pointer flex items-center justify-center gap-1.5 ${
+            className={`py-1.5 px-1.5 sm:px-3 rounded text-[10px] sm:text-[11px] font-bold transition-all cursor-pointer flex items-center justify-center gap-1 sm:gap-1.5 ${
               syncModalTab === 'sync'
                 ? 'bg-[#FF7A00] text-black shadow-sm'
                 : 'text-[#8B949E] hover:text-white hover:bg-[#21262D]'
             }`}
           >
-            <RefreshCw className="size-3" />
-            <span>Live Sync</span>
+            <RefreshCw className="size-3 shrink-0" />
+            <span className="truncate">Live Sync</span>
           </button>
 
           <button
             type="button"
             onClick={() => { setSyncModalTab('past'); clearSolvedImportStatus(); }}
-            className={`flex-1 py-1.5 px-3 rounded text-[11px] font-bold transition-all cursor-pointer flex items-center justify-center gap-1.5 ${
+            className={`py-1.5 px-1.5 sm:px-3 rounded text-[10px] sm:text-[11px] font-bold transition-all cursor-pointer flex items-center justify-center gap-1 sm:gap-1.5 ${
               syncModalTab === 'past'
                 ? 'bg-[#FF7A00] text-black shadow-sm'
                 : 'text-[#8B949E] hover:text-white hover:bg-[#21262D]'
             }`}
           >
-            <Sparkles className="size-3" />
-            <span>Past Solved History</span>
-            <span className="px-1.5 py-0.2 rounded-full bg-black/30 text-[9px] font-semibold">
+            <Sparkles className="size-3 shrink-0" />
+            <span className="hidden sm:inline truncate">Solved History</span>
+            <span className="sm:hidden truncate">History</span>
+            <span className="px-1.5 py-0.2 rounded-full bg-black/30 text-[9px] font-semibold shrink-0">
               {solvedSlugs.length}
             </span>
           </button>
@@ -300,14 +301,14 @@ export const LeetCodeSyncModal = () => {
           <button
             type="button"
             onClick={() => { setSyncModalTab('verify'); clearSolvedImportStatus(); }}
-            className={`flex-1 py-1.5 px-3 rounded text-[11px] font-bold transition-all cursor-pointer flex items-center justify-center gap-1.5 ${
+            className={`py-1.5 px-1.5 sm:px-3 rounded text-[10px] sm:text-[11px] font-bold transition-all cursor-pointer flex items-center justify-center gap-1 sm:gap-1.5 ${
               syncModalTab === 'verify'
                 ? 'bg-[#FF7A00] text-black shadow-sm'
                 : 'text-[#8B949E] hover:text-white hover:bg-[#21262D]'
             }`}
           >
-            <ShieldCheck className="size-3" />
-            <span>Verify Bio</span>
+            <ShieldCheck className="size-3 shrink-0" />
+            <span className="truncate">Verify Bio</span>
           </button>
         </div>
 

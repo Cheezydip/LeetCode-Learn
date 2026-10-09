@@ -1,5 +1,6 @@
 import React, { useState, useMemo } from 'react';
 import { useProfileStore } from '../store/useProfileStore.js';
+import { safeUrl } from '../lib/utils.js';
 import { 
   SHEETS_METADATA, 
   getSheetData, 
@@ -662,7 +663,7 @@ function ProblemRow({ problem, isSolved, onToggleSolved }) {
         <div className="min-w-0">
           <div className="flex items-center gap-2 flex-wrap">
             <a
-              href={problem.url}
+              href={safeUrl(problem.url)}
               target="_blank"
               rel="noopener noreferrer"
               className={`text-xs sm:text-sm font-mono hover:text-[#FF7A00] transition-colors inline-flex items-center gap-1 truncate ${
@@ -699,7 +700,7 @@ function ProblemRow({ problem, isSolved, onToggleSolved }) {
         {/* Video Tutorial Link */}
         {problem.youtube && problem.youtube.length > 0 && (
           <a
-            href={Array.isArray(problem.youtube) ? problem.youtube[0].url : problem.youtube}
+            href={safeUrl(Array.isArray(problem.youtube) ? problem.youtube[0].url : problem.youtube)}
             target="_blank"
             rel="noopener noreferrer"
             title="Watch Video Tutorial"

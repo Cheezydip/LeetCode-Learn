@@ -18,14 +18,16 @@ const problemController = {
         .range(Number(offset), Number(offset) + Number(limit) - 1)
         .order('created_at', { ascending: false });
 
-      if (difficulty) {
+      if (difficulty && ['Easy', 'Medium', 'Hard'].includes(difficulty)) {
         query = query.eq('difficulty', difficulty);
       }
-      if (category) {
-        query = query.ilike('category', `%${category}%`);
+      if (category && typeof category === 'string') {
+        const cleanCat = category.replace(/[%_\\]/g, '\\$&').slice(0, 50);
+        query = query.ilike('category', `%${cleanCat}%`);
       }
-      if (search) {
-        query = query.ilike('title', `%${search}%`);
+      if (search && typeof search === 'string') {
+        const cleanSearch = search.replace(/[%_\\]/g, '\\$&').slice(0, 100);
+        query = query.ilike('title', `%${cleanSearch}%`);
       }
 
       const { data, error, count } = await query;

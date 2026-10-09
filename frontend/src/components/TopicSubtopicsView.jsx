@@ -2,6 +2,7 @@ import React, { useState, useMemo, useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import { useProfileStore } from '../store/useProfileStore.js';
 import { getMasterDsaProblemsForTopic } from '../data/sheetsData.js';
+import { safeUrl } from '../lib/utils.js';
 import {
   CheckCircle2,
   Circle,
@@ -154,64 +155,69 @@ const CurvedBranchConnector = ({ count, cardWidth = 270, gap = 20, height = 44 }
   const endY = height;
 
   return (
-    <div className="flex justify-center overflow-visible pointer-events-none select-none my-0">
-      <svg
-        width={svgWidth}
-        height={height}
-        viewBox={`0 0 ${svgWidth} ${height}`}
-        style={{ overflow: 'visible' }}
-      >
-        <defs>
-          <linearGradient id="trunkGrad" x1="0%" y1="0%" x2="0%" y2="100%">
-            <stop offset="0%" stopColor="#FF7A00" stopOpacity="0.8" />
-            <stop offset="100%" stopColor="#30363D" stopOpacity="0.4" />
-          </linearGradient>
-        </defs>
+    <>
+      <div className="hidden sm:flex justify-center overflow-visible pointer-events-none select-none my-0">
+        <svg
+          width={svgWidth}
+          height={height}
+          viewBox={`0 0 ${svgWidth} ${height}`}
+          style={{ overflow: 'visible' }}
+        >
+          <defs>
+            <linearGradient id="trunkGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" stopColor="#FF7A00" stopOpacity="0.8" />
+              <stop offset="100%" stopColor="#30363D" stopOpacity="0.4" />
+            </linearGradient>
+          </defs>
 
-        {/* Central origin node */}
-        <circle cx={midX} cy={startY} r="4" fill="#0D1117" stroke="#FF7A00" strokeWidth="2" />
-        <circle cx={midX} cy={startY} r="1.5" fill="#FF7A00" />
+          {/* Central origin node */}
+          <circle cx={midX} cy={startY} r="4" fill="#0D1117" stroke="#FF7A00" strokeWidth="2" />
+          <circle cx={midX} cy={startY} r="1.5" fill="#FF7A00" />
 
-        {/* Draw smooth cubic bezier curve to each card */}
-        {Array.from({ length: count }).map((_, i) => {
-          const cardCenterX = midX - totalCardsWidth / 2 + i * (cardWidth + gap) + cardWidth / 2;
-          const cpY1 = startY + (endY - startY) * 0.45;
-          const cpY2 = startY + (endY - startY) * 0.55;
-          const pathD = `M ${midX} ${startY} C ${midX} ${cpY1}, ${cardCenterX} ${cpY2}, ${cardCenterX} ${endY}`;
+          {/* Draw smooth cubic bezier curve to each card */}
+          {Array.from({ length: count }).map((_, i) => {
+            const cardCenterX = midX - totalCardsWidth / 2 + i * (cardWidth + gap) + cardWidth / 2;
+            const cpY1 = startY + (endY - startY) * 0.45;
+            const cpY2 = startY + (endY - startY) * 0.55;
+            const pathD = `M ${midX} ${startY} C ${midX} ${cpY1}, ${cardCenterX} ${cpY2}, ${cardCenterX} ${endY}`;
 
-          return (
-            <g key={i}>
-              {/* Outer soft glow line */}
-              <path
-                d={pathD}
-                fill="none"
-                stroke="rgba(255,122,0,0.12)"
-                strokeWidth="5"
-                strokeLinecap="round"
-              />
-              {/* Crisp connection line */}
-              <path
-                d={pathD}
-                fill="none"
-                stroke="#30363D"
-                strokeWidth="1.75"
-                strokeLinecap="round"
-              />
-              {/* Terminal connection pin */}
-              <circle
-                cx={cardCenterX}
-                cy={endY}
-                r="3.5"
-                fill="#0D1117"
-                stroke="#FF7A00"
-                strokeWidth="1.5"
-              />
-              <circle cx={cardCenterX} cy={endY} r="1.5" fill="#FF7A00" />
-            </g>
-          );
-        })}
-      </svg>
-    </div>
+            return (
+              <g key={i}>
+                {/* Outer soft glow line */}
+                <path
+                  d={pathD}
+                  fill="none"
+                  stroke="rgba(255,122,0,0.12)"
+                  strokeWidth="5"
+                  strokeLinecap="round"
+                />
+                {/* Crisp connection line */}
+                <path
+                  d={pathD}
+                  fill="none"
+                  stroke="#30363D"
+                  strokeWidth="1.75"
+                  strokeLinecap="round"
+                />
+                {/* Terminal connection pin */}
+                <circle
+                  cx={cardCenterX}
+                  cy={endY}
+                  r="3.5"
+                  fill="#0D1117"
+                  stroke="#FF7A00"
+                  strokeWidth="1.5"
+                />
+                <circle cx={cardCenterX} cy={endY} r="1.5" fill="#FF7A00" />
+              </g>
+            );
+          })}
+        </svg>
+      </div>
+      <div className="sm:hidden flex justify-center py-1.5">
+        <div className="w-[1.5px] h-4 bg-gradient-to-b from-[#FF7A00] to-[#21262D]" />
+      </div>
+    </>
   );
 };
 
@@ -750,7 +756,7 @@ function ProblemModal({
                           <Star className="size-3 text-[#FF7A00] fill-[#FF7A00] shrink-0" />
                         )}
                         <a
-                          href={prob.url}
+                          href={safeUrl(prob.url)}
                           target="_blank"
                           rel="noreferrer"
                           className={`text-xs font-semibold truncate transition-colors hover:underline ${
@@ -780,7 +786,7 @@ function ProblemModal({
                       {/* Links */}
                       <div className="flex items-center justify-center gap-1.5">
                         <a
-                          href={prob.url}
+                          href={safeUrl(prob.url)}
                           target="_blank"
                           rel="noreferrer"
                           className="text-[#484F58] hover:text-[#FF7A00] transition-colors"
@@ -791,7 +797,7 @@ function ProblemModal({
 
                         {prob.videoUrl && (
                           <a
-                            href={prob.videoUrl}
+                            href={safeUrl(prob.videoUrl)}
                             target="_blank"
                             rel="noreferrer"
                             className="text-[#484F58] hover:text-red-400 transition-colors"
@@ -872,7 +878,7 @@ function ProblemModal({
 
                       {/* Card Middle: Title */}
                       <a
-                        href={prob.url}
+                        href={safeUrl(prob.url)}
                         target="_blank"
                         rel="noreferrer"
                         className={`text-xs font-bold leading-snug hover:underline line-clamp-2 ${
@@ -912,7 +918,7 @@ function ProblemModal({
 
                           {prob.videoUrl && (
                             <a
-                              href={prob.videoUrl}
+                              href={safeUrl(prob.videoUrl)}
                               target="_blank"
                               rel="noreferrer"
                               className="text-[#484F58] hover:text-red-400 transition-colors"
@@ -922,7 +928,7 @@ function ProblemModal({
                             </a>
                           )}
                           <a
-                            href={prob.url}
+                            href={safeUrl(prob.url)}
                             target="_blank"
                             rel="noreferrer"
                             className="text-[#484F58] hover:text-[#FF7A00] transition-colors"
@@ -1004,7 +1010,7 @@ function ProblemModal({
                                 </button>
                                 <div className="min-w-0">
                                   <a
-                                    href={prob.url}
+                                    href={safeUrl(prob.url)}
                                     target="_blank"
                                     rel="noreferrer"
                                     className={`text-xs font-semibold block truncate hover:underline ${
@@ -1027,7 +1033,7 @@ function ProblemModal({
                               <div className="flex items-center gap-1 shrink-0">
 
                                 <a
-                                  href={prob.url}
+                                  href={safeUrl(prob.url)}
                                   target="_blank"
                                   rel="noreferrer"
                                   className="text-[#484F58] hover:text-[#FF7A00]"

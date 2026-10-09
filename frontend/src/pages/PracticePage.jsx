@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useMemo, useRef } from 'react';
 import { useProfileStore } from '../store/useProfileStore.js';
 import { fetchTopicProblems } from '../lib/api.js';
+import { safeUrl } from '../lib/utils.js';
 import { 
   AlertTriangle, 
   ExternalLink, 
@@ -475,7 +476,7 @@ export const PracticePage = () => {
           </div>
 
           {/* Topic List */}
-          <div className="space-y-2 max-h-[520px] overflow-y-auto pr-1">
+          <div className="space-y-2 max-h-[260px] sm:max-h-[360px] lg:max-h-[calc(100vh-280px)] overflow-y-auto pr-1">
             {displayedTopics.length === 0 ? (
               <div className="p-4 text-center text-xs text-[#8B949E]">
                 No topics matching "{searchQuery}" in {selectedCategory}
@@ -551,15 +552,15 @@ export const PracticePage = () => {
 
           {/* Single-Line Topic Dashboard Bar */}
           {selectedMeta && (
-            <div className="p-2.5 px-4 rounded-xl bg-[#0D1117] border border-[#21262D] shadow-lg font-mono flex flex-wrap items-center justify-between gap-3">
+            <div className="p-2.5 px-3 sm:px-4 rounded-xl bg-[#0D1117] border border-[#21262D] shadow-lg font-mono flex flex-wrap items-center justify-between gap-3">
               
               {/* Left: Topic Identity & Solved Count */}
-              <div className="flex items-center gap-2.5 min-w-0">
+              <div className="flex items-center gap-2 sm:gap-2.5 min-w-0 flex-wrap">
                 <span className={`size-2 rounded-full shrink-0 ${
                   selectedMeta.isDeficit ? 'bg-[#F85149] shadow-sm shadow-red-500/50 animate-pulse' : 'bg-[#3FB950] shadow-sm shadow-emerald-500/50'
                 }`} />
 
-                <h2 className="text-sm font-bold text-[#F0F6FC] truncate">
+                <h2 className="text-xs sm:text-sm font-bold text-[#F0F6FC] truncate">
                   {topicDisplayName}
                 </h2>
 
@@ -569,13 +570,13 @@ export const PracticePage = () => {
                   </span>
                 )}
 
-                <span className="text-[11px] text-[#8B949E] shrink-0">
+                <span className="text-[10px] sm:text-[11px] text-[#8B949E] shrink-0">
                   <strong className="text-emerald-400">{topicSolvedCount}</strong>/{topicTotal} Solved
                 </span>
               </div>
 
               {/* Right: Difficulty Tabs + Solved/Unsolved Status + Sort Icon */}
-              <div className="flex items-center gap-2 shrink-0">
+              <div className="flex flex-wrap items-center gap-2">
                 
                 {/* Difficulty Tabs */}
                 <div className="flex items-center p-0.5 bg-[#161B22] rounded-lg border border-[#21262D] text-[11px]">
@@ -820,7 +821,7 @@ export const PracticePage = () => {
                             </div>
 
                             {/* Horizontal Tabs & Arrow Controls */}
-                            <div className="flex items-center gap-1 self-end sm:self-auto shrink-0 select-none">
+                            <div className="flex items-center gap-1 self-center sm:self-auto shrink-0 select-none overflow-x-auto max-w-full pb-0.5 sm:pb-0">
                               <button
                                 type="button"
                                 onClick={() => setTierPages(prev => ({ ...prev, [tierKey]: Math.max(0, currentPage - 1) }))}
@@ -963,7 +964,7 @@ export const PracticePage = () => {
                                   </button>
 
                                   <a
-                                    href={p.url || `https://leetcode.com/problems/${p.titleSlug}/`}
+                                    href={safeUrl(p.url || `https://leetcode.com/problems/${p.titleSlug}/`)}
                                     target="_blank"
                                     rel="noreferrer"
                                     className="inline-flex items-center gap-1 text-[#FF7A00] hover:text-[#FFA040] font-bold text-[10px] transition-colors"

@@ -114,50 +114,43 @@ export const DashboardPage = () => {
                   <span className="text-[#8B949E] font-mono">Node.js v22</span>
                 </div>
               </div>
-            </div>
-
-            {/* Code Editor Body */}
-            <div className="p-5 sm:p-6 font-mono text-xs leading-relaxed space-y-2">
-              <div className="text-[#484F58] text-[11px] mb-2">
+            </div>            {/* Code Editor Body */}
+            <div className="p-4 sm:p-6 font-mono text-[11px] sm:text-xs leading-relaxed space-y-2 overflow-x-auto scrollbar-none">
+              <div className="text-[#484F58] text-[10px] sm:text-[11px] mb-2">
                 // Section 01: Core Algorithmic Growth & Profile Telemetry
               </div>
 
               {/* Line 01: Account Name & Details */}
-              <div className="text-[#8B949E]">
-                <span className="text-[#484F58] select-none mr-3">01</span>
+              <div className="text-[#8B949E] whitespace-nowrap">
+                <span className="text-[#484F58] select-none mr-3 shrink-0">01</span>
                 <span className="text-[#FF7A00]">const</span> <span className="text-[#F0F6FC]">account</span> = <span className="text-[#A5D6FF]">"{handle ? `@${handle}` : '@guest'}"</span>; <span className="text-[#484F58]">// {realName ? realName : (handle ? 'LeetCode Account' : 'Demo Profile')}{isVerified ? ' (Verified)' : ''}</span>
               </div>
 
               {/* Line 02: Contest Rating & Tier */}
-              <div className="text-[#8B949E]">
-                <span className="text-[#484F58] select-none mr-3">02</span>
+              <div className="text-[#8B949E] whitespace-nowrap">
+                <span className="text-[#484F58] select-none mr-3 shrink-0">02</span>
                 <span className="text-[#FF7A00]">const</span> <span className="text-[#F0F6FC]">contestRating</span> = <span className="text-[#FF7A00]">{eloVal.toLocaleString()}</span>; <span className="text-[#484F58]">// {eloTier} Tier ({region.toUpperCase()})</span>
               </div>
 
               {/* Line 03: Growth Sweet Spot Target */}
-              <div className="text-[#8B949E]">
-                <span className="text-[#484F58] select-none mr-3">03</span>
+              <div className="text-[#8B949E] whitespace-nowrap">
+                <span className="text-[#484F58] select-none mr-3 shrink-0">03</span>
                 <span className="text-[#FF7A00]">const</span> <span className="text-[#F0F6FC]">targetSweetSpot</span> = <span className="text-white">goldilocksBand</span>(contestRating); <span className="text-[#484F58]">// [{(eloVal + 50).toLocaleString()}, {(eloVal + 250).toLocaleString()}]</span>
               </div>
 
               {/* Line 04: Solved Problems Stats */}
-              <div className="text-[#8B949E]">
-                <span className="text-[#484F58] select-none mr-3">04</span>
+              <div className="text-[#8B949E] whitespace-nowrap">
+                <span className="text-[#484F58] select-none mr-3 shrink-0">04</span>
                 <span className="text-[#FF7A00]">const</span> <span className="text-[#F0F6FC]">solvedProblems</span> = &#123; <span className="text-[#3FB950]">easy:</span> {easySolved ?? 0}, <span className="text-[#FF7A00]">med:</span> {mediumSolved ?? 0}, <span className="text-[#F85149]">hard:</span> {hardSolved ?? 0}, <span className="text-[#F0F6FC]">total:</span> {totalSolved ?? 0} &#125;;
               </div>
 
               {/* Line 05: Kinetic Typewriter Line (Rankings Only) */}
-              <div className="text-[#F0F6FC] flex items-center pt-2 min-h-[28px] overflow-x-auto">
-                <span className="text-[#484F58] select-none mr-3">05</span>
-                <span className="text-[#FF7A00] font-bold select-none mr-2">›</span>
+              <div className="text-[#F0F6FC] flex items-center pt-2 min-h-[28px] overflow-x-auto whitespace-nowrap">
+                <span className="text-[#484F58] select-none mr-3 shrink-0">05</span>
+                <span className="text-[#FF7A00] font-bold select-none mr-2 shrink-0">›</span>
                 <span className="font-semibold text-[#F0F6FC] whitespace-pre">{displayText}</span>
                 <span className="inline-block w-2 h-4 ml-1 bg-[#FF7A00] animate-pulse shrink-0" />
               </div>
-
-              {/* <div className="pt-4 mt-4 border-t border-[#21262D] text-[11px] text-[#8B949E] flex flex-col sm:flex-row justify-between gap-1">
-                <span>Dashboard • React Router 7</span>
-                <span className="text-[#FF7A00]">JavaScript ES2023 • Vite</span>
-              </div> */}
             </div>
 
           </div>
@@ -176,18 +169,18 @@ export const DashboardPage = () => {
                 </span>
               </div>
               <div className="flex items-baseline gap-2">
-                <div className="text-4xl font-extrabold text-[#F0F6FC] animate-count-up animate-subtle-glow" style={{ fontFamily: "'Onest', sans-serif" }}>
-                  {contestElo.toLocaleString()}
+                <div className="text-3xl sm:text-4xl font-extrabold text-[#F0F6FC] animate-count-up animate-subtle-glow" style={{ fontFamily: "'Onest', sans-serif" }}>
+                  {(contestElo ?? 1500).toLocaleString()}
                 </div>
                 <span className="text-xs text-[#FF7A00] font-mono font-bold">
-                  {contestElo >= 2150 ? 'Guardian' : contestElo >= 1850 ? 'Knight' : 'Contender'}
+                  {(contestElo ?? 1500) >= 2150 ? 'Guardian' : (contestElo ?? 1500) >= 1850 ? 'Knight' : 'Contender'}
                 </span>
               </div>
               <p className="text-[11px] text-[#8B949E] mt-2 font-mono">
-                Worldwide Rank: <span className="text-[#F0F6FC] font-semibold">#{contestRank.toLocaleString()}</span>
+                Worldwide Rank: <span className="text-[#F0F6FC] font-semibold">{contestRank ? `#${contestRank.toLocaleString()}` : 'Unrated'}</span>
               </p>
               <div className="w-full bg-[#161B22] h-1.5 rounded mt-3 overflow-hidden border border-[#21262D]">
-                <div className="bg-[#FF7A00] h-full" style={{ width: `${Math.min(100, Math.max(10, ((contestElo - 1500) / 700) * 100))}%` }} />
+                <div className="bg-[#FF7A00] h-full" style={{ width: `${Math.min(100, Math.max(10, (((contestElo ?? 1500) - 1500) / 700) * 100))}%` }} />
               </div>
             </div>
 
@@ -196,7 +189,6 @@ export const DashboardPage = () => {
               <div className="flex justify-between items-start mb-2">
                 <h4 className="text-[10px] uppercase tracking-widest text-[#8B949E] font-mono font-semibold">
                   Review Queue
-
                 </h4>
                 <span className="px-2 py-0.5 rounded text-[10px] font-mono bg-white/10 text-white border border-white/20 font-bold">
                   Due Today
@@ -346,29 +338,29 @@ export const DashboardPage = () => {
       </section>
 
       {/* QUICK INGESTION TELEMETRY STRIP */}
-      <section className="p-4 rounded-xl bg-[#0D1117] border border-[#21262D] flex flex-wrap items-center justify-between gap-4 text-xs">
-        <div className="flex items-center gap-3">
-          <div className="size-2 rounded-full bg-[#3FB950]"></div>
-          <div>
-            <span className="text-[#8B949E]">Active Synced Handle: </span>
-            <span className="font-bold text-white">@{handle}</span>
+      <section className="p-4 rounded-xl bg-[#0D1117] border border-[#21262D] flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs">
+        <div className="flex flex-wrap items-center gap-x-3 gap-y-1.5 text-[11px] sm:text-xs">
+          <div className="flex items-center gap-1.5">
+            <div className="size-2 rounded-full bg-[#3FB950]"></div>
+            <span className="text-[#8B949E]">Handle: </span>
+            <span className="font-bold text-white">@{handle || 'guest'}</span>
           </div>
-          <span className="text-[#484F58]">•</span>
+          <span className="text-[#484F58] hidden sm:inline">•</span>
           <div>
             <span className="text-[#8B949E]">Profile Rank: </span>
-            <span className="font-bold text-[#FF7A00]">#{profileRank.toLocaleString()}</span>
+            <span className="font-bold text-[#FF7A00]">{profileRank != null ? `#${profileRank.toLocaleString()}` : 'N/A'}</span>
           </div>
-          <span className="text-[#484F58]">•</span>
+          <span className="text-[#484F58] hidden sm:inline">•</span>
           <div>
             <span className="text-[#8B949E]">Total Solved: </span>
-            <span className="font-bold text-white">{totalSolved}</span>
-            <span className="text-[#8B949E] ml-1">({easySolved}E • {mediumSolved}M • {hardSolved}H)</span>
+            <span className="font-bold text-white">{totalSolved ?? 0}</span>
+            <span className="text-[#8B949E] ml-1">({easySolved ?? 0}E • {mediumSolved ?? 0}M • {hardSolved ?? 0}H)</span>
           </div>
         </div>
 
         <button
           onClick={() => setSyncModalOpen(true)}
-          className="px-3 py-1.5 rounded-lg bg-[#161B22] hover:bg-[#21262D] text-[#F0F6FC] border border-[#21262D] font-mono text-xs font-semibold flex items-center gap-1.5 transition-colors cursor-pointer"
+          className="self-start sm:self-auto px-3 py-1.5 rounded-lg bg-[#161B22] hover:bg-[#21262D] text-[#F0F6FC] border border-[#21262D] font-mono text-xs font-semibold flex items-center gap-1.5 transition-colors cursor-pointer shrink-0"
         >
           <Sparkles className="size-3.5 text-[#FF7A00]" />
           <span>Sync Settings</span>

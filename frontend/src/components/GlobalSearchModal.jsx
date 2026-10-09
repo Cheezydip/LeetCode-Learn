@@ -13,6 +13,7 @@ import {
   Filter
 } from 'lucide-react';
 import { useSearchStore } from '../store/useSearchStore.js';
+import { safeUrl } from '../lib/utils.js';
 import { useProfileStore } from '../store/useProfileStore.js';
 import { 
   searchLocalProblems, 
@@ -347,7 +348,7 @@ export const GlobalSearchModal = () => {
 
                   {isSelected && (
                     <a
-                      href={p.leetcode_url}
+                      href={safeUrl(p.leetcode_url)}
                       target="_blank"
                       rel="noopener noreferrer"
                       onClick={(e) => e.stopPropagation()}

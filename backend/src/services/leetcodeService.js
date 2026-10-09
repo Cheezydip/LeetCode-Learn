@@ -30,11 +30,12 @@ const BROWSER_HEADERS = {
  * Execute a GraphQL query against LeetCode with timeout and error boundary
  */
 async function queryGraphQL(query, variables = {}, region = 'global', timeoutMs = 9000) {
-  const url = ENDPOINTS[region] || ENDPOINTS.global;
+  const safeRegion = region === 'china' ? 'china' : 'global';
+  const url = ENDPOINTS[safeRegion];
   const headers = {
     ...BROWSER_HEADERS,
-    Referer: region === 'china' ? 'https://leetcode.cn' : 'https://leetcode.com',
-    Origin: region === 'china' ? 'https://leetcode.cn' : 'https://leetcode.com',
+    Referer: safeRegion === 'china' ? 'https://leetcode.cn' : 'https://leetcode.com',
+    Origin: safeRegion === 'china' ? 'https://leetcode.cn' : 'https://leetcode.com',
   };
 
   const controller = new AbortController();
@@ -286,12 +287,13 @@ async function fetchSolvedProblemsWithCookie(sessionCookie, region = 'global', l
     }
   `;
 
-  const url = ENDPOINTS[region] || ENDPOINTS.global;
+  const safeRegion = region === 'china' ? 'china' : 'global';
+  const url = ENDPOINTS[safeRegion];
   const headers = {
     ...BROWSER_HEADERS,
     Cookie: `LEETCODE_SESSION=${cleanCookie};`,
-    Referer: region === 'china' ? 'https://leetcode.cn' : 'https://leetcode.com',
-    Origin: region === 'china' ? 'https://leetcode.cn' : 'https://leetcode.com',
+    Referer: safeRegion === 'china' ? 'https://leetcode.cn' : 'https://leetcode.com',
+    Origin: safeRegion === 'china' ? 'https://leetcode.cn' : 'https://leetcode.com',
   };
 
   const controller = new AbortController();

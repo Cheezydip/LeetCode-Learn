@@ -6,27 +6,42 @@ const fs = require('fs');
 const { checkSupabaseConnection } = require('./config/supabase');
 const errorHandler = require('./middleware/errorHandler');
 
+const rateLimit = require('express-rate-limit');
 const problemRoutes = require('./routes/problemRoutes');
 const progressRoutes = require('./routes/progressRoutes');
 const userRoutes = require('./routes/userRoutes');
 
 const app = express();
 
-// Security headers (CSP, X-Frame-Options, X-Content-Type-Options, HSTS, etc.)
+// Security headers with strict Content Security Policy
 app.use(
   helmet({
-    contentSecurityPolicy: false,
+    contentSecurityPolicy: {
+      directives: {
+        defaultSrc: ["'self'"],
+        scriptSrc: ["'self'", "'unsafe-inline'"],
+        styleSrc: ["'self'", "'unsafe-inline'", "https://fonts.googleapis.com"],
+        fontSrc: ["'self'", "https://fonts.gstatic.com", "data:"],
+        imgSrc: ["'self'", "data:", "https:", "http:"],
+        connectSrc: ["'self'", "https://*.supabase.co"],
+        objectSrc: ["'none'"],
+        baseUri: ["'self'"],
+        frameAncestors: ["'none'"],
+      },
+    },
+    crossOriginEmbedderPolicy: false,
   })
 );
 
-// CORS configuration - restrict to trusted origins
+// CORS configuration - strictly allow trusted origins
 const allowedOrigins = [
   'https://leetcode-learn.antideploy.app',
-  'https://leetcode.com',
-  'https://leetcode.cn',
   'http://localhost:5173',
   'http://localhost:3000',
   'http://localhost:5000',
+  'http://127.0.0.1:5173',
+  'http://127.0.0.1:3000',
+  'http://127.0.0.1:5000',
   ...(process.env.ALLOWED_ORIGINS ? process.env.ALLOWED_ORIGINS.split(',').map((o) => o.trim()).filter(Boolean) : []),
 ];
 
@@ -37,18 +52,24 @@ if (process.env.FRONTEND_URL && !allowedOrigins.includes(process.env.FRONTEND_UR
 app.use(
   cors({
     origin: (origin, callback) => {
-      // Allow requests with no origin (curl, server-to-server, same-origin)
+      // Allow requests with no origin (curl, mobile apps, same-origin)
       if (!origin) return callback(null, true);
 
-      // Check explicit match or wildcard
-      if (allowedOrigins.includes('*') || allowedOrigins.includes(origin) || process.env.NODE_ENV !== 'production') {
+      // Check explicit match
+      if (allowedOrigins.includes(origin)) {
         return callback(null, true);
       }
 
-      // Check wildcard patterns (e.g., https://*.vercel.app)
+      // In development, permit localhost/127.0.0.1 on any local port
+      if (process.env.NODE_ENV !== 'production' && /^http:\/\/(localhost|127\.0\.0\.1)(:\d+)?$/.test(origin)) {
+        return callback(null, true);
+      }
+
+      // Check anchored wildcard patterns from explicit configuration (e.g., https://*.onrender.com)
       const matchesPattern = allowedOrigins.some((allowed) => {
         if (allowed.includes('*')) {
-          const regex = new RegExp('^' + allowed.replace(/\./g, '\\.').replace(/\*/g, '.*') + '$');
+          const escaped = allowed.replace(/[.+?^${}()|[\]\\]/g, '\\$&').replace(/\*/g, '[a-zA-Z0-9-]+');
+          const regex = new RegExp('^' + escaped + '$');
           return regex.test(origin);
         }
         return false;
@@ -58,26 +79,43 @@ app.use(
         return callback(null, true);
       }
 
-      // Origin not permitted
+      // Reject unauthorized origins
       callback(null, false);
     },
     credentials: true,
   })
 );
-app.use(express.json({ limit: '10mb' }));
-app.use(express.urlencoded({ extended: true, limit: '10mb' }));
 
-// Health check endpoint (checks server & Supabase status)
+// Global API Rate Limiter (300 requests per 15 minutes)
+const globalApiLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000,
+  max: 300,
+  standardHeaders: true,
+  legacyHeaders: false,
+  message: {
+    success: false,
+    error: {
+      status: 429,
+      message: 'Too many requests from this IP. Please try again after 15 minutes.',
+    },
+  },
+});
+app.use('/api', globalApiLimiter);
+
+app.use(express.json({ limit: '5mb' }));
+app.use(express.urlencoded({ extended: true, limit: '5mb' }));
+
+// Health check endpoint (checks server & Supabase status without leaking internal diagnostics)
 app.get('/api/health', async (req, res) => {
   const supabaseStatus = await checkSupabaseConnection();
   
   res.status(supabaseStatus.ok ? 200 : 503).json({
     status: supabaseStatus.ok ? 'healthy' : 'degraded',
-    uptime: process.uptime(),
+    uptime: Math.floor(process.uptime()),
     timestamp: new Date().toISOString(),
     services: {
       api: 'operational',
-      supabase: supabaseStatus.ok ? 'connected' : `disconnected: ${supabaseStatus.message}`,
+      supabase: supabaseStatus.ok ? 'connected' : 'unavailable',
     },
   });
 });
