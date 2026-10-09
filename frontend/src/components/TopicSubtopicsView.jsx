@@ -226,26 +226,26 @@ function StageMilestone({ title, totalProblems, solvedProblems, isComplete }) {
   const pct = totalProblems > 0 ? Math.round((solvedProblems / totalProblems) * 100) : 0;
 
   return (
-    <div className="flex items-center justify-center gap-4 py-3">
-      <div className="h-[1px] flex-1 max-w-[140px] bg-gradient-to-r from-transparent to-[#21262D]" />
+    <div className="flex items-center justify-center gap-2 sm:gap-4 py-3 px-2">
+      <div className="hidden xs:block h-[1px] flex-1 max-w-[140px] bg-gradient-to-r from-transparent to-[#21262D]" />
       <div
-        className={`px-4 py-1.5 rounded-full border text-xs font-mono font-bold flex items-center gap-2.5 transition-all
+        className={`px-3 sm:px-4 py-1.5 rounded-full border text-xs font-mono font-bold flex items-center gap-2 sm:gap-2.5 transition-all max-w-full
           ${isComplete
             ? 'bg-emerald-950/40 border-emerald-500/30 text-emerald-300 shadow-sm shadow-emerald-500/10'
             : 'bg-[#161B22]/90 border-[#30363D] text-[#C9D1D9] shadow-sm'
           }`}
       >
         <span
-          className={`size-2 rounded-full ${
+          className={`size-2 rounded-full shrink-0 ${
             isComplete ? 'bg-emerald-400 animate-pulse' : 'bg-[#FF7A00]'
           }`}
         />
-        <span className="tracking-wide uppercase text-[10px] sm:text-[11px]">{title}</span>
-        <span className="text-[10px] text-[#8B949E] font-normal">
+        <span className="tracking-wide uppercase text-[10px] sm:text-[11px] truncate">{title}</span>
+        <span className="text-[10px] text-[#8B949E] font-normal shrink-0">
           ({solvedProblems}/{totalProblems} • {pct}%)
         </span>
       </div>
-      <div className="h-[1px] flex-1 max-w-[140px] bg-gradient-to-l from-transparent to-[#21262D]" />
+      <div className="hidden xs:block h-[1px] flex-1 max-w-[140px] bg-gradient-to-l from-transparent to-[#21262D]" />
     </div>
   );
 }
@@ -1201,16 +1201,16 @@ export const TopicSubtopicsView = ({
       >
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
           {/* Left: Title & Invariant */}
-          <div className="space-y-1.5 max-w-xl">
-            <div className="flex items-center gap-2">
-              <span className="px-2 py-0.5 rounded text-[9px] font-mono font-bold uppercase tracking-wider bg-[#FF7A00]/15 text-[#FF7A00] border border-[#FF7A00]/30">
+          <div className="space-y-1.5 max-w-xl min-w-0">
+            <div className="flex items-center gap-2 flex-wrap">
+              <span className="px-2 py-0.5 rounded text-[9px] font-mono font-bold uppercase tracking-wider bg-[#FF7A00]/15 text-[#FF7A00] border border-[#FF7A00]/30 shrink-0">
                 DSA Skill Tree
               </span>
-              <span className="text-[11px] font-mono text-[#8B949E]">
+              <span className="text-[11px] font-mono text-[#8B949E] shrink-0">
                 {allSubtopics.length} modules • {totalProblems} problems
               </span>
             </div>
-            <h2 className="text-base sm:text-lg font-extrabold text-[#F0F6FC] tracking-tight">
+            <h2 className="text-base sm:text-lg font-extrabold text-[#F0F6FC] tracking-tight truncate">
               {topicTitle || 'Topic Roadmap'}
             </h2>
           </div>

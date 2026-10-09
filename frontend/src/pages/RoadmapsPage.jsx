@@ -2084,8 +2084,10 @@ export const RoadmapsPage = () => {
             <Sparkles className="size-3.5" />
             <span>Import Past Solved ({solvedSlugs.length})</span>
           </button>
-          <span className="px-2.5 py-1 rounded bg-[#FF7A00]/10 text-[#FF7A00] text-xs font-bold border border-[#FF7A00]/30 font-mono">
-            24 PATTERN TREES • 6 CURATED SHEETS (BLIND 75, SQL, DSA...)
+          <span className="px-2.5 py-1 rounded bg-[#FF7A00]/10 text-[#FF7A00] text-xs font-bold border border-[#FF7A00]/30 font-mono flex items-center gap-1.5 flex-wrap">
+            <span>24 Pattern Trees</span>
+            <span className="text-[#484F58]">•</span>
+            <span>6 Curated Sheets</span>
           </span>
         </div>
       </div>
@@ -2094,7 +2096,7 @@ export const RoadmapsPage = () => {
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-3 p-2 rounded-2xl bg-[#0D1117]/90 backdrop-blur border border-[#21262D] shadow-lg shadow-black/20">
         
         {/* Segmented Control Buttons */}
-        <div className="grid grid-cols-2 sm:flex items-center gap-1.5 p-1 rounded-xl bg-[#161B22]/80 border border-[#21262D] shadow-inner shrink-0">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:flex items-center gap-1.5 p-1 rounded-xl bg-[#161B22]/80 border border-[#21262D] shadow-inner w-full sm:w-auto">
           
           {/* Pattern Ladders Mode */}
           <button
@@ -2103,16 +2105,18 @@ export const RoadmapsPage = () => {
               setViewCategory('patterns');
               navigate(`/paths/${activeTopic || 'dp'}`);
             }}
-            className={`group relative px-4 py-2.5 rounded-lg text-xs font-mono font-bold transition-colors duration-150 flex items-center justify-center sm:justify-start gap-2 cursor-pointer ${
+            className={`group relative px-3.5 sm:px-4 py-2 sm:py-2.5 rounded-lg text-xs font-mono font-bold transition-colors duration-150 flex items-center justify-between sm:justify-start gap-2.5 cursor-pointer ${
               viewCategory === 'patterns'
                 ? 'bg-gradient-to-r from-[#FF7A00] to-[#FFA040] text-black shadow-md shadow-[#FF7A00]/25'
                 : 'text-[#8B949E] hover:text-white hover:bg-[#21262D]/60'
             }`}
           >
-            <GitFork className={`size-4 shrink-0 ${viewCategory === 'patterns' ? 'text-black stroke-[2.5]' : 'text-[#FF7A00]'}`} />
-            <span className="whitespace-nowrap">Pattern Ladders</span>
+            <div className="flex items-center gap-2 min-w-0">
+              <GitFork className={`size-4 shrink-0 ${viewCategory === 'patterns' ? 'text-black stroke-[2.5]' : 'text-[#FF7A00]'}`} />
+              <span className="truncate">Pattern Ladders</span>
+            </div>
             <span
-              className={`text-[10px] px-1.5 py-0.5 rounded-md font-mono font-bold uppercase tracking-wider border transition-colors ${
+              className={`text-[10px] px-1.5 py-0.5 rounded-md font-mono font-bold uppercase tracking-wider border transition-colors shrink-0 ${
                 viewCategory === 'patterns'
                   ? 'bg-black/20 text-black border-transparent'
                   : 'bg-[#FF7A00]/10 text-[#FF7A00] border-[#FF7A00]/20'
@@ -2131,16 +2135,18 @@ export const RoadmapsPage = () => {
               setSelectedSheetKey(target);
               navigate(`/paths/${target}`);
             }}
-            className={`group relative px-4 py-2.5 rounded-lg text-xs font-mono font-bold transition-colors duration-150 flex items-center justify-center sm:justify-start gap-2 cursor-pointer ${
+            className={`group relative px-3.5 sm:px-4 py-2 sm:py-2.5 rounded-lg text-xs font-mono font-bold transition-colors duration-150 flex items-center justify-between sm:justify-start gap-2.5 cursor-pointer ${
               viewCategory === 'sheets'
                 ? 'bg-gradient-to-r from-[#8A46FF] to-[#A371F7] text-white shadow-md shadow-[#A371F7]/25'
                 : 'text-[#8B949E] hover:text-white hover:bg-[#21262D]/60'
             }`}
           >
-            <BookOpen className={`size-4 shrink-0 ${viewCategory === 'sheets' ? 'text-white stroke-[2.5]' : 'text-[#A371F7]'}`} />
-            <span className="whitespace-nowrap">Curated Sheets & DSA</span>
+            <div className="flex items-center gap-2 min-w-0">
+              <BookOpen className={`size-4 shrink-0 ${viewCategory === 'sheets' ? 'text-white stroke-[2.5]' : 'text-[#A371F7]'}`} />
+              <span className="truncate">Curated Sheets & DSA</span>
+            </div>
             <span
-              className={`text-[10px] px-1.5 py-0.5 rounded-md font-mono font-bold uppercase tracking-wider border transition-colors ${
+              className={`text-[10px] px-1.5 py-0.5 rounded-md font-mono font-bold uppercase tracking-wider border transition-colors shrink-0 ${
                 viewCategory === 'sheets'
                   ? 'bg-white/20 text-white border-transparent'
                   : 'bg-[#A371F7]/10 text-[#A371F7] border-[#A371F7]/20'

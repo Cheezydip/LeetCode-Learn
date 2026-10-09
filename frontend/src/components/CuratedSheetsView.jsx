@@ -207,7 +207,7 @@ export const CuratedSheetsView = ({ initialSheetKey = 'master-dsa', onSheetChang
       
       {/* Sheets Navigation Bar */}
       {!hideSheetSelector && (
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2.5">
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2 sm:gap-2.5">
           {SHEETS_METADATA.map((sheet) => {
             const isSelected = activeSheetKey === sheet.key;
             const Icon = ICON_MAP[sheet.icon] || Target;
@@ -221,7 +221,7 @@ export const CuratedSheetsView = ({ initialSheetKey = 'master-dsa', onSheetChang
                   setSearchQuery('');
                   if (onSheetChange) onSheetChange(sheet.key);
                 }}
-                className={`p-3 rounded-xl border text-left transition-all duration-200 cursor-pointer flex flex-col justify-between ${
+                className={`p-2.5 sm:p-3 rounded-xl border text-left transition-all duration-200 cursor-pointer flex flex-col justify-between min-w-0 ${
                   isSelected
                     ? 'bg-[#161B22] border-[#FF7A00] shadow-lg shadow-[#FF7A00]/5 ring-1 ring-[#FF7A00]/30'
                     : 'bg-[#0D1117] border-[#21262D] hover:bg-[#161B22]/80 hover:border-[#30363D]'
@@ -229,17 +229,17 @@ export const CuratedSheetsView = ({ initialSheetKey = 'master-dsa', onSheetChang
               >
                 <div className="flex items-center justify-between w-full mb-2">
                   <div 
-                    className="p-1.5 rounded-lg" 
+                    className="p-1.5 rounded-lg shrink-0" 
                     style={{ backgroundColor: `${sheet.color}15`, color: sheet.color }}
                   >
-                    <Icon className="size-4" />
+                    <Icon className="size-3.5 sm:size-4" />
                   </div>
-                  <span className="text-[10px] font-mono px-1.5 py-0.5 rounded bg-[#21262D] text-[#8B949E]">
+                  <span className="text-[10px] font-mono px-1.5 py-0.5 rounded bg-[#21262D] text-[#8B949E] shrink-0">
                     {sheet.totalProblems}
                   </span>
                 </div>
-                <div>
-                  <h4 className={`text-xs font-bold leading-tight ${isSelected ? 'text-white' : 'text-[#C9D1D9]'}`}>
+                <div className="w-full min-w-0">
+                  <h4 className={`text-xs font-bold leading-tight truncate ${isSelected ? 'text-white' : 'text-[#C9D1D9]'}`}>
                     {sheet.title}
                   </h4>
                   <p className="text-[10px] text-[#8B949E] mt-0.5 truncate">
@@ -288,17 +288,17 @@ export const CuratedSheetsView = ({ initialSheetKey = 'master-dsa', onSheetChang
       )}
 
       {/* Sheet Overview & Progress Cockpit */}
-      <div className="p-4 sm:p-5 rounded-xl bg-[#0D1117] border border-[#21262D] space-y-4">
-        <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
-          <div>
-            <div className="flex items-center gap-2">
-              <h2 className="text-base sm:text-lg font-bold text-white flex items-center gap-2">
+      <div className="p-3.5 sm:p-5 rounded-xl bg-[#0D1117] border border-[#21262D] space-y-4">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3.5">
+          <div className="min-w-0">
+            <div className="flex flex-wrap items-center gap-2">
+              <h2 className="text-sm sm:text-lg font-bold text-white">
                 {activeSheetKey === 'maang' 
                   ? `${getMaangCompany(activeCompanySlug)?.company || 'Company'} Interview Questions` 
                   : (activeSheet?.name || 'Curated Sheet')}
               </h2>
               {activeSheet?.badge && (
-                <span className="text-[10px] font-mono font-bold px-2 py-0.5 rounded-full bg-[#FF7A00]/15 text-[#FF7A00] border border-[#FF7A00]/30">
+                <span className="text-[10px] font-mono font-bold px-2 py-0.5 rounded-full bg-[#FF7A00]/15 text-[#FF7A00] border border-[#FF7A00]/30 shrink-0">
                   {activeSheet.badge}
                 </span>
               )}
@@ -306,10 +306,10 @@ export const CuratedSheetsView = ({ initialSheetKey = 'master-dsa', onSheetChang
           </div>
 
           {/* Solved Metric Ring / Stats */}
-          <div className="flex items-center gap-4 bg-[#161B22] px-4 py-2.5 rounded-xl border border-[#21262D] self-start md:self-auto shrink-0 font-mono">
+          <div className="flex items-center justify-between sm:justify-start gap-4 bg-[#161B22] px-3.5 sm:px-4 py-2 sm:py-2.5 rounded-xl border border-[#21262D] w-full sm:w-auto shrink-0 font-mono">
             <div>
-              <div className="text-[11px] text-[#8B949E]">Completion</div>
-              <div className="text-base font-bold text-white flex items-baseline gap-1">
+              <div className="text-[10px] sm:text-[11px] text-[#8B949E]">Completion</div>
+              <div className="text-sm sm:text-base font-bold text-white flex items-baseline gap-1">
                 <span>{sheetStats.solved}</span>
                 <span className="text-xs text-[#8B949E]">/ {sheetStats.total}</span>
                 <span className="text-xs text-[#3FB950] ml-1">({sheetStats.pct}%)</span>
@@ -326,19 +326,19 @@ export const CuratedSheetsView = ({ initialSheetKey = 'master-dsa', onSheetChang
 
         {/* Difficulty Breakdown Badges */}
         <div className="flex flex-wrap items-center gap-2 pt-2 border-t border-[#21262D]/60 text-xs font-mono">
-          <span className="text-[11px] text-[#8B949E] mr-1">Progress by Difficulty:</span>
+          <span className="text-[11px] text-[#8B949E] mr-1 w-full sm:w-auto">Progress by Difficulty:</span>
           
-          <div className="px-2.5 py-1 rounded bg-[#3FB950]/10 border border-[#3FB950]/20 text-[#3FB950] flex items-center gap-1.5">
+          <div className="px-2 sm:px-2.5 py-1 rounded bg-[#3FB950]/10 border border-[#3FB950]/20 text-[#3FB950] flex items-center gap-1.5 text-[11px] sm:text-xs">
             <span>Easy:</span>
             <span className="font-bold">{sheetStats.easySolved} / {sheetStats.easyTotal}</span>
           </div>
 
-          <div className="px-2.5 py-1 rounded bg-[#FF7A00]/10 border border-[#FF7A00]/20 text-[#FF7A00] flex items-center gap-1.5">
+          <div className="px-2 sm:px-2.5 py-1 rounded bg-[#FF7A00]/10 border border-[#FF7A00]/20 text-[#FF7A00] flex items-center gap-1.5 text-[11px] sm:text-xs">
             <span>Medium:</span>
             <span className="font-bold">{sheetStats.medSolved} / {sheetStats.medTotal}</span>
           </div>
 
-          <div className="px-2.5 py-1 rounded bg-red-500/10 border border-red-500/20 text-red-400 flex items-center gap-1.5">
+          <div className="px-2 sm:px-2.5 py-1 rounded bg-red-500/10 border border-red-500/20 text-red-400 flex items-center gap-1.5 text-[11px] sm:text-xs">
             <span>Hard:</span>
             <span className="font-bold">{sheetStats.hardSolved} / {sheetStats.hardTotal}</span>
           </div>
@@ -388,13 +388,13 @@ export const CuratedSheetsView = ({ initialSheetKey = 'master-dsa', onSheetChang
         <div className="flex flex-wrap items-center gap-2">
           
           {/* Difficulty Toggles */}
-          <div className="flex items-center bg-[#161B22] p-1 rounded-lg border border-[#21262D] text-xs font-mono">
+          <div className="flex items-center bg-[#161B22] p-0.5 sm:p-1 rounded-lg border border-[#21262D] text-[10px] sm:text-xs font-mono">
             {['All', 'Easy', 'Medium', 'Hard'].map((diff) => (
               <button
                 key={diff}
                 type="button"
                 onClick={() => setDifficultyFilter(diff)}
-                className={`px-2.5 py-1 rounded-md transition-all cursor-pointer ${
+                className={`px-2 sm:px-2.5 py-1 rounded-md transition-all cursor-pointer ${
                   difficultyFilter === diff
                     ? 'bg-[#FF7A00] text-black font-bold shadow'
                     : 'text-[#8B949E] hover:text-white'
@@ -406,13 +406,13 @@ export const CuratedSheetsView = ({ initialSheetKey = 'master-dsa', onSheetChang
           </div>
 
           {/* Status Toggles */}
-          <div className="flex items-center bg-[#161B22] p-1 rounded-lg border border-[#21262D] text-xs font-mono">
+          <div className="flex items-center bg-[#161B22] p-0.5 sm:p-1 rounded-lg border border-[#21262D] text-[10px] sm:text-xs font-mono">
             {['All', 'Unsolved', 'Solved'].map((st) => (
               <button
                 key={st}
                 type="button"
                 onClick={() => setStatusFilter(st)}
-                className={`px-2.5 py-1 rounded-md transition-all cursor-pointer ${
+                className={`px-2 sm:px-2.5 py-1 rounded-md transition-all cursor-pointer ${
                   statusFilter === st
                     ? 'bg-[#21262D] text-white font-bold'
                     : 'text-[#8B949E] hover:text-white'
@@ -511,45 +511,45 @@ export const CuratedSheetsView = ({ initialSheetKey = 'master-dsa', onSheetChang
                 <button
                   type="button"
                   onClick={() => toggleSection(section.title)}
-                  className={`w-full px-4 py-3 transition-colors flex items-center justify-between text-left cursor-pointer border-b ${
+                  className={`w-full px-3 sm:px-4 py-2.5 sm:py-3 transition-colors flex items-center justify-between text-left cursor-pointer border-b gap-2 ${
                     isSectionComplete
                       ? 'bg-[#3FB950]/15 hover:bg-[#3FB950]/25 border-[#3FB950]/30'
                       : 'bg-[#161B22]/70 hover:bg-[#161B22] border-[#21262D]/60'
                   }`}
                 >
-                  <div className="flex items-center gap-2.5">
+                  <div className="flex items-center gap-2 sm:gap-2.5 min-w-0 flex-1">
                     {isSectionComplete ? (
-                      <CheckCircle2 className="size-4.5 text-[#3FB950] shrink-0" />
+                      <CheckCircle2 className="size-4 sm:size-4.5 text-[#3FB950] shrink-0" />
                     ) : isCollapsed ? (
-                      <ChevronRight className="size-4 text-[#8B949E] shrink-0" />
+                      <ChevronRight className="size-3.5 sm:size-4 text-[#8B949E] shrink-0" />
                     ) : (
-                      <ChevronDown className="size-4 text-[#FF7A00] shrink-0" />
+                      <ChevronDown className="size-3.5 sm:size-4 text-[#FF7A00] shrink-0" />
                     )}
-                    <span className={`text-sm font-bold ${isSectionComplete ? 'text-[#3FB950]' : 'text-white'}`}>
+                    <span className={`text-xs sm:text-sm font-bold truncate ${isSectionComplete ? 'text-[#3FB950]' : 'text-white'}`}>
                       {section.title}
                     </span>
                     {isSectionComplete ? (
-                      <span className="text-[11px] font-mono px-2 py-0.5 rounded-full bg-[#3FB950]/20 text-[#3FB950] font-bold border border-[#3FB950]/40 flex items-center gap-1">
-                        <Check className="size-3 stroke-[2.5]" />
-                        <span>All {totalProblemsInSection} Solved</span>
+                      <span className="text-[10px] sm:text-[11px] font-mono px-1.5 sm:px-2 py-0.5 rounded-full bg-[#3FB950]/20 text-[#3FB950] font-bold border border-[#3FB950]/40 flex items-center gap-1 shrink-0">
+                        <Check className="size-2.5 sm:size-3 stroke-[2.5]" />
+                        <span className="hidden xs:inline">All </span><span>{totalProblemsInSection}</span>
                       </span>
                     ) : (
-                      <span className="text-[11px] font-mono px-2 py-0.5 rounded-full bg-[#21262D] text-[#8B949E]">
+                      <span className="text-[10px] sm:text-[11px] font-mono px-1.5 sm:px-2 py-0.5 rounded-full bg-[#21262D] text-[#8B949E] shrink-0">
                         {solvedProblemsInSection > 0 
-                          ? `${solvedProblemsInSection}/${totalProblemsInSection} solved` 
-                          : `${section.totalFiltered} problems`}
+                          ? `${solvedProblemsInSection}/${totalProblemsInSection}` 
+                          : `${section.totalFiltered}`}
                       </span>
                     )}
                   </div>
 
-                  <div className="flex items-center gap-2 text-xs font-mono">
+                  <div className="flex items-center gap-1.5 sm:gap-2 text-[10px] sm:text-xs font-mono shrink-0">
                     {isSectionComplete && (
                       <span className="hidden sm:inline-block text-[11px] font-bold text-[#3FB950] uppercase tracking-wider">
                         Completed
                       </span>
                     )}
                     <span className={isSectionComplete ? 'text-[#3FB950]' : 'text-[#8B949E]'}>
-                      {isCollapsed ? 'Click to expand' : 'Collapse'}
+                      {isCollapsed ? 'Expand' : 'Collapse'}
                     </span>
                   </div>
                 </button>
@@ -585,17 +585,17 @@ export const CuratedSheetsView = ({ initialSheetKey = 'master-dsa', onSheetChang
                             isSubsecComplete ? 'border-[#3FB950]' : 'border-[#21262D]'
                           }`}
                         >
-                          <div className={`text-xs font-mono font-bold py-1 flex items-center justify-between ${
+                          <div className={`text-xs font-mono font-bold py-1 flex items-center justify-between gap-2 ${
                             isSubsecComplete ? 'text-[#3FB950]' : 'text-[#FF7A00]'
                           }`}>
-                            <div className="flex items-center gap-1.5">
+                            <div className="flex items-center gap-1.5 min-w-0">
                               {isSubsecComplete ? (
-                                <CheckCircle2 className="size-3.5 text-[#3FB950]" />
+                                <CheckCircle2 className="size-3.5 text-[#3FB950] shrink-0" />
                               ) : (
-                                <FolderOpen className="size-3.5" />
+                                <FolderOpen className="size-3.5 shrink-0" />
                               )}
-                              <span>{subsec.title}</span>
-                              <span className="text-[10px] text-[#8B949E]">({subsec.problems.length})</span>
+                              <span className="truncate">{subsec.title}</span>
+                              <span className="text-[10px] text-[#8B949E] shrink-0">({subsec.problems.length})</span>
                             </div>
                             {isSubsecComplete && (
                               <span className="text-[10px] text-[#3FB950] font-mono font-bold px-1.5 py-0.2 rounded bg-[#3FB950]/15">
@@ -640,17 +640,17 @@ function ProblemRow({ problem, isSolved, onToggleSolved }) {
   }[problem.difficulty] || 'bg-gray-500/10 text-gray-400 border-gray-500/20';
 
   return (
-    <div className="py-2.5 px-2 rounded-lg hover:bg-[#161B22]/60 transition-colors flex items-center justify-between gap-3 group">
+    <div className="py-2 sm:py-2.5 px-1.5 sm:px-2 rounded-lg hover:bg-[#161B22]/60 transition-colors flex items-center justify-between gap-2 sm:gap-3 group">
       
       {/* Left: Solved Checkbox & Title */}
-      <div className="flex items-center gap-3 min-w-0">
+      <div className="flex items-center gap-2 sm:gap-3 min-w-0 flex-1">
         
         {/* Toggle Solved Button */}
         <button
           type="button"
           onClick={onToggleSolved}
           title={isSolved ? "Mark as unsolved" : "Mark as solved"}
-          className="text-[#8B949E] hover:text-[#3FB950] transition-colors cursor-pointer shrink-0"
+          className="text-[#8B949E] hover:text-[#3FB950] transition-colors cursor-pointer shrink-0 p-0.5"
         >
           {isSolved ? (
             <CheckCircle2 className="size-4 text-[#3FB950]" />
@@ -660,28 +660,28 @@ function ProblemRow({ problem, isSolved, onToggleSolved }) {
         </button>
 
         {/* Title & Platform */}
-        <div className="min-w-0">
-          <div className="flex items-center gap-2 flex-wrap">
+        <div className="min-w-0 flex-1">
+          <div className="flex items-center gap-1.5 sm:gap-2 flex-wrap">
             <a
               href={safeUrl(problem.url)}
               target="_blank"
               rel="noopener noreferrer"
-              className={`text-xs sm:text-sm font-mono hover:text-[#FF7A00] transition-colors inline-flex items-center gap-1 truncate ${
+              className={`text-xs sm:text-sm font-mono hover:text-[#FF7A00] transition-colors inline-flex items-center gap-1 max-w-[200px] xs:max-w-[260px] sm:max-w-none truncate ${
                 isSolved ? 'text-[#8B949E] line-through' : 'text-[#C9D1D9] font-medium'
               }`}
             >
-              <span>{problem.title}</span>
-              <ExternalLink className="size-3 text-[#8B949E] opacity-60 group-hover:opacity-100" />
+              <span className="truncate">{problem.title}</span>
+              <ExternalLink className="size-3 text-[#8B949E] opacity-60 group-hover:opacity-100 shrink-0" />
             </a>
 
             {problem.platform && problem.platform !== 'LeetCode' && (
-              <span className="text-[10px] font-mono px-1.5 py-0.2 rounded bg-[#21262D] text-[#8B949E]">
+              <span className="text-[9px] sm:text-[10px] font-mono px-1.5 py-0.2 rounded bg-[#21262D] text-[#8B949E] shrink-0">
                 {problem.platform}
               </span>
             )}
 
             {problem.important && (
-              <span className="text-[10px] font-mono px-1 py-0.2 rounded bg-amber-500/10 text-amber-400 border border-amber-500/20">
+              <span className="text-[9px] sm:text-[10px] font-mono px-1 py-0.2 rounded bg-amber-500/10 text-amber-400 border border-amber-500/20 shrink-0">
                 ★ Must Do
               </span>
             )}
@@ -690,10 +690,10 @@ function ProblemRow({ problem, isSolved, onToggleSolved }) {
       </div>
 
       {/* Right: Difficulty & Resource Actions */}
-      <div className="flex items-center gap-2 shrink-0">
+      <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
         
         {/* Difficulty Pill */}
-        <span className={`text-[10px] font-mono font-bold px-2 py-0.5 rounded border ${diffBadgeColor}`}>
+        <span className={`text-[9px] sm:text-[10px] font-mono font-bold px-1.5 sm:px-2 py-0.5 rounded border ${diffBadgeColor}`}>
           {problem.difficulty}
         </span>
 
