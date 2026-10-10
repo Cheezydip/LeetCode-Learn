@@ -6,6 +6,7 @@ import { ROADMAP_DATA } from '../data/roadmapData';
 import { RoadmapTree } from '../components/RoadmapTree';
 import { CuratedSheetsView } from '../components/CuratedSheetsView';
 import { TopicSubtopicsView } from '../components/TopicSubtopicsView';
+import { usePageSeo } from '../hooks/usePageSeo';
 
 const TOPIC_CATALOG = {
   dp: {
@@ -1968,6 +1969,18 @@ const CURATED_SHEET_KEYS = ['blind75', 'leetcode150', 'maang', 'master-dsa', 'sq
 export const RoadmapsPage = () => {
   const { topicId } = useParams();
   const navigate = useNavigate();
+
+  const currentTitle = topicId
+    ? `${TOPIC_CATALOG[topicId]?.title || ROADMAP_DATA[topicId]?.title || topicId.toUpperCase()} Roadmap`
+    : 'DSA Roadmaps & Curated Problem Sets';
+
+  usePageSeo({
+    title: currentTitle,
+    description: topicId
+      ? `Step-by-step intuition ladder and curated LeetCode problems for ${topicId}. Master core invariants and pattern recognition.`
+      : 'Comprehensive DSA learning roadmaps, Blind 75, NeetCode 150 sheets, and pattern intuition ladders.',
+    canonicalPath: topicId ? `/paths/${topicId}` : '/paths',
+  });
   const { 
     selectedTopic, 
     setSelectedTopic, 

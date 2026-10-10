@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useProfileStore } from '../store/useProfileStore';
+import { usePageSeo } from '../hooks/usePageSeo';
 import {
   Activity,
   AlertTriangle,
@@ -44,6 +45,11 @@ const SORT_OPTIONS = [
 
 // ─── Component ─────────────────────────────────────────────────────────────────
 export const RadarPage = () => {
+  usePageSeo({
+    title: 'Algorithm Skill Radar & Topic Matrix',
+    description: 'Visual skill matrix analyzing proficiency, acceptance rates, and mastery across 50+ LeetCode DSA sub-disciplines.',
+    canonicalPath: '/topics',
+  });
   const navigate = useNavigate();
   const {
     topicMetrics,

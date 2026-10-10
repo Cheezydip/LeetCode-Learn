@@ -2,8 +2,14 @@ import React, { useEffect, useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useProfileStore } from '../store/useProfileStore.js';
 import { Activity, ArrowRight, Compass, Flame, LineChart, Sparkles, Terminal } from 'lucide-react';
+import { usePageSeo } from '../hooks/usePageSeo.js';
 
 export const DashboardPage = () => {
+  usePageSeo({
+    title: 'DSA Learning Dashboard & Progress',
+    description: 'Track your LeetCode problem solving progress, spaced repetition memory vault, and algorithm mastery metrics.',
+    canonicalPath: '/',
+  });
   const {
     handle,
     realName,

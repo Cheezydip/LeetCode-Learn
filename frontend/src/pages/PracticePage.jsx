@@ -2,6 +2,7 @@ import React, { useState, useEffect, useMemo, useRef } from 'react';
 import { useProfileStore } from '../store/useProfileStore.js';
 import { fetchTopicProblems } from '../lib/api.js';
 import { safeUrl } from '../lib/utils.js';
+import { usePageSeo } from '../hooks/usePageSeo.js';
 import { 
   AlertTriangle, 
   ExternalLink, 
@@ -147,6 +148,11 @@ const getPaginationItems = (currentPage, totalPages) => {
 };
 
 export const PracticePage = () => {
+  usePageSeo({
+    title: 'Practice Vault & Spaced Repetition Upsolving',
+    description: 'Targeted algorithm problem vault with spaced-repetition tracking, struggle threshold detection, and curated interview problem sets.',
+    canonicalPath: '/practice',
+  });
   const { 
     topicMetrics, 
     contestElo, 

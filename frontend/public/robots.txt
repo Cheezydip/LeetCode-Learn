@@ -1,0 +1,11 @@
+User-agent: *
+Allow: /
+
+# Private & API routes
+Disallow: /api/
+
+# Crawl-delay for polite crawling (optional, Bing respects this)
+Crawl-delay: 1
+
+# XML Sitemap reference
+Sitemap: https://leetcode-learn.antideploy.app/sitemap.xml

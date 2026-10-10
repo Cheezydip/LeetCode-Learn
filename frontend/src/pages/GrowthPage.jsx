@@ -3,8 +3,14 @@ import { useProfileStore } from '../store/useProfileStore';
 import { calculateProfileRank, calculateTrajectory, eloToWorldwideRank, getProblemBreakdown } from '../lib/elo-math';
 import { Calculator, Sparkles } from 'lucide-react';
 import { animate, stagger } from 'animejs';
+import { usePageSeo } from '../hooks/usePageSeo';
 
 export const GrowthPage = () => {
+  usePageSeo({
+    title: 'Contest Elo Rating Predictor & Performance Analytics',
+    description: 'Mathematically forecast LeetCode contest rating trajectory, calculate Elo rating gains, and simulate solve volume curves.',
+    canonicalPath: '/growth',
+  });
   const {
     contestElo,
     profileRank,
